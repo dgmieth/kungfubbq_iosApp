@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AppUser" representedClassName=".AppUser" syncable="YES" codeGenerationType="class">
+        <attribute name="email" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="logged" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="memberSince" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
+        <attribute name="token" optional="YES" attributeType="String"/>
+        <relationship name="socialMediaInfo" toMany="YES" deletionRule="Cascade" destinationEntity="SocialMediaInfo" inverseName="appUser" inverseEntity="SocialMediaInfo"/>
+    </entity>
+    <entity name="SocialMediaInfo" representedClassName="SocialMediaInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="socialMedia" attributeType="String" defaultValueString=""/>
+        <attribute name="socialMediaUserName" attributeType="String"/>
+        <relationship name="appUser" maxCount="1" deletionRule="Nullify" destinationEntity="AppUser" inverseName="socialMediaInfo" inverseEntity="AppUser"/>
+    </entity>
+    <elements>
+        <element name="AppUser" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="SocialMediaInfo" positionX="-63" positionY="36" width="128" height="74"/>
+    </elements>
+</model>
