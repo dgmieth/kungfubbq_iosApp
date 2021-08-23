@@ -1448,6 +1448,9 @@
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="EcC-50-sxe" id="eRB-Wz-W3T"/>
+                                                                </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoK-7O-DCX" userLabel="newPasswordLbl">
                                                                 <rect key="frame" x="0.0" y="129" width="155.5" height="25"/>
@@ -1461,6 +1464,9 @@
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="EcC-50-sxe" id="ztJ-8V-Dtp"/>
+                                                                </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzO-38-UpA" userLabel="confirmPasswordLbl">
                                                                 <rect key="frame" x="0.0" y="198" width="186" height="25"/>
@@ -1474,6 +1480,9 @@
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="EcC-50-sxe" id="7CF-EB-ELK"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -1508,38 +1517,34 @@
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="voJ-M0-PO8" secondAttribute="trailing" id="Az2-eM-KP5"/>
-                                            <constraint firstItem="voJ-M0-PO8" firstAttribute="top" secondItem="7EM-ZZ-b7l" secondAttribute="top" id="HBC-NI-vbP"/>
-                                            <constraint firstItem="RWQ-GZ-eL1" firstAttribute="bottom" secondItem="voJ-M0-PO8" secondAttribute="bottom" id="SBN-Rd-1Y2"/>
-                                            <constraint firstAttribute="bottom" secondItem="voJ-M0-PO8" secondAttribute="bottom" id="qIe-zP-NUi"/>
+                                            <constraint firstItem="voJ-M0-PO8" firstAttribute="centerX" secondItem="msv-ri-Qm7" secondAttribute="centerX" id="03f-iU-c4I"/>
+                                            <constraint firstItem="voJ-M0-PO8" firstAttribute="top" secondItem="7EM-ZZ-b7l" secondAttribute="top" id="4yn-Ze-SoH"/>
+                                            <constraint firstAttribute="trailing" secondItem="voJ-M0-PO8" secondAttribute="trailing" id="EKn-gL-Dgi"/>
+                                            <constraint firstAttribute="bottom" secondItem="voJ-M0-PO8" secondAttribute="bottom" id="dTA-Nh-zn4"/>
                                         </constraints>
                                         <viewLayoutGuide key="contentLayoutGuide" id="7EM-ZZ-b7l"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="RWQ-GZ-eL1"/>
                                     </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="msv-ri-Qm7" firstAttribute="width" secondItem="dut-WL-7Uz" secondAttribute="width" id="1v7-Fg-Xj1"/>
-                                    <constraint firstItem="msv-ri-Qm7" firstAttribute="leading" secondItem="dut-WL-7Uz" secondAttribute="leading" id="8Nx-eo-KoF"/>
-                                    <constraint firstItem="voJ-M0-PO8" firstAttribute="height" secondItem="dut-WL-7Uz" secondAttribute="height" id="Lep-w5-erH"/>
-                                    <constraint firstAttribute="bottom" secondItem="msv-ri-Qm7" secondAttribute="bottom" id="Rrb-Ws-C6b"/>
-                                    <constraint firstItem="msv-ri-Qm7" firstAttribute="height" secondItem="dut-WL-7Uz" secondAttribute="height" id="Sb9-LS-Wwp"/>
-                                    <constraint firstItem="msv-ri-Qm7" firstAttribute="top" secondItem="dut-WL-7Uz" secondAttribute="top" id="bfm-sH-n0S"/>
-                                    <constraint firstAttribute="trailing" secondItem="msv-ri-Qm7" secondAttribute="trailing" id="lcz-Zd-aeI"/>
-                                    <constraint firstItem="voJ-M0-PO8" firstAttribute="width" secondItem="dut-WL-7Uz" secondAttribute="width" id="vy0-BB-YPB"/>
+                                    <constraint firstItem="msv-ri-Qm7" firstAttribute="leading" secondItem="dut-WL-7Uz" secondAttribute="leading" id="BKi-th-j7W"/>
+                                    <constraint firstItem="voJ-M0-PO8" firstAttribute="height" secondItem="dut-WL-7Uz" secondAttribute="height" id="BqP-hT-b4J"/>
+                                    <constraint firstAttribute="bottom" secondItem="msv-ri-Qm7" secondAttribute="bottom" id="rCv-Ns-eA8"/>
+                                    <constraint firstAttribute="trailing" secondItem="msv-ri-Qm7" secondAttribute="trailing" id="tzn-Bg-bYB"/>
+                                    <constraint firstItem="msv-ri-Qm7" firstAttribute="top" secondItem="dut-WL-7Uz" secondAttribute="top" id="wkz-6W-Kef"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dT1-nn-9pv"/>
                         <color key="backgroundColor" name="i_yellow"/>
                         <constraints>
-                            <constraint firstItem="dut-WL-7Uz" firstAttribute="width" secondItem="Iqc-G9-wGo" secondAttribute="width" id="89I-cn-4Vk"/>
-                            <constraint firstItem="dT1-nn-9pv" firstAttribute="bottom" secondItem="dut-WL-7Uz" secondAttribute="bottom" id="Fw1-1H-7b0"/>
-                            <constraint firstItem="voJ-M0-PO8" firstAttribute="top" secondItem="dT1-nn-9pv" secondAttribute="top" id="NTS-D1-4LX"/>
-                            <constraint firstItem="dT1-nn-9pv" firstAttribute="trailing" secondItem="voJ-M0-PO8" secondAttribute="trailing" id="Plz-qp-wQS"/>
-                            <constraint firstItem="voJ-M0-PO8" firstAttribute="leading" secondItem="dT1-nn-9pv" secondAttribute="leading" id="Sed-ZF-7Bv"/>
-                            <constraint firstItem="dut-WL-7Uz" firstAttribute="top" secondItem="dT1-nn-9pv" secondAttribute="top" id="mr8-ik-43z"/>
-                            <constraint firstItem="dut-WL-7Uz" firstAttribute="centerX" secondItem="Iqc-G9-wGo" secondAttribute="centerX" id="ndf-Pa-prD"/>
-                            <constraint firstItem="dT1-nn-9pv" firstAttribute="bottom" secondItem="voJ-M0-PO8" secondAttribute="bottom" id="qDs-nb-T6T"/>
+                            <constraint firstItem="dut-WL-7Uz" firstAttribute="width" secondItem="Iqc-G9-wGo" secondAttribute="width" id="7gu-lM-YmJ"/>
+                            <constraint firstItem="dut-WL-7Uz" firstAttribute="top" secondItem="Iqc-G9-wGo" secondAttribute="top" id="EHk-zl-BqM"/>
+                            <constraint firstAttribute="trailing" secondItem="dut-WL-7Uz" secondAttribute="trailing" id="FeB-YR-8li"/>
+                            <constraint firstItem="voJ-M0-PO8" firstAttribute="width" secondItem="Iqc-G9-wGo" secondAttribute="width" id="QSP-cD-60V"/>
+                            <constraint firstAttribute="bottom" secondItem="dut-WL-7Uz" secondAttribute="bottom" id="e8q-fQ-fUz"/>
+                            <constraint firstItem="dut-WL-7Uz" firstAttribute="leading" secondItem="Iqc-G9-wGo" secondAttribute="leading" id="iZs-e5-iSg"/>
+                            <constraint firstItem="dut-WL-7Uz" firstAttribute="height" secondItem="Iqc-G9-wGo" secondAttribute="height" id="lbh-IO-gWs"/>
                         </constraints>
                     </view>
                     <connections>
