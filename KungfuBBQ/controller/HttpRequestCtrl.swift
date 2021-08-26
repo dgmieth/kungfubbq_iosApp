@@ -13,6 +13,40 @@ class HttpRequestCtrl{
     
     private init(){ }
     
+    func get(toRoute route: String, userId id: String? = nil, headers: [String:String] = [String:String](), onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
+        print("httpRequestCtrl -> GET")
+        if var url = URLComponents(string: "https://dgmieth.live\(route)") {
+            var queryItems=[URLQueryItem]()
+            if let pId = id {
+                queryItems.append(URLQueryItem(name: "userId", value: pId))
+            }
+            if queryItems.count > 0 {
+                url.queryItems = queryItems
+                var request = URLRequest(url: url.url!)
+                if headers.count > 0 {
+                    for header in headers {
+                        request.setValue(header.value, forHTTPHeaderField: header.key)
+                    }
+                }
+                let session = URLSession.shared
+                session.dataTask(with: request){ (data,response,error) in
+                    //print(response)
+                    if let data = data {
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: data, options: [])
+                            guard let jsonbObj = json as? [String:Any] else {
+                                return
+                            }
+                            onCompletion(jsonbObj)
+                        }catch{
+                            onError(error)
+                        }
+                    }
+                }.resume()
+            }
+        }
+    }
+    
     func post(toRoute route: String, userEmail email: String? = nil, userName name: String? = nil, userPassword pass:String? = nil, currentPassword cPass:String? = nil, newPassword nPass:String? = nil, confirmPassword confPass:String? = nil, invitationCode invitation:String? = nil, phoneNumber phone:String? = nil, facebookName facebook:String? = nil, instagramName instagram:String? = nil, userId id:String? = nil, catoringDescription description:String? = nil, headers: [String:String] = [String:String](), onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
         print("httpRequestCtrl -> POST")
         var params=[String:String]()

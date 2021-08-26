@@ -141,6 +141,7 @@
 		3888C84426671EBC00DA735A /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */,
 				3853A8522663EEEA00FCBEAA /* HomeVC.swift */,
 				3888C84526671F1C00DA735A /* CalendarViewController.swift */,
 				381E3F19266953E000003E19 /* PreOrderCreationVC.swift */,
@@ -149,7 +150,6 @@
 				381E3F2B2669842B00003E19 /* MyAwesomeOrderVC.swift */,
 				381E3F2E2669850A00003E19 /* PaymentOptionsVC.swift */,
 				3870A8B126C200FC00F7C4D2 /* LoginVC.swift */,
-				3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */,
 				38978EB826CB1F6E009572E6 /* RegisterVC.swift */,
 				38560AAD26CC6BEA00EFAF1F /* CatoringVC.swift */,
 				384C2F9526CF2E9500C60B29 /* UserInfoVc.swift */,

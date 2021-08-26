@@ -37,6 +37,7 @@ class HomeVC: UIViewController, HomeVCRefreshUIProtocol {
         performSegue(withIdentifier: "loginVC", sender: self)
     }
     @IBAction func calendarClick(_ sender: Any) {
+        performSegue(withIdentifier: "calendarVC", sender: self)
     }
     @IBAction func catorignClick(_ sender: Any) {
         performSegue(withIdentifier: "catoringVC", sender: self)
@@ -65,6 +66,11 @@ class HomeVC: UIViewController, HomeVCRefreshUIProtocol {
             let dest = segue.destination as! UserInfoVc
             dest.dataController = dataController
             dest.delegate = self
+        }
+        if segue.identifier == "calendarVC" {
+            let dest = segue.destination as! CalendarViewController
+            dest.dataController = dataController
+            //dest.delegate = self
         }
     }
 // MARK: - DATA MODEL

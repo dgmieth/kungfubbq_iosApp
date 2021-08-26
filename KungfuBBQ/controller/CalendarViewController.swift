@@ -6,30 +6,104 @@
 //
 
 import UIKit
+import CoreData
 import FSCalendar
 
 class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate,FSCalendarDelegateAppearance {
-    @IBOutlet weak var calendar: FSCalendar!
-    
+    //vars and lets
     let dateFormatter = DateFormatter()
     var dates : [Date] = []
+    var dataController:DataController!
+    var spinner = UIActivityIndicatorView(style: .large)
+    var user:AppUser?
+    //ui elements
+    @IBOutlet var dateLbl: UILabel!
+    @IBOutlet var date: UILabel!
+    @IBOutlet var statusLbl: UILabel!
+    @IBOutlet var status: UILabel!
+    @IBOutlet var menuLbl: UILabel!
+    @IBOutlet var menu: UITextView!
+    @IBOutlet var locationLbl: UILabel!
+    @IBOutlet var location: UILabel!
+    @IBOutlet var placeOrder: UIButton!
+    @IBOutlet var checkOutOrder: UIButton!
+    @IBOutlet var payBtn: UIButton!
+    @IBOutlet var paidOrderCheckOut: UIButton!
+    @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var viewTest: UIView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let userArray = read() {
+            user = userArray[0]
+        }
+        print(user!.name)
+        HttpRequestCtrl.shared.get(toRoute: "/api/cookingCalendar/activeCookingDatesWithingSixtyDays", userId: "4",headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
+            print(jsonObject)
+        } onError: { error in
+            print(error)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.register(FSCalendarCell.self, forCellReuseIdentifier: "CELL")
         calendar.select(calendar.today)
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dates.append(dateFormatter.date(from: "2021-06-11")!)
-        dates.append(dateFormatter.date(from: "2021-06-18")!)
-        dates.append(dateFormatter.date(from: "2021-06-25")!)
-        dates.append(dateFormatter.date(from: "2021-07-02")!)
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dates.append(dateFormatter.date(from: "2021-09-11 12:00:00")!)
+        dates.append(dateFormatter.date(from: "2021-09-18 12:00:00")!)
+        dates.append(dateFormatter.date(from: "2021-09-25 12:00:00")!)
+        dates.append(dateFormatter.date(from: "2021-09-02 12:00:00")!)
         print(dates)
-        //calendar.translatesAutoresizingMaskIntoConstraints = false
-//        calendar.centerXAnchor.constraint(equalTo: viewTest.centerXAnchor).isActive = true
-//        calendar.centerYAnchor.constraint(equalTo: viewTest.centerYAnchor).isActive = true
-        // Do any additional setup after loading the view.
+        
+    }
+    //MARK: - BUTONS EVENT LISTENERS
+    @IBAction func placeOrderClick(_ sender: Any) {
+    }
+    @IBAction func checkoutOrderClick(_ sender: Any) {
+    }
+    @IBAction func payOrderClick(_ sender: Any) {
+    }
+    @IBAction func paidOrderCheckOutClick(_ sender: Any) {
+    }
+    // MARK: - CORE DATA
+    func save(){
+        do {
+            try dataController.viewContext.save()
+        } catch { print("notSaved") }
+    }
+    func read() -> [AppUser]?{
+        let fetchRequest = NSFetchRequest<AppUser>(entityName: "AppUser")
+        if let results = try? dataController.viewContext.fetch(fetchRequest){
+            return results
+        }
+        return nil
+    }
+    func update(byEmail email: String)->AppUser?{
+        let fetchRequest = NSFetchRequest<AppUser>(entityName: "AppUser")
+        fetchRequest.predicate = NSPredicate(format: "email = %@", email)
+        if let results = try? dataController.viewContext.fetch(fetchRequest){
+            return results[0]
+        }
+        return nil
     }
     
+    func delete(){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AppUser")
+        let delRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        let fetchRequestSocial = NSFetchRequest<NSFetchRequestResult>(entityName: "SocialMediaInfo")
+        let delRequestSocial = NSBatchDeleteRequest(fetchRequest: fetchRequestSocial)
+        do {
+            try dataController.viewContext.execute(delRequest)
+            try dataController.viewContext.execute(delRequestSocial)
+        }catch{
+            print(error)
+            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
+            let no = UIAlertAction(title: "Ok", style: .cancel)
+            alert.addAction(no)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    //MARK: - FS CALENDAR
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(date)
         print(monthPosition.rawValue)

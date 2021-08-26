@@ -37,7 +37,6 @@
                                         <state key="normal" title="Calendar"/>
                                         <connections>
                                             <action selector="calendarClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yCG-rl-ar6"/>
-                                            <segue destination="jFF-oC-eW2" kind="push" id="Bhx-Du-wzg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" restorationIdentifier="catoringFromBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-hk-rqP" userLabel="carotingBtn">
@@ -126,6 +125,7 @@
                         <segue destination="yzV-ju-ySc" kind="showDetail" identifier="loginVC" id="bk6-m6-Dn9"/>
                         <segue destination="wLm-YA-3dc" kind="show" identifier="catoringVC" id="6DC-Ao-MLa"/>
                         <segue destination="reh-qE-X6d" kind="presentation" identifier="userInfoVC" id="B7U-Vs-xbU"/>
+                        <segue destination="jFF-oC-eW2" kind="show" identifier="calendarVC" id="9Cw-kU-JDo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -137,7 +137,7 @@
             <objects>
                 <viewController title="App Information" id="mnB-xH-1Ac" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vRc-Ff-ygK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42h-Wk-Y57" userLabel="contentView">
@@ -252,7 +252,7 @@
             <objects>
                 <viewController title="User information" id="reh-qE-X6d" customClass="UserInfoVc" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c9l-RD-rSz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-av-u98">
@@ -897,7 +897,7 @@
             <objects>
                 <viewController title="Log-in" id="yzV-ju-ySc" customClass="LoginVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vg0-TJ-S7y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psy-pM-hLh" userLabel="scrollContainer">
@@ -1123,7 +1123,7 @@
             <objects>
                 <viewController title="Register" id="6MI-51-Et2" customClass="RegisterVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vwg-jq-vNS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwo-l2-l5W" userLabel="scrollContainer">
@@ -1361,7 +1361,7 @@
             <objects>
                 <viewController title="Change Password" id="EcC-50-sxe" customClass="PasswordChangeVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iqc-G9-wGo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dut-WL-7Uz" userLabel="scrollContainer">
@@ -1659,6 +1659,12 @@
                                         <color key="textColor" name="i_black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsx-Eu-BHs" userLabel="menuLbl">
+                                        <rect key="frame" x="10" y="94" width="65.5" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                        <color key="textColor" name="i_black"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th9-Fm-qn2" userLabel="menu">
                                         <rect key="frame" x="85.5" y="69" width="224.5" height="74.5"/>
                                         <color key="backgroundColor" name="i_yellow"/>
@@ -1669,6 +1675,9 @@
                                         <color key="textColor" name="i_black"/>
                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="jFF-oC-eW2" id="NCV-lf-nW3"/>
+                                        </connections>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExO-00-Wjg" userLabel="locationLbl">
                                         <rect key="frame" x="10" y="158.5" width="92.5" height="24.5"/>
@@ -1693,6 +1702,7 @@
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
+                                            <action selector="placeOrderClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="C7g-0q-d5a"/>
                                             <segue destination="NwJ-cL-Mwu" kind="show" id="oGL-lX-rDZ"/>
                                         </connections>
                                     </button>
@@ -1707,15 +1717,10 @@
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
+                                            <action selector="checkoutOrderClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="0XM-Jy-gN0"/>
                                             <segue destination="0iA-ek-gvE" kind="show" id="dQR-rn-hOg"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsx-Eu-BHs" userLabel="menuLbl">
-                                        <rect key="frame" x="10" y="94" width="65.5" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                        <color key="textColor" name="i_black"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVW-Az-fAm" userLabel="payBtn">
                                         <rect key="frame" x="160" y="168" width="75" height="55"/>
                                         <color key="backgroundColor" name="i_yellow"/>
@@ -1727,10 +1732,11 @@
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
+                                            <action selector="payOrderClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="Sqc-8z-cvN"/>
                                             <segue destination="W88-YY-lba" kind="show" id="e8w-Li-nrX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afU-c2-MVI" userLabel="orderCheckout">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afU-c2-MVI" userLabel="paidOrderCheckout">
                                         <rect key="frame" x="235" y="168" width="75" height="55"/>
                                         <color key="backgroundColor" name="i_yellow"/>
                                         <constraints>
@@ -1741,6 +1747,7 @@
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
+                                            <action selector="paidOrderCheckOutClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="ERI-kb-W20"/>
                                             <segue destination="bWh-CH-bfK" kind="show" id="w1a-zi-tOX"/>
                                         </connections>
                                     </button>
@@ -1799,6 +1806,18 @@
                     <navigationItem key="navigationItem" title="Wailist Calendar" id="hE8-Na-Znb"/>
                     <connections>
                         <outlet property="calendar" destination="ngg-Dr-0wN" id="586-yD-Q5Z"/>
+                        <outlet property="checkOutOrder" destination="nTy-jO-4Yt" id="yB6-tm-Q7v"/>
+                        <outlet property="date" destination="P45-wT-aRT" id="B3u-dl-Uzl"/>
+                        <outlet property="dateLbl" destination="EIX-Ie-LCH" id="oWP-Tc-Aqi"/>
+                        <outlet property="location" destination="sOo-Jc-bdE" id="gAv-94-xob"/>
+                        <outlet property="locationLbl" destination="sOo-Jc-bdE" id="tat-mo-zT8"/>
+                        <outlet property="menu" destination="Th9-Fm-qn2" id="2oW-Di-AX7"/>
+                        <outlet property="menuLbl" destination="fsx-Eu-BHs" id="lFn-cn-7sf"/>
+                        <outlet property="paidOrderCheckOut" destination="afU-c2-MVI" id="3fh-zq-RGD"/>
+                        <outlet property="payBtn" destination="GVW-Az-fAm" id="TKK-es-ryl"/>
+                        <outlet property="placeOrder" destination="WAN-Oj-xLw" id="een-FZ-8SH"/>
+                        <outlet property="status" destination="Rd4-7k-9gc" id="UbD-6G-lgu"/>
+                        <outlet property="statusLbl" destination="j87-xC-soc" id="Y9Q-l8-9QK"/>
                         <outlet property="viewTest" destination="vSj-Uw-dJs" id="6DO-8k-T83"/>
                     </connections>
                 </viewController>
