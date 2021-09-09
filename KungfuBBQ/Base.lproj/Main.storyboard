@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1566,6 +1567,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUN-ne-aQT" userLabel="noCookingView">
+                                <rect key="frame" x="0.0" y="340" width="320" height="228"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sadFace" translatesAutoresizingMaskIntoConstraints="NO" id="p7J-qp-S4Y">
+                                        <rect key="frame" x="20" y="50" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="UNU-fA-VPF"/>
+                                            <constraint firstAttribute="height" constant="50" id="cuG-g7-hpv"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry! We are not cooking today..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krp-GR-WyM">
+                                        <rect key="frame" x="90" y="51" width="210" height="48.5"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                        <color key="textColor" name="i_black"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Krp-GR-WyM" firstAttribute="centerY" secondItem="p7J-qp-S4Y" secondAttribute="centerY" id="YaF-VR-bk4"/>
+                                    <constraint firstItem="p7J-qp-S4Y" firstAttribute="leading" secondItem="MUN-ne-aQT" secondAttribute="leading" constant="20" id="a5j-k1-Eio"/>
+                                    <constraint firstItem="Krp-GR-WyM" firstAttribute="leading" secondItem="p7J-qp-S4Y" secondAttribute="trailing" constant="20" id="dsj-uV-ENr"/>
+                                    <constraint firstItem="p7J-qp-S4Y" firstAttribute="top" secondItem="MUN-ne-aQT" secondAttribute="top" constant="50" id="kVa-oP-jMt"/>
+                                    <constraint firstAttribute="trailing" secondItem="Krp-GR-WyM" secondAttribute="trailing" constant="20" id="tEP-uv-Jik"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSj-Uw-dJs" userLabel="calendarView">
                                 <rect key="frame" x="0.0" y="44" width="320" height="296"/>
                                 <subviews>
@@ -1632,157 +1659,163 @@
                                     <constraint firstItem="ngg-Dr-0wN" firstAttribute="leading" secondItem="vSj-Uw-dJs" secondAttribute="leading" constant="10" id="l5P-9N-KSJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhK-f4-wHR" userLabel="listVIew">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhK-f4-wHR" userLabel="listVIew">
                                 <rect key="frame" x="0.0" y="340" width="320" height="228"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIX-Ie-LCH" userLabel="dateLbl">
-                                        <rect key="frame" x="10" y="10" width="54" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                        <rect key="frame" x="10" y="5" width="48.5" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="20"/>
                                         <color key="textColor" name="i_black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jun 16th 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P45-wT-aRT" userLabel="date">
-                                        <rect key="frame" x="69" y="5" width="130.5" height="34.5"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jun 16th 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="P45-wT-aRT" userLabel="date">
+                                        <rect key="frame" x="63.5" y="5" width="119" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
                                         <color key="textColor" name="i_black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j87-xC-soc" userLabel="statusLbl">
-                                        <rect key="frame" x="10" y="39.5" width="68" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                        <rect key="frame" x="10" y="40.5" width="70" height="22.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="vRk-M4-ysn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="20"/>
                                         <color key="textColor" name="i_black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="opened to pre-orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rd4-7k-9gc" userLabel="status">
-                                        <rect key="frame" x="83" y="39.5" width="204.5" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="opened to pre-orders" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Rd4-7k-9gc" userLabel="status">
+                                        <rect key="frame" x="85" y="40.5" width="225" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
                                         <color key="textColor" name="i_black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsx-Eu-BHs" userLabel="menuLbl">
-                                        <rect key="frame" x="10" y="94" width="65.5" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                        <rect key="frame" x="10" y="92" width="59.5" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="20"/>
                                         <color key="textColor" name="i_black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th9-Fm-qn2" userLabel="menu">
-                                        <rect key="frame" x="85.5" y="69" width="224.5" height="74.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" indicatorStyle="black" bouncesZoom="NO" editable="NO" text="Teste" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th9-Fm-qn2" userLabel="menu">
+                                        <rect key="frame" x="79.5" y="73.5" width="230.5" height="60"/>
                                         <color key="backgroundColor" name="i_yellow"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="74.5" id="gi5-3t-ms7"/>
+                                            <constraint firstAttribute="height" constant="60" id="gi5-3t-ms7"/>
                                         </constraints>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut </string>
                                         <color key="textColor" name="i_black"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="jFF-oC-eW2" id="NCV-lf-nW3"/>
                                         </connections>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExO-00-Wjg" userLabel="locationLbl">
-                                        <rect key="frame" x="10" y="158.5" width="92.5" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                        <rect key="frame" x="10" y="139.5" width="90" height="22.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="9Ju-T3-qfs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="20"/>
                                         <color key="textColor" name="i_black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="375 Oak Ave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOo-Jc-bdE" userLabel="location">
-                                        <rect key="frame" x="112.5" y="158.5" width="122" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="375 Oak Ave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="sOo-Jc-bdE" userLabel="location">
+                                        <rect key="frame" x="110" y="139.5" width="200" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
                                         <color key="textColor" name="i_black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAN-Oj-xLw" userLabel="placeOrderBtn">
-                                        <rect key="frame" x="10" y="168" width="75" height="55"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAN-Oj-xLw" userLabel="placeOrderBtn">
+                                        <rect key="frame" x="10" y="168" width="300" height="55"/>
                                         <color key="backgroundColor" name="i_yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="P0G-Gt-a7r"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                        <state key="normal" title="1">
+                                        <state key="normal" title="Place order">
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
                                             <action selector="placeOrderClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="C7g-0q-d5a"/>
-                                            <segue destination="NwJ-cL-Mwu" kind="show" id="oGL-lX-rDZ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTy-jO-4Yt" userLabel="checkoutBtn">
-                                        <rect key="frame" x="85" y="168" width="75" height="55"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTy-jO-4Yt" userLabel="checkoutBtn">
+                                        <rect key="frame" x="10" y="168" width="300" height="55"/>
                                         <color key="backgroundColor" name="i_yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="r8b-Vk-Xdr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                        <state key="normal" title="2">
+                                        <state key="normal" title="Checkout order">
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
                                             <action selector="checkoutOrderClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="0XM-Jy-gN0"/>
-                                            <segue destination="0iA-ek-gvE" kind="show" id="dQR-rn-hOg"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVW-Az-fAm" userLabel="payBtn">
-                                        <rect key="frame" x="160" y="168" width="75" height="55"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVW-Az-fAm" userLabel="payBtn">
+                                        <rect key="frame" x="10" y="168" width="300" height="55"/>
                                         <color key="backgroundColor" name="i_yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="wEe-Jt-0Js"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                        <state key="normal" title="3">
+                                        <state key="normal" title="Pay order">
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
                                             <action selector="payOrderClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="Sqc-8z-cvN"/>
-                                            <segue destination="W88-YY-lba" kind="show" id="e8w-Li-nrX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afU-c2-MVI" userLabel="paidOrderCheckout">
-                                        <rect key="frame" x="235" y="168" width="75" height="55"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afU-c2-MVI" userLabel="paidOrderCheckout">
+                                        <rect key="frame" x="10" y="168" width="300" height="55"/>
                                         <color key="backgroundColor" name="i_yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="vXv-3V-LkZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                        <state key="normal" title="4">
+                                        <state key="normal" title="Paid order">
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
                                             <action selector="paidOrderCheckOutClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="ERI-kb-W20"/>
-                                            <segue destination="bWh-CH-bfK" kind="show" id="w1a-zi-tOX"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="white"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="GVW-Az-fAm" secondAttribute="trailing" constant="10" id="1hX-Kg-zPM"/>
                                     <constraint firstItem="sOo-Jc-bdE" firstAttribute="centerY" secondItem="ExO-00-Wjg" secondAttribute="centerY" id="4z8-mf-ZJZ"/>
-                                    <constraint firstItem="j87-xC-soc" firstAttribute="top" secondItem="EIX-Ie-LCH" secondAttribute="bottom" constant="5" id="5UF-fv-PUq"/>
-                                    <constraint firstItem="GVW-Az-fAm" firstAttribute="leading" secondItem="nTy-jO-4Yt" secondAttribute="trailing" id="8RY-HT-Sw9"/>
+                                    <constraint firstItem="j87-xC-soc" firstAttribute="top" secondItem="EIX-Ie-LCH" secondAttribute="bottom" constant="13" id="5UF-fv-PUq"/>
                                     <constraint firstItem="EIX-Ie-LCH" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="8bU-0H-1tO"/>
-                                    <constraint firstItem="ExO-00-Wjg" firstAttribute="top" secondItem="fsx-Eu-BHs" secondAttribute="bottom" constant="40" id="92L-o2-Qxc"/>
+                                    <constraint firstItem="ExO-00-Wjg" firstAttribute="top" secondItem="fsx-Eu-BHs" secondAttribute="bottom" constant="25" id="92L-o2-Qxc"/>
                                     <constraint firstAttribute="bottom" secondItem="GVW-Az-fAm" secondAttribute="bottom" constant="5" id="Bfv-p1-pM6"/>
                                     <constraint firstItem="afU-c2-MVI" firstAttribute="width" secondItem="WAN-Oj-xLw" secondAttribute="width" id="CPX-2n-9N6"/>
                                     <constraint firstItem="GVW-Az-fAm" firstAttribute="width" secondItem="WAN-Oj-xLw" secondAttribute="width" id="G1U-qd-TW0"/>
-                                    <constraint firstItem="fsx-Eu-BHs" firstAttribute="top" secondItem="j87-xC-soc" secondAttribute="bottom" constant="30" id="GSJ-jK-fwV"/>
+                                    <constraint firstItem="fsx-Eu-BHs" firstAttribute="top" secondItem="j87-xC-soc" secondAttribute="bottom" constant="29" id="GSJ-jK-fwV"/>
                                     <constraint firstItem="P45-wT-aRT" firstAttribute="top" secondItem="IhK-f4-wHR" secondAttribute="top" constant="5" id="I7V-sI-rIM"/>
-                                    <constraint firstItem="nTy-jO-4Yt" firstAttribute="leading" secondItem="WAN-Oj-xLw" secondAttribute="trailing" id="JzB-xs-UXg"/>
                                     <constraint firstItem="Rd4-7k-9gc" firstAttribute="centerY" secondItem="j87-xC-soc" secondAttribute="centerY" id="Kku-Ra-Iqd"/>
+                                    <constraint firstAttribute="trailing" secondItem="WAN-Oj-xLw" secondAttribute="trailing" constant="10" id="Kty-3j-3MT"/>
+                                    <constraint firstItem="nTy-jO-4Yt" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="LAs-Bg-XNY"/>
+                                    <constraint firstAttribute="trailing" secondItem="nTy-jO-4Yt" secondAttribute="trailing" constant="10" id="LUc-18-VOa"/>
                                     <constraint firstItem="sOo-Jc-bdE" firstAttribute="leading" secondItem="ExO-00-Wjg" secondAttribute="trailing" constant="10" id="M26-a1-E9j"/>
                                     <constraint firstAttribute="bottom" secondItem="nTy-jO-4Yt" secondAttribute="bottom" constant="5" id="Nlh-Ps-NgT"/>
                                     <constraint firstItem="Rd4-7k-9gc" firstAttribute="leading" secondItem="j87-xC-soc" secondAttribute="trailing" constant="5" id="Oid-q7-1x8"/>
                                     <constraint firstItem="P45-wT-aRT" firstAttribute="centerY" secondItem="EIX-Ie-LCH" secondAttribute="centerY" id="PbS-GZ-rrK"/>
                                     <constraint firstItem="Th9-Fm-qn2" firstAttribute="leading" secondItem="fsx-Eu-BHs" secondAttribute="trailing" constant="10" id="RjN-0p-h14"/>
                                     <constraint firstItem="j87-xC-soc" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="VhA-z8-4bg"/>
-                                    <constraint firstItem="EIX-Ie-LCH" firstAttribute="top" secondItem="IhK-f4-wHR" secondAttribute="top" constant="10" id="WEd-pm-9Qe"/>
+                                    <constraint firstItem="EIX-Ie-LCH" firstAttribute="top" secondItem="IhK-f4-wHR" secondAttribute="top" constant="5" id="WEd-pm-9Qe"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rd4-7k-9gc" secondAttribute="trailing" constant="10" id="WIT-Kr-NcW"/>
+                                    <constraint firstAttribute="trailing" secondItem="sOo-Jc-bdE" secondAttribute="trailing" constant="10" id="WUw-Ko-Y7V"/>
                                     <constraint firstItem="fsx-Eu-BHs" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="WkI-Bk-q0Z"/>
                                     <constraint firstAttribute="trailing" secondItem="Th9-Fm-qn2" secondAttribute="trailing" constant="10" id="XxR-sa-CCn"/>
-                                    <constraint firstItem="afU-c2-MVI" firstAttribute="leading" secondItem="GVW-Az-fAm" secondAttribute="trailing" id="fGr-vC-3UH"/>
                                     <constraint firstItem="ExO-00-Wjg" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="mGa-OB-XtQ"/>
+                                    <constraint firstItem="GVW-Az-fAm" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="nsH-lu-PCh"/>
                                     <constraint firstItem="WAN-Oj-xLw" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="tRh-6O-OkV"/>
                                     <constraint firstItem="P45-wT-aRT" firstAttribute="leading" secondItem="EIX-Ie-LCH" secondAttribute="trailing" constant="5" id="una-Tn-dOe"/>
                                     <constraint firstAttribute="bottom" secondItem="WAN-Oj-xLw" secondAttribute="bottom" constant="5" id="uqc-Sd-euN"/>
                                     <constraint firstAttribute="bottom" secondItem="nTy-jO-4Yt" secondAttribute="bottom" constant="5" id="usY-9O-EwP"/>
                                     <constraint firstAttribute="bottom" secondItem="afU-c2-MVI" secondAttribute="bottom" constant="5" id="xKo-2f-9Um"/>
                                     <constraint firstItem="Th9-Fm-qn2" firstAttribute="centerY" secondItem="fsx-Eu-BHs" secondAttribute="centerY" id="xTF-VU-Cx2"/>
+                                    <constraint firstItem="afU-c2-MVI" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="yyC-YX-oc1"/>
                                     <constraint firstAttribute="trailing" secondItem="afU-c2-MVI" secondAttribute="trailing" constant="10" id="yyw-VR-Ynn"/>
                                     <constraint firstItem="nTy-jO-4Yt" firstAttribute="width" secondItem="WAN-Oj-xLw" secondAttribute="width" id="zYw-Vt-cGn"/>
                                 </constraints>
@@ -1793,9 +1826,13 @@
                         <constraints>
                             <constraint firstItem="IhK-f4-wHR" firstAttribute="height" secondItem="vSj-Uw-dJs" secondAttribute="height" multiplier="0.77" id="23r-cN-8ev"/>
                             <constraint firstItem="ccE-9s-Tup" firstAttribute="bottom" secondItem="IhK-f4-wHR" secondAttribute="bottom" id="3oH-z6-QKt"/>
+                            <constraint firstItem="ccE-9s-Tup" firstAttribute="trailing" secondItem="MUN-ne-aQT" secondAttribute="trailing" id="Bnt-5z-RLg"/>
+                            <constraint firstItem="ccE-9s-Tup" firstAttribute="bottom" secondItem="MUN-ne-aQT" secondAttribute="bottom" id="IwP-hV-H91"/>
+                            <constraint firstItem="MUN-ne-aQT" firstAttribute="top" secondItem="vSj-Uw-dJs" secondAttribute="bottom" id="LIv-KH-cXn"/>
                             <constraint firstItem="IhK-f4-wHR" firstAttribute="leading" secondItem="ccE-9s-Tup" secondAttribute="leading" id="MBG-dV-KUS"/>
                             <constraint firstItem="IhK-f4-wHR" firstAttribute="top" secondItem="vSj-Uw-dJs" secondAttribute="bottom" id="Osk-Hx-Tin"/>
                             <constraint firstItem="vSj-Uw-dJs" firstAttribute="leading" secondItem="ccE-9s-Tup" secondAttribute="leading" id="amy-rx-fMh"/>
+                            <constraint firstItem="MUN-ne-aQT" firstAttribute="leading" secondItem="ccE-9s-Tup" secondAttribute="leading" id="an1-fC-uyZ"/>
                             <constraint firstItem="ccE-9s-Tup" firstAttribute="trailing" secondItem="vSj-Uw-dJs" secondAttribute="trailing" id="dIh-tK-dz7"/>
                             <constraint firstItem="IhK-f4-wHR" firstAttribute="leading" secondItem="ccE-9s-Tup" secondAttribute="leading" id="icy-9S-p13"/>
                             <constraint firstItem="ccE-9s-Tup" firstAttribute="trailing" secondItem="IhK-f4-wHR" secondAttribute="trailing" id="oY0-Co-ijf"/>
@@ -1807,18 +1844,24 @@
                     <connections>
                         <outlet property="calendar" destination="ngg-Dr-0wN" id="586-yD-Q5Z"/>
                         <outlet property="checkOutOrder" destination="nTy-jO-4Yt" id="yB6-tm-Q7v"/>
+                        <outlet property="cookingView" destination="IhK-f4-wHR" id="vyA-z0-pYE"/>
                         <outlet property="date" destination="P45-wT-aRT" id="B3u-dl-Uzl"/>
                         <outlet property="dateLbl" destination="EIX-Ie-LCH" id="oWP-Tc-Aqi"/>
                         <outlet property="location" destination="sOo-Jc-bdE" id="gAv-94-xob"/>
                         <outlet property="locationLbl" destination="sOo-Jc-bdE" id="tat-mo-zT8"/>
                         <outlet property="menu" destination="Th9-Fm-qn2" id="2oW-Di-AX7"/>
                         <outlet property="menuLbl" destination="fsx-Eu-BHs" id="lFn-cn-7sf"/>
+                        <outlet property="noCookingView" destination="MUN-ne-aQT" id="tr8-Cx-lNE"/>
                         <outlet property="paidOrderCheckOut" destination="afU-c2-MVI" id="3fh-zq-RGD"/>
                         <outlet property="payBtn" destination="GVW-Az-fAm" id="TKK-es-ryl"/>
                         <outlet property="placeOrder" destination="WAN-Oj-xLw" id="een-FZ-8SH"/>
                         <outlet property="status" destination="Rd4-7k-9gc" id="UbD-6G-lgu"/>
                         <outlet property="statusLbl" destination="j87-xC-soc" id="Y9Q-l8-9QK"/>
                         <outlet property="viewTest" destination="vSj-Uw-dJs" id="6DO-8k-T83"/>
+                        <segue destination="NwJ-cL-Mwu" kind="show" identifier="placeOrder" id="fbN-DT-ayV"/>
+                        <segue destination="0iA-ek-gvE" kind="show" identifier="updateOrder" id="BBu-sO-7m7"/>
+                        <segue destination="W88-YY-lba" kind="show" identifier="payOrder" id="svo-tH-MFH"/>
+                        <segue destination="bWh-CH-bfK" kind="show" identifier="paidOrder" id="iUC-Ar-XE2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dz4-7o-RIf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1855,36 +1898,36 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bp-jH-ftT" userLabel="menuLbl">
-                                                        <rect key="frame" x="10" y="84.5" width="65.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="69.5" width="65.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7Q-R1-h5A" userLabel="menu">
-                                                        <rect key="frame" x="85.5" y="37" width="224.5" height="120"/>
+                                                        <rect key="frame" x="85.5" y="37" width="224.5" height="90"/>
                                                         <color key="backgroundColor" name="textFieldBackground"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="120" id="emj-Bg-Lnb"/>
+                                                            <constraint firstAttribute="height" constant="90" id="emj-Bg-Lnb"/>
                                                         </constraints>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut </string>
                                                         <color key="textColor" name="i_black"/>
-                                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yio-gS-9rU" userLabel="locationLbl">
-                                                        <rect key="frame" x="10" y="237" width="92.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="182" width="92.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jll-T2-fMa" userLabel="numberMealsLbl">
-                                                        <rect key="frame" x="10" y="376.5" width="180.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="301.5" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="qwt-0O-vgQ" userLabel="numberMeals">
-                                                        <rect key="frame" x="200.5" y="341" width="100" height="95"/>
+                                                        <rect key="frame" x="200.5" y="266" width="100" height="95"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="95" id="I32-E5-7oN"/>
                                                             <constraint firstAttribute="width" constant="100" id="ijv-GQ-q02"/>
@@ -1895,25 +1938,25 @@
                                                         </connections>
                                                     </pickerView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXB-6p-cZw" userLabel="mealPriceLbl">
-                                                        <rect key="frame" x="10" y="446" width="112.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="366" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQF-VO-vyQ" userLabel="mealPrice">
-                                                        <rect key="frame" x="132.5" y="446" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="132.5" y="366" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-mv-rrI" userLabel="totalPriceLbl">
-                                                        <rect key="frame" x="10" y="480.5" width="111.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="400.5" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-3z-h9W" userLabel="totalPrice">
-                                                        <rect key="frame" x="131.5" y="480.5" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="131.5" y="400.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
@@ -1931,6 +1974,9 @@
                                                                         <state key="normal" title="Pre-order">
                                                                             <color key="titleColor" name="fontColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="placeOrderClick:" destination="NwJ-cL-Mwu" eventType="touchUpInside" id="j1R-9A-opH"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -1950,6 +1996,9 @@
                                                                         <state key="normal" title="Cancel">
                                                                             <color key="titleColor" name="fontColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="cancelOrderClick:" destination="NwJ-cL-Mwu" eventType="touchUpInside" id="NZV-CZ-cO5"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -1973,7 +2022,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2a-a0-Nm3" userLabel="locationView">
-                                                        <rect key="frame" x="112.5" y="174" width="197.5" height="150"/>
+                                                        <rect key="frame" x="112.5" y="124" width="197.5" height="140"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" text="375 Oak Ave, Cheshire, CT" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0J-Rb-Xy7" userLabel="location">
                                                                 <rect key="frame" x="0.0" y="0.0" width="197.5" height="30"/>
@@ -1986,12 +2035,18 @@
                                                             </textView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHp-4J-Qkc" userLabel="locationBtn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="197.5" height="30"/>
+                                                                <connections>
+                                                                    <action selector="addressClick:" destination="NwJ-cL-Mwu" eventType="touchUpInside" id="T9L-Uf-Vwr"/>
+                                                                </connections>
                                                             </button>
-                                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LuW-Pq-ohK">
-                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="120"/>
+                                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LuW-Pq-ohK">
+                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="110"/>
                                                             </mapView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOy-Xf-99D" userLabel="mapBtn">
-                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="120"/>
+                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="110"/>
+                                                                <connections>
+                                                                    <action selector="mapBtnClick:" destination="NwJ-cL-Mwu" eventType="touchUpInside" id="CHB-Lv-WN6"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -2000,7 +2055,7 @@
                                                             <constraint firstItem="J0J-Rb-Xy7" firstAttribute="leading" secondItem="z2a-a0-Nm3" secondAttribute="leading" id="Hx5-wB-ubP"/>
                                                             <constraint firstItem="tHp-4J-Qkc" firstAttribute="centerY" secondItem="J0J-Rb-Xy7" secondAttribute="centerY" id="J68-vN-Rf8"/>
                                                             <constraint firstItem="QOy-Xf-99D" firstAttribute="centerX" secondItem="LuW-Pq-ohK" secondAttribute="centerX" id="OoL-Vi-Npn"/>
-                                                            <constraint firstAttribute="height" constant="150" id="Rye-l8-nF3"/>
+                                                            <constraint firstAttribute="height" constant="140" id="Rye-l8-nF3"/>
                                                             <constraint firstItem="LuW-Pq-ohK" firstAttribute="leading" secondItem="z2a-a0-Nm3" secondAttribute="leading" id="UPo-LP-tL9"/>
                                                             <constraint firstItem="LuW-Pq-ohK" firstAttribute="top" secondItem="J0J-Rb-Xy7" secondAttribute="bottom" id="Wbc-I7-d3m"/>
                                                             <constraint firstItem="J0J-Rb-Xy7" firstAttribute="top" secondItem="z2a-a0-Nm3" secondAttribute="top" id="WfR-sN-kVb"/>
@@ -2022,14 +2077,14 @@
                                                     <constraint firstItem="CHJ-Vs-sci" firstAttribute="leading" secondItem="SzJ-LD-HAm" secondAttribute="trailing" constant="10" id="79L-YB-mMu"/>
                                                     <constraint firstItem="hjj-3z-h9W" firstAttribute="leading" secondItem="qRb-mv-rrI" secondAttribute="trailing" constant="10" id="9LB-83-ghh"/>
                                                     <constraint firstItem="Yio-gS-9rU" firstAttribute="centerY" secondItem="z2a-a0-Nm3" secondAttribute="centerY" id="9VS-re-158"/>
-                                                    <constraint firstItem="ZXB-6p-cZw" firstAttribute="top" secondItem="Jll-T2-fMa" secondAttribute="bottom" constant="45" id="B6t-AX-ntq"/>
+                                                    <constraint firstItem="ZXB-6p-cZw" firstAttribute="top" secondItem="Jll-T2-fMa" secondAttribute="bottom" constant="40" id="B6t-AX-ntq"/>
                                                     <constraint firstItem="qRb-mv-rrI" firstAttribute="leading" secondItem="7ar-Ua-erK" secondAttribute="leading" constant="10" id="EJq-oG-Io6"/>
-                                                    <constraint firstItem="Yio-gS-9rU" firstAttribute="top" secondItem="t7Q-R1-h5A" secondAttribute="bottom" constant="80" id="EMy-rc-0e3"/>
+                                                    <constraint firstItem="Yio-gS-9rU" firstAttribute="top" secondItem="t7Q-R1-h5A" secondAttribute="bottom" constant="55" id="EMy-rc-0e3"/>
                                                     <constraint firstItem="Yio-gS-9rU" firstAttribute="leading" secondItem="7ar-Ua-erK" secondAttribute="leading" constant="10" id="EZx-jb-QyU"/>
                                                     <constraint firstItem="Jll-T2-fMa" firstAttribute="leading" secondItem="7ar-Ua-erK" secondAttribute="leading" constant="10" id="G9K-DD-IrL"/>
                                                     <constraint firstAttribute="trailing" secondItem="Vq9-Uf-mBI" secondAttribute="trailing" id="GaP-uM-Hx6"/>
                                                     <constraint firstAttribute="trailing" secondItem="t7Q-R1-h5A" secondAttribute="trailing" constant="10" id="I8i-uD-6kt"/>
-                                                    <constraint firstItem="Jll-T2-fMa" firstAttribute="top" secondItem="Yio-gS-9rU" secondAttribute="bottom" constant="115" id="O4C-71-pUv"/>
+                                                    <constraint firstItem="Jll-T2-fMa" firstAttribute="top" secondItem="Yio-gS-9rU" secondAttribute="bottom" constant="95" id="O4C-71-pUv"/>
                                                     <constraint firstItem="t7Q-R1-h5A" firstAttribute="centerY" secondItem="7bp-jH-ftT" secondAttribute="centerY" id="RlA-L3-CNW"/>
                                                     <constraint firstItem="SzJ-LD-HAm" firstAttribute="leading" secondItem="7ar-Ua-erK" secondAttribute="leading" constant="10" id="WKQ-gJ-8xJ"/>
                                                     <constraint firstItem="WQF-VO-vyQ" firstAttribute="centerY" secondItem="ZXB-6p-cZw" secondAttribute="centerY" id="YK7-wS-6tT"/>
@@ -2039,7 +2094,7 @@
                                                     <constraint firstItem="Vq9-Uf-mBI" firstAttribute="leading" secondItem="7ar-Ua-erK" secondAttribute="leading" id="ge9-1t-Jb4"/>
                                                     <constraint firstItem="7bp-jH-ftT" firstAttribute="leading" secondItem="7ar-Ua-erK" secondAttribute="leading" constant="10" id="ggD-H9-Usu"/>
                                                     <constraint firstAttribute="trailing" secondItem="z2a-a0-Nm3" secondAttribute="trailing" constant="10" id="hEI-m6-NzG"/>
-                                                    <constraint firstItem="7bp-jH-ftT" firstAttribute="top" secondItem="SzJ-LD-HAm" secondAttribute="bottom" constant="50" id="iTT-IU-IOa"/>
+                                                    <constraint firstItem="7bp-jH-ftT" firstAttribute="top" secondItem="SzJ-LD-HAm" secondAttribute="bottom" constant="35" id="iTT-IU-IOa"/>
                                                     <constraint firstItem="Jll-T2-fMa" firstAttribute="leading" secondItem="7ar-Ua-erK" secondAttribute="leading" constant="10" id="iTX-gM-ch8"/>
                                                     <constraint firstItem="qRb-mv-rrI" firstAttribute="top" secondItem="ZXB-6p-cZw" secondAttribute="bottom" constant="10" id="jNP-sa-qBE"/>
                                                     <constraint firstAttribute="bottom" secondItem="Vq9-Uf-mBI" secondAttribute="bottom" id="obh-E4-0fe"/>
@@ -2082,8 +2137,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pre-order creation" id="sXq-KF-7iI"/>
                     <connections>
+                        <outlet property="address" destination="J0J-Rb-Xy7" id="hV6-Ld-Qph"/>
+                        <outlet property="addressBtn" destination="tHp-4J-Qkc" id="MqL-LX-pEI"/>
+                        <outlet property="cancel" destination="aLZ-p7-q5Y" id="Zdg-5l-fcA"/>
+                        <outlet property="date" destination="CHJ-Vs-sci" id="ayu-mg-Gu3"/>
+                        <outlet property="mapBtn" destination="QOy-Xf-99D" id="nZd-3w-zbU"/>
                         <outlet property="mapView" destination="LuW-Pq-ohK" id="1me-Yi-ruU"/>
+                        <outlet property="menu" destination="t7Q-R1-h5A" id="hVY-Iw-C8H"/>
                         <outlet property="numberMealsPV" destination="qwt-0O-vgQ" id="TpH-TK-nM0"/>
+                        <outlet property="preOrder" destination="yZO-qn-ZB8" id="NwW-7E-lch"/>
+                        <outlet property="price" destination="WQF-VO-vyQ" id="gbL-fD-4hc"/>
+                        <outlet property="totalPrice" destination="hjj-3z-h9W" id="qTa-gn-LQn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9z-r0-qu8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2120,48 +2184,48 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inz-cG-aqY" userLabel="statusLbl">
-                                                        <rect key="frame" x="10" y="44.5" width="73.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="37.5" width="77.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="confirmation pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INf-kz-KdL" userLabel="status">
-                                                        <rect key="frame" x="93.5" y="44.5" width="212.5" height="24.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="confirmation pending" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="INf-kz-KdL" userLabel="status">
+                                                        <rect key="frame" x="97.5" y="37.5" width="212.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTZ-D2-RJw" userLabel="menuLbl">
-                                                        <rect key="frame" x="10" y="124" width="65.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="109" width="65.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htH-2r-nGD" userLabel="menu">
-                                                        <rect key="frame" x="85.5" y="76.5" width="224.5" height="120"/>
+                                                        <rect key="frame" x="85.5" y="76.5" width="224.5" height="90"/>
                                                         <color key="backgroundColor" name="textFieldBackground"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="120" id="Rrz-fh-LMv"/>
+                                                            <constraint firstAttribute="height" constant="90" id="Rrz-fh-LMv"/>
                                                         </constraints>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut </string>
                                                         <color key="textColor" name="i_black"/>
-                                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7R-M9-Ujg" userLabel="locationLbl">
-                                                        <rect key="frame" x="10" y="276.5" width="92.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="226.5" width="92.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnO-lj-JFe" userLabel="numberMealsLbl">
-                                                        <rect key="frame" x="10" y="416" width="180.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="341" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="cMS-sK-ESa" userLabel="numberMeals">
-                                                        <rect key="frame" x="215.5" y="380.5" width="100" height="95"/>
+                                                        <rect key="frame" x="215.5" y="305.5" width="100" height="95"/>
                                                         <color key="tintColor" name="i_black"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="95" id="IZq-tK-NBb"/>
@@ -2173,25 +2237,25 @@
                                                         </connections>
                                                     </pickerView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ki-eL-8y6" userLabel="mealPriceLbl">
-                                                        <rect key="frame" x="10" y="485.5" width="112.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="395.5" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPx-Pg-KNh" userLabel="mealPrice">
-                                                        <rect key="frame" x="132.5" y="485.5" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="132.5" y="395.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjN-Fa-HHl" userLabel="totalPriceLbl">
-                                                        <rect key="frame" x="10" y="520" width="111.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="430" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFb-80-mWt" userLabel="totalPrice">
-                                                        <rect key="frame" x="131.5" y="520" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="131.5" y="430" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
@@ -2202,20 +2266,23 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whH-ZW-Tya" userLabel="cancelView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxH-X0-FQn" userLabel="cancelBtn">
-                                                                        <rect key="frame" x="80" y="4" width="160" height="47"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxH-X0-FQn" userLabel="cancelOrder">
+                                                                        <rect key="frame" x="65" y="4" width="190" height="47"/>
                                                                         <color key="backgroundColor" name="i_gray"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Cancel order">
                                                                             <color key="titleColor" name="fontColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="cancelOrder:" destination="0iA-ek-gvE" eventType="touchUpInside" id="Xnq-i1-2oo"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstAttribute="bottom" secondItem="ZxH-X0-FQn" secondAttribute="bottom" constant="4" id="1T0-yP-LBP"/>
                                                                     <constraint firstItem="ZxH-X0-FQn" firstAttribute="top" secondItem="whH-ZW-Tya" secondAttribute="top" constant="4" id="8EM-2n-BaR"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="ZxH-X0-FQn" secondAttribute="trailing" constant="80" id="BCJ-uB-RrZ"/>
-                                                                    <constraint firstItem="ZxH-X0-FQn" firstAttribute="leading" secondItem="whH-ZW-Tya" secondAttribute="leading" constant="80" id="Y6e-HE-n6a"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="ZxH-X0-FQn" secondAttribute="trailing" constant="65" id="BCJ-uB-RrZ"/>
+                                                                    <constraint firstItem="ZxH-X0-FQn" firstAttribute="leading" secondItem="whH-ZW-Tya" secondAttribute="leading" constant="65" id="Y6e-HE-n6a"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -2233,13 +2300,16 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUK-CT-2xq" userLabel="placeView">
                                                                 <rect key="frame" x="160" y="0.0" width="160" height="55"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Psx-4U-znS" userLabel="saveBtn">
+                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Psx-4U-znS" userLabel="saveBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
                                                                         <color key="backgroundColor" name="i_red"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Save">
                                                                             <color key="titleColor" name="fontColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="saveClick:" destination="0iA-ek-gvE" eventType="touchUpInside" id="bR5-Ei-W9W"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -2252,13 +2322,16 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXV-S0-cyo" userLabel="cancelView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="55"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4B-aR-VHI" userLabel="cancelBtn">
+                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4B-aR-VHI" userLabel="cancelBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
                                                                         <color key="backgroundColor" name="i_gray"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Cancel">
                                                                             <color key="titleColor" name="fontColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="cancelClick:" destination="0iA-ek-gvE" eventType="touchUpInside" id="SNs-dd-I1X"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -2282,7 +2355,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2c-rw-nj0" userLabel="locationView">
-                                                        <rect key="frame" x="112.5" y="213.5" width="197.5" height="150"/>
+                                                        <rect key="frame" x="112.5" y="168.5" width="197.5" height="140"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" text="375 Oak Ave, Cheshire, CT" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDL-uw-0up" userLabel="location">
                                                                 <rect key="frame" x="0.0" y="0.0" width="197.5" height="30"/>
@@ -2295,12 +2368,18 @@
                                                             </textView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi4-1D-Bpz" userLabel="locationBtn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="197.5" height="30"/>
+                                                                <connections>
+                                                                    <action selector="addressClick:" destination="0iA-ek-gvE" eventType="touchUpInside" id="iT5-m1-O8h"/>
+                                                                </connections>
                                                             </button>
                                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uha-mV-Wpj">
-                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="120"/>
+                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="110"/>
                                                             </mapView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0w-mg-8aR" userLabel="mapViewBtn">
-                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="120"/>
+                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="110"/>
+                                                                <connections>
+                                                                    <action selector="mapClick:" destination="0iA-ek-gvE" eventType="touchUpInside" id="Ya9-OV-ej8"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -2313,7 +2392,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="sDL-uw-0up" secondAttribute="trailing" id="RIH-QE-W7F"/>
                                                             <constraint firstItem="xi4-1D-Bpz" firstAttribute="height" secondItem="sDL-uw-0up" secondAttribute="height" id="Rjz-zm-l4d"/>
                                                             <constraint firstItem="xi4-1D-Bpz" firstAttribute="centerX" secondItem="sDL-uw-0up" secondAttribute="centerX" id="Vik-e9-e49"/>
-                                                            <constraint firstAttribute="height" constant="150" id="ZHn-k6-xlo"/>
+                                                            <constraint firstAttribute="height" constant="140" id="ZHn-k6-xlo"/>
                                                             <constraint firstAttribute="trailing" secondItem="uha-mV-Wpj" secondAttribute="trailing" id="aVh-Qe-GQK"/>
                                                             <constraint firstItem="t0w-mg-8aR" firstAttribute="centerY" secondItem="uha-mV-Wpj" secondAttribute="centerY" id="adQ-5Z-iNV"/>
                                                             <constraint firstItem="xi4-1D-Bpz" firstAttribute="width" secondItem="sDL-uw-0up" secondAttribute="width" id="bNx-bk-MnR"/>
@@ -2326,7 +2405,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="njm-4U-sFZ" secondAttribute="bottom" id="0lY-vk-Z1J"/>
                                                     <constraint firstItem="oFb-80-mWt" firstAttribute="leading" secondItem="GjN-Fa-HHl" secondAttribute="trailing" constant="10" id="12e-t6-jt5"/>
-                                                    <constraint firstItem="N7R-M9-Ujg" firstAttribute="top" secondItem="htH-2r-nGD" secondAttribute="bottom" constant="80" id="1zH-Wu-QEO"/>
+                                                    <constraint firstItem="N7R-M9-Ujg" firstAttribute="top" secondItem="htH-2r-nGD" secondAttribute="bottom" constant="60" id="1zH-Wu-QEO"/>
                                                     <constraint firstAttribute="bottom" secondItem="XVO-AD-oPl" secondAttribute="bottom" id="2PU-xd-X6d"/>
                                                     <constraint firstAttribute="trailing" secondItem="a2c-rw-nj0" secondAttribute="trailing" constant="10" id="2iF-Qo-fY5"/>
                                                     <constraint firstItem="sPx-Pg-KNh" firstAttribute="centerY" secondItem="0ki-eL-8y6" secondAttribute="centerY" id="3Cr-D0-seC"/>
@@ -2340,12 +2419,12 @@
                                                     <constraint firstItem="bui-a5-XRh" firstAttribute="leading" secondItem="Trs-ph-IPM" secondAttribute="leading" constant="10" id="L3w-Y2-0gc"/>
                                                     <constraint firstItem="BnO-lj-JFe" firstAttribute="leading" secondItem="Trs-ph-IPM" secondAttribute="leading" constant="10" id="MKS-RR-4Bj"/>
                                                     <constraint firstItem="N7R-M9-Ujg" firstAttribute="leading" secondItem="Trs-ph-IPM" secondAttribute="leading" constant="10" id="MKt-kV-7i8"/>
-                                                    <constraint firstItem="BnO-lj-JFe" firstAttribute="top" secondItem="N7R-M9-Ujg" secondAttribute="bottom" constant="115" id="MxE-md-7wu"/>
+                                                    <constraint firstItem="BnO-lj-JFe" firstAttribute="top" secondItem="N7R-M9-Ujg" secondAttribute="bottom" constant="90" id="MxE-md-7wu"/>
                                                     <constraint firstItem="lDt-Tv-d6T" firstAttribute="centerY" secondItem="bui-a5-XRh" secondAttribute="centerY" id="NYj-co-EE4"/>
                                                     <constraint firstItem="cMS-sK-ESa" firstAttribute="centerY" secondItem="BnO-lj-JFe" secondAttribute="centerY" id="OyG-rQ-2RQ"/>
-                                                    <constraint firstItem="0ki-eL-8y6" firstAttribute="top" secondItem="BnO-lj-JFe" secondAttribute="bottom" constant="45" id="Oym-d5-OSC"/>
+                                                    <constraint firstItem="0ki-eL-8y6" firstAttribute="top" secondItem="BnO-lj-JFe" secondAttribute="bottom" constant="30" id="Oym-d5-OSC"/>
                                                     <constraint firstItem="a2c-rw-nj0" firstAttribute="leading" secondItem="N7R-M9-Ujg" secondAttribute="trailing" constant="10" id="RaI-P8-m2M"/>
-                                                    <constraint firstItem="oTZ-D2-RJw" firstAttribute="top" secondItem="inz-cG-aqY" secondAttribute="bottom" constant="55" id="WC2-bS-DJ4"/>
+                                                    <constraint firstItem="oTZ-D2-RJw" firstAttribute="top" secondItem="inz-cG-aqY" secondAttribute="bottom" constant="47" id="WC2-bS-DJ4"/>
                                                     <constraint firstItem="inz-cG-aqY" firstAttribute="leading" secondItem="Trs-ph-IPM" secondAttribute="leading" constant="10" id="Zw2-MV-3q0"/>
                                                     <constraint firstItem="htH-2r-nGD" firstAttribute="centerY" secondItem="oTZ-D2-RJw" secondAttribute="centerY" id="boz-oK-06s"/>
                                                     <constraint firstItem="N7R-M9-Ujg" firstAttribute="centerY" secondItem="a2c-rw-nj0" secondAttribute="centerY" id="c7k-RA-LbO"/>
@@ -2353,10 +2432,11 @@
                                                     <constraint firstAttribute="trailing" secondItem="XVO-AD-oPl" secondAttribute="trailing" id="hUL-Ja-Lt5"/>
                                                     <constraint firstItem="XVO-AD-oPl" firstAttribute="leading" secondItem="Trs-ph-IPM" secondAttribute="leading" id="iu8-by-bpp"/>
                                                     <constraint firstItem="sPx-Pg-KNh" firstAttribute="leading" secondItem="0ki-eL-8y6" secondAttribute="trailing" constant="10" id="kLW-On-g06"/>
+                                                    <constraint firstAttribute="trailing" secondItem="INf-kz-KdL" secondAttribute="trailing" constant="10" id="lXv-qV-9uu"/>
                                                     <constraint firstItem="bui-a5-XRh" firstAttribute="top" secondItem="Trs-ph-IPM" secondAttribute="top" constant="10" id="lmo-YN-oHR"/>
                                                     <constraint firstItem="lDt-Tv-d6T" firstAttribute="leading" secondItem="bui-a5-XRh" secondAttribute="trailing" constant="10" id="pC3-xy-YS7"/>
                                                     <constraint firstItem="INf-kz-KdL" firstAttribute="leading" secondItem="inz-cG-aqY" secondAttribute="trailing" constant="10" id="pRe-7b-KjO"/>
-                                                    <constraint firstItem="inz-cG-aqY" firstAttribute="top" secondItem="bui-a5-XRh" secondAttribute="bottom" constant="10" id="pSQ-pN-ObZ"/>
+                                                    <constraint firstItem="inz-cG-aqY" firstAttribute="top" secondItem="bui-a5-XRh" secondAttribute="bottom" constant="3" id="pSQ-pN-ObZ"/>
                                                     <constraint firstAttribute="trailing" secondItem="htH-2r-nGD" secondAttribute="trailing" constant="10" id="wG1-an-5ZF"/>
                                                     <constraint firstItem="GjN-Fa-HHl" firstAttribute="leading" secondItem="Trs-ph-IPM" secondAttribute="leading" constant="10" id="xGi-9Y-DVz"/>
                                                     <constraint firstItem="oFb-80-mWt" firstAttribute="centerY" secondItem="GjN-Fa-HHl" secondAttribute="centerY" id="y3F-8m-77o"/>
@@ -2396,16 +2476,31 @@
                     <navigationItem key="navigationItem" title="My awesome pre-order" id="7l6-73-GWj">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9Uy-7J-6nM">
                             <color key="tintColor" name="i_yellow"/>
+                            <connections>
+                                <action selector="editClick:" destination="0iA-ek-gvE" id="7nd-rv-DXm"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="address" destination="sDL-uw-0up" id="WPL-CM-N59"/>
+                        <outlet property="addressBtn" destination="xi4-1D-Bpz" id="xLA-Tx-sEj"/>
+                        <outlet property="cancelBtn" destination="e4B-aR-VHI" id="SXq-t1-Evb"/>
+                        <outlet property="cancelOrder" destination="ZxH-X0-FQn" id="jpd-cL-wYM"/>
+                        <outlet property="cancelOrderBtnView" destination="XVO-AD-oPl" id="kBN-tB-Z7n"/>
+                        <outlet property="cancelSaveBtnView" destination="njm-4U-sFZ" id="0aC-mt-1Ua"/>
+                        <outlet property="cdStatus" destination="INf-kz-KdL" id="6oy-pK-YId"/>
+                        <outlet property="date" destination="lDt-Tv-d6T" id="owp-gF-ROT"/>
                         <outlet property="mapView" destination="uha-mV-Wpj" id="CC1-tB-UGY"/>
+                        <outlet property="menu" destination="htH-2r-nGD" id="1x5-OX-j8r"/>
                         <outlet property="numberMealsPV" destination="cMS-sK-ESa" id="ex7-u9-5HF"/>
+                        <outlet property="price" destination="sPx-Pg-KNh" id="6Nn-AM-rhC"/>
+                        <outlet property="saveBtn" destination="Psx-4U-znS" id="FvV-JS-dZQ"/>
+                        <outlet property="totalPrice" destination="oFb-80-mWt" id="RRE-CC-v6u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRE-ac-rhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="-617"/>
+            <point key="canvasLocation" x="2767.5" y="-617.95774647887322"/>
         </scene>
         <!--Order Payment-->
         <scene sceneID="dhG-vK-3Eu">
@@ -2449,16 +2544,16 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4B8-hs-ccz" userLabel="menuLbl">
-                                                        <rect key="frame" x="10" y="124" width="65.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="104" width="65.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-8h-kpt" userLabel="menu">
-                                                        <rect key="frame" x="85.5" y="76.5" width="224.5" height="120"/>
+                                                        <rect key="frame" x="85.5" y="76.5" width="224.5" height="80"/>
                                                         <color key="backgroundColor" name="textFieldBackground"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="120" id="UGK-lD-NKI"/>
+                                                            <constraint firstAttribute="height" constant="80" id="UGK-lD-NKI"/>
                                                         </constraints>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut </string>
                                                         <color key="textColor" name="i_black"/>
@@ -2466,43 +2561,43 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcG-le-qUo" userLabel="locationLbl">
-                                                        <rect key="frame" x="10" y="276.5" width="92.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="216.5" width="92.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8V-Rv-JiX" userLabel="numberMealsLbl">
-                                                        <rect key="frame" x="10" y="416" width="180.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="321" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zH3-8O-elJ" userLabel="numberMeals">
-                                                        <rect key="frame" x="200.5" y="416" width="11" height="24.5"/>
+                                                        <rect key="frame" x="200.5" y="321" width="11" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1A-Tz-E80" userLabel="mealPriceLbl">
-                                                        <rect key="frame" x="10" y="450.5" width="112.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="355.5" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-HD-GyJ" userLabel="mealPrice">
-                                                        <rect key="frame" x="132.5" y="450.5" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="132.5" y="355.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4O-WW-yfu" userLabel="totalPriceLbl">
-                                                        <rect key="frame" x="10" y="485" width="111.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="390" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DwZ-Jt-8M4" userLabel="totalPrice">
-                                                        <rect key="frame" x="131.5" y="485" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="131.5" y="390" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
@@ -2565,7 +2660,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lu4-QZ-B7h" userLabel="locationView">
-                                                        <rect key="frame" x="112.5" y="213.5" width="197.5" height="150"/>
+                                                        <rect key="frame" x="112.5" y="158.5" width="197.5" height="140"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" text="375 Oak Ave, Cheshire, CT" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylR-IE-faV" userLabel="location">
                                                                 <rect key="frame" x="0.0" y="0.0" width="197.5" height="30"/>
@@ -2580,10 +2675,10 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="197.5" height="30"/>
                                                             </button>
                                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OUc-ay-BQp">
-                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="120"/>
+                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="110"/>
                                                             </mapView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQw-7B-8Z5" userLabel="mapViewBtn">
-                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="120"/>
+                                                                <rect key="frame" x="0.0" y="30" width="197.5" height="110"/>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -2596,7 +2691,7 @@
                                                             <constraint firstItem="Obr-m4-JY4" firstAttribute="centerX" secondItem="ylR-IE-faV" secondAttribute="centerX" id="K6V-uw-PbV"/>
                                                             <constraint firstItem="Obr-m4-JY4" firstAttribute="width" secondItem="ylR-IE-faV" secondAttribute="width" id="PWd-xa-xHP"/>
                                                             <constraint firstItem="OUc-ay-BQp" firstAttribute="top" secondItem="ylR-IE-faV" secondAttribute="bottom" id="RB8-7B-oRd"/>
-                                                            <constraint firstAttribute="height" constant="150" id="U6I-xt-XUP"/>
+                                                            <constraint firstAttribute="height" constant="140" id="U6I-xt-XUP"/>
                                                             <constraint firstItem="ylR-IE-faV" firstAttribute="leading" secondItem="lu4-QZ-B7h" secondAttribute="leading" id="Z4P-Kv-raJ"/>
                                                             <constraint firstItem="Obr-m4-JY4" firstAttribute="height" secondItem="ylR-IE-faV" secondAttribute="height" id="b48-5i-THP"/>
                                                             <constraint firstItem="ylR-IE-faV" firstAttribute="top" secondItem="lu4-QZ-B7h" secondAttribute="top" id="dF7-wG-qpR"/>
@@ -2607,14 +2702,14 @@
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="vcG-le-qUo" firstAttribute="top" secondItem="Ndb-8h-kpt" secondAttribute="bottom" constant="80" id="0w5-lk-nde"/>
+                                                    <constraint firstItem="vcG-le-qUo" firstAttribute="top" secondItem="Ndb-8h-kpt" secondAttribute="bottom" constant="60" id="0w5-lk-nde"/>
                                                     <constraint firstItem="a4O-WW-yfu" firstAttribute="top" secondItem="N1A-Tz-E80" secondAttribute="bottom" constant="10" id="16M-mA-egz"/>
                                                     <constraint firstItem="N1A-Tz-E80" firstAttribute="top" secondItem="u8V-Rv-JiX" secondAttribute="bottom" constant="10" id="87r-KK-9rM"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ndb-8h-kpt" secondAttribute="trailing" constant="10" id="CTK-M9-riT"/>
                                                     <constraint firstAttribute="bottom" secondItem="SvS-vP-vM5" secondAttribute="bottom" id="IG2-vr-ZvJ"/>
                                                     <constraint firstItem="N1A-Tz-E80" firstAttribute="leading" secondItem="IVP-u1-V5B" secondAttribute="leading" constant="10" id="IN6-yi-YUl"/>
                                                     <constraint firstItem="u8V-Rv-JiX" firstAttribute="leading" secondItem="IVP-u1-V5B" secondAttribute="leading" constant="10" id="IVF-Kh-rpT"/>
-                                                    <constraint firstItem="u8V-Rv-JiX" firstAttribute="top" secondItem="vcG-le-qUo" secondAttribute="bottom" constant="115" id="Jmg-id-37Y"/>
+                                                    <constraint firstItem="u8V-Rv-JiX" firstAttribute="top" secondItem="vcG-le-qUo" secondAttribute="bottom" constant="80" id="Jmg-id-37Y"/>
                                                     <constraint firstItem="DwZ-Jt-8M4" firstAttribute="centerY" secondItem="a4O-WW-yfu" secondAttribute="centerY" id="L0F-tz-TrB"/>
                                                     <constraint firstItem="SvS-vP-vM5" firstAttribute="leading" secondItem="IVP-u1-V5B" secondAttribute="leading" id="LGr-Zc-Yjn"/>
                                                     <constraint firstItem="SVD-6K-eWk" firstAttribute="leading" secondItem="7dp-vt-1Zf" secondAttribute="trailing" constant="10" id="MKY-Po-mSE"/>
@@ -2640,7 +2735,7 @@
                                                     <constraint firstItem="4B8-hs-ccz" firstAttribute="leading" secondItem="IVP-u1-V5B" secondAttribute="leading" constant="10" id="s5B-Dy-nBm"/>
                                                     <constraint firstItem="7dp-vt-1Zf" firstAttribute="top" secondItem="IVP-u1-V5B" secondAttribute="top" constant="10" id="vgh-AV-hnf"/>
                                                     <constraint firstItem="Ndb-8h-kpt" firstAttribute="centerY" secondItem="4B8-hs-ccz" secondAttribute="centerY" id="xm7-M9-pkO"/>
-                                                    <constraint firstItem="4B8-hs-ccz" firstAttribute="top" secondItem="f5t-yf-mOn" secondAttribute="bottom" constant="55" id="yKF-PP-kDx"/>
+                                                    <constraint firstItem="4B8-hs-ccz" firstAttribute="top" secondItem="f5t-yf-mOn" secondAttribute="bottom" constant="35" id="yKF-PP-kDx"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -2747,37 +2842,37 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afL-kL-Lii" userLabel="numberMealsLbl">
-                                                        <rect key="frame" x="10" y="416" width="180.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="381" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtw-yk-JHY" userLabel="numberMeals">
-                                                        <rect key="frame" x="200.5" y="416" width="11" height="24.5"/>
+                                                        <rect key="frame" x="200.5" y="381" width="11" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="018-Fg-xHc" userLabel="mealPriceLbl">
-                                                        <rect key="frame" x="10" y="450.5" width="112.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="415.5" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnI-sT-AKb" userLabel="mealPrice">
-                                                        <rect key="frame" x="132.5" y="450.5" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="132.5" y="415.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyO-OQ-X3g" userLabel="totalPriceLbl">
-                                                        <rect key="frame" x="10" y="485" width="111.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="450" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsC-mb-kt6" userLabel="totalPrice">
-                                                        <rect key="frame" x="131.5" y="485" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="131.5" y="450" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
@@ -2799,6 +2894,9 @@
                                                             </button>
                                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sYk-x1-sd9">
                                                                 <rect key="frame" x="0.0" y="30" width="197.5" height="120"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="bWh-CH-bfK" id="SF0-4V-Wz9"/>
+                                                                </connections>
                                                             </mapView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ts-K0-21o" userLabel="mapViewBtn">
                                                                 <rect key="frame" x="0.0" y="30" width="197.5" height="120"/>
@@ -2843,7 +2941,7 @@
                                                     <constraint firstItem="knN-cB-hJy" firstAttribute="centerY" secondItem="Gdn-8g-57L" secondAttribute="centerY" id="PyE-SO-uPO"/>
                                                     <constraint firstItem="ffY-qh-Rxy" firstAttribute="top" secondItem="2Pu-OW-E9N" secondAttribute="bottom" constant="10" id="S4i-jP-6cf"/>
                                                     <constraint firstAttribute="trailing" secondItem="aEM-dL-f28" secondAttribute="trailing" constant="10" id="Vgs-Wy-El1"/>
-                                                    <constraint firstItem="afL-kL-Lii" firstAttribute="top" secondItem="knN-cB-hJy" secondAttribute="bottom" constant="115" id="Wuv-vN-rcr"/>
+                                                    <constraint firstItem="afL-kL-Lii" firstAttribute="top" secondItem="knN-cB-hJy" secondAttribute="bottom" constant="80" id="Wuv-vN-rcr"/>
                                                     <constraint firstItem="OsC-mb-kt6" firstAttribute="leading" secondItem="jyO-OQ-X3g" secondAttribute="trailing" constant="10" id="YCK-VR-Oeu"/>
                                                     <constraint firstItem="jyO-OQ-X3g" firstAttribute="leading" secondItem="IPo-6D-ZYy" secondAttribute="leading" constant="10" id="YUD-pn-wmf"/>
                                                     <constraint firstItem="OsC-mb-kt6" firstAttribute="centerY" secondItem="jyO-OQ-X3g" secondAttribute="centerY" id="ciw-iN-lTG"/>
@@ -3057,6 +3155,7 @@
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="logout" width="64" height="64"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="sadFace" width="64" height="64"/>
         <namedColor name="backGround">
             <color red="0.11800000071525574" green="0.11800000071525574" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -3090,5 +3189,8 @@
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

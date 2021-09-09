@@ -23,13 +23,6 @@ class HomeVC: UIViewController, HomeVCRefreshUIProtocol {
     override func viewDidLoad() {
         print("viewDidLoad")
         super.viewDidLoad()
-        //delete()
-        // Do any additional setup after loading the view.
-        loginBtn.layer.cornerRadius = 10
-        loginBtn.clipsToBounds = true
-        catoringBtn.layer.cornerRadius = 10
-        catoringBtn.clipsToBounds = true
-        //print(dataController)
         loadData()
     }
 // MARK: - BUTTONS EVENT LISTENERS

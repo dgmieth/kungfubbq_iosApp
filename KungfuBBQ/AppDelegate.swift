@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print("dataModel loaded")
 //        }
         print("didFinishLaunchingWithOptions")
-        //print("Application directory: \(NSHomeDirectory())")
+        print("Application directory: \(NSHomeDirectory())")
         return true
     }
 

@@ -9,14 +9,18 @@ import UIKit
 import CoreData
 import FSCalendar
 
-class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate,FSCalendarDelegateAppearance {
+class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate,FSCalendarDelegateAppearance, ReloadDataInCalendarVCProtocol {
     //vars and lets
     let dateFormatter = DateFormatter()
-    var dates : [Date] = []
+    var dates : [String] = []
     var dataController:DataController!
     var spinner = UIActivityIndicatorView(style: .large)
     var user:AppUser?
+    var cds:[CDCookingDate]?
+    var cookingDate:CDCookingDate?
     //ui elements
+    @IBOutlet var noCookingView: UIView!
+    @IBOutlet var cookingView: UIView!
     @IBOutlet var dateLbl: UILabel!
     @IBOutlet var date: UILabel!
     @IBOutlet var statusLbl: UILabel!
@@ -32,52 +36,48 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var viewTest: UIView!
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if let userArray = read() {
-            user = userArray[0]
-        }
-        print(user!.name)
-        HttpRequestCtrl.shared.get(toRoute: "/api/cookingCalendar/activeCookingDatesWithingSixtyDays", userId: "4",headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-            print(jsonObject)
-        } onError: { error in
-            print(error)
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
+        updateUIInformation()
         calendar.register(FSCalendarCell.self, forCellReuseIdentifier: "CELL")
-        calendar.select(calendar.today)
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        dates.append(dateFormatter.date(from: "2021-09-11 12:00:00")!)
-        dates.append(dateFormatter.date(from: "2021-09-18 12:00:00")!)
-        dates.append(dateFormatter.date(from: "2021-09-25 12:00:00")!)
-        dates.append(dateFormatter.date(from: "2021-09-02 12:00:00")!)
-        print(dates)
-        
+        calendar.select(self.calendar.today)
     }
     //MARK: - BUTONS EVENT LISTENERS
     @IBAction func placeOrderClick(_ sender: Any) {
+        performSegue(withIdentifier: "placeOrder", sender: self)
     }
     @IBAction func checkoutOrderClick(_ sender: Any) {
+        performSegue(withIdentifier: "updateOrder", sender: self)
     }
     @IBAction func payOrderClick(_ sender: Any) {
+        performSegue(withIdentifier: "payOrder", sender: self)
     }
     @IBAction func paidOrderCheckOutClick(_ sender: Any) {
+        performSegue(withIdentifier: "paidOrder", sender: self)
     }
     // MARK: - CORE DATA
     func save(){
         do {
             try dataController.viewContext.save()
-        } catch { print("notSaved") }
+        } catch {
+            print("notSaved (e)") }
     }
-    func read() -> [AppUser]?{
+    func readUser() -> [AppUser]?{
         let fetchRequest = NSFetchRequest<AppUser>(entityName: "AppUser")
         if let results = try? dataController.viewContext.fetch(fetchRequest){
             return results
         }
         return nil
     }
+    func readCookingDate() -> [CDCookingDate]?{
+        let fetchRequest = NSFetchRequest<CDCookingDate>(entityName: "CDCookingDate")
+        if let results = try? dataController.viewContext.fetch(fetchRequest){
+            return results
+        }
+        return nil
+    }
+
     func update(byEmail email: String)->AppUser?{
         let fetchRequest = NSFetchRequest<AppUser>(entityName: "AppUser")
         fetchRequest.predicate = NSPredicate(format: "email = %@", email)
@@ -88,38 +88,277 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func delete(){
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AppUser")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDCookingDate")
         let delRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        let fetchRequestSocial = NSFetchRequest<NSFetchRequestResult>(entityName: "SocialMediaInfo")
-        let delRequestSocial = NSBatchDeleteRequest(fetchRequest: fetchRequestSocial)
+        let fetchRequestDishes = NSFetchRequest<NSFetchRequestResult>(entityName: "CDCookingDateDishes")
+        let delRequestDishes = NSBatchDeleteRequest(fetchRequest: fetchRequestDishes)
         do {
             try dataController.viewContext.execute(delRequest)
-            try dataController.viewContext.execute(delRequestSocial)
+            try dataController.viewContext.execute(delRequestDishes)
         }catch{
             print(error)
-            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
-            let no = UIAlertAction(title: "Ok", style: .cancel)
-            alert.addAction(no)
+            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default){action in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(ok)
             present(alert, animated: true, completion: nil)
+            
         }
+    }
+    //MARK: - UPDATE UI
+    func updateUICalendarView(cookingOnThiDate cooking: Bool = false, selectedDate: String? = nil){
+        if(!cooking){
+            noCookingView.isHidden = false
+            cookingView.isHidden = true
+            return
+        }
+        noCookingView.isHidden = true
+        cookingView.isHidden = false
+        if let dt = selectedDate {
+            for cd in cds! {
+                if(cd.cookingDate!.split(separator: " ")[0]) == dt {
+                    date.text = CustomDateFormatter.shared.mmDDAtHHMM_AMorPM(usingStringDate: cd.cookingDate!)
+                    status.text = cd.cookingStatus!
+                    let cdDishes = cd.dishes?.allObjects as! [CDCookingDateDishes]
+                    var text = ""
+                    var index = 1
+                    for dish in cdDishes {
+                        text = "\(text)\(index) - \(dish.dishName!)\n"
+                        index += 1
+                    }
+                    menu.text = text
+                    location.text = "\(cd.street!), \(cd.city!) \(cd.state!)"
+                }
+            }
+        }
+        
+    }
+    func updateActionButtonsAreHidden(place:Bool = true, update:Bool = true, pay:Bool = true, paid:Bool = true){
+        placeOrder.isHidden = place
+        checkOutOrder.isHidden = update
+        payBtn.isHidden = pay
+        paidOrderCheckOut.isHidden = paid
+    }
+    func updateUIInformation(){
+        delete()
+        if let userArray = readUser() {
+            user = userArray[0]
+        }
+        HttpRequestCtrl.shared.get(toRoute: "/api/cookingCalendar/activeCookingDatesWithinSixtyDays", userId: String(user!.id), userEmail: user!.email ,headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
+            //print(jsonObject)
+            guard let errorCheck = jsonObject["hasErrors"] as? Int
+            else { return }
+            if(errorCheck==0){
+                guard let data = jsonObject["data"] as? [[[String:Any]]] else { return }
+                var cookingDates = [CookingDate]()
+                for cd in data[0] {
+                    cookingDates.append(CookingDate(json: cd)!)
+                }
+                if(cookingDates.count > 0) {
+                    for cd in cookingDates {
+                        let c = CDCookingDate(context: self.dataController.viewContext)
+                        c.addressId = cd.addressId
+                        c.city = cd.city
+                        c.complement = cd.complement
+                        c.cookingDate = cd.cookingDate
+                        c.cookingDateId = cd.cookingDateId
+                        c.cookingStatus = cd.cookingStatus
+                        c.cookingStatusId = cd.cookingStatusId
+                        c.country = cd.country
+                        c.lat = cd.lat
+                        c.lng = cd.lng
+                        c.mealsForThis = cd.mealsForThis
+                        c.menuID = cd.menuID
+                        c.state = cd.state
+                        c.street = cd.street
+                        c.zipcode = cd.zipcode
+                        for dish in cd.dishes {
+                            let d = CDCookingDateDishes(context: self.dataController.viewContext)
+                            d.dishId = dish.dishId
+                            d.dishName = dish.dishName
+                            d.dishPrice = dish.dishPrice
+                            d.dishDescription = dish.dishDescription
+                            d.dishIngredients = dish.dishIngredients
+                            d.cookingDate = c
+                        }
+                    }
+                    self.save()
+                    self.cds = self.readCookingDate()
+                    var orders = [Order]()
+                    for o in data[1] {
+                        orders.append(Order(json: o)!)
+                    }
+                    for order in orders{
+                        let o = CDOrder(context: self.dataController.viewContext)
+                        o.cookingDateId = order.cookingDateId
+                        o.orderDate = order.orderDate
+                        o.orderId = order.orderId
+                        o.orderStatusId = order.orderStatusId
+                        o.orderStatusName = order.orderStatusName
+                        o.userEmail = order.userEmail
+                        o.userId = order.userId
+                        o.userName = order.userName
+                        o.userPhoneNumber = order.userPhoneNumber
+                        for dish in order.dishes {
+                            let d = CDOrderDishes(context: self.dataController.viewContext)
+                            d.dishId = dish.dishId
+                            d.dishName = dish.dishName
+                            d.dishPrice = dish.dishPrice
+                            d.dishQtty = dish.dishQtty
+                            d.observation = d.observation
+                            d.orderDishes = o
+                        }
+                        for extra in order.extras {
+                            let e = CDOrderExtras(context: self.dataController.viewContext)
+                            e.extrasId = extra.extrasId
+                            e.extrasName = extra.extrasName
+                            e.extrasPrice = extra.extrasPrice
+                            e.extrasQtty = extra.extrasQtty
+                            e.observation = extra.observation
+                            e.orderExtras = o
+                        }
+                        let filtered = self.cds!.filter { $0.cookingDateId == o.cookingDateId}
+                        filtered.count > 0 ? o.cookingDate = filtered[0] : nil
+                    }
+                    self.save()
+                    for cd in self.cds! {
+                        self.dates.append(String(cd.cookingDate!.split(separator: " ")[0]))
+                    }
+                    DispatchQueue.main.async {
+                        self.calendar.reloadData()
+                        self.updateSelectedDate(selectedDate: self.calendar.selectedDate!)
+                    }
+                }else{
+                    let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "Ok", style: .default){action in
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    alert.addAction(ok)
+                    alert.present(alert, animated: true, completion: nil)
+                }
+            }else{
+                let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok", style: .default){action in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(ok)
+                alert.present(alert, animated: true, completion: nil)
+            }
+        } onError: { error in
+            print(error)
+            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. General error message: \(error).Please try again later", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default){action in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(ok)
+            alert.present(alert, animated: true, completion: nil)
+        }
+    }
+    //MARK: - SEGUE
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "placeOrder" {
+            let dest = segue.destination as! PreOrderCreationVC
+            dest.cookingDate = cookingDate!
+            dest.user = user!
+            dest.delegate = self
+        }
+        if segue.identifier == "updateOrder" {
+            let dest = segue.destination as! MyAwesomePreOrderVC
+            dest.cookingDate = cookingDate!
+            dest.user = user!
+            dest.order = (cookingDate!.orders!.allObjects as! [CDOrder])[0]
+            dest.delegate = self
+        }
+        if segue.identifier == "payOrder" {
+            let dest = segue.destination as! OrderPaymentVC
+        }
+        if segue.identifier == "paidOrder" {
+            let dest = segue.destination as! MyAwesomeOrderVC
+        }
+    }
+    func updateSelectedDate(selectedDate date:Date){
+        print("didSelectDate")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let sDate = dateFormatter.string(from: date)
+        cookingDate = nil
+        if(dates.contains(sDate)){
+            print("we are cooking")
+            updateUICalendarView(cookingOnThiDate: true, selectedDate: sDate)
+            let cd = cds!.filter { $0.cookingDate!.split(separator: " ")[0] == sDate}
+            if(cd[0].cookingStatusId <= Int64(4)){
+                cookingDate = cd[0]
+                let orders = cd[0].orders!.allObjects as! [CDOrder]
+                if orders.count == 0 {
+                    updateActionButtonsAreHidden(place: false)
+                }else{
+                    updateActionButtonsAreHidden(update: false)
+                }
+            }else{
+                let orders = cd[0].orders!.allObjects as! [CDOrder]
+                //waiting user acknowledgement and payment
+                if orders.count > 0 {
+                    if orders[0].orderStatusId == 3 {
+                        cookingDate = cd[0]
+                        updateActionButtonsAreHidden(pay: false)
+                    }
+                    //user didn't make to the list but is waiting for dropouts
+                    if orders[0].orderStatusId == 4 {
+                        let alert = UIAlertController(title: "Order status", message: "Your order did not make it to this list, but you are on the list waiting for drop out orders. You'll receive a notification if your order gets onto this list", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default)
+                        alert.addAction(ok)
+                        present(alert, animated: true, completion: nil)
+                    }
+                    //order has been paid OR waiting for pickup alert OR waiting pickup OR delivered OR closed
+                    if orders[0].orderStatusId == 5 || orders[0].orderStatusId == 8 || orders[0].orderStatusId == 9 || orders[0].orderStatusId == 10 || orders[0].orderStatusId == 11 {
+                        cookingDate = cd[0]
+                        updateActionButtonsAreHidden(paid: false)
+                    }
+                    //user cancelled the order before paying it
+                    if orders[0].orderStatusId == 6 {
+                        let alert = UIAlertController(title: "Order status", message: "You cancelled this order if you wish to order food from us, please choose another available cooking date", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default)
+                        alert.addAction(ok)
+                        present(alert, animated: true, completion: nil)
+                    }
+                    //user did not make it to this cooking calendar date list
+                    if orders[0].orderStatusId == 7 {
+                        let alert = UIAlertController(title: "Order status", message: "We are sorry! Unfortunately your order did not make to this final list of this cooking date. Please, order from us again on another available cooking date", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default)
+                        alert.addAction(ok)
+                        present(alert, animated: true, completion: nil)
+                    }
+                    //missed confirmation time
+                    if orders[0].orderStatusId == 12 {
+                        let alert = UIAlertController(title: "Order status", message: "You missed the time you had to confirm the order. Please choose another available cooking date.", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default)
+                        alert.addAction(ok)
+                        present(alert, animated: true, completion: nil)
+                    }
+                }else {
+                    updateActionButtonsAreHidden()
+                }
+            }
+        }else{
+            print("no cooking on this day")
+            updateUICalendarView()
+        }
+    }
+    //MARK: - PROTOCOL
+    func refreshUI() {
+        print("called")
+        updateUIInformation()
+        
+        
     }
     //MARK: - FS CALENDAR
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date)
-        print(monthPosition.rawValue)
+        updateSelectedDate(selectedDate: date)
     }
+    
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let today = dateFormatter.string(from: Date())
-        let date1 = dateFormatter.string(from: date)
-        if(date1<today){
-            return false
-        }
-        print(today)
-        print(date1)
-        
-        return true
+        print("shouldSelectDate")
+        return CustomDateFormatter.shared.yyyy_MM_dd(withDate: date)
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -134,7 +373,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         return UIColor(named: "fontColor")
     }
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        if(dates.contains(date)){
+        if(dates.contains(CustomDateFormatter.shared.yyyy_MM_dd(withDate: date))){
             return UIImage(named: "calendarIcon")
         }
         return nil
@@ -146,32 +385,9 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         return dateForMinimumMaximumFSCalendarDays(minimumMaximum: "maximum")
     }
     func dateForMinimumMaximumFSCalendarDays(minimumMaximum: String)->Date{
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let currentSystemDate = Date()
-        dateFormatter.dateFormat = "MM"
-        let month = Int(dateFormatter.string(from: currentSystemDate))
-        dateFormatter.dateFormat = "yyyy"
-        let year = Int(dateFormatter.string(from: currentSystemDate))
-        var dateComponents = DateComponents()
-        dateComponents.hour = 0
-        dateComponents.minute = 0
-        dateComponents.second = 0
-        dateComponents.year = year
-        if(minimumMaximum=="minimum"){
-            dateComponents.day = 1
-            dateComponents.month = month
-        }else if(minimumMaximum=="maximum"){
-            if(month==12){
-                dateComponents.year = year! + 1
-                dateComponents.month = 1
-            }else{
-                dateComponents.month = month! + 1
-            }
-            dateComponents.day = 30
-        }
+        let dateComponents = CustomDateFormatter.shared.dateComponentsFSCalendar(withDate: Date(), minimumMaximum: minimumMaximum)
         let userCalendar = Calendar(identifier: .gregorian)
         let date = userCalendar.date(from: dateComponents)
-        print(date!)
         return date!
     }
 }

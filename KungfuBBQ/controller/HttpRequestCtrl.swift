@@ -13,18 +13,22 @@ class HttpRequestCtrl{
     
     private init(){ }
     
-    func get(toRoute route: String, userId id: String? = nil, headers: [String:String] = [String:String](), onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
+    func get(toRoute route: String, userId id: String? = nil,userEmail email: String? = nil, headers: [String:String] = [String:String](), onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
         print("httpRequestCtrl -> GET")
         if var url = URLComponents(string: "https://dgmieth.live\(route)") {
             var queryItems=[URLQueryItem]()
             if let pId = id {
-                queryItems.append(URLQueryItem(name: "userId", value: pId))
+                queryItems.append(URLQueryItem(name: "id", value: pId))
+            }
+            if let pEmail = email {
+                queryItems.append(URLQueryItem(name: "email", value: pEmail))
             }
             if queryItems.count > 0 {
                 url.queryItems = queryItems
                 var request = URLRequest(url: url.url!)
                 if headers.count > 0 {
                     for header in headers {
+                        print(header.value)
                         request.setValue(header.value, forHTTPHeaderField: header.key)
                     }
                 }
@@ -47,9 +51,9 @@ class HttpRequestCtrl{
         }
     }
     
-    func post(toRoute route: String, userEmail email: String? = nil, userName name: String? = nil, userPassword pass:String? = nil, currentPassword cPass:String? = nil, newPassword nPass:String? = nil, confirmPassword confPass:String? = nil, invitationCode invitation:String? = nil, phoneNumber phone:String? = nil, facebookName facebook:String? = nil, instagramName instagram:String? = nil, userId id:String? = nil, catoringDescription description:String? = nil, headers: [String:String] = [String:String](), onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
+    func post(toRoute route: String, userEmail email: String? = nil, userName name: String? = nil, userPassword pass:String? = nil, currentPassword cPass:String? = nil, newPassword nPass:String? = nil, confirmPassword confPass:String? = nil, invitationCode invitation:String? = nil, phoneNumber phone:String? = nil, facebookName facebook:String? = nil, instagramName instagram:String? = nil, userId id:String? = nil, catoringDescription description:String? = nil, cookingDateID cdID:Int? = nil, dishID dishes:[Int]? = nil, dishQtty dQtty:[Int]? = nil, extrasID extras:[Int]? = nil, extrasQtty eQtty:[Int]? = nil, orderID oID:Int? = nil, headers: [String:String] = [String:String](),  onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
         print("httpRequestCtrl -> POST")
-        var params=[String:String]()
+        var params=[String:Any]()
         if let url = URL(string: "https://dgmieth.live\(route)") {
             if let pEmail = email {
                 params["email"] = pEmail
@@ -95,6 +99,24 @@ class HttpRequestCtrl{
                 if let pPhone = phone {
                     params["phoneNumber"] = pPhone
                 }
+            }
+            if let dCD = cdID {
+                params["cookingDate_id"] = dCD
+            }
+            if let dDishes = dishes {
+                params["dish_id"] = dDishes
+            }
+            if let diQtty = dQtty {
+                params["dish_qtty"] = diQtty
+            }
+            if let dExtras = extras {
+                params["extras_id"] = dExtras
+            }
+            if let exQtty = eQtty {
+                params["extras_qtty"] = exQtty
+            }
+            if let pID = oID {
+                params["order_id"] = pID
             }
             print(params)
             var request = URLRequest(url: url)

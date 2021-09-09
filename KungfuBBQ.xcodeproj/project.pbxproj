@@ -14,6 +14,9 @@
 		381E3F292669620A00003E19 /* OrderPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E3F282669620A00003E19 /* OrderPaymentVC.swift */; };
 		381E3F2C2669842B00003E19 /* MyAwesomeOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E3F2B2669842B00003E19 /* MyAwesomeOrderVC.swift */; };
 		381E3F2F2669850A00003E19 /* PaymentOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E3F2E2669850A00003E19 /* PaymentOptionsVC.swift */; };
+		38316C2A26E52B4B0091F270 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38316C2926E52B4B0091F270 /* Order.swift */; };
+		38316C2C26E52B560091F270 /* OrderDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38316C2B26E52B560091F270 /* OrderDishes.swift */; };
+		38316C2E26E52BC20091F270 /* OrderExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38316C2D26E52BC20091F270 /* OrderExtras.swift */; };
 		384677E326D1480000B3AF0E /* PasswordChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384677E226D1480000B3AF0E /* PasswordChangeVC.swift */; };
 		384C2F9626CF2E9500C60B29 /* UserInfoVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C2F9526CF2E9500C60B29 /* UserInfoVc.swift */; };
 		3853A84F2663EEEA00FCBEAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853A84E2663EEEA00FCBEAA /* AppDelegate.swift */; };
@@ -24,6 +27,8 @@
 		3853A85B2663EEF200FCBEAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3853A8592663EEF200FCBEAA /* LaunchScreen.storyboard */; };
 		38560AAE26CC6BEA00EFAF1F /* CatoringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38560AAD26CC6BEA00EFAF1F /* CatoringVC.swift */; };
 		386718A426CDF68E002AAB81 /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386718A326CDF68E002AAB81 /* PhoneFormatter.swift */; };
+		3868B98026E9505C00BBEA4F /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3868B97F26E9505C00BBEA4F /* CustomDateFormatter.swift */; };
+		3868B98226E995E200BBEA4F /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3868B98126E995E200BBEA4F /* UIButtonExtension.swift */; };
 		3870A8AD26C1CD6B00F7C4D2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A8AC26C1CD6B00F7C4D2 /* DataController.swift */; };
 		3870A8B226C200FC00F7C4D2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A8B126C200FC00F7C4D2 /* LoginVC.swift */; };
 		3870A8B626C2185700F7C4D2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A8B526C2185700F7C4D2 /* UserModel.swift */; };
@@ -31,6 +36,8 @@
 		3888C84626671F1C00DA735A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888C84526671F1C00DA735A /* CalendarViewController.swift */; };
 		38978EB926CB1F6E009572E6 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38978EB826CB1F6E009572E6 /* RegisterVC.swift */; };
 		38A84CC7266C07DA00D1F328 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38A84CC5266C07DA00D1F328 /* DataModel.xcdatamodeld */; };
+		38C6B6D626E03EA3000C0B65 /* CookingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6B6D526E03EA3000C0B65 /* CookingDate.swift */; };
+		38C6B6D826E050CA000C0B65 /* CookingDateDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6B6D726E050CA000C0B65 /* CookingDateDishes.swift */; };
 		5C6E46B94D7DD15CC1CCA619 /* Pods_KungfuBBQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2263EAA047A8BA513187F0B /* Pods_KungfuBBQ.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +49,9 @@
 		381E3F282669620A00003E19 /* OrderPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPaymentVC.swift; sourceTree = "<group>"; };
 		381E3F2B2669842B00003E19 /* MyAwesomeOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAwesomeOrderVC.swift; sourceTree = "<group>"; };
 		381E3F2E2669850A00003E19 /* PaymentOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsVC.swift; sourceTree = "<group>"; };
+		38316C2926E52B4B0091F270 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		38316C2B26E52B560091F270 /* OrderDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDishes.swift; sourceTree = "<group>"; };
+		38316C2D26E52BC20091F270 /* OrderExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExtras.swift; sourceTree = "<group>"; };
 		384677E226D1480000B3AF0E /* PasswordChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeVC.swift; sourceTree = "<group>"; };
 		384C2F9526CF2E9500C60B29 /* UserInfoVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVc.swift; sourceTree = "<group>"; };
 		3853A84B2663EEEA00FCBEAA /* KungfuBBQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KungfuBBQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +64,8 @@
 		3853A85C2663EEF200FCBEAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38560AAD26CC6BEA00EFAF1F /* CatoringVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatoringVC.swift; sourceTree = "<group>"; };
 		386718A326CDF68E002AAB81 /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
+		3868B97F26E9505C00BBEA4F /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
+		3868B98126E995E200BBEA4F /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		3870A8AC26C1CD6B00F7C4D2 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		3870A8B126C200FC00F7C4D2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		3870A8B526C2185700F7C4D2 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -61,6 +73,8 @@
 		3888C84526671F1C00DA735A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		38978EB826CB1F6E009572E6 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		38A84CC6266C07DA00D1F328 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		38C6B6D526E03EA3000C0B65 /* CookingDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingDate.swift; sourceTree = "<group>"; };
+		38C6B6D726E050CA000C0B65 /* CookingDateDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingDateDishes.swift; sourceTree = "<group>"; };
 		510C46F592F6EF696284EA10 /* Pods-KungfuBBQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KungfuBBQ.release.xcconfig"; path = "Target Support Files/Pods-KungfuBBQ/Pods-KungfuBBQ.release.xcconfig"; sourceTree = "<group>"; };
 		B58753095F69BA3D3BE99318 /* Pods-KungfuBBQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KungfuBBQ.debug.xcconfig"; path = "Target Support Files/Pods-KungfuBBQ/Pods-KungfuBBQ.debug.xcconfig"; sourceTree = "<group>"; };
 		D2263EAA047A8BA513187F0B /* Pods_KungfuBBQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KungfuBBQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				381E3F2526695A1400003E19 /* MapViewExtensions.swift */,
+				3868B98126E995E200BBEA4F /* UIButtonExtension.swift */,
 			);
 			path = publicExtensions;
 			sourceTree = "<group>";
@@ -107,7 +122,7 @@
 		3853A84D2663EEEA00FCBEAA /* KungfuBBQ */ = {
 			isa = PBXGroup;
 			children = (
-				386718A226CDF67D002AAB81 /* fromatters */,
+				386718A226CDF67D002AAB81 /* formatters */,
 				38A84CC4266C07C800D1F328 /* model */,
 				381E3F1F266959DB00003E19 /* publicExtensions */,
 				3888C84426671EBC00DA735A /* controller */,
@@ -121,12 +136,13 @@
 			path = KungfuBBQ;
 			sourceTree = "<group>";
 		};
-		386718A226CDF67D002AAB81 /* fromatters */ = {
+		386718A226CDF67D002AAB81 /* formatters */ = {
 			isa = PBXGroup;
 			children = (
 				386718A326CDF68E002AAB81 /* PhoneFormatter.swift */,
+				3868B97F26E9505C00BBEA4F /* CustomDateFormatter.swift */,
 			);
-			path = fromatters;
+			path = formatters;
 			sourceTree = "<group>";
 		};
 		3870A8B426C2183300F7C4D2 /* jsonModels */ = {
@@ -134,6 +150,11 @@
 			children = (
 				3870A8B526C2185700F7C4D2 /* UserModel.swift */,
 				3870A8B826C218A800F7C4D2 /* SocialMedia.swift */,
+				38C6B6D526E03EA3000C0B65 /* CookingDate.swift */,
+				38C6B6D726E050CA000C0B65 /* CookingDateDishes.swift */,
+				38316C2926E52B4B0091F270 /* Order.swift */,
+				38316C2B26E52B560091F270 /* OrderDishes.swift */,
+				38316C2D26E52BC20091F270 /* OrderExtras.swift */,
 			);
 			path = jsonModels;
 			sourceTree = "<group>";
@@ -302,22 +323,29 @@
 				38A84CC7266C07DA00D1F328 /* DataModel.xcdatamodeld in Sources */,
 				3870A8AD26C1CD6B00F7C4D2 /* DataController.swift in Sources */,
 				381E3F2F2669850A00003E19 /* PaymentOptionsVC.swift in Sources */,
+				38316C2E26E52BC20091F270 /* OrderExtras.swift in Sources */,
 				384C2F9626CF2E9500C60B29 /* UserInfoVc.swift in Sources */,
 				3888C84626671F1C00DA735A /* CalendarViewController.swift in Sources */,
 				38978EB926CB1F6E009572E6 /* RegisterVC.swift in Sources */,
+				38C6B6D626E03EA3000C0B65 /* CookingDate.swift in Sources */,
 				381E3F1D2669597600003E19 /* MyAwesomePreOrderVC.swift in Sources */,
 				381E3F2C2669842B00003E19 /* MyAwesomeOrderVC.swift in Sources */,
 				381E3F292669620A00003E19 /* OrderPaymentVC.swift in Sources */,
+				38316C2C26E52B560091F270 /* OrderDishes.swift in Sources */,
 				381E3F2626695A1400003E19 /* MapViewExtensions.swift in Sources */,
 				384677E326D1480000B3AF0E /* PasswordChangeVC.swift in Sources */,
 				3870A8B626C2185700F7C4D2 /* UserModel.swift in Sources */,
+				38C6B6D826E050CA000C0B65 /* CookingDateDishes.swift in Sources */,
 				386718A426CDF68E002AAB81 /* PhoneFormatter.swift in Sources */,
 				3870A8B926C218A800F7C4D2 /* SocialMedia.swift in Sources */,
 				381E3F1A266953E000003E19 /* PreOrderCreationVC.swift in Sources */,
 				3870A8B226C200FC00F7C4D2 /* LoginVC.swift in Sources */,
+				3868B98026E9505C00BBEA4F /* CustomDateFormatter.swift in Sources */,
+				38316C2A26E52B4B0091F270 /* Order.swift in Sources */,
 				38560AAE26CC6BEA00EFAF1F /* CatoringVC.swift in Sources */,
 				3853A8532663EEEA00FCBEAA /* HomeVC.swift in Sources */,
 				3853A84F2663EEEA00FCBEAA /* AppDelegate.swift in Sources */,
+				3868B98226E995E200BBEA4F /* UIButtonExtension.swift in Sources */,
 				3802FC7E26C33A2B008D594F /* HttpRequestCtrl.swift in Sources */,
 				3853A8512663EEEA00FCBEAA /* SceneDelegate.swift in Sources */,
 			);
