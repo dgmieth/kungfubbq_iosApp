@@ -138,7 +138,7 @@
             <objects>
                 <viewController title="App Information" id="mnB-xH-1Ac" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vRc-Ff-ygK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42h-Wk-Y57" userLabel="contentView">
@@ -253,7 +253,7 @@
             <objects>
                 <viewController title="User information" id="reh-qE-X6d" customClass="UserInfoVc" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c9l-RD-rSz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-av-u98">
@@ -898,7 +898,7 @@
             <objects>
                 <viewController title="Log-in" id="yzV-ju-ySc" customClass="LoginVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vg0-TJ-S7y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psy-pM-hLh" userLabel="scrollContainer">
@@ -1124,7 +1124,7 @@
             <objects>
                 <viewController title="Register" id="6MI-51-Et2" customClass="RegisterVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vwg-jq-vNS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwo-l2-l5W" userLabel="scrollContainer">
@@ -1362,7 +1362,7 @@
             <objects>
                 <viewController title="Change Password" id="EcC-50-sxe" customClass="PasswordChangeVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iqc-G9-wGo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dut-WL-7Uz" userLabel="scrollContainer">
@@ -2490,6 +2490,7 @@
                         <outlet property="cancelSaveBtnView" destination="njm-4U-sFZ" id="0aC-mt-1Ua"/>
                         <outlet property="cdStatus" destination="INf-kz-KdL" id="6oy-pK-YId"/>
                         <outlet property="date" destination="lDt-Tv-d6T" id="owp-gF-ROT"/>
+                        <outlet property="editBtn" destination="9Uy-7J-6nM" id="i1E-dY-klk"/>
                         <outlet property="mapView" destination="uha-mV-Wpj" id="CC1-tB-UGY"/>
                         <outlet property="menu" destination="htH-2r-nGD" id="1x5-OX-j8r"/>
                         <outlet property="numberMealsPV" destination="cMS-sK-ESa" id="ex7-u9-5HF"/>
@@ -2532,28 +2533,31 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5t-yf-mOn" userLabel="statusLbl">
-                                                        <rect key="frame" x="10" y="44.5" width="73.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="44.5" width="75" height="24.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="QjS-fX-Ja2"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waiting payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXb-7K-8Gj" userLabel="status">
-                                                        <rect key="frame" x="93.5" y="44.5" width="166.5" height="24.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="waiting payment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="uXb-7K-8Gj" userLabel="status">
+                                                        <rect key="frame" x="95" y="44.5" width="215" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4B8-hs-ccz" userLabel="menuLbl">
-                                                        <rect key="frame" x="10" y="104" width="65.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="114" width="65.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-8h-kpt" userLabel="menu">
-                                                        <rect key="frame" x="85.5" y="76.5" width="224.5" height="80"/>
+                                                        <rect key="frame" x="85.5" y="81.5" width="224.5" height="90"/>
                                                         <color key="backgroundColor" name="textFieldBackground"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="UGK-lD-NKI"/>
+                                                            <constraint firstAttribute="height" constant="90" id="UGK-lD-NKI"/>
                                                         </constraints>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut </string>
                                                         <color key="textColor" name="i_black"/>
@@ -2561,43 +2565,43 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcG-le-qUo" userLabel="locationLbl">
-                                                        <rect key="frame" x="10" y="216.5" width="92.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="231.5" width="92.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8V-Rv-JiX" userLabel="numberMealsLbl">
-                                                        <rect key="frame" x="10" y="321" width="180.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="336" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zH3-8O-elJ" userLabel="numberMeals">
-                                                        <rect key="frame" x="200.5" y="321" width="11" height="24.5"/>
+                                                        <rect key="frame" x="200.5" y="336" width="11" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1A-Tz-E80" userLabel="mealPriceLbl">
-                                                        <rect key="frame" x="10" y="355.5" width="112.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="370.5" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-HD-GyJ" userLabel="mealPrice">
-                                                        <rect key="frame" x="132.5" y="355.5" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="132.5" y="370.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4O-WW-yfu" userLabel="totalPriceLbl">
-                                                        <rect key="frame" x="10" y="390" width="111.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="405" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DwZ-Jt-8M4" userLabel="totalPrice">
-                                                        <rect key="frame" x="131.5" y="390" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="131.5" y="405" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
@@ -2612,11 +2616,11 @@
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
                                                                         <color key="backgroundColor" name="i_red"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                                                        <state key="normal" title="Pay order">
+                                                                        <state key="normal" title="Pay">
                                                                             <color key="titleColor" name="fontColor"/>
                                                                         </state>
                                                                         <connections>
-                                                                            <segue destination="5iZ-CZ-RSW" kind="show" id="cgB-Yv-Iiw"/>
+                                                                            <action selector="payOrder:" destination="W88-YY-lba" eventType="touchUpInside" id="iSm-iK-k4L"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -2630,13 +2634,16 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7a-Dx-1jh" userLabel="cancelView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="55"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxv-MU-lPs" userLabel="cancelBtn">
-                                                                        <rect key="frame" x="10" y="4" width="140" height="47"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="xxv-MU-lPs" userLabel="cancelBtn">
+                                                                        <rect key="frame" x="10" y="6" width="140" height="47"/>
                                                                         <color key="backgroundColor" name="i_gray"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                                                        <state key="normal" title="Cancel order">
+                                                                        <state key="normal" title="Cancel">
                                                                             <color key="titleColor" name="fontColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="cancelOrder:" destination="W88-YY-lba" eventType="touchUpInside" id="7aU-2S-WTV"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -2660,7 +2667,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lu4-QZ-B7h" userLabel="locationView">
-                                                        <rect key="frame" x="112.5" y="158.5" width="197.5" height="140"/>
+                                                        <rect key="frame" x="112.5" y="173.5" width="197.5" height="140"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" text="375 Oak Ave, Cheshire, CT" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylR-IE-faV" userLabel="location">
                                                                 <rect key="frame" x="0.0" y="0.0" width="197.5" height="30"/>
@@ -2673,12 +2680,18 @@
                                                             </textView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obr-m4-JY4" userLabel="locationBtn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="197.5" height="30"/>
+                                                                <connections>
+                                                                    <action selector="addressClick:" destination="W88-YY-lba" eventType="touchUpInside" id="JiR-JE-tRT"/>
+                                                                </connections>
                                                             </button>
                                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OUc-ay-BQp">
                                                                 <rect key="frame" x="0.0" y="30" width="197.5" height="110"/>
                                                             </mapView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQw-7B-8Z5" userLabel="mapViewBtn">
                                                                 <rect key="frame" x="0.0" y="30" width="197.5" height="110"/>
+                                                                <connections>
+                                                                    <action selector="mapClick:" destination="W88-YY-lba" eventType="touchUpInside" id="DEg-CW-Yfu"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -2733,9 +2746,10 @@
                                                     <constraint firstItem="vcG-le-qUo" firstAttribute="centerY" secondItem="lu4-QZ-B7h" secondAttribute="centerY" id="o9w-qR-LmI"/>
                                                     <constraint firstItem="uXb-7K-8Gj" firstAttribute="leading" secondItem="f5t-yf-mOn" secondAttribute="trailing" constant="10" id="qhv-gf-UrU"/>
                                                     <constraint firstItem="4B8-hs-ccz" firstAttribute="leading" secondItem="IVP-u1-V5B" secondAttribute="leading" constant="10" id="s5B-Dy-nBm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uXb-7K-8Gj" secondAttribute="trailing" constant="10" id="v1A-Jc-Dck"/>
                                                     <constraint firstItem="7dp-vt-1Zf" firstAttribute="top" secondItem="IVP-u1-V5B" secondAttribute="top" constant="10" id="vgh-AV-hnf"/>
                                                     <constraint firstItem="Ndb-8h-kpt" firstAttribute="centerY" secondItem="4B8-hs-ccz" secondAttribute="centerY" id="xm7-M9-pkO"/>
-                                                    <constraint firstItem="4B8-hs-ccz" firstAttribute="top" secondItem="f5t-yf-mOn" secondAttribute="bottom" constant="35" id="yKF-PP-kDx"/>
+                                                    <constraint firstItem="4B8-hs-ccz" firstAttribute="top" secondItem="f5t-yf-mOn" secondAttribute="bottom" constant="45" id="yKF-PP-kDx"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -2770,7 +2784,20 @@
                     </view>
                     <navigationItem key="navigationItem" title="Order payment" id="tC3-A8-h11"/>
                     <connections>
+                        <outlet property="address" destination="ylR-IE-faV" id="QH4-Xc-gte"/>
+                        <outlet property="addressBtn" destination="Obr-m4-JY4" id="U7j-oB-bXm"/>
+                        <outlet property="cancelOrder" destination="xxv-MU-lPs" id="Hiw-xQ-V7e"/>
+                        <outlet property="cdStatus" destination="uXb-7K-8Gj" id="FCg-jK-fzf"/>
+                        <outlet property="date" destination="SVD-6K-eWk" id="MSy-I0-K0g"/>
                         <outlet property="mapView" destination="OUc-ay-BQp" id="Tvv-nM-l4g"/>
+                        <outlet property="menu" destination="Ndb-8h-kpt" id="EgN-fk-IZq"/>
+                        <outlet property="numberOfMeals" destination="zH3-8O-elJ" id="AzI-Rw-Yws"/>
+                        <outlet property="payOrder" destination="F70-fX-nbi" id="WXN-pw-RpA"/>
+                        <outlet property="price" destination="Lqw-HD-GyJ" id="DZl-7l-UtC"/>
+                        <outlet property="totalPrice" destination="DwZ-Jt-8M4" id="IlH-TU-7GK"/>
+                        <segue destination="5iZ-CZ-RSW" kind="popoverPresentation" identifier="paymentVC" popoverAnchorView="F70-fX-nbi" id="vXs-6c-Hi9">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7HO-3t-WZn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3000,126 +3027,109 @@
             <objects>
                 <viewController id="5iZ-CZ-RSW" customClass="PaymentOptionsVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r9j-p4-czN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzp-yf-Qtj" userLabel="contentView">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7En-Pu-vZu" userLabel="paymentOptionsView">
                                         <rect key="frame" x="15" y="100" width="290" height="366"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdE-Ou-nlY" userLabel="applePayView">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="91.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tv1-L4-l06" userLabel="applePayBtn">
-                                                        <rect key="frame" x="15" y="22.5" width="260" height="47"/>
-                                                        <color key="backgroundColor" name="i_red"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="47" id="Trz-vo-DAV"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                                        <state key="normal" title="Apple pay">
-                                                            <color key="titleColor" name="fontColor"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUv-8k-4Sn" userLabel="cardNumberLbl">
+                                                <rect key="frame" x="10" y="0.0" width="208" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                                <color key="textColor" name="i_black"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1234 4567 8900 0000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdt-vk-uqA" userLabel="cardNumber">
+                                                <rect key="frame" x="25" y="26.5" width="240" height="34"/>
+                                                <color key="backgroundColor" name="textFieldBackground"/>
+                                                <color key="textColor" name="i_black"/>
+                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5iZ-CZ-RSW" id="Ath-D1-3JB"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-8A-v0o" userLabel="codeLbl">
+                                                <rect key="frame" x="10" y="70.5" width="176" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                                <color key="textColor" name="i_black"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="123" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i49-35-bnS" userLabel="code">
+                                                <rect key="frame" x="75" y="97" width="140" height="34"/>
+                                                <color key="textColor" name="i_black"/>
+                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5iZ-CZ-RSW" id="rHD-kE-M2U"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid through" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzP-sF-ahF" userLabel="validTrough">
+                                                <rect key="frame" x="10" y="141" width="140" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                                <color key="textColor" name="i_black"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcc-pR-dx4">
+                                                <rect key="frame" x="0.0" y="328" width="140" height="37"/>
+                                                <color key="backgroundColor" name="i_gray"/>
+                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" name="fontColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelClick:" destination="5iZ-CZ-RSW" eventType="touchUpInside" id="veT-jB-6Od"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWo-3G-mJq">
+                                                <rect key="frame" x="150" y="330" width="140" height="37"/>
+                                                <color key="backgroundColor" name="i_red"/>
+                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                                <state key="normal" title="Pay">
+                                                    <color key="titleColor" name="fontColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="payClick:" destination="5iZ-CZ-RSW" eventType="touchUpInside" id="7YB-KZ-QsQ"/>
+                                                </connections>
+                                            </button>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-5t-RPP" userLabel="pkView">
+                                                <rect key="frame" x="15" y="165.5" width="260" height="75"/>
                                                 <constraints>
-                                                    <constraint firstItem="tv1-L4-l06" firstAttribute="leading" secondItem="VdE-Ou-nlY" secondAttribute="leading" constant="15" id="Jmc-ll-uxv"/>
-                                                    <constraint firstAttribute="trailing" secondItem="tv1-L4-l06" secondAttribute="trailing" constant="15" id="Kec-Cw-n2d"/>
-                                                    <constraint firstItem="tv1-L4-l06" firstAttribute="centerX" secondItem="VdE-Ou-nlY" secondAttribute="centerX" id="sNB-me-SaT"/>
-                                                    <constraint firstItem="tv1-L4-l06" firstAttribute="centerY" secondItem="VdE-Ou-nlY" secondAttribute="centerY" id="t8Z-r4-3MV"/>
+                                                    <constraint firstAttribute="height" constant="75" id="Ccf-wF-Z1h"/>
                                                 </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQm-sz-6D2" userLabel="paypalView">
-                                                <rect key="frame" x="0.0" y="183" width="290" height="91.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7me-HP-Oan" userLabel="paypalPayBtn">
-                                                        <rect key="frame" x="15" y="22.5" width="260" height="47"/>
-                                                        <color key="backgroundColor" name="i_red"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="47" id="8wb-Do-Ymt"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                                        <state key="normal" title="Pay with Paypal">
-                                                            <color key="titleColor" name="fontColor"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="7me-HP-Oan" firstAttribute="leading" secondItem="ZQm-sz-6D2" secondAttribute="leading" constant="15" id="Dwc-Nk-A8W"/>
-                                                    <constraint firstAttribute="trailing" secondItem="7me-HP-Oan" secondAttribute="trailing" constant="15" id="Fis-a3-OAd"/>
-                                                    <constraint firstItem="7me-HP-Oan" firstAttribute="centerY" secondItem="ZQm-sz-6D2" secondAttribute="centerY" id="YJB-uj-wZP"/>
-                                                    <constraint firstItem="7me-HP-Oan" firstAttribute="centerX" secondItem="ZQm-sz-6D2" secondAttribute="centerX" id="fkU-50-6dP"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1C-HK-gnf" userLabel="creditCardView">
-                                                <rect key="frame" x="0.0" y="274.5" width="290" height="91.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GVb-2U-hDi" userLabel="creditCardBtn">
-                                                        <rect key="frame" x="15" y="15" width="260" height="61.5"/>
-                                                        <color key="backgroundColor" name="i_red"/>
-                                                        <state key="normal">
-                                                            <attributedString key="attributedTitle">
-                                                                <fragment content="Pay with credit card day of">
-                                                                    <attributes>
-                                                                        <color key="NSColor" name="fontColor"/>
-                                                                        <font key="NSFont" size="27" name="Palatino-Bold"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="GVb-2U-hDi" secondAttribute="bottom" constant="15" id="CMp-lE-C31"/>
-                                                    <constraint firstItem="GVb-2U-hDi" firstAttribute="top" secondItem="B1C-HK-gnf" secondAttribute="top" constant="15" id="Kde-nR-3od"/>
-                                                    <constraint firstItem="GVb-2U-hDi" firstAttribute="leading" secondItem="B1C-HK-gnf" secondAttribute="leading" constant="15" id="wi6-ic-I6q"/>
-                                                    <constraint firstAttribute="trailing" secondItem="GVb-2U-hDi" secondAttribute="trailing" constant="15" id="wvh-Ug-Sb6"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Naz-Ht-wTh" userLabel="googlePayView">
-                                                <rect key="frame" x="0.0" y="91.5" width="290" height="91.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRo-8P-ypc" userLabel="googlePayBtn">
-                                                        <rect key="frame" x="15" y="22.5" width="260" height="47"/>
-                                                        <color key="backgroundColor" name="i_red"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="47" id="FbO-7F-kfL"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                                        <state key="normal" title="Google pay">
-                                                            <color key="titleColor" name="fontColor"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="xRo-8P-ypc" firstAttribute="leading" secondItem="Naz-Ht-wTh" secondAttribute="leading" constant="15" id="VBD-p6-rwH"/>
-                                                    <constraint firstItem="xRo-8P-ypc" firstAttribute="centerY" secondItem="Naz-Ht-wTh" secondAttribute="centerY" id="dQH-Nl-1en"/>
-                                                    <constraint firstItem="xRo-8P-ypc" firstAttribute="centerX" secondItem="Naz-Ht-wTh" secondAttribute="centerX" id="gWH-Qw-zyf"/>
-                                                    <constraint firstAttribute="trailing" secondItem="xRo-8P-ypc" secondAttribute="trailing" constant="15" id="v4l-0U-Vah"/>
-                                                </constraints>
-                                            </view>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="5iZ-CZ-RSW" id="tto-qr-5vU"/>
+                                                    <outlet property="delegate" destination="5iZ-CZ-RSW" id="Et5-pN-oZX"/>
+                                                </connections>
+                                            </pickerView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Naz-Ht-wTh" secondAttribute="trailing" id="0Nm-Fe-jtK"/>
+                                            <constraint firstItem="W0Z-8A-v0o" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" constant="10" id="0YO-eU-zcn"/>
+                                            <constraint firstItem="oWo-3G-mJq" firstAttribute="leading" secondItem="kcc-pR-dx4" secondAttribute="trailing" constant="10" id="0Zq-Da-ork"/>
                                             <constraint firstAttribute="height" constant="366" id="2PL-wz-MRH"/>
-                                            <constraint firstAttribute="trailing" secondItem="VdE-Ou-nlY" secondAttribute="trailing" id="56G-rs-M0W"/>
-                                            <constraint firstItem="Naz-Ht-wTh" firstAttribute="height" secondItem="VdE-Ou-nlY" secondAttribute="height" id="7Lw-w0-rmH"/>
-                                            <constraint firstItem="B1C-HK-gnf" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" id="B56-NL-FhF"/>
-                                            <constraint firstItem="B1C-HK-gnf" firstAttribute="height" secondItem="VdE-Ou-nlY" secondAttribute="height" id="GR9-0s-aH1"/>
-                                            <constraint firstAttribute="bottom" secondItem="B1C-HK-gnf" secondAttribute="bottom" id="SEz-GE-Xdt"/>
-                                            <constraint firstItem="Naz-Ht-wTh" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" id="XJs-9d-tYT"/>
-                                            <constraint firstItem="Naz-Ht-wTh" firstAttribute="top" secondItem="VdE-Ou-nlY" secondAttribute="bottom" id="ZBT-4J-gLt"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZQm-sz-6D2" secondAttribute="trailing" id="bmc-RV-exp"/>
-                                            <constraint firstItem="ZQm-sz-6D2" firstAttribute="height" secondItem="VdE-Ou-nlY" secondAttribute="height" id="d4y-6O-0nL"/>
-                                            <constraint firstAttribute="trailing" secondItem="B1C-HK-gnf" secondAttribute="trailing" id="iYN-AQ-OIZ"/>
-                                            <constraint firstItem="B1C-HK-gnf" firstAttribute="top" secondItem="ZQm-sz-6D2" secondAttribute="bottom" id="ivL-aE-DOY"/>
-                                            <constraint firstItem="VdE-Ou-nlY" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" id="lss-n0-TwC"/>
-                                            <constraint firstItem="VdE-Ou-nlY" firstAttribute="top" secondItem="7En-Pu-vZu" secondAttribute="top" id="uH0-6c-wXV"/>
-                                            <constraint firstItem="ZQm-sz-6D2" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" id="yYy-qN-d4A"/>
-                                            <constraint firstItem="ZQm-sz-6D2" firstAttribute="top" secondItem="Naz-Ht-wTh" secondAttribute="bottom" id="zjt-wX-uXU"/>
+                                            <constraint firstItem="W0Z-8A-v0o" firstAttribute="top" secondItem="Jdt-vk-uqA" secondAttribute="bottom" constant="10" id="2ki-AT-ZVV"/>
+                                            <constraint firstItem="FzP-sF-ahF" firstAttribute="top" secondItem="i49-35-bnS" secondAttribute="bottom" constant="10" id="77w-Wz-v9m"/>
+                                            <constraint firstItem="mUv-8k-4Sn" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" constant="10" id="98I-db-YIK"/>
+                                            <constraint firstAttribute="trailing" secondItem="oWo-3G-mJq" secondAttribute="trailing" id="CMF-Zj-x79"/>
+                                            <constraint firstItem="FzP-sF-ahF" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" constant="10" id="F8x-72-Rec"/>
+                                            <constraint firstItem="i49-35-bnS" firstAttribute="top" secondItem="W0Z-8A-v0o" secondAttribute="bottom" constant="2" id="FTF-6K-dCa"/>
+                                            <constraint firstItem="oWo-3G-mJq" firstAttribute="height" secondItem="kcc-pR-dx4" secondAttribute="height" id="JuZ-Dp-hnI"/>
+                                            <constraint firstItem="Jdt-vk-uqA" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" constant="25" id="Ka6-p7-4B7"/>
+                                            <constraint firstItem="Jdt-vk-uqA" firstAttribute="top" secondItem="mUv-8k-4Sn" secondAttribute="bottom" constant="2" id="PJI-8W-zZz"/>
+                                            <constraint firstItem="kcc-pR-dx4" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" id="PzL-dD-tm3"/>
+                                            <constraint firstAttribute="trailing" secondItem="i5M-5t-RPP" secondAttribute="trailing" constant="15" id="Vpo-7r-AZ3"/>
+                                            <constraint firstAttribute="trailing" secondItem="i49-35-bnS" secondAttribute="trailing" constant="75" id="YeM-56-Eat"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jdt-vk-uqA" secondAttribute="trailing" constant="25" id="bHq-1R-I5a"/>
+                                            <constraint firstAttribute="bottom" secondItem="kcc-pR-dx4" secondAttribute="bottom" id="kqG-2x-aBF"/>
+                                            <constraint firstItem="i49-35-bnS" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" constant="75" id="nvy-Li-mmM"/>
+                                            <constraint firstItem="oWo-3G-mJq" firstAttribute="width" secondItem="kcc-pR-dx4" secondAttribute="width" id="rNm-YP-ZAm"/>
+                                            <constraint firstItem="i5M-5t-RPP" firstAttribute="top" secondItem="FzP-sF-ahF" secondAttribute="bottom" id="u0d-ly-FU5"/>
+                                            <constraint firstItem="mUv-8k-4Sn" firstAttribute="top" secondItem="7En-Pu-vZu" secondAttribute="top" id="vlm-Iq-CGp"/>
+                                            <constraint firstAttribute="bottom" secondItem="oWo-3G-mJq" secondAttribute="bottom" id="wl1-FQ-byL"/>
+                                            <constraint firstItem="i5M-5t-RPP" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" constant="15" id="xbv-3g-Rwe"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -3141,12 +3151,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Payment otions" id="YbR-Gz-V1U"/>
                     <connections>
-                        <outlet property="creditCardBtn" destination="GVb-2U-hDi" id="cSc-kp-mHj"/>
+                        <outlet property="cancelBtn" destination="kcc-pR-dx4" id="ic8-GE-iye"/>
+                        <outlet property="cardCode" destination="i49-35-bnS" id="RKF-PI-7Bc"/>
+                        <outlet property="cardNumber" destination="Jdt-vk-uqA" id="Joj-Wa-xyw"/>
+                        <outlet property="payBtn" destination="oWo-3G-mJq" id="QSN-nL-qnl"/>
+                        <outlet property="pkView" destination="i5M-5t-RPP" id="GWZ-M8-Fxx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRl-VN-kVZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3574" y="92"/>
+            <point key="canvasLocation" x="3573.75" y="91.901408450704224"/>
         </scene>
     </scenes>
     <color key="tintColor" name="backGround"/>

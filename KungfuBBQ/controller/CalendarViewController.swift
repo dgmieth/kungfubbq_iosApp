@@ -272,6 +272,11 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         }
         if segue.identifier == "payOrder" {
             let dest = segue.destination as! OrderPaymentVC
+            dest.cookingDate = cookingDate!
+            dest.user = user!
+            dest.dataController = dataController
+            dest.order = (cookingDate!.orders!.allObjects as! [CDOrder])[0]
+            dest.delegate = self
         }
         if segue.identifier == "paidOrder" {
             let dest = segue.destination as! MyAwesomeOrderVC
@@ -284,10 +289,10 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         cookingDate = nil
         if(dates.contains(sDate)){
             print("we are cooking")
-            updateUICalendarView(cookingOnThiDate: true, selectedDate: sDate)
             let cd = cds!.filter { $0.cookingDate!.split(separator: " ")[0] == sDate}
+            cookingDate = cd[0]
+            updateUICalendarView(cookingOnThiDate: true, selectedDate: sDate)
             if(cd[0].cookingStatusId <= Int64(4)){
-                cookingDate = cd[0]
                 let orders = cd[0].orders!.allObjects as! [CDOrder]
                 if orders.count == 0 {
                     updateActionButtonsAreHidden(place: false)
@@ -295,15 +300,23 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     updateActionButtonsAreHidden(update: false)
                 }
             }else{
+                print("closedOrders")
                 let orders = cd[0].orders!.allObjects as! [CDOrder]
                 //waiting user acknowledgement and payment
+                //print(orders)
                 if orders.count > 0 {
+                    if orders[0].orderStatusId == 2 {
+                        cookingDate = cd[0]
+                        updateActionButtonsAreHidden(update: false)
+                    }
                     if orders[0].orderStatusId == 3 {
                         cookingDate = cd[0]
+                        print(orders[0].orderStatusName)
                         updateActionButtonsAreHidden(pay: false)
                     }
                     //user didn't make to the list but is waiting for dropouts
                     if orders[0].orderStatusId == 4 {
+                        updateActionButtonsAreHidden()
                         let alert = UIAlertController(title: "Order status", message: "Your order did not make it to this list, but you are on the list waiting for drop out orders. You'll receive a notification if your order gets onto this list", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .default)
                         alert.addAction(ok)
@@ -316,6 +329,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     }
                     //user cancelled the order before paying it
                     if orders[0].orderStatusId == 6 {
+                        updateActionButtonsAreHidden()
                         let alert = UIAlertController(title: "Order status", message: "You cancelled this order if you wish to order food from us, please choose another available cooking date", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .default)
                         alert.addAction(ok)
@@ -323,6 +337,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     }
                     //user did not make it to this cooking calendar date list
                     if orders[0].orderStatusId == 7 {
+                        updateActionButtonsAreHidden()
                         let alert = UIAlertController(title: "Order status", message: "We are sorry! Unfortunately your order did not make to this final list of this cooking date. Please, order from us again on another available cooking date", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .default)
                         alert.addAction(ok)
@@ -330,6 +345,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     }
                     //missed confirmation time
                     if orders[0].orderStatusId == 12 {
+                        updateActionButtonsAreHidden()
                         let alert = UIAlertController(title: "Order status", message: "You missed the time you had to confirm the order. Please choose another available cooking date.", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .default)
                         alert.addAction(ok)
@@ -348,8 +364,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     func refreshUI() {
         print("called")
         updateUIInformation()
-        
-        
     }
     //MARK: - FS CALENDAR
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

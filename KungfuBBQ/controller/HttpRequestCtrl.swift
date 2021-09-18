@@ -51,7 +51,7 @@ class HttpRequestCtrl{
         }
     }
     
-    func post(toRoute route: String, userEmail email: String? = nil, userName name: String? = nil, userPassword pass:String? = nil, currentPassword cPass:String? = nil, newPassword nPass:String? = nil, confirmPassword confPass:String? = nil, invitationCode invitation:String? = nil, phoneNumber phone:String? = nil, facebookName facebook:String? = nil, instagramName instagram:String? = nil, userId id:String? = nil, catoringDescription description:String? = nil, cookingDateID cdID:Int? = nil, dishID dishes:[Int]? = nil, dishQtty dQtty:[Int]? = nil, extrasID extras:[Int]? = nil, extrasQtty eQtty:[Int]? = nil, orderID oID:Int? = nil, headers: [String:String] = [String:String](),  onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
+    func post(toRoute route: String, userEmail email: String? = nil, userName name: String? = nil, userPassword pass:String? = nil, currentPassword cPass:String? = nil, newPassword nPass:String? = nil, confirmPassword confPass:String? = nil, invitationCode invitation:String? = nil, phoneNumber phone:String? = nil, facebookName facebook:String? = nil, instagramName instagram:String? = nil, userId id:String? = nil, catoringDescription description:String? = nil, cookingDateID cdID:Int? = nil, dishID dishes:[Int]? = nil, dishQtty dQtty:[Int]? = nil, extrasID extras:[Int]? = nil, extrasQtty eQtty:[Int]? = nil, orderID oID:Int? = nil, newQuantity newQtty:Int? = nil, paymentCode pCode: Int? = nil, cardNumber cNumber: String? = nil, expirantionDate eDate: String? = nil, cardCode cCode: String? = nil, headers: [String:String] = [String:String](),  onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
         print("httpRequestCtrl -> POST")
         var params=[String:Any]()
         if let url = URL(string: "https://dgmieth.live\(route)") {
@@ -117,6 +117,21 @@ class HttpRequestCtrl{
             }
             if let pID = oID {
                 params["order_id"] = pID
+            }
+            if let pNewQtty = newQtty {
+                params["new_qtty"] = pNewQtty
+            }
+            if let ppCode = pCode {
+                params["payment_code"] = ppCode
+            }
+            if let pcNumber = cNumber {
+                params["cardNumber"] = pcNumber
+            }
+            if let pcCpde = cCode {
+                params["cardCode"] = pcCpde
+            }
+            if let peDate = eDate {
+                params["expirationDate"] = peDate
             }
             print(params)
             var request = URLRequest(url: url)

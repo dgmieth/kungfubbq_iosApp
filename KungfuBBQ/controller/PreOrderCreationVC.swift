@@ -92,6 +92,25 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         totalPrice.text = "U$ \(amount*Decimal((row+1)))"
     }
+    //MARK: - UI UPDATE
+    func callNavigationMapsAlert(){
+        let alert = UIAlertController(title: "Navigate to KungfuBBQ location", message: "Choose your favorite application", preferredStyle: .actionSheet)
+        let gMaps = UIAlertAction(title: "Google Maps", style: .default) { action in
+            print("Google Maps")
+            UIApplication.shared.open(URL(string:"https://www.google.com/maps?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+        }
+        alert.addAction(gMaps)
+        if (UIApplication.shared.canOpenURL(URL(string:"maps:")!)) {  //First check Google Mpas installed on User's phone or not.
+            let maps = UIAlertAction(title: "Maps", style: .default) { action in
+                print("Apple Maps")
+                UIApplication.shared.open(URL(string: "maps://?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+            }
+            alert.addAction(maps)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
     //MARK: - BUTTON LISTENERS
     @IBAction func placeOrderClick(_ sender: Any) {
         preOrder.isEnabled = false
@@ -137,6 +156,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
             }
         } onError: { error in
             print(error)
+            self.removeSpinner()
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Generalized error message: \(error)", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .cancel)
@@ -152,10 +172,10 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func mapBtnClick(_ sender: Any) {
-        print("mapBtn")
+        callNavigationMapsAlert()
     }
     @IBAction func addressClick(_ sender: Any) {
-        print("addressBtn")
+        callNavigationMapsAlert()
     }
     // MARK: - SPINNER
     func createSpinner(){
