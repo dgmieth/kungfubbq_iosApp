@@ -67,11 +67,11 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             animation.toValue = NSValue(cgPoint: CGPoint(x: pkView.center.x + 10, y: pkView.center.y))
             pkView.layer.add(animation, forKey: "position")
         }
-        print(cardNumber.text!.count == 19)
         if cardNumber.text!.count == 19 && !cardCode.text!.isEmpty && pkView.selectedRow(inComponent: 0) != 0 && pkView.selectedRow(inComponent: 1) != 0 {
             let month = pkView.selectedRow(inComponent: 1) <= 9 ? "0\(pkView.selectedRow(inComponent: 1))" : "\(pkView.selectedRow(inComponent: 1))"
             let eDate = "\(Calendar.current.component(.year, from: Date()) as Int + (pkView.selectedRow(inComponent: 0) - 1))-\(month)"
-            HttpRequestCtrl.shared.post(toRoute: "/api/order/payOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), orderID: Int(order.orderId),  paymentCode: 1, cardNumber: cardNumber.text!, expirantionDate: eDate, cardCode: cardCode.text!, headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
+            let cNumber = cardNumber.text!.replacingOccurrences(of: " ", with: "")
+            HttpRequestCtrl.shared.post(toRoute: "/api/order/payOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), orderID: Int(order.orderId), cardNumber: cNumber, expirantionDate: eDate, cardCode: cardCode.text!, headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
                     print(jsonObject)
                 }onError: { error in
                     print(error)
@@ -114,22 +114,13 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         }
         return true
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if(textField==cardCode){
-            let maxLength = 3
-            let cString : NSString = textField.text! as NSString
-            let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
-            return nString.length <= maxLength
-        }
-        if(textField==cardNumber){
-            let maxLength = 19
-            let cString : NSString = textField.text! as NSString
-            let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField == cardNumber {
             let formatter = NumberFormatter()
             formatter.groupingSeparator = " "
             formatter.groupingSize = 4
             formatter.usesGroupingSeparator = true
-            if var number = textField.text, string != "" {
+            if var number = textField.text {
                 print(number)
                 number = number.replacingOccurrences(of: " ", with: "")
                 if let doubleVal = Double(number){
@@ -138,6 +129,20 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
                     textField.text = requiredText
                 }
             }
+        }
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if(textField==cardCode){
+            let maxLength = 4
+            let cString : NSString = textField.text! as NSString
+            let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
+            return nString.length <= maxLength
+        }
+        if(textField==cardNumber){
+            let maxLength = 19
+            let cString : NSString = textField.text! as NSString
+            let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
+            
             return nString.length <= maxLength
         }
         return true
