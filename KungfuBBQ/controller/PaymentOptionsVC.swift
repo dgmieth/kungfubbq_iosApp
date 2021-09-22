@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol PaymentProtocol {
+    func orderPayment(paid:Bool)
+}
 
 class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UITextFieldDelegate {
     //vars and lets
@@ -20,6 +23,8 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     @IBOutlet var cardCode: UITextField!
     @IBOutlet var payBtn: UIButton!
     @IBOutlet var cancelBtn: UIButton!
+    //delegates
+    var delegate:PaymentProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,10 +76,48 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             let month = pkView.selectedRow(inComponent: 1) <= 9 ? "0\(pkView.selectedRow(inComponent: 1))" : "\(pkView.selectedRow(inComponent: 1))"
             let eDate = "\(Calendar.current.component(.year, from: Date()) as Int + (pkView.selectedRow(inComponent: 0) - 1))-\(month)"
             let cNumber = cardNumber.text!.replacingOccurrences(of: " ", with: "")
+            createSpinner()
             HttpRequestCtrl.shared.post(toRoute: "/api/order/payOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), orderID: Int(order.orderId), cardNumber: cNumber, expirantionDate: eDate, cardCode: cardCode.text!, headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-                    print(jsonObject)
+//                print(jsonObject)
+                self.removeSpinner()
+                guard let errorCheck = jsonObject["hasErrors"] as? Int
+                else { return }
+                if(errorCheck==0){
+                    guard let msg = jsonObject["msg"] as? String else { return }
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Success", message: "\(msg)", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default) { _IOFBF in
+                            self.delegate?.orderPayment(paid: true)
+                            self.presentingViewController?.dismiss(animated: true, completion: nil)
+                        }
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                }else{
+                    guard let msg = jsonObject["msg"] as? String else { return }
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error", message: "Server message: \(msg)", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default) { _ in
+                            self.delegate?.orderPayment(paid: false)
+                            self.presentingViewController?.dismiss(animated: true, completion: nil)
+                        }
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
                 }onError: { error in
-                    print(error)
+//                    print(error)
+                    self.removeSpinner()
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error", message: "Generalized error: \(error)", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default) { _ in
+                            self.delegate?.orderPayment(paid: false)
+                            self.presentingViewController?.dismiss(animated: true, completion: nil)
+                        }
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
         }else{
             enableButtons(value: true)
@@ -102,11 +145,9 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         //activeField = textField
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("textFieldShouldBeginEditing")
         return true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("textFieldShouldReturn")
         if textField.tag == 1 {
             cardCode.becomeFirstResponder()
         }else{
@@ -121,10 +162,8 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             formatter.groupingSize = 4
             formatter.usesGroupingSeparator = true
             if var number = textField.text {
-                print(number)
                 number = number.replacingOccurrences(of: " ", with: "")
                 if let doubleVal = Double(number){
-                    print(doubleVal)
                     let requiredText = formatter.string(from: NSNumber.init(value: doubleVal))
                     textField.text = requiredText
                 }
@@ -167,7 +206,6 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     }
     func removeSpinner(){
         DispatchQueue.main.async {
-            print("removeSpinner - called")
             for view in self.view.subviews {
                 if view == self.spinner {
                     view.removeFromSuperview()

@@ -279,7 +279,12 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             dest.delegate = self
         }
         if segue.identifier == "paidOrder" {
+            print((cookingDate!.orders!.allObjects as! [CDOrder])[0])
             let dest = segue.destination as! MyAwesomeOrderVC
+            dest.cookingDate = cookingDate!
+            dest.user = user!
+            dest.dataController = dataController
+            dest.order = (cookingDate!.orders!.allObjects as! [CDOrder])[0]
         }
     }
     func updateSelectedDate(selectedDate date:Date){
@@ -311,7 +316,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     }
                     if orders[0].orderStatusId == 3 {
                         cookingDate = cd[0]
-                        print(orders[0].orderStatusName)
                         updateActionButtonsAreHidden(pay: false)
                     }
                     //user didn't make to the list but is waiting for dropouts
@@ -325,6 +329,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     //order has been paid OR waiting for pickup alert OR waiting pickup OR delivered OR closed
                     if orders[0].orderStatusId == 5 || orders[0].orderStatusId == 8 || orders[0].orderStatusId == 9 || orders[0].orderStatusId == 10 || orders[0].orderStatusId == 11 {
                         cookingDate = cd[0]
+                        print(orders[0])
                         updateActionButtonsAreHidden(paid: false)
                     }
                     //user cancelled the order before paying it

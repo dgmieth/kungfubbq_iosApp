@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class OrderPaymentVC: UIViewController {
+class OrderPaymentVC: UIViewController, PaymentProtocol {
     //vars and lets
     var cookingDate:CDCookingDate!
     var user:AppUser!
@@ -72,7 +72,6 @@ class OrderPaymentVC: UIViewController {
         enableButtons(value: false)
         let alert = UIAlertController(title: "Cancel order?", message: "Are you sure you want to cancel this order? This action will take you out of this cooking date's distribuition list and cannot be undone. As soon as you cancel, the system will request another user on the waiting list to take your place on the distribution list.", preferredStyle: .alert)
         let del = UIAlertAction(title: "Cancel order", style: .destructive) { cancel in
-            print("cancel")
             self.createSpinner()
             self.cancelOrderRequest()
         }
@@ -84,8 +83,7 @@ class OrderPaymentVC: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     @IBAction func payOrder(_ sender: Any) {
-        print("pay order")
-      performSegue(withIdentifier: "paymentVC", sender: self)
+        performSegue(withIdentifier: "paymentVC", sender: self)
     }
     
     // MARK: - SPINNER
@@ -100,7 +98,6 @@ class OrderPaymentVC: UIViewController {
     }
     func removeSpinner(){
         DispatchQueue.main.async {
-            print("removeSpinner - called")
             for view in self.view.subviews {
                 if view == self.spinner {
                     view.removeFromSuperview()
@@ -113,19 +110,18 @@ class OrderPaymentVC: UIViewController {
         do {
             try dataController.viewContext.save()
         } catch {
-            print("notSaved (e)") }
+            print("notSaved (e)")
+        }
     }
     //MARK: - UPDATE UI
     func callNavigationMapsAlert(){
         let alert = UIAlertController(title: "Navigate to KungfuBBQ location", message: "Choose your favorite application", preferredStyle: .actionSheet)
         let gMaps = UIAlertAction(title: "Google Maps", style: .default) { action in
-            print("Google Maps")
             UIApplication.shared.open(URL(string:"https://www.google.com/maps?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
         }
         alert.addAction(gMaps)
         if (UIApplication.shared.canOpenURL(URL(string:"maps:")!)) {  //First check Google Mpas installed on User's phone or not.
             let maps = UIAlertAction(title: "Maps", style: .default) { action in
-                print("Apple Maps")
                 UIApplication.shared.open(URL(string: "maps://?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
             }
             alert.addAction(maps)
@@ -145,12 +141,21 @@ class OrderPaymentVC: UIViewController {
             dest.user = user
             dest.cookingDate = cookingDate
             dest.order = order
+            dest.delegate = self
         }
     }
     //MARK: - DELEGATE METHO
     func callDeletage(){
-        delegate?.refreshUI()
-        navigationController?.popViewController(animated: true)
+        DispatchQueue.main.async {
+            self.delegate?.refreshUI()
+            self.cancelOrder.isHidden = true
+            self.payOrder.isHidden = true
+        }
+    }
+    func orderPayment(paid: Bool) {
+        if(paid){
+            callDeletage()
+        }
     }
     //MARK: - HTTP REQUEST
     func cancelOrderRequest(){
@@ -158,23 +163,26 @@ class OrderPaymentVC: UIViewController {
             guard let errorCheck = jsonObject["hasErrors"] as? Int
             else { return }
             self.removeSpinner()
-            self.enableButtons(value: true)
+            
             if(errorCheck==0){
                 DispatchQueue.main.async {
+                    self.enableButtons(value: true)
                     self.callDeletage()
                 }
             }else{
                 guard let msg = jsonObject["msg"] as? String else { return }
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error", message: "Not possible to delete order right now. Server message: \(msg)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .default)
+                    let ok = UIAlertAction(title: "Ok", style: .default) { _IOFBF in
+                        self.enableButtons(value: true)
+                    }
                     alert.addAction(ok)
                     self.present(alert, animated: true, completion: nil)
                 }
             }
         } onError: { error in
             self.enableButtons(value: true)
-            print(error)
+//            print(error)
             self.removeSpinner()
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Error", message: "Not possible to delete order right now. Generalized error: \(error)", preferredStyle: .alert)
@@ -188,17 +196,15 @@ class OrderPaymentVC: UIViewController {
     }
     func renewToken(){
         HttpRequestCtrl.shared.get(toRoute: "/api/user/renewToken", userEmail: user.email, headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-            print(jsonObject)
+//            print(jsonObject)
             guard let errorCheck = jsonObject["hasErrors"] as? Int
             else { return }
             if(errorCheck==0){
-                print("noError")
                 guard let token = jsonObject["msg"] as? String else { return }
                 self.user.token = token
                 self.save()
             }else{
                 guard let msg = jsonObject["msg"] as? String else { return }
-                print(msg)
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error!", message: "\(msg)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel) { _ in
@@ -209,7 +215,7 @@ class OrderPaymentVC: UIViewController {
                 }
             }
         } onError: { error in
-            print(error)
+//            print(error)
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Error!", message: "Not possible to renew user authentication righ now. Generalized error message: \(error). Try again later!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .cancel) { _ in
