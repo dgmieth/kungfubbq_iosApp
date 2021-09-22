@@ -3026,8 +3026,8 @@
                     <navigationItem key="navigationItem" title="My awesome order" id="EGF-TO-h8m"/>
                     <connections>
                         <outlet property="address" destination="SNm-ac-NRz" id="GR3-mq-8Ds"/>
-                        <outlet property="cdStatus" destination="haH-3y-c6z" id="GG1-pB-cde"/>
-                        <outlet property="date" destination="haH-3y-c6z" id="4h7-N1-Pk6"/>
+                        <outlet property="cdStatus" destination="haH-3y-c6z" id="HUg-Bf-B2g"/>
+                        <outlet property="date" destination="rAi-wi-hD7" id="GQQ-WJ-t7P"/>
                         <outlet property="mapView" destination="sYk-x1-sd9" id="a1B-P0-0lw"/>
                         <outlet property="menu" destination="aEM-dL-f28" id="y2R-Lv-Kqc"/>
                         <outlet property="numberOfMeals" destination="mtw-yk-JHY" id="n6f-N2-shp"/>
