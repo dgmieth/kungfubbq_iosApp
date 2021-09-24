@@ -18,6 +18,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     var spinner = UIActivityIndicatorView(style: .large)
     var keyboardHeight:CGFloat = 0
     //ui elements
+    @IBOutlet var registerBrn: UIButton!
     @IBOutlet weak var invitationCode: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -41,11 +42,10 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     
     //MARK: - BUTTON ACTION
     @IBAction func cancelClick(_ sender: Any) {
-        print("cancelClick")
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func registerClick(_ sender: Any) {
-        print("registerlClick")
+        registerBrn.isEnabled = false
         let emailC = email.text! as String
         let passC = password.text! as String
         let passwordConfC = passwordConfirmation.text! as String
@@ -90,6 +90,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
                         let alert = UIAlertController(title: "Error!", message: "Not possible to register this user now. Server message: \(msg)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .cancel)
                         alert.addAction(ok)
+                        self.registerBrn.isEnabled = true
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
@@ -101,6 +102,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
                     let alert = UIAlertController(title: "Error!", message: "Not possible to register this user now. Internal error message: \(error)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel)
                     alert.addAction(ok)
+                    self.registerBrn.isEnabled = true
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -110,6 +112,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
             let no = UIAlertAction(title: "Ok", style: .cancel)
             alert.addAction(no)
             present(alert, animated: true, completion: nil)
+            registerBrn.isEnabled = true
         }
         
         

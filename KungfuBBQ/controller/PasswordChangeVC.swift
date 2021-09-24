@@ -14,10 +14,13 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
     var dataController:DataController!
     var user:AppUser!
     //ui elements
+    @IBOutlet var saveBtn: UIButton!
     @IBOutlet var currentPass: UITextField!
     @IBOutlet var newPassword: UITextField!
     @IBOutlet var newPasswordConfirmation: UITextField!
     @IBOutlet var scrollView: UIScrollView!
+    //delegates
+    var delegate:HomeVCRefreshUIProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,7 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     @IBAction func saveClick(_ sender: Any) {
+        saveBtn.isEnabled = false
         let cPass = currentPass.text!
         let nPass = newPassword.text!
         let nPassConf = newPasswordConfirmation.text!
@@ -46,15 +50,25 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
                             self.presentingViewController?.dismiss(animated: true, completion: nil)
                         })
                         alert.addAction(ok)
+                        self.saveBtn.isEnabled = true
                         self.present(alert, animated: true, completion: nil)
                     }
                 }else{
-                    guard let msg = jsonObject["msg"] as? String else { return }
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Server message: \(msg)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel)
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
+                    guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                    if(errorCode == -1){
+                        print("errorCode called")
+                        DispatchQueue.main.async {
+                            self.loginAgain()
+                       }
+                    }else{
+                        guard let msg = jsonObject["msg"] as? String else { return }
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Server message: \(msg)", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .cancel)
+                            alert.addAction(ok)
+                            self.saveBtn.isEnabled = true
+                            self.present(alert, animated: true, completion: nil)
+                        }
                     }
                 }
             } onError: { error in
@@ -63,6 +77,7 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
                     let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Internal error message: \(error)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel)
                     alert.addAction(ok)
+                    self.saveBtn.isEnabled = true
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -127,6 +142,17 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         scrollView.isScrollEnabled = false
     }
+    //MARK: - UI
+    func loginAgain(){
+            let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { _ in
+                self.delegate?.loggedUser = false
+                self.delegate?.refreshUI()
+                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
     // MARK: - SPINNER
     func createSpinner(){
         spinner.color = .black

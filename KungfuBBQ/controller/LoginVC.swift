@@ -7,11 +7,6 @@
 
 import UIKit
 import CoreData
-//protocolo to refresh HomeVC interface
-protocol HomeVCRefreshUIProtocol {
-    var loggedUser: Bool {get set}
-    func refreshUI()
-}
 
 class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoesToHomeVC {
     //vars and lets
@@ -46,11 +41,11 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     }
     // MARK: - BUTTONS EVENT LISTENERS
     @IBAction func registerClick(_ sender: Any) {
-        print("registerClick")
+        registerBtn.isEnabled = false
         performSegue(withIdentifier: "registerVC", sender: self)
+        registerBtn.isEnabled = true
     }
     @IBAction func forgotPasswordClick(_ sender: Any) {
-        print("forgotPasswordClick")
         let alert = UIAlertController(title: "Password recovery", message: "Please inform you user acount e-mail address and click on Send.", preferredStyle: .alert)
         alert.addTextField { textfield in
             textfield.placeholder = "User account e-mail..."
@@ -99,7 +94,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         self.present(alert, animated: true, completion: nil)
     }
     @IBAction func loginClick(_ sender: Any) {
-        print("loginClick")
+        loginBtn.isEnabled = false
         let username = email.text! as String
         let pass = password.text! as String
         if !username.isEmpty && !pass.isEmpty {
@@ -137,6 +132,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                         self.save()
                     }
                     DispatchQueue.main.async {
+                        self.loginBtn.isEnabled = true
                         self.callHomeVCRefreshUIProtocolo(loggedUser: true)
                     }
                 }else{
@@ -146,6 +142,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                         let alert = UIAlertController(title: "Error!", message: "Not possible to log in this user. Server message: \(msg)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .cancel)
                         alert.addAction(ok)
+                        self.loginBtn.isEnabled = true
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
@@ -157,6 +154,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                     let alert = UIAlertController(title: "Error!", message: "Not possible to log in this user. Internal error message: \(error)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel)
                     alert.addAction(ok)
+                    self.loginBtn.isEnabled = true
                     self.present(alert, animated: true, completion: nil)
                 }
             })
@@ -164,12 +162,12 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
             let alert = UIAlertController(title: "Log in credentials missing", message: "Please inform a complete valid e-mail address and your 8 alphanumerical password.", preferredStyle: .alert)
             let no = UIAlertAction(title: "Ok", style: .cancel)
             alert.addAction(no)
+            loginBtn.isEnabled = true
             present(alert, animated: true, completion: nil)
         }
         
     }
     @IBAction func cancelClick(_ sender: Any) {
-        print("cancelClick")
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     // MARK: - CORE DATA

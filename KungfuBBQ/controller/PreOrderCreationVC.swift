@@ -8,10 +8,6 @@
 import UIKit
 import MapKit
 
-protocol ReloadDataInCalendarVCProtocol {
-    func refreshUI()
-}
-
 class customPin: NSObject,MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
@@ -33,6 +29,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     var spinner = UIActivityIndicatorView(style: .large)
     //delegates
     var delegate:ReloadDataInCalendarVCProtocol?
+    var delegateLogin:HomeVCRefreshUIProtocol!
     //ui elements
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var numberMealsPV: UIPickerView!
@@ -94,23 +91,42 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     }
     //MARK: - UI UPDATE
     func callNavigationMapsAlert(){
+        addressBtn.isEnabled = false
+        mapBtn.isEnabled = false
         let alert = UIAlertController(title: "Navigate to KungfuBBQ location", message: "Choose your favorite application", preferredStyle: .actionSheet)
         let gMaps = UIAlertAction(title: "Google Maps", style: .default) { action in
             print("Google Maps")
             UIApplication.shared.open(URL(string:"https://www.google.com/maps?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+            self.addressBtn.isEnabled = true
+            self.mapBtn.isEnabled = true
         }
         alert.addAction(gMaps)
         if (UIApplication.shared.canOpenURL(URL(string:"maps:")!)) {  //First check Google Mpas installed on User's phone or not.
             let maps = UIAlertAction(title: "Maps", style: .default) { action in
                 print("Apple Maps")
                 UIApplication.shared.open(URL(string: "maps://?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+                self.addressBtn.isEnabled = true
+                self.mapBtn.isEnabled = true
             }
             alert.addAction(maps)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _IOFBF in
+            self.addressBtn.isEnabled = true
+            self.mapBtn.isEnabled = true
+        }
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
+    func loginAgain(){
+            let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { _ in
+                self.delegateLogin?.loggedUser = false
+                self.delegateLogin?.refreshUI()
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
     //MARK: - BUTTON LISTENERS
     @IBAction func placeOrderClick(_ sender: Any) {
         preOrder.isEnabled = false
@@ -144,14 +160,22 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
                 }
             }else{
                 self.removeSpinner()
-                guard let msg = jsonObject["msg"] as? String else { return }
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Server message: \(msg)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .cancel)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                    self.preOrder.isEnabled = true
-                    self.cancel.isEnabled = true
+                guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                if(errorCode == -1){
+                    print("errorCode called")
+                    DispatchQueue.main.async {
+                        self.loginAgain()
+                   }
+                }else{
+                    guard let msg = jsonObject["msg"] as? String else { return }
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Server message: \(msg)", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .cancel)
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
+                        self.preOrder.isEnabled = true
+                        self.cancel.isEnabled = true
+                    }
                 }
             }
         } onError: { error in

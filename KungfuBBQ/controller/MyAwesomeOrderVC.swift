@@ -22,6 +22,8 @@ class MyAwesomeOrderVC: UIViewController {
     @IBOutlet var cdStatus: UILabel!
     @IBOutlet var menu: UITextView!
     @IBOutlet var address: UITextView!
+    @IBOutlet var addressBtn: UIButton!
+    @IBOutlet var mapBtn: UIButton!
     @IBOutlet var numberOfMeals: UILabel!
     @IBOutlet var price: UILabel!
     @IBOutlet var totalPrice: UILabel!
@@ -63,32 +65,30 @@ class MyAwesomeOrderVC: UIViewController {
     }
     //MARK: - UI
     func callNavigationMapsAlert(){
+        addressBtn.isEnabled = false
+        mapBtn.isEnabled = false
         let alert = UIAlertController(title: "Navigate to KungfuBBQ location", message: "Choose your favorite application", preferredStyle: .actionSheet)
         let gMaps = UIAlertAction(title: "Google Maps", style: .default) { action in
             print("Google Maps")
             UIApplication.shared.open(URL(string:"https://www.google.com/maps?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+            self.addressBtn.isEnabled = true
+            self.mapBtn.isEnabled = true
         }
         alert.addAction(gMaps)
         if (UIApplication.shared.canOpenURL(URL(string:"maps:")!)) {  //First check Google Mpas installed on User's phone or not.
             let maps = UIAlertAction(title: "Maps", style: .default) { action in
                 print("Apple Maps")
                 UIApplication.shared.open(URL(string: "maps://?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+                self.addressBtn.isEnabled = true
+                self.mapBtn.isEnabled = true
             }
             alert.addAction(maps)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _IOFBF in
+            self.addressBtn.isEnabled = true
+            self.mapBtn.isEnabled = true
+        }
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

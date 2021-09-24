@@ -23,6 +23,7 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
     @IBOutlet var cdStatus: UILabel!
     @IBOutlet var menu: UITextView!
     @IBOutlet var addressBtn: UIButton!
+    @IBOutlet var mapBtn: UIButton!
     @IBOutlet var numberOfMeals: UILabel!
     @IBOutlet var address: UITextView!
     @IBOutlet var price: UILabel!
@@ -31,6 +32,7 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
     @IBOutlet var payOrder: UIButton!
     //delegates
     var delegate:ReloadDataInCalendarVCProtocol?
+    var delegateLogin:HomeVCRefreshUIProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +85,9 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
         present(alert, animated: true, completion: nil)
     }
     @IBAction func payOrder(_ sender: Any) {
+        enableButtons(value: false)
         performSegue(withIdentifier: "paymentVC", sender: self)
+        enableButtons(value: true)
     }
     
     // MARK: - SPINNER
@@ -115,18 +119,29 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
     }
     //MARK: - UPDATE UI
     func callNavigationMapsAlert(){
+        addressBtn.isEnabled = false
+        mapBtn.isEnabled = false
         let alert = UIAlertController(title: "Navigate to KungfuBBQ location", message: "Choose your favorite application", preferredStyle: .actionSheet)
         let gMaps = UIAlertAction(title: "Google Maps", style: .default) { action in
+            print("Google Maps")
             UIApplication.shared.open(URL(string:"https://www.google.com/maps?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+            self.addressBtn.isEnabled = true
+            self.mapBtn.isEnabled = true
         }
         alert.addAction(gMaps)
         if (UIApplication.shared.canOpenURL(URL(string:"maps:")!)) {  //First check Google Mpas installed on User's phone or not.
             let maps = UIAlertAction(title: "Maps", style: .default) { action in
+                print("Apple Maps")
                 UIApplication.shared.open(URL(string: "maps://?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+                self.addressBtn.isEnabled = true
+                self.mapBtn.isEnabled = true
             }
             alert.addAction(maps)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _IOFBF in
+            self.addressBtn.isEnabled = true
+            self.mapBtn.isEnabled = true
+        }
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
@@ -142,6 +157,7 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
             dest.cookingDate = cookingDate
             dest.order = order
             dest.delegate = self
+            dest.delegateLogin = self.delegateLogin
         }
     }
     //MARK: - DELEGATE METHO
@@ -155,6 +171,8 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
     func orderPayment(paid: Bool) {
         if(paid){
             callDeletage()
+        }else{
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     //MARK: - HTTP REQUEST

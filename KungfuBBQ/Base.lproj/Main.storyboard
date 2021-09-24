@@ -45,7 +45,7 @@
                                         <color key="backgroundColor" name="backGround"/>
                                         <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="35"/>
                                         <color key="tintColor" name="fontColor"/>
-                                        <state key="normal" title="Need catoring?">
+                                        <state key="normal" title="Need catering?">
                                             <color key="titleColor" name="fontColor"/>
                                         </state>
                                         <connections>
@@ -647,7 +647,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CM8-OG-hB1" userLabel="titleView">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catoring contact form" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0M-Nz-Qw0">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catering contact form" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0M-Nz-Qw0">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="30"/>
                                                                 <color key="textColor" name="fontColor"/>
@@ -666,7 +666,7 @@
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="stI-dF-Api" userLabel="infomrationLbl">
                                                         <rect key="frame" x="15" y="70" width="290" height="94"/>
-                                                        <string key="text">You may hire KungfuBBQ for catoring. Please, fill out this form with your contact information and tell us briefly about your needs (such as amount of people, date, menu, ...).</string>
+                                                        <string key="text">You may hire KungfuBBQ for catering. Please, fill out this form with your contact information and tell us briefly about your needs (such as amount of people, date, menu, ...).</string>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
@@ -797,7 +797,7 @@
                                                                     <outlet property="delegate" destination="wLm-YA-3dc" id="jf0-tg-lLt"/>
                                                                 </connections>
                                                             </textView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe your needs:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mr6-Ny-M06" userLabel="descriptionLbl">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe your need:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mr6-Ny-M06" userLabel="descriptionLbl">
                                                                 <rect key="frame" x="0.0" y="142" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
@@ -1350,6 +1350,7 @@
                         <outlet property="invitationCode" destination="ZyJ-2d-s3a" id="SsJ-EN-2aW"/>
                         <outlet property="password" destination="hkU-V5-fTa" id="HJs-SB-G0D"/>
                         <outlet property="passwordConfirmation" destination="CLp-i6-LeP" id="vdZ-yJ-BwU"/>
+                        <outlet property="registerBrn" destination="fj0-xe-tP8" id="Q9l-wn-Uq8"/>
                         <outlet property="scrollView" destination="9BU-GD-hEq" id="79h-Tu-R5m"/>
                     </connections>
                 </viewController>
@@ -1552,6 +1553,7 @@
                         <outlet property="currentPass" destination="MSF-jX-dRJ" id="9ht-h0-arh"/>
                         <outlet property="newPassword" destination="DaA-iJ-976" id="oGo-yJ-KEb"/>
                         <outlet property="newPasswordConfirmation" destination="9Ek-bS-L25" id="c4E-TU-8ZC"/>
+                        <outlet property="saveBtn" destination="ZzI-cD-Vs9" id="AMR-Ny-9s4"/>
                         <outlet property="scrollView" destination="msv-ri-Qm7" id="nSQ-bK-Y7L"/>
                     </connections>
                 </viewController>
@@ -2491,6 +2493,7 @@
                         <outlet property="cdStatus" destination="INf-kz-KdL" id="6oy-pK-YId"/>
                         <outlet property="date" destination="lDt-Tv-d6T" id="owp-gF-ROT"/>
                         <outlet property="editBtn" destination="9Uy-7J-6nM" id="i1E-dY-klk"/>
+                        <outlet property="mapBtn" destination="t0w-mg-8aR" id="ru2-ck-XTq"/>
                         <outlet property="mapView" destination="uha-mV-Wpj" id="CC1-tB-UGY"/>
                         <outlet property="menu" destination="htH-2r-nGD" id="1x5-OX-j8r"/>
                         <outlet property="numberMealsPV" destination="cMS-sK-ESa" id="ex7-u9-5HF"/>
@@ -2789,6 +2792,7 @@
                         <outlet property="cancelOrder" destination="xxv-MU-lPs" id="Hiw-xQ-V7e"/>
                         <outlet property="cdStatus" destination="uXb-7K-8Gj" id="FCg-jK-fzf"/>
                         <outlet property="date" destination="SVD-6K-eWk" id="MSy-I0-K0g"/>
+                        <outlet property="mapBtn" destination="aQw-7B-8Z5" id="xPb-Fk-ZtX"/>
                         <outlet property="mapView" destination="OUc-ay-BQp" id="Tvv-nM-l4g"/>
                         <outlet property="menu" destination="Ndb-8h-kpt" id="EgN-fk-IZq"/>
                         <outlet property="numberOfMeals" destination="zH3-8O-elJ" id="AzI-Rw-Yws"/>
@@ -3026,8 +3030,10 @@
                     <navigationItem key="navigationItem" title="My awesome order" id="EGF-TO-h8m"/>
                     <connections>
                         <outlet property="address" destination="SNm-ac-NRz" id="GR3-mq-8Ds"/>
+                        <outlet property="addressBtn" destination="ud9-cN-Sf3" id="PPe-Ev-BfE"/>
                         <outlet property="cdStatus" destination="haH-3y-c6z" id="HUg-Bf-B2g"/>
                         <outlet property="date" destination="rAi-wi-hD7" id="GQQ-WJ-t7P"/>
+                        <outlet property="mapBtn" destination="4ts-K0-21o" id="bco-f6-1bc"/>
                         <outlet property="mapView" destination="sYk-x1-sd9" id="a1B-P0-0lw"/>
                         <outlet property="menu" destination="aEM-dL-f28" id="y2R-Lv-Kqc"/>
                         <outlet property="numberOfMeals" destination="mtw-yk-JHY" id="n6f-N2-shp"/>

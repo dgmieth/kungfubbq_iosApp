@@ -23,6 +23,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     @IBOutlet var menu: UITextView!
     @IBOutlet var addressBtn: UIButton!
     @IBOutlet var address: UITextView!
+    @IBOutlet var mapBtn: UIButton!
     @IBOutlet var price: UILabel!
     @IBOutlet var totalPrice: UILabel!
     @IBOutlet var editBtn: UIBarButtonItem!
@@ -33,6 +34,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     @IBOutlet var cancelOrderBtnView: UIView!
     //delegates
     var delegate:ReloadDataInCalendarVCProtocol?
+    var delegateLogin:HomeVCRefreshUIProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,31 +100,53 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         cancelOrderBtnView.isHidden = deleteOrder
     }
     func callNavigationMapsAlert(){
+        addressBtn.isEnabled = false
+        mapBtn.isEnabled = false
         let alert = UIAlertController(title: "Navigate to KungfuBBQ location", message: "Choose your favorite application", preferredStyle: .actionSheet)
         let gMaps = UIAlertAction(title: "Google Maps", style: .default) { action in
             print("Google Maps")
             UIApplication.shared.open(URL(string:"https://www.google.com/maps?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+            self.addressBtn.isEnabled = true
+            self.mapBtn.isEnabled = true
         }
         alert.addAction(gMaps)
         if (UIApplication.shared.canOpenURL(URL(string:"maps:")!)) {  //First check Google Mpas installed on User's phone or not.
             let maps = UIAlertAction(title: "Maps", style: .default) { action in
                 print("Apple Maps")
                 UIApplication.shared.open(URL(string: "maps://?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+                self.addressBtn.isEnabled = true
+                self.mapBtn.isEnabled = true
             }
             alert.addAction(maps)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _IOFBF in
+            self.addressBtn.isEnabled = true
+            self.mapBtn.isEnabled = true
+        }
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
+    func loginAgain(){
+                let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default) { _ in
+                    self.delegateLogin?.loggedUser = false
+                    self.delegateLogin?.refreshUI()
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+                alert.addAction(ok)
+                present(alert, animated: true, completion: nil)
+            }
     //MARK: - HTTP REQUEST
     func deleteOrder(){
-        cancelOrder.isEnabled = false
-        createSpinner()
         HttpRequestCtrl.shared.post(toRoute: "/api/order/deleteOrder", userEmail: user.email, userId: "\(user.id)", orderID: Int(order.orderId), headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
             guard let errorCheck = jsonObject["hasErrors"] as? Int
             else { return }
             self.removeSpinner()
+            if(errorCheck == -1){
+                return DispatchQueue.main.async {
+                     self.loginAgain()
+                }
+            }
             if(errorCheck==0){
                 guard let msg = jsonObject["msg"] as? String else { return }
                 DispatchQueue.main.async {
@@ -135,13 +159,22 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                     self.present(alert, animated: true, completion: nil)
                 }
             }else{
-                guard let msg = jsonObject["msg"] as? String else { return }
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error", message: "Not possible to delete order right now. Server message: \(msg)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .default)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                    self.cancelOrder.isEnabled = true
+                guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                if(errorCode == -1){
+                    print("errorCode called")
+                    DispatchQueue.main.async {
+                        self.loginAgain()
+                   }
+                }else{
+                    guard let msg = jsonObject["msg"] as? String else { return }
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error", message: "Not possible to delete order right now. Server message: \(msg)", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default)
+                        alert.addAction(ok)
+                        self.cancelOrder.isEnabled = true
+                        self.editBtn.isEnabled = true
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
             
@@ -151,8 +184,9 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 let alert = UIAlertController(title: "Error", message: "Not possible to delete order right now. Generalized error: \(error)", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .default)
                 alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
                 self.cancelOrder.isEnabled = true
+                self.editBtn.isEnabled = true
+                self.present(alert, animated: true, completion: nil)
             }
         }
 
@@ -187,11 +221,14 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     @IBAction func mapClick(_ sender: Any) {
         callNavigationMapsAlert()
     }
-    class func openMaps(with mapItems: [MKMapItem],
-                        launchOptions: [String : Any]? = nil) -> Bool {
-        return true
-    }
+//    class func openMaps(with mapItems: [MKMapItem],
+//                        launchOptions: [String : Any]? = nil) -> Bool {
+//        return true
+//    }
     @IBAction func cancelOrder(_ sender: Any) {
+        cancelOrder.isEnabled = false
+        editBtn.isEnabled = false
+        createSpinner()
         let alert = UIAlertController(title: "Cancel this order?", message: "Do you want to cancel this order? This action cannot be undone.", preferredStyle: .alert)
         let dismiss = UIAlertAction(title: "Dismiss", style: .cancel)
         let cancel = UIAlertAction(title: "Cancel", style: .destructive) { action in
@@ -202,25 +239,32 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         present(alert, animated: true, completion: nil)
     }
     @IBAction func saveClick(_ sender: Any) {
+        saveBtn.isEnabled = false
+        cancelBtn.isEnabled = false
         if Int((order.dishes!.allObjects as! [CDOrderDishes])[0].dishQtty!) == numberMealsPV.selectedRow(inComponent: 0)+1 {
             let alert = UIAlertController(title: "Error", message: "No changes where made to the order", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default) { action in
                 self.buttonsAreHidden(deleteOrder:false)
             }
             alert.addAction(ok)
+            saveBtn.isEnabled = true
+            cancelBtn.isEnabled = true
             present(alert, animated: true, completion: nil)
             return
         }
         createSpinner()
         buttonsAreHidden(deleteOrder:false)
-        saveBtn.isEnabled = false
-        cancelBtn.isEnabled = false
         numberMealsPV.isUserInteractionEnabled = false
         HttpRequestCtrl.shared.post(toRoute: "/api/order/updateOrder", userEmail: user.email!, userId: "\(user.id)", orderID: Int(order.orderId), newQuantity: Int(numberMealsPV.selectedRow(inComponent: 0)+1), headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
             print(jsonObject)
             self.removeSpinner()
             guard let errorCheck = jsonObject["hasErrors"] as? Int
             else { return }
+            if(errorCheck == -1){
+                return DispatchQueue.main.async {
+                     self.loginAgain()
+                }
+            }
             if(errorCheck==0){
                 guard let msg = jsonObject["msg"] as? String else { return }
                 DispatchQueue.main.async {
@@ -233,13 +277,22 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                     self.present(alert, animated: true, completion: nil)
                 }
             }else{
-                guard let msg = jsonObject["msg"] as? String else { return }
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error", message: "Not possible to update order right now. Server message: \(msg)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .default)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                    self.cancelOrder.isEnabled = true
+                guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                if(errorCode == -1){
+                    print("errorCode called")
+                    DispatchQueue.main.async {
+                        self.loginAgain()
+                   }
+                }else{
+                    guard let msg = jsonObject["msg"] as? String else { return }
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error", message: "Not possible to update order right now. Server message: \(msg)", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default)
+                        alert.addAction(ok)
+                        self.saveBtn.isEnabled = true
+                        self.cancelBtn.isEnabled = true
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
         } onError: { error in
@@ -249,14 +302,17 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 let alert = UIAlertController(title: "Error", message: "Not possible to update order right now. Generalized error: \(error)", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .default)
                 alert.addAction(ok)
+                self.saveBtn.isEnabled = true
+                self.cancelBtn.isEnabled = true
                 self.present(alert, animated: true, completion: nil)
-                self.cancelOrder.isEnabled = true
             }
         }
 
     }
     @IBAction func cancelClick(_ sender: Any) {
+        cancelBtn.isEnabled = false
         buttonsAreHidden(deleteOrder:false)
+        cancelBtn.isEnabled = true
     }
     
 }

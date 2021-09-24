@@ -94,12 +94,15 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func changePasswordClick(_ sender: Any) {
+        changePassword.isEnabled = false
         performSegue(withIdentifier: "changePassword", sender: self)
+        changePassword.isEnabled = true
     }
     @IBAction func cancelClick(_ sender: Any) {
         updateInformation(UIenabled: false)
     }
     @IBAction func saveClick(_ sender: Any) {
+        saveBtn.isEnabled = false
         let name = name.text!
         let phoneNumber = phoneNumber.text!
         let facebookName = facebookName.text!
@@ -134,19 +137,29 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
                     self.save()
                     DispatchQueue.main.async {
                         self.updateInformation(UIenabled: false)
+                        self.saveBtn.isEnabled = true
                         let alert = UIAlertController(title: "Success!", message: "Updated successfull!", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .cancel)
                         alert.addAction(ok)
                         self.present(alert, animated: true, completion: nil)
                     }
                 }else{
-                    guard let msg = jsonObject["msg"] as? String else { return }
-                    print("registerError")
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Server message: \(msg)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel)
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
+                    guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                    if(errorCode == -1){
+                        print("errorCode called")
+                        DispatchQueue.main.async {
+                            self.loginAgain()
+                       }
+                    }else{
+                        guard let msg = jsonObject["msg"] as? String else { return }
+                        print("registerError")
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Server message: \(msg)", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .cancel)
+                            alert.addAction(ok)
+                            self.saveBtn.isEnabled = true
+                            self.present(alert, animated: true, completion: nil)
+                        }
                     }
                 }
             } onError: { error in
@@ -155,6 +168,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
                     let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Internal error message: \(error)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel)
                     alert.addAction(ok)
+                    self.saveBtn.isEnabled = true
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -162,6 +176,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
             let alert = UIAlertController(title: "Error!", message: "No user information was changed. No update needed.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .cancel)
             alert.addAction(ok)
+            saveBtn.isEnabled = true
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -298,12 +313,23 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         instagramName.backgroundColor = enabled ? .white : UIColor(named: "i_yellow")
         instagramName.borderStyle = enabled ? .roundedRect : .none
     }
+    func loginAgain(){
+        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            self.delegate?.loggedUser = false
+            self.delegate?.refreshUI()
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
     // MARK: - SEGUEWAYS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "changePassword"{
             let dest = segue.destination as! PasswordChangeVC
             dest.dataController = dataController
             dest.user = user
+            dest.delegate = delegate
         }
     }
     // MARK: - SPINNER

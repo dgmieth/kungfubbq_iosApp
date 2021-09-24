@@ -26,6 +26,9 @@
 		3853A8582663EEF200FCBEAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3853A8572663EEF200FCBEAA /* Assets.xcassets */; };
 		3853A85B2663EEF200FCBEAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3853A8592663EEF200FCBEAA /* LaunchScreen.storyboard */; };
 		38560AAE26CC6BEA00EFAF1F /* CatoringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38560AAD26CC6BEA00EFAF1F /* CatoringVC.swift */; };
+		385F748C26FD2F6D00DA13E9 /* HomeVCRefreshUIProtocolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385F748B26FD2F6D00DA13E9 /* HomeVCRefreshUIProtocolo.swift */; };
+		385F748E26FD34F500DA13E9 /* ReloadDataInCalendarVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385F748D26FD34F500DA13E9 /* ReloadDataInCalendarVCProtocol.swift */; };
+		385F749026FD362B00DA13E9 /* PaymentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385F748F26FD362B00DA13E9 /* PaymentProtocol.swift */; };
 		386718A426CDF68E002AAB81 /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386718A326CDF68E002AAB81 /* PhoneFormatter.swift */; };
 		3868B98026E9505C00BBEA4F /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3868B97F26E9505C00BBEA4F /* CustomDateFormatter.swift */; };
 		3868B98226E995E200BBEA4F /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3868B98126E995E200BBEA4F /* UIButtonExtension.swift */; };
@@ -63,6 +66,9 @@
 		3853A85A2663EEF200FCBEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3853A85C2663EEF200FCBEAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38560AAD26CC6BEA00EFAF1F /* CatoringVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatoringVC.swift; sourceTree = "<group>"; };
+		385F748B26FD2F6D00DA13E9 /* HomeVCRefreshUIProtocolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCRefreshUIProtocolo.swift; sourceTree = "<group>"; };
+		385F748D26FD34F500DA13E9 /* ReloadDataInCalendarVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataInCalendarVCProtocol.swift; sourceTree = "<group>"; };
+		385F748F26FD362B00DA13E9 /* PaymentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProtocol.swift; sourceTree = "<group>"; };
 		386718A326CDF68E002AAB81 /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
 		3868B97F26E9505C00BBEA4F /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		3868B98126E995E200BBEA4F /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
@@ -136,6 +142,16 @@
 			path = KungfuBBQ;
 			sourceTree = "<group>";
 		};
+		385F748A26FD2F5100DA13E9 /* protocolos */ = {
+			isa = PBXGroup;
+			children = (
+				385F748B26FD2F6D00DA13E9 /* HomeVCRefreshUIProtocolo.swift */,
+				385F748D26FD34F500DA13E9 /* ReloadDataInCalendarVCProtocol.swift */,
+				385F748F26FD362B00DA13E9 /* PaymentProtocol.swift */,
+			);
+			path = protocolos;
+			sourceTree = "<group>";
+		};
 		386718A226CDF67D002AAB81 /* formatters */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +178,7 @@
 		3888C84426671EBC00DA735A /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				385F748A26FD2F5100DA13E9 /* protocolos */,
 				3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */,
 				3853A8522663EEEA00FCBEAA /* HomeVC.swift */,
 				3888C84526671F1C00DA735A /* CalendarViewController.swift */,
@@ -322,6 +339,7 @@
 			files = (
 				38A84CC7266C07DA00D1F328 /* DataModel.xcdatamodeld in Sources */,
 				3870A8AD26C1CD6B00F7C4D2 /* DataController.swift in Sources */,
+				385F748C26FD2F6D00DA13E9 /* HomeVCRefreshUIProtocolo.swift in Sources */,
 				381E3F2F2669850A00003E19 /* PaymentOptionsVC.swift in Sources */,
 				38316C2E26E52BC20091F270 /* OrderExtras.swift in Sources */,
 				384C2F9626CF2E9500C60B29 /* UserInfoVc.swift in Sources */,
@@ -345,8 +363,10 @@
 				38560AAE26CC6BEA00EFAF1F /* CatoringVC.swift in Sources */,
 				3853A8532663EEEA00FCBEAA /* HomeVC.swift in Sources */,
 				3853A84F2663EEEA00FCBEAA /* AppDelegate.swift in Sources */,
+				385F749026FD362B00DA13E9 /* PaymentProtocol.swift in Sources */,
 				3868B98226E995E200BBEA4F /* UIButtonExtension.swift in Sources */,
 				3802FC7E26C33A2B008D594F /* HttpRequestCtrl.swift in Sources */,
+				385F748E26FD34F500DA13E9 /* ReloadDataInCalendarVCProtocol.swift in Sources */,
 				3853A8512663EEEA00FCBEAA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

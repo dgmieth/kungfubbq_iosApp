@@ -6,9 +6,6 @@
 //
 
 import UIKit
-protocol PaymentProtocol {
-    func orderPayment(paid:Bool)
-}
 
 class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UITextFieldDelegate {
     //vars and lets
@@ -25,6 +22,7 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     @IBOutlet var cancelBtn: UIButton!
     //delegates
     var delegate:PaymentProtocol?
+    var delegateLogin:HomeVCRefreshUIProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,10 +76,15 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             let cNumber = cardNumber.text!.replacingOccurrences(of: " ", with: "")
             createSpinner()
             HttpRequestCtrl.shared.post(toRoute: "/api/order/payOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), orderID: Int(order.orderId), cardNumber: cNumber, expirantionDate: eDate, cardCode: cardCode.text!, headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-//                print(jsonObject)
+                print(jsonObject)
                 self.removeSpinner()
                 guard let errorCheck = jsonObject["hasErrors"] as? Int
                 else { return }
+                if(errorCheck == -1){
+                    return DispatchQueue.main.async {
+                         self.loginAgain()
+                    }
+                }
                 if(errorCheck==0){
                     guard let msg = jsonObject["msg"] as? String else { return }
                     DispatchQueue.main.async {
@@ -95,15 +98,23 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
                         
                     }
                 }else{
-                    guard let msg = jsonObject["msg"] as? String else { return }
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error", message: "Server message: \(msg)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .default) { _ in
-                            self.delegate?.orderPayment(paid: false)
-                            self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                    if(errorCode == -1){
+                        print("errorCode called")
+                        DispatchQueue.main.async {
+                            self.loginAgain()
+                       }
+                    }else{
+                        guard let msg = jsonObject["msg"] as? String else { return }
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Error", message: "Server message: \(msg)", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .default) { _ in
+                                self.delegate?.orderPayment(paid: false)
+                                self.presentingViewController?.dismiss(animated: true, completion: nil)
+                            }
+                            alert.addAction(ok)
+                            self.present(alert, animated: true, completion: nil)
                         }
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
                     }
                 }
                 }onError: { error in
@@ -140,6 +151,17 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         payBtn.isEnabled = value
         cancelBtn.isEnabled = value
     }
+    func loginAgain(){
+                let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default) { _ in
+                    self.delegateLogin?.loggedUser = false
+                    self.delegateLogin?.refreshUI()
+                    self.delegate?.orderPayment(paid: false)
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
+                }
+                alert.addAction(ok)
+                present(alert, animated: true, completion: nil)
+            }
     //MARK: - TEXTFIELDS
     func textFieldDidEndEditing(_ textField: UITextField) {
         //activeField = textField

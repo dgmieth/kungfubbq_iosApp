@@ -35,26 +35,35 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet var paidOrderCheckOut: UIButton!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var viewTest: UIView!
+    //delegates
+    var delegate:HomeVCRefreshUIProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         updateUIInformation()
         calendar.register(FSCalendarCell.self, forCellReuseIdentifier: "CELL")
         calendar.select(self.calendar.today)
     }
     //MARK: - BUTONS EVENT LISTENERS
     @IBAction func placeOrderClick(_ sender: Any) {
+        placeOrder.isEnabled = false
         performSegue(withIdentifier: "placeOrder", sender: self)
+        placeOrder.isEnabled = true
     }
     @IBAction func checkoutOrderClick(_ sender: Any) {
+        checkOutOrder.isEnabled = false
         performSegue(withIdentifier: "updateOrder", sender: self)
+        checkOutOrder.isEnabled = true
     }
     @IBAction func payOrderClick(_ sender: Any) {
+        payBtn.isEnabled = false
         performSegue(withIdentifier: "payOrder", sender: self)
+        payBtn.isEnabled = true
     }
     @IBAction func paidOrderCheckOutClick(_ sender: Any) {
+        paidOrderCheckOut.isEnabled = false
         performSegue(withIdentifier: "paidOrder", sender: self)
+        paidOrderCheckOut.isEnabled = true
     }
     // MARK: - CORE DATA
     func save(){
@@ -146,7 +155,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             user = userArray[0]
         }
         HttpRequestCtrl.shared.get(toRoute: "/api/cookingCalendar/activeCookingDatesWithinSixtyDays", userId: String(user!.id), userEmail: user!.email ,headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-            //print(jsonObject)
+            print(jsonObject)
             guard let errorCheck = jsonObject["hasErrors"] as? Int
             else { return }
             if(errorCheck==0){
@@ -230,29 +239,44 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                         self.updateSelectedDate(selectedDate: self.calendar.selectedDate!)
                     }
                 }else{
-                    let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .default){action in
-                        self.navigationController?.popViewController(animated: true)
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default){action in
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
                     }
-                    alert.addAction(ok)
-                    alert.present(alert, animated: true, completion: nil)
                 }
             }else{
-                let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
+                print("hasErrors called")
+                guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                if(errorCode == -1){
+                    print("errorCode called")
+                    DispatchQueue.main.async {
+                        self.loginAgain()
+                   }
+                }else{
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default){action in
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+        } onError: { error in
+            print(error)
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. General error message: \(error).Please try again later", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .default){action in
                     self.navigationController?.popViewController(animated: true)
                 }
                 alert.addAction(ok)
-                alert.present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
             }
-        } onError: { error in
-            print(error)
-            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. General error message: \(error).Please try again later", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Ok", style: .default){action in
-                self.navigationController?.popViewController(animated: true)
-            }
-            alert.addAction(ok)
-            alert.present(alert, animated: true, completion: nil)
         }
     }
     //MARK: - SEGUE
@@ -262,6 +286,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             dest.cookingDate = cookingDate!
             dest.user = user!
             dest.delegate = self
+            dest.delegateLogin = delegate
         }
         if segue.identifier == "updateOrder" {
             let dest = segue.destination as! MyAwesomePreOrderVC
@@ -269,6 +294,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             dest.user = user!
             dest.order = (cookingDate!.orders!.allObjects as! [CDOrder])[0]
             dest.delegate = self
+            dest.delegateLogin = delegate
         }
         if segue.identifier == "payOrder" {
             let dest = segue.destination as! OrderPaymentVC
@@ -277,6 +303,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             dest.dataController = dataController
             dest.order = (cookingDate!.orders!.allObjects as! [CDOrder])[0]
             dest.delegate = self
+            dest.delegateLogin = delegate
         }
         if segue.identifier == "paidOrder" {
             print((cookingDate!.orders!.allObjects as! [CDOrder])[0])
@@ -287,6 +314,17 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             dest.order = (cookingDate!.orders!.allObjects as! [CDOrder])[0]
         }
     }
+    //MARK: - UI
+    func loginAgain(){
+            let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { _ in
+                self.delegate?.loggedUser = false
+                self.delegate?.refreshUI()
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
     func updateSelectedDate(selectedDate date:Date){
         print("didSelectDate")
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -364,6 +402,9 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             print("no cooking on this day")
             updateUICalendarView()
         }
+    }
+    func errorCodeAlert(){
+        
     }
     //MARK: - PROTOCOL
     func refreshUI() {
