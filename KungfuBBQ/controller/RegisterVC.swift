@@ -53,7 +53,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         if !emailC.isEmpty && !passC.isEmpty && !passwordConfC.isEmpty && !codeC.isEmpty {
             createSpinner()
             var user1 = User()
-            HttpRequestCtrl.shared.post(toRoute: "/login/register", userEmail: emailC, userPassword: passC, confirmPassword: passwordConfC, invitationCode: codeC) { jsonObject in
+            HttpRequestCtrl.shared.post(toRoute: "/login/register", mobileOS: "apple",userEmail: emailC, userPassword: passC, confirmPassword: passwordConfC, invitationCode: codeC) { jsonObject in
                 print("registerSuccess")
                 guard let errorCheck = jsonObject["hasErrors"] as? Int
                 else {

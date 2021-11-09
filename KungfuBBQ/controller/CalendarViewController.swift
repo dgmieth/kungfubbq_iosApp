@@ -335,7 +335,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             let cd = cds!.filter { $0.cookingDate!.split(separator: " ")[0] == sDate}
             cookingDate = cd[0]
             updateUICalendarView(cookingOnThiDate: true, selectedDate: sDate)
-            if(cd[0].cookingStatusId <= Int64(4)){
+            if(cd[0].cookingStatusId == Int64(4)){
                 let orders = cd[0].orders!.allObjects as! [CDOrder]
                 if orders.count == 0 {
                     updateActionButtonsAreHidden(place: false)
@@ -359,7 +359,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     //user didn't make to the list but is waiting for dropouts
                     if orders[0].orderStatusId == 4 {
                         updateActionButtonsAreHidden()
-                        let alert = UIAlertController(title: "Order status", message: "Your order did not make it to this list, but you are on the list waiting for drop out orders. You'll receive a notification if your order gets onto this list", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Order status", message: "Your order did not make it to this list, but you are on the waiting list for drop out orders. You'll receive a notification if your order gets onto this list", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .default)
                         alert.addAction(ok)
                         present(alert, animated: true, completion: nil)

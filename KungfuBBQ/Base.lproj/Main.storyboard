@@ -138,7 +138,7 @@
             <objects>
                 <viewController title="App Information" id="mnB-xH-1Ac" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vRc-Ff-ygK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42h-Wk-Y57" userLabel="contentView">
@@ -253,7 +253,7 @@
             <objects>
                 <viewController title="User information" id="reh-qE-X6d" customClass="UserInfoVc" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c9l-RD-rSz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-av-u98">
@@ -898,7 +898,7 @@
             <objects>
                 <viewController title="Log-in" id="yzV-ju-ySc" customClass="LoginVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vg0-TJ-S7y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psy-pM-hLh" userLabel="scrollContainer">
@@ -1124,7 +1124,7 @@
             <objects>
                 <viewController title="Register" id="6MI-51-Et2" customClass="RegisterVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vwg-jq-vNS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwo-l2-l5W" userLabel="scrollContainer">
@@ -1363,7 +1363,7 @@
             <objects>
                 <viewController title="Change Password" id="EcC-50-sxe" customClass="PasswordChangeVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iqc-G9-wGo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dut-WL-7Uz" userLabel="scrollContainer">
@@ -1470,8 +1470,8 @@
                                                                     <outlet property="delegate" destination="EcC-50-sxe" id="ztJ-8V-Dtp"/>
                                                                 </connections>
                                                             </textField>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzO-38-UpA" userLabel="confirmPasswordLbl">
-                                                                <rect key="frame" x="0.0" y="198" width="186" height="25"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm new password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzO-38-UpA" userLabel="confirmPasswordLbl">
+                                                                <rect key="frame" x="0.0" y="198" width="239" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
@@ -3050,7 +3050,7 @@
             <objects>
                 <viewController id="5iZ-CZ-RSW" customClass="PaymentOptionsVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r9j-p4-czN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzp-yf-Qtj" userLabel="contentView">
@@ -3218,7 +3218,7 @@
             <color red="0.96100002527236938" green="0.875" blue="0.15299999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="0.24500000476837158" green="0.48500001430511475" blue="0.99800002574920654" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.24300000071525574" green="0.48600000143051147" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textFieldBackground">
             <color red="0.94499999284744263" green="0.95300000905990601" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

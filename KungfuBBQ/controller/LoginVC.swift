@@ -100,7 +100,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         if !username.isEmpty && !pass.isEmpty {
             createSpinner()
             var user1 = User()
-            HttpRequestCtrl.shared.post(toRoute: "/login/login", userEmail: username, userPassword: pass, onCompletion: { (jsonObject) in
+            HttpRequestCtrl.shared.post(toRoute: "/login/login", mobileOS: "apple", userEmail: username, userPassword: pass, onCompletion: { (jsonObject) in
                 guard let errorCheck = jsonObject["hasErrors"] as? Int
                 else {
                     return
