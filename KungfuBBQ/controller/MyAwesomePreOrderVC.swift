@@ -45,7 +45,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         mapView.setRegion(region, animated: true)
         let pin = customPin(pinTitle: "KungfuBBQ", pinSubtitle: "teste", location: initialRegion2D)
         cookingDate.lat == -9999999999 || cookingDate.lng == -9999999999 ? nil : mapView.addAnnotation(pin)
-        date.text = CustomDateFormatter.shared.mmDDAtHHMM_AMorPM(usingStringDate: cookingDate.cookingDate!)
+        date.text = CustomDateFormatter.shared.mmDDAtHHMM_forDateUIView(usingStringDate: cookingDate.cookingDate!)
         var text = ""
         var counter = 1
         let dishes = cookingDate.dishes!.allObjects as! [CDCookingDateDishes]
@@ -229,9 +229,13 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         cancelOrder.isEnabled = false
         editBtn.isEnabled = false
         createSpinner()
-        let alert = UIAlertController(title: "Cancel this order?", message: "Do you want to cancel this order? This action cannot be undone.", preferredStyle: .alert)
-        let dismiss = UIAlertAction(title: "Dismiss", style: .cancel)
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { action in
+        let alert = UIAlertController(title: "Delete this order?", message: "Do you want to delete this order? This action cannot be undone.", preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "Cancel", style: .cancel){ action in
+            self.removeSpinner()
+            self.editBtn.isEnabled = true
+            self.cancelOrder.isEnabled = true
+        }
+        let cancel = UIAlertAction(title: "Delete", style: .destructive) { action in
             self.deleteOrder()
         }
         alert.addAction(dismiss)

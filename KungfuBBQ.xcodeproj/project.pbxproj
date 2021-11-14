@@ -19,6 +19,7 @@
 		38316C2E26E52BC20091F270 /* OrderExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38316C2D26E52BC20091F270 /* OrderExtras.swift */; };
 		384677E326D1480000B3AF0E /* PasswordChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384677E226D1480000B3AF0E /* PasswordChangeVC.swift */; };
 		384C2F9626CF2E9500C60B29 /* UserInfoVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C2F9526CF2E9500C60B29 /* UserInfoVc.swift */; };
+		384E11C32740426C00E92800 /* AboutAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E11C22740426C00E92800 /* AboutAppVC.swift */; };
 		3853A84F2663EEEA00FCBEAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853A84E2663EEEA00FCBEAA /* AppDelegate.swift */; };
 		3853A8512663EEEA00FCBEAA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853A8502663EEEA00FCBEAA /* SceneDelegate.swift */; };
 		3853A8532663EEEA00FCBEAA /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853A8522663EEEA00FCBEAA /* HomeVC.swift */; };
@@ -57,6 +58,7 @@
 		38316C2D26E52BC20091F270 /* OrderExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExtras.swift; sourceTree = "<group>"; };
 		384677E226D1480000B3AF0E /* PasswordChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeVC.swift; sourceTree = "<group>"; };
 		384C2F9526CF2E9500C60B29 /* UserInfoVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVc.swift; sourceTree = "<group>"; };
+		384E11C22740426C00E92800 /* AboutAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutAppVC.swift; path = protocolos/AboutAppVC.swift; sourceTree = "<group>"; };
 		3853A84B2663EEEA00FCBEAA /* KungfuBBQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KungfuBBQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3853A84E2663EEEA00FCBEAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3853A8502663EEEA00FCBEAA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		3888C84426671EBC00DA735A /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				384E11C22740426C00E92800 /* AboutAppVC.swift */,
 				385F748A26FD2F5100DA13E9 /* protocolos */,
 				3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */,
 				3853A8522663EEEA00FCBEAA /* HomeVC.swift */,
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				384E11C32740426C00E92800 /* AboutAppVC.swift in Sources */,
 				38A84CC7266C07DA00D1F328 /* DataModel.xcdatamodeld in Sources */,
 				3870A8AD26C1CD6B00F7C4D2 /* DataController.swift in Sources */,
 				385F748C26FD2F6D00DA13E9 /* HomeVCRefreshUIProtocolo.swift in Sources */,
@@ -444,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -499,7 +503,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

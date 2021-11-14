@@ -127,7 +127,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         if let dt = selectedDate {
             for cd in cds! {
                 if(cd.cookingDate!.split(separator: " ")[0]) == dt {
-                    date.text = CustomDateFormatter.shared.mmDDAtHHMM_AMorPM(usingStringDate: cd.cookingDate!)
+                    date.text = CustomDateFormatter.shared.mmDDAtHHMM_forDateUIView(usingStringDate: cd.cookingDate!)
                     status.text = cd.cookingStatus!
                     let cdDishes = cd.dishes?.allObjects as! [CDCookingDateDishes]
                     var text = ""

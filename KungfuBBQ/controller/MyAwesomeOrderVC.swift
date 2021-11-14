@@ -38,7 +38,7 @@ class MyAwesomeOrderVC: UIViewController {
         mapView.setRegion(region, animated: true)
         let pin = customPin(pinTitle: "KungfuBBQ", pinSubtitle: "teste", location: initialRegion2D)
         cookingDate.lat == -9999999999 || cookingDate.lng == -9999999999 ? nil : mapView.addAnnotation(pin)
-        date.text = CustomDateFormatter.shared.mmDDAtHHMM_AMorPM(usingStringDate: cookingDate.cookingDate!)
+        date.text = CustomDateFormatter.shared.mmDDAtHHMM_forDateUIView(usingStringDate: cookingDate.cookingDate!)
         var text = ""
         var counter = 1
         let dishes = cookingDate.dishes!.allObjects as! [CDCookingDateDishes]

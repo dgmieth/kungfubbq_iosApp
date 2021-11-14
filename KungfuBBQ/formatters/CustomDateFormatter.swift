@@ -24,6 +24,15 @@ class CustomDateFormatter {
         let string = dateFormatter.string(from: dt2!)
         return string
     }
+    func mmDDAtHHMM_forDateUIView(usingStringDate str:String)->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dt2 = dateFormatter.date(from: str)
+        dateFormatter.dateFormat = "MMM dd"
+        //dateFormatter.locale = Locale(identifier: "en_US")
+        let string = dateFormatter.string(from: dt2!)
+        return string
+    }
     
     func yyyy_MM_dd(withDate date:Date)->String{
         let dateFormatter = DateFormatter()

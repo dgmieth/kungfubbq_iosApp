@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5DU-ZN-Orl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5DU-ZN-Orl">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment version="5376" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -136,9 +136,9 @@
         <!--App Information-->
         <scene sceneID="kI6-DL-c9Y">
             <objects>
-                <viewController title="App Information" id="mnB-xH-1Ac" sceneMemberID="viewController">
+                <viewController title="App Information" id="mnB-xH-1Ac" customClass="AboutAppVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vRc-Ff-ygK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42h-Wk-Y57" userLabel="contentView">
@@ -183,6 +183,9 @@
                                                 <state key="normal" title="https://dgmieth.me">
                                                     <color key="titleColor" name="primary"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="linkClick:" destination="mnB-xH-1Ac" eventType="touchUpInside" id="fnj-E5-x3N"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -230,11 +233,12 @@
             <objects>
                 <navigationController title="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="5DU-ZN-Orl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8ne-tf-GCg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="8ne-tf-GCg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="i_black"/>
                         <color key="tintColor" name="fontColor"/>
-                        <color key="barTintColor" name="backGround"/>
+                        <color key="barTintColor" name="i_black"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="i_yellow"/>
                         </textAttributes>
@@ -253,7 +257,7 @@
             <objects>
                 <viewController title="User information" id="reh-qE-X6d" customClass="UserInfoVc" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c9l-RD-rSz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-av-u98">
@@ -644,28 +648,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V52-Az-cAw" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CM8-OG-hB1" userLabel="titleView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catering contact form" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0M-Nz-Qw0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
-                                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="30"/>
-                                                                <color key="textColor" name="fontColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" name="backGround"/>
-                                                        <color key="tintColor" name="fontColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="55" id="7e0-ao-RZ7"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Q0M-Nz-Qw0" secondAttribute="trailing" id="HRV-jD-nYh"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Q0M-Nz-Qw0" secondAttribute="bottom" id="OvH-DV-01r"/>
-                                                            <constraint firstItem="Q0M-Nz-Qw0" firstAttribute="leading" secondItem="CM8-OG-hB1" secondAttribute="leading" id="iNV-d1-N2e"/>
-                                                            <constraint firstItem="Q0M-Nz-Qw0" firstAttribute="top" secondItem="CM8-OG-hB1" secondAttribute="top" id="kKY-1o-FgE"/>
-                                                        </constraints>
-                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="stI-dF-Api" userLabel="infomrationLbl">
-                                                        <rect key="frame" x="15" y="70" width="290" height="94"/>
+                                                        <rect key="frame" x="15" y="45" width="290" height="94"/>
                                                         <string key="text">You may hire KungfuBBQ for catering. Please, fill out this form with your contact information and tell us briefly about your needs (such as amount of people, date, menu, ...).</string>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
                                                         <color key="textColor" name="i_black"/>
@@ -737,7 +721,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-hG-X5a" userLabel="formView">
-                                                        <rect key="frame" x="10" y="169" width="300" height="295"/>
+                                                        <rect key="frame" x="10" y="144" width="300" height="320"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Dx7-ZN-PKu" userLabel="nameLbl">
                                                                 <rect key="frame" x="0.0" y="14.5" width="66" height="25"/>
@@ -788,7 +772,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOm-4B-g9a" userLabel="descriptionTextView">
-                                                                <rect key="frame" x="0.0" y="172" width="300" height="118"/>
+                                                                <rect key="frame" x="0.0" y="172" width="300" height="143"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
@@ -833,18 +817,15 @@
                                                 <color key="backgroundColor" name="i_yellow"/>
                                                 <constraints>
                                                     <constraint firstItem="stI-dF-Api" firstAttribute="leading" secondItem="V52-Az-cAw" secondAttribute="leading" constant="15" id="3hz-rE-oqe"/>
-                                                    <constraint firstAttribute="trailing" secondItem="CM8-OG-hB1" secondAttribute="trailing" id="5ed-dc-dR6"/>
                                                     <constraint firstAttribute="trailing" secondItem="LcY-jn-jbf" secondAttribute="trailing" id="6fZ-12-Wca"/>
                                                     <constraint firstItem="LcY-jn-jbf" firstAttribute="leading" secondItem="V52-Az-cAw" secondAttribute="leading" id="KHE-cx-A9b"/>
-                                                    <constraint firstItem="CM8-OG-hB1" firstAttribute="top" secondItem="V52-Az-cAw" secondAttribute="top" id="SHu-bw-LnW"/>
                                                     <constraint firstItem="LcY-jn-jbf" firstAttribute="top" secondItem="Azn-hG-X5a" secondAttribute="bottom" constant="5" id="SK2-nc-bR2"/>
-                                                    <constraint firstItem="CM8-OG-hB1" firstAttribute="leading" secondItem="V52-Az-cAw" secondAttribute="leading" id="aJc-zZ-U1F"/>
                                                     <constraint firstItem="Azn-hG-X5a" firstAttribute="leading" secondItem="V52-Az-cAw" secondAttribute="leading" constant="10" id="d2H-HT-EAy"/>
                                                     <constraint firstAttribute="trailing" secondItem="Azn-hG-X5a" secondAttribute="trailing" constant="10" id="eXN-Bb-Gg9"/>
                                                     <constraint firstAttribute="trailing" secondItem="stI-dF-Api" secondAttribute="trailing" constant="15" id="m7T-eW-qYL"/>
                                                     <constraint firstItem="Azn-hG-X5a" firstAttribute="top" secondItem="stI-dF-Api" secondAttribute="bottom" constant="5" id="oIP-WV-NX1"/>
+                                                    <constraint firstItem="stI-dF-Api" firstAttribute="top" secondItem="V52-Az-cAw" secondAttribute="top" constant="45" id="srS-2A-1bm"/>
                                                     <constraint firstAttribute="bottom" secondItem="LcY-jn-jbf" secondAttribute="bottom" id="szN-1y-KDY"/>
-                                                    <constraint firstItem="stI-dF-Api" firstAttribute="top" secondItem="CM8-OG-hB1" secondAttribute="bottom" constant="15" id="xhF-jW-mgp"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -880,7 +861,7 @@
                             <constraint firstItem="V52-Az-cAw" firstAttribute="width" secondItem="xb3-Vm-xJ6" secondAttribute="width" id="d2k-eB-qfd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yoA-ZX-CxG"/>
+                    <navigationItem key="navigationItem" title="Catering contact" id="yoA-ZX-CxG"/>
                     <connections>
                         <outlet property="catorOrder" destination="IOm-4B-g9a" id="DT5-nB-hHl"/>
                         <outlet property="email" destination="8dv-ps-3wz" id="lDs-PT-ISo"/>
@@ -898,7 +879,7 @@
             <objects>
                 <viewController title="Log-in" id="yzV-ju-ySc" customClass="LoginVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vg0-TJ-S7y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psy-pM-hLh" userLabel="scrollContainer">
@@ -1124,7 +1105,7 @@
             <objects>
                 <viewController title="Register" id="6MI-51-Et2" customClass="RegisterVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vwg-jq-vNS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwo-l2-l5W" userLabel="scrollContainer">
@@ -1363,7 +1344,7 @@
             <objects>
                 <viewController title="Change Password" id="EcC-50-sxe" customClass="PasswordChangeVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iqc-G9-wGo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dut-WL-7Uz" userLabel="scrollContainer">
@@ -1586,7 +1567,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="white"/>
                                 <constraints>
                                     <constraint firstItem="Krp-GR-WyM" firstAttribute="centerY" secondItem="p7J-qp-S4Y" secondAttribute="centerY" id="YaF-VR-bk4"/>
                                     <constraint firstItem="p7J-qp-S4Y" firstAttribute="leading" secondItem="MUN-ne-aQT" secondAttribute="leading" constant="20" id="a5j-k1-Eio"/>
@@ -1824,7 +1805,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ccE-9s-Tup"/>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" name="i_black"/>
                         <constraints>
                             <constraint firstItem="IhK-f4-wHR" firstAttribute="height" secondItem="vSj-Uw-dJs" secondAttribute="height" multiplier="0.77" id="23r-cN-8ev"/>
                             <constraint firstItem="ccE-9s-Tup" firstAttribute="bottom" secondItem="IhK-f4-wHR" secondAttribute="bottom" id="3oH-z6-QKt"/>
@@ -2117,6 +2098,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="Tpo-7s-uEb"/>
                                     </scrollView>
                                 </subviews>
+                                <color key="backgroundColor" name="i_yellow"/>
                                 <constraints>
                                     <constraint firstItem="Joc-iu-1OB" firstAttribute="top" secondItem="8OF-fb-PKo" secondAttribute="top" id="8HK-2U-8AR"/>
                                     <constraint firstAttribute="trailing" secondItem="Joc-iu-1OB" secondAttribute="trailing" id="MPP-yZ-ool"/>
@@ -2126,7 +2108,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TCS-CA-Utf"/>
-                        <color key="backgroundColor" name="i_yellow"/>
+                        <color key="backgroundColor" name="i_black"/>
                         <constraints>
                             <constraint firstItem="8OF-fb-PKo" firstAttribute="leading" secondItem="TCS-CA-Utf" secondAttribute="leading" id="4XY-xM-fKt"/>
                             <constraint firstItem="8OF-fb-PKo" firstAttribute="top" secondItem="TCS-CA-Utf" secondAttribute="top" id="IIR-e3-oZS"/>
@@ -2165,10 +2147,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtB-ie-Iel" userLabel="scrolContainer">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2i-Ng-bb9">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Trs-ph-IPM" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
@@ -2272,7 +2254,7 @@
                                                                         <rect key="frame" x="65" y="4" width="190" height="47"/>
                                                                         <color key="backgroundColor" name="i_gray"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                                                        <state key="normal" title="Cancel order">
+                                                                        <state key="normal" title="Delete order">
                                                                             <color key="titleColor" name="fontColor"/>
                                                                         </state>
                                                                         <connections>
@@ -2458,6 +2440,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="H23-Ld-8rF"/>
                                     </scrollView>
                                 </subviews>
+                                <color key="backgroundColor" name="i_yellow"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="X2i-Ng-bb9" secondAttribute="bottom" id="XXl-ca-pfu"/>
                                     <constraint firstItem="X2i-Ng-bb9" firstAttribute="top" secondItem="QtB-ie-Iel" secondAttribute="top" id="bWH-fq-Ker"/>
@@ -2467,12 +2450,12 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0dd-ME-3eH"/>
-                        <color key="backgroundColor" name="i_yellow"/>
+                        <color key="backgroundColor" name="i_black"/>
                         <constraints>
                             <constraint firstItem="QtB-ie-Iel" firstAttribute="trailing" secondItem="0dd-ME-3eH" secondAttribute="trailing" id="Fks-ZK-zWe"/>
+                            <constraint firstItem="QtB-ie-Iel" firstAttribute="top" secondItem="0dd-ME-3eH" secondAttribute="top" id="USQ-qo-sjW"/>
                             <constraint firstItem="0dd-ME-3eH" firstAttribute="bottom" secondItem="QtB-ie-Iel" secondAttribute="bottom" id="YVU-ea-aSG"/>
                             <constraint firstItem="QtB-ie-Iel" firstAttribute="leading" secondItem="0dd-ME-3eH" secondAttribute="leading" id="kCL-Av-ZxZ"/>
-                            <constraint firstItem="QtB-ie-Iel" firstAttribute="top" secondItem="7xh-Ig-WCb" secondAttribute="top" id="uhH-eg-r9D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My awesome pre-order" id="7l6-73-GWj">
@@ -2515,10 +2498,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUA-wR-wva" userLabel="scrolContainer">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZA-Eu-nfG">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVP-u1-V5B" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
@@ -2768,6 +2751,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="qTc-h2-G6A"/>
                                     </scrollView>
                                 </subviews>
+                                <color key="backgroundColor" name="i_yellow"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="YZA-Eu-nfG" secondAttribute="bottom" id="W0j-mJ-XMJ"/>
                                     <constraint firstAttribute="trailing" secondItem="YZA-Eu-nfG" secondAttribute="trailing" id="ZBO-Fe-n3W"/>
@@ -2777,12 +2761,12 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="67I-iU-U76"/>
-                        <color key="backgroundColor" name="i_yellow"/>
+                        <color key="backgroundColor" name="i_black"/>
                         <constraints>
                             <constraint firstItem="BUA-wR-wva" firstAttribute="bottom" secondItem="67I-iU-U76" secondAttribute="bottom" id="1vX-kv-4g2"/>
                             <constraint firstItem="BUA-wR-wva" firstAttribute="trailing" secondItem="67I-iU-U76" secondAttribute="trailing" id="Onb-1Q-fBQ"/>
                             <constraint firstItem="BUA-wR-wva" firstAttribute="leading" secondItem="67I-iU-U76" secondAttribute="leading" id="Umq-Az-X4h"/>
-                            <constraint firstItem="BUA-wR-wva" firstAttribute="top" secondItem="94d-i1-lhZ" secondAttribute="top" id="vQn-1p-ggM"/>
+                            <constraint firstItem="BUA-wR-wva" firstAttribute="top" secondItem="67I-iU-U76" secondAttribute="top" id="qRd-gX-4aq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Order payment" id="tC3-A8-h11"/>
@@ -2806,7 +2790,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7HO-3t-WZn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="93"/>
+            <point key="canvasLocation" x="2767.5" y="92.957746478873247"/>
         </scene>
         <!--My awesome order-->
         <scene sceneID="o3u-74-Ef1">
@@ -2817,10 +2801,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wP-Iy-YzI" userLabel="scrolContainer">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MRQ-ER-gSi">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPo-6D-ZYy" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
@@ -3010,6 +2994,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="9yw-jV-aDG"/>
                                     </scrollView>
                                 </subviews>
+                                <color key="backgroundColor" name="i_yellow"/>
                                 <constraints>
                                     <constraint firstItem="MRQ-ER-gSi" firstAttribute="top" secondItem="8wP-Iy-YzI" secondAttribute="top" id="581-Xg-Vn9"/>
                                     <constraint firstAttribute="bottom" secondItem="MRQ-ER-gSi" secondAttribute="bottom" id="9vN-i0-AhM"/>
@@ -3019,9 +3004,9 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PNK-0I-5GN"/>
-                        <color key="backgroundColor" name="i_yellow"/>
+                        <color key="backgroundColor" name="i_black"/>
                         <constraints>
-                            <constraint firstItem="8wP-Iy-YzI" firstAttribute="top" secondItem="FLY-3x-GgB" secondAttribute="top" id="QKE-Xl-pvi"/>
+                            <constraint firstItem="8wP-Iy-YzI" firstAttribute="top" secondItem="PNK-0I-5GN" secondAttribute="top" id="Rfl-kz-0RC"/>
                             <constraint firstItem="PNK-0I-5GN" firstAttribute="bottom" secondItem="8wP-Iy-YzI" secondAttribute="bottom" id="dGO-gy-BcM"/>
                             <constraint firstItem="8wP-Iy-YzI" firstAttribute="leading" secondItem="FLY-3x-GgB" secondAttribute="leading" id="gvr-jz-2Pq"/>
                             <constraint firstItem="PNK-0I-5GN" firstAttribute="trailing" secondItem="8wP-Iy-YzI" secondAttribute="trailing" id="jv9-RY-Cfe"/>
@@ -3043,14 +3028,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RoY-xv-jpP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2770" y="827"/>
+            <point key="canvasLocation" x="2769.375" y="826.05633802816908"/>
         </scene>
         <!--Payment otions-->
         <scene sceneID="P8E-y7-wKs">
             <objects>
                 <viewController id="5iZ-CZ-RSW" customClass="PaymentOptionsVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r9j-p4-czN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzp-yf-Qtj" userLabel="contentView">
@@ -3186,7 +3171,7 @@
             <point key="canvasLocation" x="3573.75" y="91.901408450704224"/>
         </scene>
     </scenes>
-    <color key="tintColor" name="backGround"/>
+    <color key="tintColor" name="i_black"/>
     <resources>
         <image name="icon500x500" width="295" height="295"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
@@ -3226,8 +3211,5 @@
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
