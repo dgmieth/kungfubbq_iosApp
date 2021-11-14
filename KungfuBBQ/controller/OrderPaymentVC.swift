@@ -36,6 +36,9 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *){
+            self.overrideUserInterfaceStyle = .light
+        }
         renewToken()
         let lat = cookingDate.lat == -9999999999 ? 39.758949 : cookingDate.lat
         let lng = cookingDate.lng == -9999999999 ? -84.19167 : cookingDate.lng

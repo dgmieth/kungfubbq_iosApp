@@ -38,6 +38,9 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *){
+            self.overrideUserInterfaceStyle = .light
+        }
         let lat = cookingDate.lat == -9999999999 ? 39.758949 : cookingDate.lat
         let lng = cookingDate.lng == -9999999999 ? -84.19167 : cookingDate.lng
         let initialRegion2D = CLLocationCoordinate2D(latitude: lat, longitude: lng)
@@ -221,10 +224,6 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     @IBAction func mapClick(_ sender: Any) {
         callNavigationMapsAlert()
     }
-//    class func openMaps(with mapItems: [MKMapItem],
-//                        launchOptions: [String : Any]? = nil) -> Bool {
-//        return true
-//    }
     @IBAction func cancelOrder(_ sender: Any) {
         cancelOrder.isEnabled = false
         editBtn.isEnabled = false
