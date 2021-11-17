@@ -158,26 +158,33 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
                         self.navigationController?.popViewController(animated: true)
                     }
                     alert.addAction(ok)
-                    self.delegate?.refreshUI()
+                    self.delegate?.refreshUI(error: false)
                     self.present(alert, animated: true, completion: nil)
                 }
             }else{
+                print("hasErros")
                 self.removeSpinner()
-                guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                print(jsonObject["errorCode"])
+                guard let errorCode = jsonObject["errorCode"] as? Int else {
+                    print("returnCalled")
+                    return }
+                print("errorCode is \(errorCode)")
                 if(errorCode == -1){
-                    print("errorCode called")
+                    print("errorCode -1")
                     DispatchQueue.main.async {
                         self.loginAgain()
                    }
                 }else{
+                    print("hasErros not -1")
                     guard let msg = jsonObject["msg"] as? String else { return }
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Server message: \(msg)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel)
+                        let ok = UIAlertAction(title: "Ok", style: .cancel){ action in
+                            self.navigationController?.popViewController(animated: true)
+                        }
                         alert.addAction(ok)
                         self.present(alert, animated: true, completion: nil)
-                        self.preOrder.isEnabled = true
-                        self.cancel.isEnabled = true
+                        self.delegate?.refreshUI(error: true)
                     }
                 }
             }

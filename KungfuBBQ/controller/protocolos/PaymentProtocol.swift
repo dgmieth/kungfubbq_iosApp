@@ -7,5 +7,5 @@
 
 import Foundation
 protocol PaymentProtocol {
-    func orderPayment(paid:Bool)
+    func orderPayment(paid:Bool,notLogged:Bool)
 }

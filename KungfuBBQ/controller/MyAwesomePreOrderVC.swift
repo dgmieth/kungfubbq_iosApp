@@ -155,7 +155,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Success", message: "\(msg)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .default) { action in
-                        self.delegate?.refreshUI()
+                        self.delegate?.refreshUI(error: false)
                         self.navigationController?.popViewController(animated: true)
                     }
                     alert.addAction(ok)
@@ -273,7 +273,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Success", message: "\(msg)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .default) { action in
-                        self.delegate?.refreshUI()
+                        self.delegate?.refreshUI(error: false)
                         self.navigationController?.popViewController(animated: true)
                     }
                     alert.addAction(ok)

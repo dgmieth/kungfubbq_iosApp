@@ -163,18 +163,18 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
             dest.delegateLogin = self.delegateLogin
         }
     }
-    //MARK: - DELEGATE METHO
-    func callDeletage(){
+    //MARK: - DELEGATE METHOD
+    func callDeletage(err:Bool = false){
         DispatchQueue.main.async {
-            self.delegate?.refreshUI()
+            self.delegate?.refreshUI(error: err)
             self.cancelOrder.isHidden = true
             self.payOrder.isHidden = true
         }
     }
-    func orderPayment(paid: Bool) {
+    func orderPayment(paid: Bool,notLogged: Bool=false) {
         if(paid){
             callDeletage()
-        }else{
+        }else if (notLogged){
             self.navigationController?.popToRootViewController(animated: true)
         }
     }

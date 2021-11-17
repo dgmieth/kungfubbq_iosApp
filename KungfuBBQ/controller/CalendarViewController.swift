@@ -10,6 +10,7 @@ import CoreData
 import FSCalendar
 
 class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate,FSCalendarDelegateAppearance, ReloadDataInCalendarVCProtocol {
+
     //vars and lets
     let dateFormatter = DateFormatter()
     var dates : [String] = []
@@ -155,11 +156,12 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             user = userArray[0]
         }
         HttpRequestCtrl.shared.get(toRoute: "/api/cookingCalendar/activeCookingDatesWithinSixtyDays", userId: String(user!.id), userEmail: user!.email ,headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-            print(jsonObject)
+            //print(jsonObject)
+            print("apiReturnData called")
             guard let errorCheck = jsonObject["hasErrors"] as? Int
             else { return }
             if(errorCheck==0){
-                guard let data = jsonObject["data"] as? [[[String:Any]]] else { return }
+                guard let data = jsonObject["msg"] as? [[[String:Any]]] else { return }
                 var cookingDates = [CookingDate]()
                 for cd in data[0] {
                     cookingDates.append(CookingDate(json: cd)!)
@@ -231,6 +233,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                         filtered.count > 0 ? o.cookingDate = filtered[0] : nil
                     }
                     self.save()
+                    self.dates = []
                     for cd in self.cds! {
                         self.dates.append(String(cd.cookingDate!.split(separator: " ")[0]))
                     }
@@ -333,6 +336,9 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         if(dates.contains(sDate)){
             print("we are cooking")
             let cd = cds!.filter { $0.cookingDate!.split(separator: " ")[0] == sDate}
+            print(cds!)
+            print(cd)
+            print(date)
             cookingDate = cd[0]
             updateUICalendarView(cookingOnThiDate: true, selectedDate: sDate)
             if(cd[0].cookingStatusId == Int64(4)){
@@ -407,8 +413,11 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         
     }
     //MARK: - PROTOCOL
-    func refreshUI() {
-        print("called")
+    func refreshUI(error: Bool) {
+        if(error){
+            calendar.select(calendar.today)
+            calendar.reloadData()
+        }
         updateUIInformation()
     }
     //MARK: - FS CALENDAR

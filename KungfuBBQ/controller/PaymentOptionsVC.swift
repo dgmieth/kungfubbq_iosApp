@@ -33,6 +33,9 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         doneTb.items = [flexSpace,next]
         cardCode.inputAccessoryView = doneTb
         cardNumber.inputAccessoryView = doneTb
+        cardNumber.attributedPlaceholder = NSAttributedString(string: "1234 5678 9012 3456", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        cardCode.attributedPlaceholder = NSAttributedString(string: "123", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        pkView.tintColor = .black
     }
     
     //MARK: - PICKER VIEW
@@ -42,11 +45,11 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return component == 0 ? 13 : 21
     }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if component == 0 {
-            return row == 0 ? "Month" : "\(row)"
+            return row == 0 ? NSAttributedString(string: "Month", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]) : NSAttributedString(string: "\(row)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         }else{
-            return row == 0 ? "Year" : "\(Calendar.current.component(.year, from: Date()) as Int + (row - 1))"
+            return row == 0 ? NSAttributedString(string: "Year", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]) : NSAttributedString(string: "\(Calendar.current.component(.year, from: Date()) as Int + (row - 1))", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         }
     }
     //MARK: - EVENT LISTENERS
@@ -90,7 +93,7 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Success", message: "\(msg)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .default) { _IOFBF in
-                            self.delegate?.orderPayment(paid: true)
+                            self.delegate?.orderPayment(paid: true, notLogged: false)
                             self.presentingViewController?.dismiss(animated: true, completion: nil)
                         }
                         alert.addAction(ok)
@@ -109,7 +112,7 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
                         DispatchQueue.main.async {
                             let alert = UIAlertController(title: "Error", message: "Server message: \(msg)", preferredStyle: .alert)
                             let ok = UIAlertAction(title: "Ok", style: .default) { _ in
-                                self.delegate?.orderPayment(paid: false)
+                                self.delegate?.orderPayment(paid: false,notLogged: false)
                                 self.presentingViewController?.dismiss(animated: true, completion: nil)
                             }
                             alert.addAction(ok)
@@ -123,7 +126,7 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Error", message: "Generalized error: \(error)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .default) { _ in
-                            self.delegate?.orderPayment(paid: false)
+                            self.delegate?.orderPayment(paid: false,notLogged: false)
                             self.presentingViewController?.dismiss(animated: true, completion: nil)
                         }
                         alert.addAction(ok)
@@ -156,7 +159,7 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
                 let ok = UIAlertAction(title: "OK", style: .default) { _ in
                     self.delegateLogin?.loggedUser = false
                     self.delegateLogin?.refreshUI()
-                    self.delegate?.orderPayment(paid: false)
+                    self.delegate?.orderPayment(paid: false,notLogged: true)
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
                 }
                 alert.addAction(ok)

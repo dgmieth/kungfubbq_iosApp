@@ -7,5 +7,5 @@
 
 import Foundation
 protocol ReloadDataInCalendarVCProtocol {
-    func refreshUI()
+    func refreshUI(error:Bool)
 }
