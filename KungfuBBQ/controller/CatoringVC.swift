@@ -92,7 +92,7 @@ class CatoringVC: UIViewController,UITextViewDelegate,UITextFieldDelegate {
         }
     }
     @IBAction func cancelClick(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     //MARK: - TEXTFIELD
     func textFieldDidEndEditing(_ textField: UITextField) {
