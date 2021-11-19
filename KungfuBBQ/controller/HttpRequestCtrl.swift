@@ -133,11 +133,9 @@ class HttpRequestCtrl{
             if let peDate = eDate {
                 params["expirationDate"] = peDate
             }
-            print(params)
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("Application/json", forHTTPHeaderField: "Content-type")
-            print(request)
             if headers.count > 0 {
                 for header in headers {
                     request.setValue(header.value, forHTTPHeaderField: header.key)

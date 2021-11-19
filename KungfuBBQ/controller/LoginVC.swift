@@ -22,10 +22,9 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     //delegates
-    var delegate:HomeVCRefreshUIProtocol?
+    var delegate:BackToHomeViewControllerFromGrandsonViewController?
     
     override func viewWillAppear(_ animated: Bool) {
-        print("LoginVC -> viewWillAppear")
         if let userArray = read() {
             if userArray.count > 0 {
                 email.text = userArray[0].email!
@@ -35,16 +34,16 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("LoginVC -> viewDidLoad")
         email.autocapitalizationType = .none
-        // Do any additional setup after loading the view.
     }
     // MARK: - BUTTONS EVENT LISTENERS
+    // MARK: register btn
     @IBAction func registerClick(_ sender: Any) {
         registerBtn.isEnabled = false
         performSegue(withIdentifier: "registerVC", sender: self)
         registerBtn.isEnabled = true
     }
+    // MARK: password recovery btn
     @IBAction func forgotPasswordClick(_ sender: Any) {
         let alert = UIAlertController(title: "Password recovery", message: "Please inform you user acount e-mail address and click on Send.", preferredStyle: .alert)
         alert.addTextField { textfield in
@@ -53,13 +52,9 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         let sendMeEmail = UIAlertAction(title: "Send", style: .default) { action in
             self.createSpinner()
             HttpRequestCtrl.shared.post(toRoute: "/api/user/forgotPassword", userEmail: alert.textFields![0].text) { jsonObject in
-                guard let errorCheck = jsonObject["hasErrors"] as? Int
-                else {
-                    return
-                }
+                guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
                 if(errorCheck==0){
-                    print("forgotPassword - response-success")
                     guard let msg = jsonObject["msg"] as? String else { return }
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Success!", message: "\(msg)", preferredStyle: .alert)
@@ -69,7 +64,6 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                     }
                 }else{
                     guard let msg = jsonObject["msg"] as? String else { return }
-                    print("forgotPassword - response-error")
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Error!", message: "Not possible to send password recovery email this time. Server message: \(msg)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .cancel)
@@ -78,7 +72,6 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                     }
                 }
             } onError: { error in
-                print("forgotPassword - error")
                 self.removeSpinner()
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error!", message: "Not possible to send password recovery email this time. Server message: \(error)", preferredStyle: .alert)
@@ -93,6 +86,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
     }
+    // MARK: login btn
     @IBAction func loginClick(_ sender: Any) {
         loginBtn.isEnabled = false
         let username = email.text! as String
@@ -101,10 +95,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
             createSpinner()
             var user1 = User()
             HttpRequestCtrl.shared.post(toRoute: "/login/login", mobileOS: "apple", userEmail: username, userPassword: pass, onCompletion: { (jsonObject) in
-                guard let errorCheck = jsonObject["hasErrors"] as? Int
-                else {
-                    return
-                }
+                guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
                 if(errorCheck==0){
                     guard let data = jsonObject["data"] as? [String:Any] else { return }
@@ -112,6 +103,14 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                     if self.loadedEmail == username {
                         if let cdUser = self.update(byEmail: username){
                             cdUser.token = user1!.token
+                            cdUser.name = user1!.name
+                            cdUser.phoneNumber = user1!.phoneNumber
+                            for media in user1!.socialMediaInfo {
+                                let cdMedia = SocialMediaInfo(context: self.dataController.viewContext)
+                                cdMedia.socialMedia = media.socialMedia
+                                cdMedia.socialMediaUserName = media.socialMediaName
+                                cdMedia.appUser = cdUser
+                            }
                             self.save()
                         }
                     } else {
@@ -133,11 +132,10 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                     }
                     DispatchQueue.main.async {
                         self.loginBtn.isEnabled = true
-                        self.callHomeVCRefreshUIProtocolo(loggedUser: true)
+                        self.backToHomeViewController(loggedUser: true)
                     }
                 }else{
                     guard let msg = jsonObject["msg"] as? String else { return }
-                    print("loginError")
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Error!", message: "Not possible to log in this user. Server message: \(msg)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .cancel)
@@ -148,7 +146,6 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                 }
                 
             }, onError: { (error) in
-                print(error)
                 self.removeSpinner()
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error!", message: "Not possible to log in this user. Internal error message: \(error)", preferredStyle: .alert)
@@ -167,6 +164,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         }
         
     }
+    //MARK: cancel btn
     @IBAction func cancelClick(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -191,7 +189,6 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         }
         return nil
     }
-    
     func delete(){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AppUser")
         let delRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -207,10 +204,6 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
             alert.addAction(no)
             present(alert, animated: true, completion: nil)
         }
-    }
-    //MARK: - LOGIN ACTION
-    func login(){
-        
     }
     // MARK: - SPINNER
     func createSpinner(){
@@ -235,7 +228,6 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     // MARK: - SEGUEWAYS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "registerVC" {
-            print("segue -> RegisterVC")
             let dest = segue.destination as! RegisterVC
             dest.dataController = dataController
             dest.delegate = self
@@ -277,12 +269,12 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     return true
     }
     //MARK: - PROTOCOLO FUNCTIONS
-    func goToHomeVC() {
-        callHomeVCRefreshUIProtocolo(loggedUser: registeredUser)
+    func backToHomeViewControllerFromGrandsonViewController() {
+        backToHomeViewController(loggedUser: registeredUser)
     }
-    func callHomeVCRefreshUIProtocolo(loggedUser val:Bool){
-        self.delegate?.loggedUser = val
-        self.delegate?.refreshUI()
+    func backToHomeViewController(loggedUser val:Bool){
+        self.delegate?.isUserLogged = val
+        self.delegate?.updateHomeViewControllerUIElements()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

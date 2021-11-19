@@ -14,6 +14,7 @@ class CatoringVC: UIViewController,UITextViewDelegate,UITextFieldDelegate {
     var keyboardHeight:CGFloat = 0
     var activeField:UITextField?
     let phoneFormatter = PhoneFormatter()
+    var phoneNr = String()
     //ui elements
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var email: UITextField!
@@ -27,10 +28,10 @@ class CatoringVC: UIViewController,UITextViewDelegate,UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardDidChangeFrameNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
     }
     //MARK: - BUTTON ACTION
     @IBAction func sendClick(_ sender: Any) {
@@ -38,35 +39,30 @@ class CatoringVC: UIViewController,UITextViewDelegate,UITextFieldDelegate {
         name.resignFirstResponder()
         phoneNumber.resignFirstResponder()
         catorOrder.resignFirstResponder()
+        let plainString = phoneFormatter.returnPlainString(withPhoneFormatString: phoneNumber.text ?? "")
+        phoneNr = plainString.count == 10 ? plainString : ""
         let email = email.text!
         let name = name.text!
-        let phoneNumber = phoneNumber.text!
         let catorOrder = catorOrder.text!
-        if !email.isEmpty && !name.isEmpty && !phoneNumber.isEmpty && !catorOrder.isEmpty {
+        if !email.isEmpty && !name.isEmpty && !phoneNr.isEmpty && !catorOrder.isEmpty {
             createSpinner()
-            HttpRequestCtrl.shared.post(toRoute: "/api/catoring/saveContact", userEmail: email, userName: name, phoneNumber: phoneNumber, catoringDescription: catorOrder) { jsonObject in
+            HttpRequestCtrl.shared.post(toRoute: "/api/catoring/saveContact", userEmail: email, userName: name, phoneNumber: phoneNr, catoringDescription: catorOrder) { jsonObject in
                 print(jsonObject)
-                guard let errorCheck = jsonObject["hasErrors"] as? Int
-                else {
-                    return
-                }
+                guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 guard let msg = jsonObject["msg"] as? String else { return }
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Success!", message: "Server message: \(msg)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .default) { action in
-                        DispatchQueue.main.async {
-                            print("dismissing viewController")
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    }
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                }
-                self.removeSpinner()
                 if(errorCheck==0){
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Success!", message: "Server message: \(msg)", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default) { _ in
+                            DispatchQueue.main.async {
+                                self.navigationController?.popViewController(animated: true)
+                            }
+                        }
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    self.removeSpinner()
                 }else{
-                    guard let msg = jsonObject["msg"] as? String else { return }
-                    print("catoringError")
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Error!", message: "Server message: \(msg)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .cancel)
@@ -75,7 +71,6 @@ class CatoringVC: UIViewController,UITextViewDelegate,UITextFieldDelegate {
                     }
                 }
             } onError: { error in
-                print(error)
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error!", message: "Not possible to send your request to Kungfu BBQ at this moment. Internal error message:: \(error)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel)

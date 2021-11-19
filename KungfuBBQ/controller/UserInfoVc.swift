@@ -32,65 +32,29 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var changePassword: UIButton!
     //delegates
-    var delegate:HomeVCRefreshUIProtocol?
+    var delegate:BackToHomeViewControllerFromGrandsonViewController?
     
     override func viewWillAppear(_ animated: Bool) {
-        print("LoginVC -> viewWillAppear")
-        if let userArray = read() {
-            if userArray.count > 0 {
-                user = userArray[0]
-                email.text = userArray[0].email!
-                memberSince.text = userArray[0].memberSince!
-                if let nameT = userArray[0].name {
-                    name.text = nameT
-                    nameCheck = nameT
-                }else{
-                    name.text = ""
-                    nameCheck = ""
-                }
-                if let phoneNumberT = userArray[0].phoneNumber {
-                    phoneNumber.text = phoneFormatter.formattedString(from: phoneNumberT)
-                    phoneCheck = phoneFormatter.formattedString(from: phoneNumberT)
-                }else{
-                    phoneNumber.text = ""
-                    phoneCheck = ""
-                }
-                if (userArray[0].socialMediaInfo?.allObjects as? [SocialMediaInfo]) != nil {
-                    let userInfo = userArray[0].socialMediaInfo?.allObjects as! [SocialMediaInfo]
-                    for info in userInfo {
-                        if info.socialMedia! == "Facebook" {
-                            facebookName.text = info.socialMediaUserName
-                            facebookCheck = info.socialMediaUserName
-                        }
-                        if info.socialMedia! == "Instagram" {
-                            instagramName.text = info.socialMediaUserName
-                            instragramCheck = info.socialMediaUserName
-                        }
-                    }
-                }else{
-                    facebookName.text = ""
-                    facebookCheck = ""
-                    instagramName.text = ""
-                    instragramCheck = ""
-                }
-            }
-        }
+        refreshUIInformation()
     }
-    // MARK: - BUTTONS EVENT LISTENERS
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        // Do any additional setup after loading the view.
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardDidChangeFrameNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+    }
+    // MARK: - BUTTONS EVENT LISTENERS
     @IBAction func editClick(_ sender: Any) {
-        //buttons
         updateInformation(UIenabled: true)
     }
     @IBAction func logoutClick(_ sender: Any) {
-        self.delegate?.loggedUser = false
-        self.delegate?.refreshUI()
+        self.delegate?.isUserLogged = false
+        self.delegate?.updateHomeViewControllerUIElements()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func changePasswordClick(_ sender: Any) {
@@ -111,11 +75,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
             createSpinner()
             var user1 = User()
             HttpRequestCtrl.shared.post(toRoute: "/api/user/updateInfo", userEmail: user!.email, userName: name, phoneNumber: phoneFormatter.returnPlainString(withPhoneFormatString: phoneNumber), facebookName: facebookName, instagramName: instagramName, userId: String(user!.id), headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-                print("update -> success")
-                guard let errorCheck = jsonObject["hasErrors"] as? Int
-                else {
-                    return
-                }
+                guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
                 if(errorCheck==0){
                     guard let data = jsonObject["data"] as? [String:Any] else { return }
@@ -137,6 +97,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
                     self.save()
                     DispatchQueue.main.async {
                         self.updateInformation(UIenabled: false)
+                        self.refreshUIInformation()
                         self.saveBtn.isEnabled = true
                         let alert = UIAlertController(title: "Success!", message: "Updated successfull!", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .cancel)
@@ -149,7 +110,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
                         print("errorCode called")
                         DispatchQueue.main.async {
                             self.loginAgain()
-                       }
+                        }
                     }else{
                         guard let msg = jsonObject["msg"] as? String else { return }
                         print("registerError")
@@ -262,7 +223,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         }
         return true
     }
-    //MARK:- KEYBOARD
+    //MARK: - KEYBOARD
     @objc func keyboardWillShow(notification: Notification) {
         scrollView.isScrollEnabled = true
         let info : NSDictionary = notification.userInfo! as NSDictionary
@@ -313,11 +274,54 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         instagramName.backgroundColor = enabled ? .white : UIColor(named: "i_yellow")
         instagramName.borderStyle = enabled ? .roundedRect : .none
     }
+    //MARK: refresh information on screen
+    private func refreshUIInformation(){
+        if let userArray = read() {
+            if userArray.count > 0 {
+                user = userArray[0]
+                email.text = user!.email!
+                memberSince.text = user!.memberSince!
+                if let nameT = user!.name {
+                    name.text = nameT
+                    nameCheck = nameT
+                }else{
+                    name.text = ""
+                    nameCheck = ""
+                }
+                if let phoneNumberT = user!.phoneNumber {
+                    phoneNumber.text = phoneFormatter.formattedString(from: phoneNumberT)
+                    phoneCheck = phoneFormatter.formattedString(from: phoneNumberT)
+                }else{
+                    phoneNumber.text = ""
+                    phoneCheck = ""
+                }
+                if (user!.socialMediaInfo?.allObjects as? [SocialMediaInfo]) != nil {
+                    let userInfo = user!.socialMediaInfo?.allObjects as! [SocialMediaInfo]
+                    for info in userInfo {
+                        if info.socialMedia! == "Facebook" {
+                            facebookName.text = info.socialMediaUserName
+                            facebookCheck = info.socialMediaUserName
+                        }
+                        if info.socialMedia! == "Instagram" {
+                            instagramName.text = info.socialMediaUserName
+                            instragramCheck = info.socialMediaUserName
+                        }
+                    }
+                }else{
+                    facebookName.text = ""
+                    facebookCheck = ""
+                    instagramName.text = ""
+                    instragramCheck = ""
+                }
+            }
+        }
+    }
+    //MARK: - token expired
     func loginAgain(){
         let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default) { _ in
-            self.delegate?.loggedUser = false
-            self.delegate?.refreshUI()
+            self.delegate?.isUserLogged = false
+            self.delegate?.updateHomeViewControllerUIElements()
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         alert.addAction(ok)
@@ -338,7 +342,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         view.addSubview(spinner)
-
+        
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }

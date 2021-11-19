@@ -20,15 +20,20 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
     @IBOutlet var newPasswordConfirmation: UITextField!
     @IBOutlet var scrollView: UIScrollView!
     //delegates
-    var delegate:HomeVCRefreshUIProtocol!
+    var delegate:BackToHomeViewControllerFromGrandsonViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        // Do any additional setup after loading the view.
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardDidChangeFrameNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+    }
+    //MARK: - UI BUTTONS
     @IBAction func saveClick(_ sender: Any) {
         saveBtn.isEnabled = false
         let cPass = currentPass.text!
@@ -36,12 +41,7 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
         let nPassConf = newPasswordConfirmation.text!
         if(!cPass.isEmpty && !nPass.isEmpty && !nPassConf.isEmpty){
             HttpRequestCtrl.shared.post(toRoute: "/api/user/changePassword", userEmail: user.email, currentPassword: cPass, newPassword: nPass, confirmPassword: nPassConf, userId: String(user.id), headers: ["Authorization":"Bearer \(user.token!)"]) { jsonObject in
-                print(jsonObject)
-                print("update -> success")
-                guard let errorCheck = jsonObject["hasErrors"] as? Int
-                else {
-                    return
-                }
+                guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
                 if(errorCheck==0){
                     DispatchQueue.main.async {
@@ -56,7 +56,6 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
                 }else{
                     guard let errorCode = jsonObject["errorCode"] as? Int else { return }
                     if(errorCode == -1){
-                        print("errorCode called")
                         DispatchQueue.main.async {
                             self.loginAgain()
                        }
@@ -72,7 +71,6 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
                     }
                 }
             } onError: { error in
-                print(error)
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Internal error message: \(error)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel)
@@ -114,7 +112,7 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
         let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
         return nString.length <= maxLength
     }
-    //MARK:- KEYBOARD
+    //MARK: - KEYBOARD
     @objc func keyboardWillShow(notification: Notification) {
         scrollView.isScrollEnabled = true
         let info : NSDictionary = notification.userInfo! as NSDictionary
@@ -142,12 +140,12 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         scrollView.isScrollEnabled = false
     }
-    //MARK: - UI
+    //MARK: - TOKEN EXPIRED
     func loginAgain(){
             let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default) { _ in
-                self.delegate?.loggedUser = false
-                self.delegate?.refreshUI()
+                self.delegate?.isUserLogged = false
+                self.delegate?.updateHomeViewControllerUIElements()
                 self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
             }
             alert.addAction(ok)
@@ -165,7 +163,6 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
     }
     func removeSpinner(){
         DispatchQueue.main.async {
-            print("removeSpinner - called")
             for view in self.view.subviews {
                 if view == self.spinner {
                     view.removeFromSuperview()

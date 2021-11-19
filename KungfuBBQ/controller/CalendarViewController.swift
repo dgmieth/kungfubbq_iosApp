@@ -37,7 +37,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var viewTest: UIView!
     //delegates
-    var delegate:HomeVCRefreshUIProtocol!
+    var delegate:BackToHomeViewControllerFromGrandsonViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -321,8 +321,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     func loginAgain(){
             let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default) { _ in
-                self.delegate?.loggedUser = false
-                self.delegate?.refreshUI()
+                self.delegate?.isUserLogged = false
+                self.delegate?.updateHomeViewControllerUIElements()
                 self.navigationController?.popViewController(animated: true)
             }
             alert.addAction(ok)

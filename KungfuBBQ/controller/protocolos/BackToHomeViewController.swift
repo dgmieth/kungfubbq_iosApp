@@ -7,7 +7,7 @@
 
 import Foundation
 //protocolo to refresh HomeVC interface
-protocol HomeVCRefreshUIProtocol {
-    var loggedUser: Bool {get set}
-    func refreshUI()
+protocol BackToHomeViewControllerFromGrandsonViewController {
+    var isUserLogged: Bool {get set}
+    func updateHomeViewControllerUIElements()
 }

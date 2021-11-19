@@ -29,7 +29,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     var spinner = UIActivityIndicatorView(style: .large)
     //delegates
     var delegate:ReloadDataInCalendarVCProtocol?
-    var delegateLogin:HomeVCRefreshUIProtocol!
+    var delegateLogin:BackToHomeViewControllerFromGrandsonViewController!
     //ui elements
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var numberMealsPV: UIPickerView!
@@ -123,8 +123,8 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     func loginAgain(){
             let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default) { _ in
-                self.delegateLogin?.loggedUser = false
-                self.delegateLogin?.refreshUI()
+                self.delegateLogin?.isUserLogged = false
+                self.delegateLogin?.updateHomeViewControllerUIElements()
                 self.navigationController?.popToRootViewController(animated: true)
             }
             alert.addAction(ok)

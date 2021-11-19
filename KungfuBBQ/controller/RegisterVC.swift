@@ -7,11 +7,7 @@
 
 import UIKit
 import CoreData
-//protocolo to set login value in LoginVC interface
-protocol RegistersAndLogsUserAndGoesToHomeVC {
-    var registeredUser: Bool {get set}
-    func goToHomeVC()
-}
+
 class RegisterVC: UIViewController,UITextFieldDelegate {
     //vars and lets
     var dataController:DataController!
@@ -39,7 +35,11 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardDidChangeFrameNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+    }
     //MARK: - BUTTON ACTION
     @IBAction func cancelClick(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -55,10 +55,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
             var user1 = User()
             HttpRequestCtrl.shared.post(toRoute: "/login/register", mobileOS: "apple",userEmail: emailC, userPassword: passC, confirmPassword: passwordConfC, invitationCode: codeC) { jsonObject in
                 print("registerSuccess")
-                guard let errorCheck = jsonObject["hasErrors"] as? Int
-                else {
-                    return
-                }
+                guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
                 if(errorCheck==0){
                     guard let data = jsonObject["data"] as? [String:Any] else { return }
@@ -80,23 +77,32 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
                     self.save()
                     DispatchQueue.main.async {
                         self.delegate?.registeredUser = true
-                        self.delegate?.goToHomeVC()
+                        self.delegate?.backToHomeViewControllerFromGrandsonViewController()
                         self.presentingViewController?.dismiss(animated: true, completion: nil)
                     }
                 }else{
+                    guard let errorCode = jsonObject["errorCode"] as? Int else {return }
                     guard let msg = jsonObject["msg"] as? String else { return }
-                    print("registerError")
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error!", message: "Not possible to register this user now. Server message: \(msg)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel)
-                        alert.addAction(ok)
-                        self.registerBrn.isEnabled = true
-                        self.present(alert, animated: true, completion: nil)
+                    if(errorCode == -3){
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Error!", message: "Registration attempt failed with server message: \(msg)", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .cancel) { _ in
+                                self.presentingViewController?.dismiss(animated: true, completion: nil)
+                            }
+                            alert.addAction(ok)
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }else{
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Error!", message: "Not possible to register this user now. Server message: \(msg)", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .cancel)
+                            alert.addAction(ok)
+                            self.registerBrn.isEnabled = true
+                            self.present(alert, animated: true, completion: nil)
+                        }
                     }
                 }
-                
             } onError: { error in
-                print(error)
                 self.removeSpinner()
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error!", message: "Not possible to register this user now. Internal error message: \(error)", preferredStyle: .alert)
@@ -106,7 +112,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
                     self.present(alert, animated: true, completion: nil)
                 }
             }
-
+            
         }else{
             let alert = UIAlertController(title: "Register information missing", message: "Please inform your invitation code, your e-email and a 8 alphanumerical password.", preferredStyle: .alert)
             let no = UIAlertAction(title: "Ok", style: .cancel)
@@ -114,8 +120,6 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
             present(alert, animated: true, completion: nil)
             registerBrn.isEnabled = true
         }
-        
-        
     }
     // MARK: - CORE DATA
     func save(){
@@ -215,7 +219,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
             let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
             return nString.length <= maxLength
         }
-    return true
+        return true
     }
     // MARK: - SPINNER
     func createSpinner(){
@@ -223,13 +227,11 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         view.addSubview(spinner)
-
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     func removeSpinner(){
         DispatchQueue.main.async {
-            print("removeSpinner - called")
             for view in self.view.subviews {
                 if view == self.spinner {
                     view.removeFromSuperview()

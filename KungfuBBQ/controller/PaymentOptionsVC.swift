@@ -22,7 +22,7 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     @IBOutlet var cancelBtn: UIButton!
     //delegates
     var delegate:PaymentProtocol?
-    var delegateLogin:HomeVCRefreshUIProtocol!
+    var delegateLogin:BackToHomeViewControllerFromGrandsonViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,8 +157,8 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     func loginAgain(){
                 let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default) { _ in
-                    self.delegateLogin?.loggedUser = false
-                    self.delegateLogin?.refreshUI()
+                    self.delegateLogin?.isUserLogged = false
+                    self.delegateLogin?.updateHomeViewControllerUIElements()
                     self.delegate?.orderPayment(paid: false,notLogged: true)
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
                 }

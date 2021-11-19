@@ -32,7 +32,7 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
     @IBOutlet var payOrder: UIButton!
     //delegates
     var delegate:ReloadDataInCalendarVCProtocol?
-    var delegateLogin:HomeVCRefreshUIProtocol!
+    var delegateLogin:BackToHomeViewControllerFromGrandsonViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()

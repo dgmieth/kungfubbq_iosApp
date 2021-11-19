@@ -8,11 +8,11 @@
 import UIKit
 import CoreData
 
-class HomeVC: UIViewController, HomeVCRefreshUIProtocol {
+class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewController {
     //vars and lets
     var dataController:DataController!
     var userArray = [AppUser]()
-    var loggedUser = false
+    var isUserLogged = false
     //ui buttons
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var calendarBtn: UIButton!
@@ -21,7 +21,6 @@ class HomeVC: UIViewController, HomeVCRefreshUIProtocol {
     @IBOutlet weak var appInfoBtn: UIBarButtonItem!
         
     override func viewDidLoad() {
-        print("viewDidLoad")
         super.viewDidLoad()
         loadData()
     }
@@ -46,11 +45,6 @@ class HomeVC: UIViewController, HomeVCRefreshUIProtocol {
         performSegue(withIdentifier: "userInfoVC", sender: self)
         userInfoBtn.isEnabled = true
     }
-    @IBAction func appInfoClick(_ sender: Any) {
-        appInfoBtn.isEnabled = false
-        
-        appInfoBtn.isEnabled = true
-    }
 // MARK: - SEGUEWAYS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loginVC" {
@@ -59,11 +53,7 @@ class HomeVC: UIViewController, HomeVCRefreshUIProtocol {
             dest.vcName = "loginVC"
             dest.delegate = self
         }
-        if segue.identifier == "catoringVC" {
-            let dest = segue.destination as! CatoringVC
-        }
         if segue.identifier == "userInfoVC" {
-            print("segueCalled")
             let dest = segue.destination as! UserInfoVc
             dest.dataController = dataController
             dest.delegate = self
@@ -73,11 +63,6 @@ class HomeVC: UIViewController, HomeVCRefreshUIProtocol {
             dest.dataController = dataController
             dest.delegate = self
         }
-//        if(segue.identifier == "changePassword"){
-//            print("changePassword")
-//            let dest = segue.destination as! PasswordChangeVC
-//            dest.delegate = self
-//        }
     }
 // MARK: - DATA MODEL
 // LOAD DATA
@@ -102,11 +87,11 @@ class HomeVC: UIViewController, HomeVCRefreshUIProtocol {
     }
 //MARK: - USER INTERFACE
 //MARK: - PROTOCOLO FUNCTIONS
-    func refreshUI() {
+    func updateHomeViewControllerUIElements() {
         print("uiRefreshed")
-        loginBtn.isHidden = loggedUser
-        calendarBtn.isHidden = !loggedUser
-        userInfoBtn.isEnabled = loggedUser
+        loginBtn.isHidden = isUserLogged
+        calendarBtn.isHidden = !isUserLogged
+        userInfoBtn.isEnabled = isUserLogged
     }
 }
 
