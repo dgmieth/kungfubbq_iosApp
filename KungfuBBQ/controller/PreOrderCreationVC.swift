@@ -28,7 +28,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     var amount:Decimal=0
     var spinner = UIActivityIndicatorView(style: .large)
     //delegates
-    var delegate:ReloadDataInCalendarVCProtocol?
+    var delegate:BackToCalendarViewController?
     var delegateLogin:BackToHomeViewControllerFromGrandsonViewController!
     //ui elements
     @IBOutlet weak var mapView: MKMapView!
@@ -86,7 +86,6 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         lable.font = UIFont(name: "palatino", size: CGFloat(
         24))
         lable.sizeToFit()
-        
         return lable
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -120,6 +119,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
+    //MARK: login expired
     func loginAgain(){
             let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default) { _ in
@@ -130,11 +130,22 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
         }
+    //MARK: error alert
+    private func showErrorAlertHTTPRequestResponseError(msg:String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: "Kungfu BBW server message: \(msg)", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default) { _ in
+                self.delegate?.updateCalendarViewControllerUIElements(error: true)
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
     //MARK: - BUTTON LISTENERS
     @IBAction func placeOrderClick(_ sender: Any) {
         preOrder.isEnabled = false
         cancel.isEnabled = false
-        print("place")
         var dishes = [Int]()
         for dish in cookingDate.dishes!.allObjects as! [CDCookingDateDishes] {
             dishes.append(Int(dish.dishId))
@@ -145,51 +156,42 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         }
         createSpinner()
         HttpRequestCtrl.shared.post(toRoute: "/api/order/newOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), dishID: dishes, dishQtty: dishQtty, extrasID: [Int](), extrasQtty: [Int](), headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-            print(jsonObject)
-            guard let errorCheck = jsonObject["hasErrors"] as? Int
-            else { return }
+            guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
+            guard let msg = jsonObject["msg"] as? String else { return }
             self.removeSpinner()
             if(errorCheck==0){
-                print("noError")
-                guard let msg = jsonObject["msg"] as? String else { return }
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Success!", message: "\(msg)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel){ action in
+                        self.delegate?.updateCalendarViewControllerUIElements(error: false)
                         self.navigationController?.popViewController(animated: true)
                     }
                     alert.addAction(ok)
-                    self.delegate?.refreshUI(error: false)
                     self.present(alert, animated: true, completion: nil)
                 }
             }else{
-                print("hasErros")
-                self.removeSpinner()
-                print(jsonObject["errorCode"])
-                guard let errorCode = jsonObject["errorCode"] as? Int else {
-                    print("returnCalled")
-                    return }
-                print("errorCode is \(errorCode)")
+                guard let errorCode = jsonObject["errorCode"] as? Int else { return }
                 if(errorCode == -1){
-                    print("errorCode -1")
                     DispatchQueue.main.async {
                         self.loginAgain()
                    }
+                }else if(errorCode == -2){
+                    self.showErrorAlertHTTPRequestResponseError(msg: msg)
+                }else if(errorCode == -3){
+                    self.showErrorAlertHTTPRequestResponseError(msg: msg)
                 }else{
-                    print("hasErros not -1")
-                    guard let msg = jsonObject["msg"] as? String else { return }
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Server message: \(msg)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .cancel){ action in
+                            self.delegate?.updateCalendarViewControllerUIElements(error: true)
                             self.navigationController?.popViewController(animated: true)
                         }
                         alert.addAction(ok)
                         self.present(alert, animated: true, completion: nil)
-                        self.delegate?.refreshUI(error: true)
                     }
                 }
             }
         } onError: { error in
-            print(error)
             self.removeSpinner()
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Generalized error message: \(error)", preferredStyle: .alert)

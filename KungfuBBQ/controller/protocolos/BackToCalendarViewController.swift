@@ -6,6 +6,6 @@
 //
 
 import Foundation
-protocol ReloadDataInCalendarVCProtocol {
-    func refreshUI(error:Bool)
+protocol BackToCalendarViewController {
+    func updateCalendarViewControllerUIElements(error:Bool)
 }

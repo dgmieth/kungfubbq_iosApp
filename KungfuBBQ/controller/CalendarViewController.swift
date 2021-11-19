@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import FSCalendar
 
-class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate,FSCalendarDelegateAppearance, ReloadDataInCalendarVCProtocol {
+class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate,FSCalendarDelegateAppearance, BackToCalendarViewController {
 
     //vars and lets
     let dateFormatter = DateFormatter()
@@ -413,7 +413,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         
     }
     //MARK: - PROTOCOL
-    func refreshUI(error: Bool) {
+    func updateCalendarViewControllerUIElements(error: Bool) {
         if(error){
             calendar.select(calendar.today)
             calendar.reloadData()

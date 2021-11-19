@@ -31,7 +31,7 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
     @IBOutlet var cancelOrder: UIButton!
     @IBOutlet var payOrder: UIButton!
     //delegates
-    var delegate:ReloadDataInCalendarVCProtocol?
+    var delegate:BackToCalendarViewController?
     var delegateLogin:BackToHomeViewControllerFromGrandsonViewController!
     
     override func viewDidLoad() {
@@ -166,7 +166,7 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
     //MARK: - DELEGATE METHOD
     func callDeletage(err:Bool = false){
         DispatchQueue.main.async {
-            self.delegate?.refreshUI(error: err)
+            self.delegate?.updateCalendarViewControllerUIElements(error: err)
             self.cancelOrder.isHidden = true
             self.payOrder.isHidden = true
         }
