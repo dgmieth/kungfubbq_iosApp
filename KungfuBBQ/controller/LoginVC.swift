@@ -35,6 +35,8 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     override func viewDidLoad() {
         super.viewDidLoad()
         email.autocapitalizationType = .none
+        email.attributedPlaceholder = NSAttributedString(string: "johndoe@mail.com", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        password.attributedPlaceholder = NSAttributedString(string: "8 alphanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     // MARK: - BUTTONS EVENT LISTENERS
     // MARK: register btn

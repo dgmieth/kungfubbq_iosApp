@@ -31,6 +31,10 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        invitationCode.attributedPlaceholder = NSAttributedString(string: "KgfBBQ@........", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        email.attributedPlaceholder = NSAttributedString(string: "johndoe@mail.com", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        password.attributedPlaceholder = NSAttributedString(string: "8 aplhanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        passwordConfirmation.attributedPlaceholder = NSAttributedString(string: "8 aplhanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)

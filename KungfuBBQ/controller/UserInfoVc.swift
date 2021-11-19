@@ -39,6 +39,10 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        name.attributedPlaceholder = NSAttributedString(string: "John Doe", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        phoneNumber.attributedPlaceholder = NSAttributedString(string: "(001) 123-4567", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        facebookName.attributedPlaceholder = NSAttributedString(string: "Facebook user name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        instagramName.attributedPlaceholder = NSAttributedString(string: "Instagram user name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)

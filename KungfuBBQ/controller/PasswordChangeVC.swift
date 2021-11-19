@@ -24,6 +24,9 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentPass.attributedPlaceholder = NSAttributedString(string: "Current password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        newPassword.attributedPlaceholder = NSAttributedString(string: "8 alphanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        newPasswordConfirmation.attributedPlaceholder = NSAttributedString(string: "8 alphanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
