@@ -27,6 +27,7 @@ class MyAwesomeOrderVC: UIViewController {
     @IBOutlet var numberOfMeals: UILabel!
     @IBOutlet var price: UILabel!
     @IBOutlet var totalPrice: UILabel!
+    @IBOutlet var orderNr: UILabel!
     
     
     override func viewDidLoad() {
@@ -50,6 +51,7 @@ class MyAwesomeOrderVC: UIViewController {
             counter += 1
             amount = amount + Decimal(Double(dish.dishPrice!)!)
         }
+        orderNr.text = "\(order.orderId)"
         cdStatus.text = cookingDate.cookingStatus!
         menu.text = text
         address.text = "\(cookingDate.street!), \(cookingDate.city!) \(cookingDate.state!)"

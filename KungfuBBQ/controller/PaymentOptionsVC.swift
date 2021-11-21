@@ -8,6 +8,7 @@
 import UIKit
 
 class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UITextFieldDelegate {
+    
     //vars and lets
     var cookingDate:CDCookingDate!
     var user:AppUser!
@@ -22,6 +23,7 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     @IBOutlet var cancelBtn: UIButton!
     //delegates
     var delegate:PaymentProtocol?
+    var delNoPayment:ShowHttpErrorAlertOnOrderPaymentVC?
     var delegateLogin:BackToHomeViewControllerFromGrandsonViewController!
     
     override func viewDidLoad() {
@@ -37,7 +39,6 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         cardCode.attributedPlaceholder = NSAttributedString(string: "123", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         pkView.tintColor = .black
     }
-    
     //MARK: - PICKER VIEW
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -56,22 +57,13 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     @IBAction func payClick(_ sender: Any) {
         enableButtons(value: false)
         if cardNumber.text!.isEmpty || cardNumber.text!.count < 19 {
-            let animation = returnAnimation()
-            animation.fromValue = NSValue(cgPoint: CGPoint(x: cardNumber.center.x - 10, y: cardNumber.center.y))
-            animation.toValue = NSValue(cgPoint: CGPoint(x: cardNumber.center.x + 10, y: cardNumber.center.y))
-            cardNumber.layer.add(animation, forKey: "position")
+            cardNumber.layer.add(returnAnimation(xPoint: cardNumber.center.x, yPoint: cardNumber.center.y), forKey: "position")
         }
         if cardCode.text!.isEmpty {
-            let animation = returnAnimation()
-            animation.fromValue = NSValue(cgPoint: CGPoint(x: cardCode.center.x - 10, y: cardCode.center.y))
-            animation.toValue = NSValue(cgPoint: CGPoint(x: cardCode.center.x + 10, y: cardCode.center.y))
-            cardCode.layer.add(animation, forKey: "position")
+            cardCode.layer.add(returnAnimation(xPoint: cardCode.center.x, yPoint: cardCode.center.y), forKey: "position")
         }
         if pkView.selectedRow(inComponent: 0)==0 || pkView.selectedRow(inComponent: 1)==0 {
-            let animation = returnAnimation()
-            animation.fromValue = NSValue(cgPoint: CGPoint(x: pkView.center.x - 10, y: pkView.center.y))
-            animation.toValue = NSValue(cgPoint: CGPoint(x: pkView.center.x + 10, y: pkView.center.y))
-            pkView.layer.add(animation, forKey: "position")
+            pkView.layer.add(returnAnimation(xPoint: pkView.center.x, yPoint: pkView.center.y), forKey: "position")
         }
         if cardNumber.text!.count == 19 && !cardCode.text!.isEmpty && pkView.selectedRow(inComponent: 0) != 0 && pkView.selectedRow(inComponent: 1) != 0 {
             let month = pkView.selectedRow(inComponent: 1) <= 9 ? "0\(pkView.selectedRow(inComponent: 1))" : "\(pkView.selectedRow(inComponent: 1))"
@@ -81,15 +73,9 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             HttpRequestCtrl.shared.post(toRoute: "/api/order/payOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), orderID: Int(order.orderId), cardNumber: cNumber, expirantionDate: eDate, cardCode: cardCode.text!, headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
                 print(jsonObject)
                 self.removeSpinner()
-                guard let errorCheck = jsonObject["hasErrors"] as? Int
-                else { return }
-                if(errorCheck == -1){
-                    return DispatchQueue.main.async {
-                         self.loginAgain()
-                    }
-                }
+                guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
+                guard let msg = jsonObject["msg"] as? String else { return }
                 if(errorCheck==0){
-                    guard let msg = jsonObject["msg"] as? String else { return }
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Success", message: "\(msg)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .default) { _IOFBF in
@@ -98,15 +84,23 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
                         }
                         alert.addAction(ok)
                         self.present(alert, animated: true, completion: nil)
-                        
                     }
                 }else{
                     guard let errorCode = jsonObject["errorCode"] as? Int else { return }
                     if(errorCode == -1){
-                        print("errorCode called")
                         DispatchQueue.main.async {
                             self.loginAgain()
-                       }
+                        }
+                    }else if errorCode <= -2{
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Error", message: "Payment unsuccessfull. \(msg)", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .default) { _ in
+                                self.delNoPayment?.callHttpErrorAlertOnOrderPaymentVC()
+                                self.presentingViewController?.dismiss(animated: true, completion: nil)
+                            }
+                            alert.addAction(ok)
+                            self.present(alert, animated: true, completion: nil)
+                        }
                     }else{
                         guard let msg = jsonObject["msg"] as? String else { return }
                         DispatchQueue.main.async {
@@ -120,51 +114,53 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
                         }
                     }
                 }
-                }onError: { error in
-//                    print(error)
-                    self.removeSpinner()
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error", message: "Generalized error: \(error)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .default) { _ in
-                            self.delegate?.orderPayment(paid: false,notLogged: false)
-                            self.presentingViewController?.dismiss(animated: true, completion: nil)
-                        }
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
+            }onError: { error in
+                self.removeSpinner()
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: "Generalized error: \(error)", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "Ok", style: .default) { _ in
+                        self.delegate?.orderPayment(paid: false,notLogged: false)
+                        self.presentingViewController?.dismiss(animated: true, completion: nil)
                     }
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
                 }
+            }
         }else{
             enableButtons(value: true)
         }
-        
-        
     }
+    //MARK: cancel btn
     @IBAction func cancelClick(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     //MARK: - UI ELEMENTS
-    func returnAnimation()->CABasicAnimation {
+    func returnAnimation(xPoint x:Double,yPoint y: Double)->CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.07
         animation.repeatCount = 4
         animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: x - 10, y: y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: x + 10, y: y))
         return animation
     }
+    //MARK: enabling buttons
     func enableButtons(value:Bool){
         payBtn.isEnabled = value
         cancelBtn.isEnabled = value
     }
+    //MARK: loggin expiration alert
     func loginAgain(){
-                let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "OK", style: .default) { _ in
-                    self.delegateLogin?.isUserLogged = false
-                    self.delegateLogin?.updateHomeViewControllerUIElements()
-                    self.delegate?.orderPayment(paid: false,notLogged: true)
-                    self.presentingViewController?.dismiss(animated: true, completion: nil)
-                }
-                alert.addAction(ok)
-                present(alert, animated: true, completion: nil)
-            }
+        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            self.delegateLogin?.isUserLogged = false
+            self.delegateLogin?.updateHomeViewControllerUIElements()
+            self.delegate?.orderPayment(paid: false,notLogged: true)
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
     //MARK: - TEXTFIELDS
     func textFieldDidEndEditing(_ textField: UITextField) {
         //activeField = textField
@@ -211,7 +207,7 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         }
         return true
     }
-    //MARK:- OBJC
+    //MARK: - OBJC
     @objc func nextAction(){
         if(cardNumber.isFirstResponder){
             cardCode.becomeFirstResponder()
@@ -225,7 +221,7 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         view.addSubview(spinner)
-
+        
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
@@ -238,4 +234,5 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             }
         }
     }
+
 }

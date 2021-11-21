@@ -133,7 +133,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     //MARK: error alert
     private func showErrorAlertHTTPRequestResponseError(msg:String){
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error", message: "Kungfu BBW server message: \(msg)", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "Kungfu BBQ server message: \(msg)", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default) { _ in
                 self.delegate?.updateCalendarViewControllerUIElements(error: true)
                 self.navigationController?.popViewController(animated: true)

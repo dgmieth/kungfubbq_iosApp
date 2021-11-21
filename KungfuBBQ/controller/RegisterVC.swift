@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import OneSignal
 
 class RegisterVC: UIViewController,UITextFieldDelegate {
     //vars and lets
@@ -79,6 +80,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
                         cdMedia.appUser = cdUser
                     }
                     self.save()
+                    OneSignal.setExternalUserId("\(cdUser.id)")
                     DispatchQueue.main.async {
                         self.delegate?.registeredUser = true
                         self.delegate?.backToHomeViewControllerFromGrandsonViewController()

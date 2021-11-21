@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import OneSignal
 
 class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoesToHomeVC {
     //vars and lets
@@ -132,6 +133,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                         }
                         self.save()
                     }
+                    OneSignal.setExternalUserId("\(user1!.id)")
                     DispatchQueue.main.async {
                         self.loginBtn.isEnabled = true
                         self.backToHomeViewController(loggedUser: true)

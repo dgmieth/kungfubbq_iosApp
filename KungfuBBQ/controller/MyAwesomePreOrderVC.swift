@@ -140,7 +140,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     //MARK: error alert
     private func showErrorAlertHTTPRequestResponseError(msg:String){
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error", message: "Kungfu BBW server message: \(msg)", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "Kungfu BBQ server message: \(msg)", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default) { _ in
                 self.delegate?.updateCalendarViewControllerUIElements(error: true)
                 self.navigationController?.popViewController(animated: true)
@@ -171,9 +171,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                     DispatchQueue.main.async {
                         self.loginAgain()
                     }
-                }else if(errorCode == -2){
-                    self.showErrorAlertHTTPRequestResponseError(msg: msg)
-                }else if(errorCode == -3){
+                }else if(errorCode <= -2){
                     self.showErrorAlertHTTPRequestResponseError(msg: msg)
                 }else{
                     guard let msg = jsonObject["msg"] as? String else { return }
@@ -286,12 +284,9 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                     DispatchQueue.main.async {
                         self.loginAgain()
                     }
-                }else if(errorCode == -2){
-                    self.showErrorAlertHTTPRequestResponseError(msg: msg)
-                }else if(errorCode == -2){
+                }else if(errorCode <= -2){
                     self.showErrorAlertHTTPRequestResponseError(msg: msg)
                 }else{
-                    guard let msg = jsonObject["msg"] as? String else { return }
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Error", message: "Not possible to update order right now. Server message: \(msg)", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .default)

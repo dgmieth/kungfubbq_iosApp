@@ -10,7 +10,7 @@ import CoreData
 import FSCalendar
 
 class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate,FSCalendarDelegateAppearance, BackToCalendarViewController {
-
+    
     //vars and lets
     let dateFormatter = DateFormatter()
     var dates : [String] = []
@@ -87,7 +87,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         }
         return nil
     }
-
     func update(byEmail email: String)->AppUser?{
         let fetchRequest = NSFetchRequest<AppUser>(entityName: "AppUser")
         fetchRequest.predicate = NSPredicate(format: "email = %@", email)
@@ -96,7 +95,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         }
         return nil
     }
-    
     func delete(){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDCookingDate")
         let delRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -106,14 +104,12 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             try dataController.viewContext.execute(delRequest)
             try dataController.viewContext.execute(delRequestDishes)
         }catch{
-            print(error)
             let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default){action in
                 self.navigationController?.popViewController(animated: true)
             }
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
-            
         }
     }
     //MARK: - UPDATE UI
@@ -142,7 +138,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                 }
             }
         }
-        
     }
     func updateActionButtonsAreHidden(place:Bool = true, update:Bool = true, pay:Bool = true, paid:Bool = true){
         placeOrder.isHidden = place
@@ -156,10 +151,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             user = userArray[0]
         }
         HttpRequestCtrl.shared.get(toRoute: "/api/cookingCalendar/activeCookingDatesWithinSixtyDays", userId: String(user!.id), userEmail: user!.email ,headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-            //print(jsonObject)
-            print("apiReturnData called")
-            guard let errorCheck = jsonObject["hasErrors"] as? Int
-            else { return }
+            guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
             if(errorCheck==0){
                 guard let data = jsonObject["msg"] as? [[[String:Any]]] else { return }
                 var cookingDates = [CookingDate]()
@@ -252,13 +244,11 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     }
                 }
             }else{
-                print("hasErrors called")
                 guard let errorCode = jsonObject["errorCode"] as? Int else { return }
                 if(errorCode == -1){
-                    print("errorCode called")
                     DispatchQueue.main.async {
                         self.loginAgain()
-                   }
+                    }
                 }else{
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
@@ -271,7 +261,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                 }
             }
         } onError: { error in
-            print(error)
+//            print(error)
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. General error message: \(error).Please try again later", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .default){action in
@@ -309,7 +299,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             dest.delegateLogin = delegate
         }
         if segue.identifier == "paidOrder" {
-            print((cookingDate!.orders!.allObjects as! [CDOrder])[0])
             let dest = segue.destination as! MyAwesomeOrderVC
             dest.cookingDate = cookingDate!
             dest.user = user!
@@ -319,26 +308,21 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     //MARK: - UI
     func loginAgain(){
-            let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default) { _ in
-                self.delegate?.isUserLogged = false
-                self.delegate?.updateHomeViewControllerUIElements()
-                self.navigationController?.popViewController(animated: true)
-            }
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            self.delegate?.isUserLogged = false
+            self.delegate?.updateHomeViewControllerUIElements()
+            self.navigationController?.popViewController(animated: true)
         }
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
     func updateSelectedDate(selectedDate date:Date){
-        print("didSelectDate")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let sDate = dateFormatter.string(from: date)
         cookingDate = nil
         if(dates.contains(sDate)){
-            print("we are cooking")
             let cd = cds!.filter { $0.cookingDate!.split(separator: " ")[0] == sDate}
-            print(cds!)
-            print(cd)
-            print(date)
             cookingDate = cd[0]
             updateUICalendarView(cookingOnThiDate: true, selectedDate: sDate)
             if(cd[0].cookingStatusId == Int64(4)){
@@ -349,10 +333,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     updateActionButtonsAreHidden(update: false)
                 }
             }else{
-                print("closedOrders")
                 let orders = cd[0].orders!.allObjects as! [CDOrder]
-                //waiting user acknowledgement and payment
-                //print(orders)
                 if orders.count > 0 {
                     if orders[0].orderStatusId == 2 {
                         cookingDate = cd[0]
@@ -373,7 +354,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     //order has been paid OR waiting for pickup alert OR waiting pickup OR delivered OR closed
                     if orders[0].orderStatusId == 5 || orders[0].orderStatusId == 8 || orders[0].orderStatusId == 9 || orders[0].orderStatusId == 10 || orders[0].orderStatusId == 11 {
                         cookingDate = cd[0]
-                        print(orders[0])
                         updateActionButtonsAreHidden(paid: false)
                     }
                     //user cancelled the order before paying it
@@ -405,12 +385,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                 }
             }
         }else{
-            print("no cooking on this day")
             updateUICalendarView()
         }
-    }
-    func errorCodeAlert(){
-        
     }
     //MARK: - PROTOCOL
     func updateCalendarViewControllerUIElements(error: Bool) {
@@ -424,9 +400,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         updateSelectedDate(selectedDate: date)
     }
-    
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        print("shouldSelectDate")
         return CustomDateFormatter.shared.yyyy_MM_dd(withDate: date)
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {

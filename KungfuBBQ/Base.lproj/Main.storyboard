@@ -289,10 +289,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wAF-4w-25v" userLabel="emailView">
-                                                        <rect key="frame" x="15" y="10" width="290" height="60.5"/>
+                                                        <rect key="frame" x="15" y="5" width="290" height="62.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="E-mail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mBL-Y4-JkN" userLabel="emailLbl">
-                                                                <rect key="frame" x="0.0" y="18" width="80" height="24.5"/>
+                                                                <rect key="frame" x="0.0" y="19" width="80" height="24.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="80" id="j2g-cD-QJM"/>
                                                                 </constraints>
@@ -301,7 +301,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="johndoe@mail.com" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="utZ-p9-e6M" userLabel="email">
-                                                                <rect key="frame" x="85" y="18" width="205" height="24.5"/>
+                                                                <rect key="frame" x="85" y="19" width="205" height="24.5"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
@@ -317,16 +317,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IC-dW-yKm" userLabel="memberSinceView">
-                                                        <rect key="frame" x="15" y="72.5" width="290" height="61"/>
+                                                        <rect key="frame" x="15" y="67.5" width="290" height="63"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Member since:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bZs-gu-3NT" userLabel="memberSinceLbl">
-                                                                <rect key="frame" x="0.0" y="18" width="148" height="25"/>
+                                                                <rect key="frame" x="0.0" y="19" width="148" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="May 30 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WSt-gW-rS0" userLabel="memberSince">
-                                                                <rect key="frame" x="158" y="18" width="132" height="25"/>
+                                                                <rect key="frame" x="158" y="19" width="132" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
@@ -341,10 +341,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKz-yD-1J2" userLabel="nameView">
-                                                        <rect key="frame" x="15" y="135.5" width="290" height="60.5"/>
+                                                        <rect key="frame" x="15" y="130.5" width="290" height="62.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOi-hY-CV6" userLabel="nameLbl">
-                                                                <rect key="frame" x="0.0" y="18" width="75" height="25"/>
+                                                                <rect key="frame" x="0.0" y="19" width="75" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="75" id="wl7-Mb-TEa"/>
                                                                 </constraints>
@@ -353,8 +353,11 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="John Doe" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b8c-X7-ZpN" userLabel="name">
-                                                                <rect key="frame" x="85" y="17.5" width="205" height="26"/>
+                                                                <rect key="frame" x="85" y="12.5" width="205" height="38"/>
                                                                 <color key="backgroundColor" name="i_yellow"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="27x-OI-Q9p"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -372,17 +375,20 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFR-U5-Vfa" userLabel="phoneView">
-                                                        <rect key="frame" x="15" y="198" width="290" height="61"/>
+                                                        <rect key="frame" x="15" y="193" width="290" height="63"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bfi-Yt-dw0" userLabel="phoneLbl">
-                                                                <rect key="frame" x="0.0" y="18" width="69.5" height="25"/>
+                                                                <rect key="frame" x="0.0" y="19" width="69.5" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="(000) 000-0000" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="h44-vz-CsI" userLabel="phone">
-                                                                <rect key="frame" x="79.5" y="18" width="138" height="25"/>
+                                                                <rect key="frame" x="79.5" y="12.5" width="138" height="38"/>
                                                                 <color key="backgroundColor" name="i_yellow"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="Wqd-ky-qIh"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
@@ -399,7 +405,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCO-6i-Shq" userLabel="facebookView">
-                                                        <rect key="frame" x="15" y="261" width="290" height="60.5"/>
+                                                        <rect key="frame" x="15" y="256" width="290" height="62.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook name:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gr-j2-DDf" userLabel="facebookLbl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="161.5" height="24.5"/>
@@ -407,9 +413,12 @@
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John Doe" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ANU-sc-iSt" userLabel="facebook">
-                                                                <rect key="frame" x="0.0" y="27" width="290" height="34"/>
+                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John Doe" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ANU-sc-iSt" userLabel="facebook">
+                                                                <rect key="frame" x="0.0" y="29.5" width="290" height="38"/>
                                                                 <color key="backgroundColor" name="i_yellow"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="Nwv-Ju-jvO"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -427,7 +436,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOT-3Q-0QE" userLabel="instragramView">
-                                                        <rect key="frame" x="15" y="323.5" width="290" height="61"/>
+                                                        <rect key="frame" x="15" y="318.5" width="290" height="63"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram name:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsU-vk-nWf" userLabel="instagramLbl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="167.5" height="24.5"/>
@@ -436,8 +445,11 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John Doe" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kDe-UT-OtI" userLabel="instagram">
-                                                                <rect key="frame" x="0.0" y="29.5" width="290" height="26"/>
+                                                                <rect key="frame" x="0.0" y="29.5" width="290" height="38"/>
                                                                 <color key="backgroundColor" name="i_yellow"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="Abd-cY-Z7M"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -455,10 +467,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUA-jO-xMY" userLabel="passwordView">
-                                                        <rect key="frame" x="15" y="386.5" width="290" height="60.5"/>
+                                                        <rect key="frame" x="15" y="386.5" width="290" height="62.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipa-Wk-uDT">
-                                                                <rect key="frame" x="25" y="6.5" width="240" height="47"/>
+                                                                <rect key="frame" x="25" y="7.5" width="240" height="47"/>
                                                                 <color key="backgroundColor" name="i_red"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="47" id="MUa-nM-5CD"/>
@@ -545,9 +557,9 @@
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="UCO-6i-Shq" firstAttribute="top" secondItem="CFR-U5-Vfa" secondAttribute="bottom" constant="2" id="0TI-g7-FBN"/>
+                                                    <constraint firstItem="UCO-6i-Shq" firstAttribute="top" secondItem="CFR-U5-Vfa" secondAttribute="bottom" id="0TI-g7-FBN"/>
                                                     <constraint firstAttribute="trailing" secondItem="TPZ-Yj-nIc" secondAttribute="trailing" id="3JP-S9-eQW"/>
-                                                    <constraint firstItem="fKz-yD-1J2" firstAttribute="top" secondItem="3IC-dW-yKm" secondAttribute="bottom" constant="2" id="4a4-IK-Tze"/>
+                                                    <constraint firstItem="fKz-yD-1J2" firstAttribute="top" secondItem="3IC-dW-yKm" secondAttribute="bottom" id="4a4-IK-Tze"/>
                                                     <constraint firstItem="3IC-dW-yKm" firstAttribute="height" secondItem="wAF-4w-25v" secondAttribute="height" id="62v-LI-q5h"/>
                                                     <constraint firstItem="3IC-dW-yKm" firstAttribute="leading" secondItem="znu-Em-UQx" secondAttribute="leading" constant="15" id="6Cg-4w-ZxS"/>
                                                     <constraint firstItem="CUA-jO-xMY" firstAttribute="height" secondItem="wAF-4w-25v" secondAttribute="height" id="AYd-HE-anv"/>
@@ -555,24 +567,24 @@
                                                     <constraint firstItem="UCO-6i-Shq" firstAttribute="height" secondItem="wAF-4w-25v" secondAttribute="height" id="EZj-gn-KkE"/>
                                                     <constraint firstItem="TPZ-Yj-nIc" firstAttribute="leading" secondItem="znu-Em-UQx" secondAttribute="leading" id="MLb-mg-raJ"/>
                                                     <constraint firstItem="CFR-U5-Vfa" firstAttribute="leading" secondItem="znu-Em-UQx" secondAttribute="leading" constant="15" id="PKf-gE-b63"/>
-                                                    <constraint firstItem="CFR-U5-Vfa" firstAttribute="top" secondItem="fKz-yD-1J2" secondAttribute="bottom" constant="2" id="QJO-LE-ZyB"/>
+                                                    <constraint firstItem="CFR-U5-Vfa" firstAttribute="top" secondItem="fKz-yD-1J2" secondAttribute="bottom" id="QJO-LE-ZyB"/>
                                                     <constraint firstAttribute="trailing" secondItem="fKz-yD-1J2" secondAttribute="trailing" constant="15" id="TSY-GM-cgE"/>
                                                     <constraint firstAttribute="bottom" secondItem="TPZ-Yj-nIc" secondAttribute="bottom" id="Tcy-tw-owv"/>
                                                     <constraint firstAttribute="trailing" secondItem="3IC-dW-yKm" secondAttribute="trailing" constant="15" id="Tod-O3-h0V"/>
                                                     <constraint firstAttribute="trailing" secondItem="wAF-4w-25v" secondAttribute="trailing" constant="15" id="TxR-4T-8Mc"/>
-                                                    <constraint firstItem="3IC-dW-yKm" firstAttribute="top" secondItem="wAF-4w-25v" secondAttribute="bottom" constant="2" id="dBH-6U-Uem"/>
+                                                    <constraint firstItem="3IC-dW-yKm" firstAttribute="top" secondItem="wAF-4w-25v" secondAttribute="bottom" id="dBH-6U-Uem"/>
                                                     <constraint firstItem="UCO-6i-Shq" firstAttribute="leading" secondItem="znu-Em-UQx" secondAttribute="leading" constant="15" id="fHU-Be-riE"/>
                                                     <constraint firstAttribute="trailing" secondItem="CFR-U5-Vfa" secondAttribute="trailing" constant="15" id="fbR-E3-lhS"/>
                                                     <constraint firstItem="nOT-3Q-0QE" firstAttribute="height" secondItem="wAF-4w-25v" secondAttribute="height" id="g2I-J7-agJ"/>
-                                                    <constraint firstItem="wAF-4w-25v" firstAttribute="top" secondItem="znu-Em-UQx" secondAttribute="top" constant="10" id="gzW-x3-zYm"/>
+                                                    <constraint firstItem="wAF-4w-25v" firstAttribute="top" secondItem="znu-Em-UQx" secondAttribute="top" constant="5" id="gzW-x3-zYm"/>
                                                     <constraint firstItem="nOT-3Q-0QE" firstAttribute="leading" secondItem="znu-Em-UQx" secondAttribute="leading" constant="15" id="kcw-fn-Y93"/>
                                                     <constraint firstItem="CFR-U5-Vfa" firstAttribute="height" secondItem="wAF-4w-25v" secondAttribute="height" id="meh-pa-ep8"/>
                                                     <constraint firstItem="fKz-yD-1J2" firstAttribute="height" secondItem="wAF-4w-25v" secondAttribute="height" id="qwI-Gr-mE0"/>
-                                                    <constraint firstItem="nOT-3Q-0QE" firstAttribute="top" secondItem="UCO-6i-Shq" secondAttribute="bottom" constant="2" id="rGB-zO-Nti"/>
+                                                    <constraint firstItem="nOT-3Q-0QE" firstAttribute="top" secondItem="UCO-6i-Shq" secondAttribute="bottom" id="rGB-zO-Nti"/>
                                                     <constraint firstItem="fKz-yD-1J2" firstAttribute="leading" secondItem="znu-Em-UQx" secondAttribute="leading" constant="15" id="ram-Cb-wPK"/>
                                                     <constraint firstItem="CUA-jO-xMY" firstAttribute="leading" secondItem="znu-Em-UQx" secondAttribute="leading" constant="15" id="vGg-iZ-btL"/>
-                                                    <constraint firstItem="CUA-jO-xMY" firstAttribute="top" secondItem="nOT-3Q-0QE" secondAttribute="bottom" constant="2" id="wZe-wE-E3v"/>
-                                                    <constraint firstItem="TPZ-Yj-nIc" firstAttribute="top" secondItem="CUA-jO-xMY" secondAttribute="bottom" constant="2" id="yhW-ue-Bx4"/>
+                                                    <constraint firstItem="CUA-jO-xMY" firstAttribute="top" secondItem="nOT-3Q-0QE" secondAttribute="bottom" constant="5" id="wZe-wE-E3v"/>
+                                                    <constraint firstItem="TPZ-Yj-nIc" firstAttribute="top" secondItem="CUA-jO-xMY" secondAttribute="bottom" id="yhW-ue-Bx4"/>
                                                     <constraint firstAttribute="trailing" secondItem="CUA-jO-xMY" secondAttribute="trailing" constant="15" id="yqm-HZ-1mp"/>
                                                     <constraint firstAttribute="trailing" secondItem="UCO-6i-Shq" secondAttribute="trailing" constant="15" id="yxU-ZB-Zoy"/>
                                                     <constraint firstItem="wAF-4w-25v" firstAttribute="leading" secondItem="znu-Em-UQx" secondAttribute="leading" constant="15" id="zb9-Oz-ing"/>
@@ -724,14 +736,17 @@
                                                         <rect key="frame" x="10" y="144" width="300" height="320"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Dx7-ZN-PKu" userLabel="nameLbl">
-                                                                <rect key="frame" x="0.0" y="14.5" width="66" height="25"/>
+                                                                <rect key="frame" x="0.0" y="16.5" width="66" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jonh Doe" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dQ4-uv-gOc" userLabel="name">
-                                                                <rect key="frame" x="76" y="10" width="224" height="34"/>
+                                                                <rect key="frame" x="76" y="10" width="224" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="edt-cO-cUv"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" textContentType="name"/>
@@ -740,14 +755,17 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="vC5-Yl-3VD" userLabel="emailLbl">
-                                                                <rect key="frame" x="0.0" y="59" width="71.5" height="24"/>
+                                                                <rect key="frame" x="0.0" y="65" width="71.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name@mail.com" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8dv-ps-3wz" userLabel="email">
-                                                                <rect key="frame" x="81.5" y="54" width="218.5" height="34"/>
+                                                                <rect key="frame" x="81.5" y="58" width="218.5" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="iZi-n1-vY7"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
@@ -756,14 +774,17 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-0H-TFE" userLabel="phoneLbl">
-                                                                <rect key="frame" x="0.0" y="102.5" width="69.5" height="25"/>
+                                                                <rect key="frame" x="0.0" y="112.5" width="69.5" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(000) 000-0000" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RkH-Rh-nrq" userLabel="phone">
-                                                                <rect key="frame" x="79.5" y="98" width="220.5" height="34"/>
+                                                                <rect key="frame" x="79.5" y="106" width="220.5" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="P2J-Lq-UBs"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
@@ -772,7 +793,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOm-4B-g9a" userLabel="descriptionTextView">
-                                                                <rect key="frame" x="0.0" y="172" width="300" height="143"/>
+                                                                <rect key="frame" x="0.0" y="184" width="300" height="131"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
@@ -782,7 +803,7 @@
                                                                 </connections>
                                                             </textView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe your need:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mr6-Ny-M06" userLabel="descriptionLbl">
-                                                                <rect key="frame" x="0.0" y="142" width="300" height="25"/>
+                                                                <rect key="frame" x="0.0" y="154" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
@@ -901,8 +922,11 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name@mail.com" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NqL-GA-pqN" userLabel="email">
-                                                                <rect key="frame" x="0.0" y="35" width="300" height="34"/>
+                                                                <rect key="frame" x="0.0" y="35" width="300" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="qcN-m4-AkM"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="continue" textContentType="email"/>
@@ -911,14 +935,17 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inform your password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okp-1V-CD3" userLabel="passwordLbl">
-                                                                <rect key="frame" x="0.0" y="94" width="300" height="25"/>
+                                                                <rect key="frame" x="0.0" y="98" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters long" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pHt-ie-usf" userLabel="password">
-                                                                <rect key="frame" x="0.0" y="124" width="300" height="34"/>
+                                                                <rect key="frame" x="0.0" y="128" width="300" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="nG4-kJ-2Va"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES" textContentType="password"/>
@@ -947,7 +974,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jb-o7-Fzb">
-                                                                <rect key="frame" x="140" y="158" width="160" height="35"/>
+                                                                <rect key="frame" x="140" y="166" width="160" height="35"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="20"/>
                                                                 <state key="normal" title="Forgot password?">
                                                                     <color key="titleColor" name="i_black"/>
@@ -1194,8 +1221,11 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="KgfBBQ@........" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZyJ-2d-s3a" userLabel="invitationCode">
-                                                                <rect key="frame" x="0.0" y="35" width="300" height="34"/>
+                                                                <rect key="frame" x="0.0" y="35" width="300" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="V8Q-zB-qrm"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -1204,14 +1234,17 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wqj-y9-3JL" userLabel="passwordLbl">
-                                                                <rect key="frame" x="0.0" y="181.5" width="300" height="25"/>
+                                                                <rect key="frame" x="0.0" y="189.5" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters long" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hkU-V5-fTa" userLabel="password">
-                                                                <rect key="frame" x="0.0" y="211.5" width="300" height="34"/>
+                                                                <rect key="frame" x="0.0" y="219.5" width="300" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="Etr-Ua-z7k"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -1220,7 +1253,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch9-pq-kB3" userLabel="emailLbl">
-                                                                <rect key="frame" x="0.0" y="84" width="300" height="48.5"/>
+                                                                <rect key="frame" x="0.0" y="88" width="300" height="48.5"/>
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="Inform the e-mail you sent to KungfuBBQ:">
                                                                         <attributes>
@@ -1233,8 +1266,11 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name@email.com" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Pwq-XV-rN0" userLabel="email">
-                                                                <rect key="frame" x="0.0" y="137.5" width="300" height="34"/>
+                                                                <rect key="frame" x="0.0" y="141.5" width="300" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="ZqS-HD-wEA"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
@@ -1243,14 +1279,17 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm the password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRd-Ep-bh4" userLabel="confirmPasswordLbl">
-                                                                <rect key="frame" x="0.0" y="250.5" width="300" height="25"/>
+                                                                <rect key="frame" x="0.0" y="262.5" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters long" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CLp-i6-LeP" userLabel="confirmPassword">
-                                                                <rect key="frame" x="0.0" y="280.5" width="300" height="34"/>
+                                                                <rect key="frame" x="0.0" y="292.5" width="300" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="H7p-BR-8O3"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -1429,8 +1468,11 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters long" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MSF-jX-dRJ" userLabel="currentPassword">
-                                                                <rect key="frame" x="0.0" y="30" width="300" height="34"/>
+                                                                <rect key="frame" x="0.0" y="30" width="300" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="1OO-Bh-QE2"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -1439,14 +1481,17 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoK-7O-DCX" userLabel="newPasswordLbl">
-                                                                <rect key="frame" x="0.0" y="129" width="155.5" height="25"/>
+                                                                <rect key="frame" x="0.0" y="133" width="155.5" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters long" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DaA-iJ-976" userLabel="newPassword">
-                                                                <rect key="frame" x="0.0" y="159" width="300" height="34"/>
+                                                                <rect key="frame" x="0.0" y="163" width="300" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="h1o-hJ-85o"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -1455,14 +1500,17 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm new password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzO-38-UpA" userLabel="confirmPasswordLbl">
-                                                                <rect key="frame" x="0.0" y="198" width="239" height="25"/>
+                                                                <rect key="frame" x="0.0" y="206" width="239" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters long" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Ek-bS-L25" userLabel="confirmPassword">
-                                                                <rect key="frame" x="0.0" y="228" width="300" height="34"/>
+                                                                <rect key="frame" x="0.0" y="236" width="300" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="zAs-xt-9hM"/>
+                                                                </constraints>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -2629,7 +2677,7 @@
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
                                                                         <color key="backgroundColor" name="i_gray"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                                                        <state key="normal" title="Cancel">
+                                                                        <state key="normal" title="Delete">
                                                                             <color key="titleColor" name="fontColor"/>
                                                                         </state>
                                                                         <connections>
@@ -2816,20 +2864,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPo-6D-ZYy" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pu-OW-E9N" userLabel="dateLbl">
-                                                        <rect key="frame" x="10" y="10" width="54" height="24.5"/>
-                                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jun 16th 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAi-wi-hD7" userLabel="date">
-                                                        <rect key="frame" x="74" y="10" width="130.5" height="24.5"/>
+                                                        <rect key="frame" x="74" y="55" width="130.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffY-qh-Rxy" userLabel="statusLbl">
-                                                        <rect key="frame" x="10" y="44.5" width="75" height="24.5"/>
+                                                        <rect key="frame" x="10" y="89.5" width="75" height="24.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="lKa-jV-P7I"/>
                                                         </constraints>
@@ -2838,19 +2880,19 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waiting pick-up alert" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="haH-3y-c6z" userLabel="status">
-                                                        <rect key="frame" x="95" y="44.5" width="215" height="24.5"/>
+                                                        <rect key="frame" x="95" y="89.5" width="215" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4c-d1-W0S" userLabel="menuLbl">
-                                                        <rect key="frame" x="10" y="119" width="65.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="164" width="65.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-dL-f28" userLabel="menu">
-                                                        <rect key="frame" x="85.5" y="86.5" width="224.5" height="90"/>
+                                                        <rect key="frame" x="85.5" y="131.5" width="224.5" height="90"/>
                                                         <color key="backgroundColor" name="textFieldBackground"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="90" id="i4W-Op-Ggy"/>
@@ -2861,49 +2903,79 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knN-cB-hJy" userLabel="locationLbl">
-                                                        <rect key="frame" x="10" y="256.5" width="92.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="301.5" width="92.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afL-kL-Lii" userLabel="numberMealsLbl">
-                                                        <rect key="frame" x="10" y="361" width="180.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="406" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtw-yk-JHY" userLabel="numberMeals">
-                                                        <rect key="frame" x="200.5" y="361" width="11" height="24.5"/>
+                                                        <rect key="frame" x="200.5" y="406" width="11" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="018-Fg-xHc" userLabel="mealPriceLbl">
-                                                        <rect key="frame" x="10" y="395.5" width="112.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="440.5" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnI-sT-AKb" userLabel="mealPrice">
-                                                        <rect key="frame" x="132.5" y="395.5" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="132.5" y="440.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyO-OQ-X3g" userLabel="totalPriceLbl">
-                                                        <rect key="frame" x="10" y="430" width="111.5" height="24.5"/>
+                                                        <rect key="frame" x="10" y="475" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsC-mb-kt6" userLabel="totalPrice">
-                                                        <rect key="frame" x="131.5" y="430" width="83.5" height="24.5"/>
+                                                        <rect key="frame" x="131.5" y="475" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                         <color key="textColor" name="i_black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzC-0M-cca" userLabel="orderView">
+                                                        <rect key="frame" x="5" y="5" width="310" height="40"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order nr: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVk-fu-n1g" userLabel="orderNrLbl">
+                                                                <rect key="frame" x="25" y="7" width="105" height="26"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="105" id="m9q-zf-MRG"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="23"/>
+                                                                <color key="textColor" name="white"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="350999059" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5h-tb-3Hi" userLabel="orderNr">
+                                                                <rect key="frame" x="135" y="3.5" width="135" height="33"/>
+                                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="30"/>
+                                                                <color key="textColor" name="white"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" name="i_gray"/>
+                                                        <constraints>
+                                                            <constraint firstItem="ZVk-fu-n1g" firstAttribute="centerY" secondItem="XzC-0M-cca" secondAttribute="centerY" id="K3P-KV-vdh"/>
+                                                            <constraint firstAttribute="height" constant="40" id="WZE-gE-sND"/>
+                                                            <constraint firstItem="ZVk-fu-n1g" firstAttribute="leading" secondItem="XzC-0M-cca" secondAttribute="leading" constant="25" id="h6m-UB-hTZ"/>
+                                                            <constraint firstItem="ZVk-fu-n1g" firstAttribute="centerY" secondItem="XzC-0M-cca" secondAttribute="centerY" id="jR2-ex-YB0"/>
+                                                            <constraint firstItem="z5h-tb-3Hi" firstAttribute="leading" secondItem="ZVk-fu-n1g" secondAttribute="trailing" constant="5" id="rUq-4q-vGS"/>
+                                                            <constraint firstItem="z5h-tb-3Hi" firstAttribute="top" secondItem="XzC-0M-cca" secondAttribute="top" constant="3.5" id="rlz-uM-Y4r"/>
+                                                            <constraint firstItem="z5h-tb-3Hi" firstAttribute="centerY" secondItem="XzC-0M-cca" secondAttribute="centerY" id="u3m-KR-HBc"/>
+                                                        </constraints>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gdn-8g-57L" userLabel="locationView">
-                                                        <rect key="frame" x="112.5" y="193.5" width="197.5" height="150"/>
+                                                        <rect key="frame" x="112.5" y="238.5" width="197.5" height="150"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" text="375 Oak Ave, Cheshire, CT" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNm-ac-NRz" userLabel="location">
                                                                 <rect key="frame" x="0.0" y="0.0" width="197.5" height="30"/>
@@ -2952,6 +3024,12 @@
                                                             <constraint firstAttribute="trailing" secondItem="sYk-x1-sd9" secondAttribute="trailing" id="zm0-Hp-wGJ"/>
                                                         </constraints>
                                                     </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pu-OW-E9N" userLabel="dateLbl">
+                                                        <rect key="frame" x="10" y="55" width="54" height="24.5"/>
+                                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
+                                                        <color key="textColor" name="i_black"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="aEM-dL-f28" firstAttribute="centerY" secondItem="a4c-d1-W0S" secondAttribute="centerY" id="1sG-zO-X3u"/>
@@ -2964,6 +3042,7 @@
                                                     <constraint firstItem="knN-cB-hJy" firstAttribute="leading" secondItem="IPo-6D-ZYy" secondAttribute="leading" constant="10" id="AhO-xX-ddG"/>
                                                     <constraint firstItem="aEM-dL-f28" firstAttribute="leading" secondItem="a4c-d1-W0S" secondAttribute="trailing" constant="10" id="BLH-kr-LQl"/>
                                                     <constraint firstItem="ffY-qh-Rxy" firstAttribute="leading" secondItem="IPo-6D-ZYy" secondAttribute="leading" constant="10" id="BbG-jG-kwx"/>
+                                                    <constraint firstItem="XzC-0M-cca" firstAttribute="centerX" secondItem="IPo-6D-ZYy" secondAttribute="centerX" id="CNy-1n-9ow"/>
                                                     <constraint firstItem="PnI-sT-AKb" firstAttribute="centerY" secondItem="018-Fg-xHc" secondAttribute="centerY" id="D0h-Wx-RWm"/>
                                                     <constraint firstItem="haH-3y-c6z" firstAttribute="centerY" secondItem="ffY-qh-Rxy" secondAttribute="centerY" id="E8f-SK-0O6"/>
                                                     <constraint firstAttribute="trailing" secondItem="haH-3y-c6z" secondAttribute="trailing" constant="10" id="EB4-hE-vJu"/>
@@ -2974,17 +3053,19 @@
                                                     <constraint firstItem="ffY-qh-Rxy" firstAttribute="top" secondItem="2Pu-OW-E9N" secondAttribute="bottom" constant="10" id="S4i-jP-6cf"/>
                                                     <constraint firstAttribute="trailing" secondItem="aEM-dL-f28" secondAttribute="trailing" constant="10" id="Vgs-Wy-El1"/>
                                                     <constraint firstItem="afL-kL-Lii" firstAttribute="top" secondItem="knN-cB-hJy" secondAttribute="bottom" constant="80" id="Wuv-vN-rcr"/>
+                                                    <constraint firstItem="XzC-0M-cca" firstAttribute="top" secondItem="IPo-6D-ZYy" secondAttribute="top" constant="5" id="XN8-qR-ilU"/>
                                                     <constraint firstItem="OsC-mb-kt6" firstAttribute="leading" secondItem="jyO-OQ-X3g" secondAttribute="trailing" constant="10" id="YCK-VR-Oeu"/>
                                                     <constraint firstItem="jyO-OQ-X3g" firstAttribute="leading" secondItem="IPo-6D-ZYy" secondAttribute="leading" constant="10" id="YUD-pn-wmf"/>
                                                     <constraint firstItem="OsC-mb-kt6" firstAttribute="centerY" secondItem="jyO-OQ-X3g" secondAttribute="centerY" id="ciw-iN-lTG"/>
                                                     <constraint firstItem="a4c-d1-W0S" firstAttribute="leading" secondItem="IPo-6D-ZYy" secondAttribute="leading" constant="10" id="eQU-x8-Ksg"/>
                                                     <constraint firstItem="Gdn-8g-57L" firstAttribute="leading" secondItem="knN-cB-hJy" secondAttribute="trailing" constant="10" id="ecg-go-d2W"/>
                                                     <constraint firstItem="mtw-yk-JHY" firstAttribute="centerY" secondItem="afL-kL-Lii" secondAttribute="centerY" id="heA-ph-y27"/>
+                                                    <constraint firstItem="2Pu-OW-E9N" firstAttribute="top" secondItem="XzC-0M-cca" secondAttribute="bottom" constant="10" id="iVh-Af-2OZ"/>
                                                     <constraint firstItem="018-Fg-xHc" firstAttribute="leading" secondItem="IPo-6D-ZYy" secondAttribute="leading" constant="10" id="kFT-aV-NZh"/>
                                                     <constraint firstItem="rAi-wi-hD7" firstAttribute="leading" secondItem="2Pu-OW-E9N" secondAttribute="trailing" constant="10" id="kYG-dU-xxB"/>
                                                     <constraint firstItem="2Pu-OW-E9N" firstAttribute="leading" secondItem="IPo-6D-ZYy" secondAttribute="leading" constant="10" id="mry-0T-eM6"/>
                                                     <constraint firstItem="mtw-yk-JHY" firstAttribute="leading" secondItem="afL-kL-Lii" secondAttribute="trailing" constant="10" id="rax-xV-YYC"/>
-                                                    <constraint firstItem="2Pu-OW-E9N" firstAttribute="top" secondItem="IPo-6D-ZYy" secondAttribute="top" constant="10" id="wiN-zC-llY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XzC-0M-cca" secondAttribute="trailing" constant="5" id="tVS-Ve-BKZ"/>
                                                     <constraint firstItem="afL-kL-Lii" firstAttribute="leading" secondItem="IPo-6D-ZYy" secondAttribute="leading" constant="10" id="yRR-2e-m2z"/>
                                                 </constraints>
                                             </view>
@@ -3029,6 +3110,7 @@
                         <outlet property="mapView" destination="sYk-x1-sd9" id="a1B-P0-0lw"/>
                         <outlet property="menu" destination="aEM-dL-f28" id="y2R-Lv-Kqc"/>
                         <outlet property="numberOfMeals" destination="mtw-yk-JHY" id="n6f-N2-shp"/>
+                        <outlet property="orderNr" destination="z5h-tb-3Hi" id="mOV-FH-H6x"/>
                         <outlet property="price" destination="PnI-sT-AKb" id="FEf-br-nqU"/>
                         <outlet property="totalPrice" destination="OsC-mb-kt6" id="zD3-BB-UFE"/>
                     </connections>
@@ -3058,8 +3140,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1234 4567 8900 0000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdt-vk-uqA" userLabel="cardNumber">
-                                                <rect key="frame" x="25" y="26.5" width="240" height="34"/>
+                                                <rect key="frame" x="25" y="26.5" width="240" height="38"/>
                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="q5h-sf-ry0"/>
+                                                </constraints>
                                                 <color key="textColor" name="i_black"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
@@ -3068,14 +3153,17 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-8A-v0o" userLabel="codeLbl">
-                                                <rect key="frame" x="10" y="70.5" width="176" height="24.5"/>
+                                                <rect key="frame" x="10" y="74.5" width="176" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="i_black"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="123" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i49-35-bnS" userLabel="code">
-                                                <rect key="frame" x="75" y="97" width="140" height="34"/>
+                                                <rect key="frame" x="75" y="101" width="140" height="38"/>
                                                 <color key="backgroundColor" name="textFieldBackground"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="iWQ-wP-njF"/>
+                                                </constraints>
                                                 <color key="textColor" name="i_black"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
@@ -3084,7 +3172,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid through" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzP-sF-ahF" userLabel="validTrough">
-                                                <rect key="frame" x="10" y="141" width="140" height="24.5"/>
+                                                <rect key="frame" x="10" y="149" width="140" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="i_black"/>
                                                 <nil key="highlightedColor"/>
@@ -3115,7 +3203,7 @@
                                                 </connections>
                                             </button>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-5t-RPP" userLabel="pkView">
-                                                <rect key="frame" x="15" y="165.5" width="260" height="75"/>
+                                                <rect key="frame" x="15" y="173.5" width="260" height="75"/>
                                                 <color key="tintColor" name="i_black"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="Ccf-wF-Z1h"/>

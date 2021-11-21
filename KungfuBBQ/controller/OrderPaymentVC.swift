@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class OrderPaymentVC: UIViewController, PaymentProtocol {
+class OrderPaymentVC: UIViewController,PaymentProtocol,ShowHttpErrorAlertOnOrderPaymentVC {
     //vars and lets
     var cookingDate:CDCookingDate!
     var user:AppUser!
@@ -71,16 +71,15 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
     }
     @IBAction func mapClick(_ sender: Any) {
         callNavigationMapsAlert()
-        
     }
     @IBAction func cancelOrder(_ sender: Any) {
         enableButtons(value: false)
         let alert = UIAlertController(title: "Cancel order?", message: "Are you sure you want to cancel this order? This action will take you out of this cooking date's distribuition list and cannot be undone. As soon as you cancel, the system will request another user on the waiting list to take your place on the distribution list.", preferredStyle: .alert)
-        let del = UIAlertAction(title: "Cancel order", style: .destructive) { cancel in
+        let del = UIAlertAction(title: "Delete", style: .destructive) { cancel in
             self.createSpinner()
             self.cancelOrderRequest()
         }
-        let dismiss = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
+        let dismiss = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.enableButtons(value: true)
         }
         alert.addAction(del)
@@ -92,7 +91,6 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
         performSegue(withIdentifier: "paymentVC", sender: self)
         enableButtons(value: true)
     }
-    
     // MARK: - SPINNER
     func createSpinner(){
         spinner.color = .black
@@ -121,6 +119,7 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
         }
     }
     //MARK: - UPDATE UI
+    //MARK: Maps
     func callNavigationMapsAlert(){
         addressBtn.isEnabled = false
         mapBtn.isEnabled = false
@@ -148,9 +147,33 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
+    //MARK: enable/disable btns
     func enableButtons(value:Bool){
         cancelOrder.isEnabled = value
         payOrder.isEnabled = value
+    }
+    //MARK: error alert
+    private func showErrorAlertHTTPRequestResponseError(msg:String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: "Kungfu BBQ server message: \(msg)", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default) { _ in
+                self.delegate?.updateCalendarViewControllerUIElements(error: true)
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    //MARK: login expired alert
+    func loginAgain(){
+        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            self.delegateLogin?.isUserLogged = false
+            self.delegateLogin?.updateHomeViewControllerUIElements()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
     }
     //MARK: - SEGUE
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -161,6 +184,7 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
             dest.order = order
             dest.delegate = self
             dest.delegateLogin = self.delegateLogin
+            dest.delNoPayment = self
         }
     }
     //MARK: - DELEGATE METHOD
@@ -178,32 +202,51 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
+    func callHttpErrorAlertOnOrderPaymentVC() {
+        self.delegate?.updateCalendarViewControllerUIElements(error: true)
+        self.navigationController?.popViewController(animated: true)
+    }
     //MARK: - HTTP REQUEST
+    //MARK: cancel made to list order
     func cancelOrderRequest(){
         HttpRequestCtrl.shared.post(toRoute: "/api/order/cancelMadeToListOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), orderID: Int(order.orderId),  headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-            guard let errorCheck = jsonObject["hasErrors"] as? Int
-            else { return }
+            guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
             self.removeSpinner()
-            
+            guard let msg = jsonObject["msg"] as? String else { return }
             if(errorCheck==0){
                 DispatchQueue.main.async {
-                    self.enableButtons(value: true)
-                    self.callDeletage()
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Success", message: "Your order was successfully deleted.", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default) { _IOFBF in
+                            self.enableButtons(value: true)
+                            self.callDeletage()
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             }else{
-                guard let msg = jsonObject["msg"] as? String else { return }
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error", message: "Not possible to delete order right now. Server message: \(msg)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .default) { _IOFBF in
-                        self.enableButtons(value: true)
+                guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                if(errorCode == -1){
+                    DispatchQueue.main.async {
+                        self.loginAgain()
                     }
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
+                }else if(errorCode <= -2){
+                    self.showErrorAlertHTTPRequestResponseError(msg: msg)
+                }else{
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error", message: "Not possible to delete order right now. Server message: \(msg)", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .default) { _IOFBF in
+                            self.enableButtons(value: true)
+                        }
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
         } onError: { error in
             self.enableButtons(value: true)
-//            print(error)
             self.removeSpinner()
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Error", message: "Not possible to delete order right now. Generalized error: \(error)", preferredStyle: .alert)
@@ -213,11 +256,10 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
                 self.cancelOrder.isEnabled = true
             }
         }
-
     }
+    //MARK: renew token
     func renewToken(){
         HttpRequestCtrl.shared.get(toRoute: "/api/user/renewToken", userEmail: user.email, headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
-//            print(jsonObject)
             guard let errorCheck = jsonObject["hasErrors"] as? Int
             else { return }
             if(errorCheck==0){
@@ -225,18 +267,23 @@ class OrderPaymentVC: UIViewController, PaymentProtocol {
                 self.user.token = token
                 self.save()
             }else{
-                guard let msg = jsonObject["msg"] as? String else { return }
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error!", message: "\(msg)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .cancel) { _ in
+                guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                if(errorCode == -1){
+                    DispatchQueue.main.async {
+                        self.loginAgain()
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error!", message: "Not possible to authenticate user. Please close and start the app again.", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .cancel) { _ in
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        alert.addAction(ok)
                         self.present(alert, animated: true, completion: nil)
                     }
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
                 }
             }
         } onError: { error in
-//            print(error)
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Error!", message: "Not possible to renew user authentication righ now. Generalized error message: \(error). Try again later!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .cancel) { _ in
