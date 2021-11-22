@@ -15,7 +15,7 @@ class HttpRequestCtrl{
     
     func get(toRoute route: String, userId id: String? = nil,userEmail email: String? = nil, headers: [String:String] = [String:String](), onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
         print("httpRequestCtrl -> GET")
-        if var url = URLComponents(string: "https://dgmieth.live\(route)") {
+        if var url = URLComponents(string: "\(KUNGFUBBQ_DNS)\(route)") {
             var queryItems=[URLQueryItem]()
             if let pId = id {
                 queryItems.append(URLQueryItem(name: "id", value: pId))
@@ -54,7 +54,7 @@ class HttpRequestCtrl{
     func post(toRoute route: String, mobileOS os: String? = nil, userEmail email: String? = nil, userName name: String? = nil, userPassword pass:String? = nil, currentPassword cPass:String? = nil, newPassword nPass:String? = nil, confirmPassword confPass:String? = nil, invitationCode invitation:String? = nil, phoneNumber phone:String? = nil, facebookName facebook:String? = nil, instagramName instagram:String? = nil, userId id:String? = nil, catoringDescription description:String? = nil, cookingDateID cdID:Int? = nil, dishID dishes:[Int]? = nil, dishQtty dQtty:[Int]? = nil, extrasID extras:[Int]? = nil, extrasQtty eQtty:[Int]? = nil, orderID oID:Int? = nil, newQuantity newQtty:Int? = nil, cardNumber cNumber: String? = nil, expirantionDate eDate: String? = nil, cardCode cCode: String? = nil, headers: [String:String] = [String:String](),  onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
         print("httpRequestCtrl -> POST")
         var params=[String:Any]()
-        if let url = URL(string: "https://dgmieth.live\(route)") {
+        if let url = URL(string: "\(KUNGFUBBQ_DNS)\(route)") {
             if let mOS = os {
                 params["mobileOS"] = mOS
             }
