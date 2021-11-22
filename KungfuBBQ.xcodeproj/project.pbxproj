@@ -44,6 +44,7 @@
 		3870A8B926C218A800F7C4D2 /* SocialMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A8B826C218A800F7C4D2 /* SocialMedia.swift */; };
 		3888C84626671F1C00DA735A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888C84526671F1C00DA735A /* CalendarViewController.swift */; };
 		38978EB926CB1F6E009572E6 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38978EB826CB1F6E009572E6 /* RegisterVC.swift */; };
+		389E8DBA274AEF0200862D83 /* PublicVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E8DB9274AEF0200862D83 /* PublicVariables.swift */; };
 		38A84CC7266C07DA00D1F328 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38A84CC5266C07DA00D1F328 /* DataModel.xcdatamodeld */; };
 		38C6B6D626E03EA3000C0B65 /* CookingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6B6D526E03EA3000C0B65 /* CookingDate.swift */; };
 		38C6B6D826E050CA000C0B65 /* CookingDateDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6B6D726E050CA000C0B65 /* CookingDateDishes.swift */; };
@@ -114,6 +115,8 @@
 		3870A8B826C218A800F7C4D2 /* SocialMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMedia.swift; sourceTree = "<group>"; };
 		3888C84526671F1C00DA735A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		38978EB826CB1F6E009572E6 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		389E8DB9274AEF0200862D83 /* PublicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicVariables.swift; sourceTree = "<group>"; };
+		389E8DBB274AEFE800862D83 /* KungfuBBQ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KungfuBBQ.entitlements; sourceTree = "<group>"; };
 		38A84CC6266C07DA00D1F328 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		38C6B6D526E03EA3000C0B65 /* CookingDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingDate.swift; sourceTree = "<group>"; };
 		38C6B6D726E050CA000C0B65 /* CookingDateDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingDateDishes.swift; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 		3853A84D2663EEEA00FCBEAA /* KungfuBBQ */ = {
 			isa = PBXGroup;
 			children = (
+				389E8DBB274AEFE800862D83 /* KungfuBBQ.entitlements */,
 				386718A226CDF67D002AAB81 /* formatters */,
 				38A84CC4266C07C800D1F328 /* model */,
 				381E3F1F266959DB00003E19 /* publicExtensions */,
@@ -187,6 +191,7 @@
 				3853A8572663EEF200FCBEAA /* Assets.xcassets */,
 				3853A8592663EEF200FCBEAA /* LaunchScreen.storyboard */,
 				3853A85C2663EEF200FCBEAA /* Info.plist */,
+				389E8DB9274AEF0200862D83 /* PublicVariables.swift */,
 			);
 			path = KungfuBBQ;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 				38C6B6D826E050CA000C0B65 /* CookingDateDishes.swift in Sources */,
 				386718A426CDF68E002AAB81 /* PhoneFormatter.swift in Sources */,
 				3870A8B926C218A800F7C4D2 /* SocialMedia.swift in Sources */,
+				389E8DBA274AEF0200862D83 /* PublicVariables.swift in Sources */,
 				381E3F1A266953E000003E19 /* PreOrderCreationVC.swift in Sources */,
 				3870A8B226C200FC00F7C4D2 /* LoginVC.swift in Sources */,
 				3868B98026E9505C00BBEA4F /* CustomDateFormatter.swift in Sources */,
@@ -652,6 +658,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
@@ -663,7 +670,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -674,6 +681,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
@@ -685,7 +693,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
