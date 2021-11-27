@@ -73,7 +73,13 @@ class CustomDateFormatter {
             }else{
                 dateComponents.month = month! + 1
             }
-            dateComponents.day = 30
+            let cal = Calendar(identifier: .gregorian)
+            let stDt = cal.date(from: dateComponents)
+            let cmp2 = NSDateComponents()
+            cmp2.month = 1
+            cmp2.day = -1
+            let enDt = cal.date(byAdding: cmp2 as DateComponents, to: stDt!)
+            dateComponents.day = cal.component(.day, from: enDt!)
         }
         return dateComponents
     }

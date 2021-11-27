@@ -407,11 +407,17 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let today = dateFormatter.string(from: Date())
         let date1 = dateFormatter.string(from: date)
+        let dateComponents = CustomDateFormatter.shared.dateComponentsFSCalendar(withDate: Date(), minimumMaximum: "maximum")
+        let userCalendar = Calendar(identifier: .gregorian)
+        let date2 = userCalendar.date(from: dateComponents)
         if(date1<today){
             return UIColor(named: "gray_80")
         }
         if(date1==today){
             return UIColor(named: "i_black")
+        }
+        if(date > date2!){
+            return UIColor(named: "gray_80")
         }
         return UIColor(named: "fontColor")
     }
