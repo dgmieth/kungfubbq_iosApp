@@ -1764,7 +1764,7 @@
                                             <constraint firstAttribute="height" constant="55" id="P0G-Gt-a7r"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                        <state key="normal" title="Place order">
+                                        <state key="normal" title="Pre order">
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
@@ -1778,7 +1778,7 @@
                                             <constraint firstAttribute="height" constant="55" id="r8b-Vk-Xdr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                        <state key="normal" title="Checkout order">
+                                        <state key="normal" title="Update pre order">
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
@@ -1792,7 +1792,7 @@
                                             <constraint firstAttribute="height" constant="55" id="wEe-Jt-0Js"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
-                                        <state key="normal" title="Pay order">
+                                        <state key="normal" title="Pay pre order">
                                             <color key="titleColor" name="i_black"/>
                                         </state>
                                         <connections>
@@ -2170,7 +2170,7 @@
                             <constraint firstItem="TCS-CA-Utf" firstAttribute="bottom" secondItem="8OF-fb-PKo" secondAttribute="bottom" id="rpl-Rc-4YO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Pre-order creation" id="sXq-KF-7iI"/>
+                    <navigationItem key="navigationItem" title="Pre-order " id="sXq-KF-7iI"/>
                     <connections>
                         <outlet property="address" destination="J0J-Rb-Xy7" id="hV6-Ld-Qph"/>
                         <outlet property="addressBtn" destination="tHp-4J-Qkc" id="MqL-LX-pEI"/>
@@ -2189,7 +2189,7 @@
             </objects>
             <point key="canvasLocation" x="2769" y="-1317"/>
         </scene>
-        <!--My awesome pre-order-->
+        <!--Update pre order-->
         <scene sceneID="5Su-5T-jRF">
             <objects>
                 <viewController id="0iA-ek-gvE" customClass="MyAwesomePreOrderVC" customModule="KungfuBBQ" customModuleProvider="target" sceneMemberID="viewController">
@@ -2509,7 +2509,7 @@
                             <constraint firstItem="QtB-ie-Iel" firstAttribute="leading" secondItem="0dd-ME-3eH" secondAttribute="leading" id="kCL-Av-ZxZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My awesome pre-order" id="7l6-73-GWj">
+                    <navigationItem key="navigationItem" title="Update pre order" id="7l6-73-GWj">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9Uy-7J-6nM">
                             <color key="tintColor" name="i_yellow"/>
                             <connections>
@@ -2824,7 +2824,7 @@
                             <constraint firstItem="BUA-wR-wva" firstAttribute="top" secondItem="67I-iU-U76" secondAttribute="top" id="qRd-gX-4aq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Order payment" id="tC3-A8-h11"/>
+                    <navigationItem key="navigationItem" title="Pay pre order" id="tC3-A8-h11"/>
                     <connections>
                         <outlet property="address" destination="ylR-IE-faV" id="QH4-Xc-gte"/>
                         <outlet property="addressBtn" destination="Obr-m4-JY4" id="U7j-oB-bXm"/>
@@ -3100,7 +3100,7 @@
                             <constraint firstItem="PNK-0I-5GN" firstAttribute="trailing" secondItem="8wP-Iy-YzI" secondAttribute="trailing" id="jv9-RY-Cfe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My awesome order" id="EGF-TO-h8m"/>
+                    <navigationItem key="navigationItem" title="Paid order" id="EGF-TO-h8m"/>
                     <connections>
                         <outlet property="address" destination="SNm-ac-NRz" id="GR3-mq-8Ds"/>
                         <outlet property="addressBtn" destination="ud9-cN-Sf3" id="PPe-Ev-BfE"/>

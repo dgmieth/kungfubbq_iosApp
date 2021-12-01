@@ -25,7 +25,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     //vars and lets
     var cookingDate:CDCookingDate!
     var user:AppUser!
-    var amount:Decimal=0
+    var amount:Double=0
     var spinner = UIActivityIndicatorView(style: .large)
     //delegates
     var delegate:BackToCalendarViewController?
@@ -62,12 +62,15 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         for dish in dishes {
             text = "\(text)\(counter)- \(dish.dishName!) - U$ \(dish.dishPrice!)\n"
             counter += 1
-            amount = amount + Decimal(Double(dish.dishPrice!)!)
+            amount = amount + Double(dish.dishPrice!)!
         }
         menu.text = text
         address.text = "\(cookingDate.street!), \(cookingDate.city!) \(cookingDate.state!)"
-        price.text = "U$ \(amount)"
-        totalPrice.text = "U$ \(amount)"
+        price.text = decimalPrecision(amount: amount)
+        totalPrice.text = decimalPrecision(amount: amount)
+    }
+    private func decimalPrecision(amount:Double)->String{
+        return String(format: "U$ %.2f", amount)
     }
     //MARK: - PICKER
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -89,7 +92,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         return lable
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        totalPrice.text = "U$ \(amount*Decimal((row+1)))"
+        totalPrice.text = decimalPrecision(amount: (amount*Double(row+1)))
     }
     //MARK: - UI UPDATE
     func callNavigationMapsAlert(){

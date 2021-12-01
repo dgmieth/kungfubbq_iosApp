@@ -14,7 +14,7 @@ class MyAwesomeOrderVC: UIViewController {
     var user:AppUser!
     var order:CDOrder!
     var dataController:DataController!
-    var amount:Decimal=0
+    var amount:Double=0
     var spinner = UIActivityIndicatorView(style: .large)
     //ui elements
     @IBOutlet weak var mapView: MKMapView!
@@ -49,7 +49,7 @@ class MyAwesomeOrderVC: UIViewController {
         for dish in dishes {
             text = "\(text)\(counter)- \(dish.dishName!) - U$ \(dish.dishPrice!)\n"
             counter += 1
-            amount = amount + Decimal(Double(dish.dishPrice!)!)
+            amount = amount + Double(dish.dishPrice!)!
         }
         orderNr.text = "\(order.orderId)"
         cdStatus.text = cookingDate.cookingStatus!
@@ -59,8 +59,11 @@ class MyAwesomeOrderVC: UIViewController {
         let qtty = Int(oDishes[0].dishQtty!)!
         print(qtty)
         numberOfMeals.text = "\(qtty)"
-        price.text = "U$ \(amount)"
-        totalPrice.text = "U$ \(amount*Decimal(qtty))"
+        price.text = decimalPrecision(amount: amount)
+        totalPrice.text = decimalPrecision(amount: amount*Double(qtty))
+    }
+    private func decimalPrecision(amount:Double)->String{
+        return String(format: "U$ %.2f", amount)
     }
     @IBAction func addressClick(_ sender: Any) {
         callNavigationMapsAlert()

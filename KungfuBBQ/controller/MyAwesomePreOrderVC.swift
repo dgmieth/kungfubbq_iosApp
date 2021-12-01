@@ -13,7 +13,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     var cookingDate:CDCookingDate!
     var user:AppUser!
     var order:CDOrder!
-    var amount:Decimal=0
+    var amount:Double=0
     var spinner = UIActivityIndicatorView(style: .large)
     //ui elements
     @IBOutlet weak var mapView: MKMapView!
@@ -55,7 +55,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         for dish in dishes {
             text = "\(text)\(counter)- \(dish.dishName!) - U$ \(dish.dishPrice!)\n"
             counter += 1
-            amount = amount + Decimal(Double(dish.dishPrice!)!)
+            amount = amount + Double(dish.dishPrice!)!
         }
         cdStatus.text = cookingDate.cookingStatus!
         menu.text = text
@@ -64,9 +64,12 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         let qtty = Int(oDishes[0].dishQtty!)!
         print(qtty)
         numberMealsPV.selectRow(qtty-1, inComponent: 0, animated: true)
-        price.text = "U$ \(amount)"
-        totalPrice.text = "U$ \(amount*Decimal(qtty))"
+        price.text = decimalPrecision(amount: amount)
+        totalPrice.text = decimalPrecision(amount: amount*Double(qtty))
         buttonsAreHidden(deleteOrder: false)
+    }
+    private func decimalPrecision(amount:Double)->String{
+        return String(format: "U$ %.2f", amount)
     }
     //MARK: - PICKER VIEW
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -88,7 +91,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         return lable
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        totalPrice.text = "U$ \(amount*Decimal((row+1)))"
+        totalPrice.text = decimalPrecision(amount: amount*Double(row+1))
     }
     //MARK: - UPDATE UI
     func buttonsAreHidden(deleteOrder:Bool = true, save:Bool = true, cancel:Bool = true, pickerViewIsEnabled:Bool = false, edit:Bool = true){

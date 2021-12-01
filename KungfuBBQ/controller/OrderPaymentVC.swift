@@ -15,7 +15,7 @@ class OrderPaymentVC: UIViewController,PaymentProtocol,ShowHttpErrorAlertOnOrder
     var user:AppUser!
     var order:CDOrder!
     var dataController:DataController!
-    var amount:Decimal=0
+    var amount:Double=0
     var spinner = UIActivityIndicatorView(style: .large)
     //ui elements
     @IBOutlet weak var mapView: MKMapView!
@@ -54,7 +54,7 @@ class OrderPaymentVC: UIViewController,PaymentProtocol,ShowHttpErrorAlertOnOrder
         for dish in dishes {
             text = "\(text)\(counter)- \(dish.dishName!) - U$ \(dish.dishPrice!)\n"
             counter += 1
-            amount = amount + Decimal(Double(dish.dishPrice!)!)
+            amount = amount + Double(dish.dishPrice!)!
         }
         cdStatus.text = cookingDate.cookingStatus!
         menu.text = text
@@ -63,7 +63,10 @@ class OrderPaymentVC: UIViewController,PaymentProtocol,ShowHttpErrorAlertOnOrder
         let qtty = Int(oDishes[0].dishQtty!)!
         numberOfMeals.text = "\(qtty)"
         price.text = "U$ \(amount)"
-        totalPrice.text = "U$ \(amount*Decimal(qtty))"
+        totalPrice.text = "U$ \(amount*Double(qtty))"
+    }
+    private func decimalPrecision(amount:Double)->String{
+        return String(format: "U$ %.2f", amount)
     }
     //MARK: - BUTTON EVENT LISTENER
     @IBAction func addressClick(_ sender: Any) {
