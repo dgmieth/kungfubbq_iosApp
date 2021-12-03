@@ -39,9 +39,11 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     //delegates
     var delegate:BackToHomeViewControllerFromGrandsonViewController!
     
+    override func viewWillAppear(_ animated: Bool) {
+        updateUIInformation()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUIInformation()
         calendar.register(FSCalendarCell.self, forCellReuseIdentifier: "CELL")
         calendar.select(self.calendar.today)
     }
