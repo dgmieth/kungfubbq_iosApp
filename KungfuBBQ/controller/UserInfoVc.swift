@@ -14,6 +14,9 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
     var keyboardHeight:CGFloat = 0
     var dataController:DataController!
     let phoneFormatter = PhoneFormatter()
+    private let maxPhoneLength = 14
+    private var correctPhone = false
+    
     var nameCheck:String?
     var phoneCheck:String?
     var facebookCheck:String?
@@ -31,6 +34,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
     @IBOutlet var saveBtn: UIButton!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var changePassword: UIButton!
+    @IBOutlet var changePassBtnView: UIView!
     //delegates
     var delegate:BackToHomeViewControllerFromGrandsonViewController?
     
@@ -69,12 +73,25 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
     @IBAction func cancelClick(_ sender: Any) {
         updateInformation(UIenabled: false)
     }
+    private func validatationAlerts(msg:String){
+        let alert = UIAlertController(title: "Error!", message: msg, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .cancel)
+        alert.addAction(ok)
+        self.saveBtn.isEnabled = true
+        self.present(alert, animated: true, completion: nil)
+    }
     @IBAction func saveClick(_ sender: Any) {
         saveBtn.isEnabled = false
         let name = name.text!
         let phoneNumber = phoneNumber.text!
         let facebookName = facebookName.text!
         let instagramName = instagramName.text!
+        if(name.isEmpty){
+            return validatationAlerts(msg: "You must inform your name")
+        }
+        if(!correctPhone){
+            return validatationAlerts(msg: "You must inform a valid phone number")
+        }
         if name != nameCheck || phoneNumber != phoneCheck || facebookName != facebookCheck || instagramName != instragramCheck {
             createSpinner()
             var user1 = User()
@@ -223,6 +240,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
             let s = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
             let formatted = phoneFormatter.formattedString(from: s)
             textField.text = formatted
+            correctPhone = formatted.count == maxPhoneLength ? true : false
             return formatted.isEmpty
         }
         return true
@@ -262,7 +280,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         //buttons
         cancel.isHidden = !enabled
         saveBtn.isHidden = !enabled
-        changePassword.isHidden = enabled
+        changePassBtnView.isHidden = enabled
         edit.isEnabled = !enabled
         //uitextfields
         name.isEnabled = enabled
@@ -295,6 +313,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
                 if let phoneNumberT = user!.phoneNumber {
                     phoneNumber.text = phoneFormatter.formattedString(from: phoneNumberT)
                     phoneCheck = phoneFormatter.formattedString(from: phoneNumberT)
+                    correctPhone = phoneCheck?.count == maxPhoneLength ? true : false
                 }else{
                     phoneNumber.text = ""
                     phoneCheck = ""

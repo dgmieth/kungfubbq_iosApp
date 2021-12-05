@@ -13,6 +13,7 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
     var keyboardHeight:CGFloat = 0
     var dataController:DataController!
     var user:AppUser!
+    var textFieldPlaceHolderPass = "8 characters only"
     //ui elements
     @IBOutlet var saveBtn: UIButton!
     @IBOutlet var currentPass: UITextField!
@@ -25,8 +26,8 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentPass.attributedPlaceholder = NSAttributedString(string: "Current password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        newPassword.attributedPlaceholder = NSAttributedString(string: "8 alphanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        newPasswordConfirmation.attributedPlaceholder = NSAttributedString(string: "8 alphanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        newPassword.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        newPasswordConfirmation.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)

@@ -82,7 +82,7 @@ class HttpRequestCtrl{
             if let pId = id {
                 params["id"] = pId
             }
-            if route == "/api/user/updateInfo" {
+            if route == "/api/user/updateInfo" || route == "/login/register" {
                 if let pInstagram = instagram {
                     params["instagramName"] = pInstagram.isEmpty ? "none" : pInstagram
                 }

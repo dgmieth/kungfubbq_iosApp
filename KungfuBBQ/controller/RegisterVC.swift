@@ -14,6 +14,12 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     var dataController:DataController!
     var spinner = UIActivityIndicatorView(style: .large)
     var keyboardHeight:CGFloat = 0
+    var textFieldPlaceHolderPass = "8 characters only"
+    private var personalInfoEnable = false
+    private let phoneFormatter = PhoneFormatter()
+    private let maxPhoneLength = 14
+    private var correctPhone = false
+    
     //ui elements
     @IBOutlet var registerBrn: UIButton!
     @IBOutlet weak var invitationCode: UITextField!
@@ -21,6 +27,11 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordConfirmation: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet var personalInfoView: UIView!
+    @IBOutlet var name: UITextField!
+    @IBOutlet var phone: UITextField!
+    @IBOutlet var facebook: UITextField!
+    @IBOutlet var instagram: UITextField!
     //vars and lets
     var delegate:RegistersAndLogsUserAndGoesToHomeVC?
     
@@ -34,8 +45,12 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         invitationCode.attributedPlaceholder = NSAttributedString(string: "KgfBBQ@........", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         email.attributedPlaceholder = NSAttributedString(string: "johndoe@mail.com", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        password.attributedPlaceholder = NSAttributedString(string: "8 aplhanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        passwordConfirmation.attributedPlaceholder = NSAttributedString(string: "8 aplhanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        password.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        name.attributedPlaceholder = NSAttributedString(string: "John Doe", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        phone.attributedPlaceholder = NSAttributedString(string: "(000) 000-0000", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        facebook.attributedPlaceholder = NSAttributedString(string: "Facebook user name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        instagram.attributedPlaceholder = NSAttributedString(string: "Instagram user name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        passwordConfirmation.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -45,9 +60,36 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.removeObserver(UIResponder.keyboardDidChangeFrameNotification)
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
     }
+    private func dismissViewController(){
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
     //MARK: - BUTTON ACTION
     @IBAction func cancelClick(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            self.personalInfoEnable = false
+            self.personalInfoView.alpha = 0.0
+        })
+    }
+    @IBAction func cancelFirstViewClick(_ sender: Any) {
+        dismissViewController()
+    }
+    @IBAction func nextClick(_ sender: Any) {
+        let emailC = email.text! as String
+        let passC = password.text! as String
+        let passwordConfC = passwordConfirmation.text! as String
+        let codeC = invitationCode.text! as String
+        if !emailC.isEmpty && !passC.isEmpty && !passwordConfC.isEmpty && !codeC.isEmpty {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+                self.personalInfoEnable = true
+                self.personalInfoView.alpha = 1.0
+            })
+        }else{
+            let alert = UIAlertController(title: "Register information missing", message: "Please inform your invitation code, your e-email and a password.", preferredStyle: .alert)
+            let no = UIAlertAction(title: "Ok", style: .cancel)
+            alert.addAction(no)
+            present(alert, animated: true, completion: nil)
+            registerBrn.isEnabled = true
+        }
     }
     @IBAction func registerClick(_ sender: Any) {
         registerBrn.isEnabled = false
@@ -55,10 +97,14 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         let passC = password.text! as String
         let passwordConfC = passwordConfirmation.text! as String
         let codeC = invitationCode.text! as String
-        if !emailC.isEmpty && !passC.isEmpty && !passwordConfC.isEmpty && !codeC.isEmpty {
+        let name = name.text! as String
+        let phone = phone.text! as String
+        let face = facebook.text!.isEmpty ? "none" : facebook.text! as String
+        let inst = instagram.text!.isEmpty ? "none" : instagram.text! as String
+        if !name.isEmpty && !phone.isEmpty && correctPhone{
             createSpinner()
             var user1 = User()
-            HttpRequestCtrl.shared.post(toRoute: "/login/register", mobileOS: "apple",userEmail: emailC, userPassword: passC, confirmPassword: passwordConfC, invitationCode: codeC) { jsonObject in
+            HttpRequestCtrl.shared.post(toRoute: "/login/register", mobileOS: "apple",userEmail: emailC, userName: name,  userPassword: passC,  confirmPassword: passwordConfC, invitationCode: codeC, phoneNumber: phoneFormatter.returnPlainString(withPhoneFormatString: phone) , facebookName: face, instagramName: inst) { jsonObject in
                 print("registerSuccess")
                 guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
@@ -120,7 +166,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
             }
             
         }else{
-            let alert = UIAlertController(title: "Register information missing", message: "Please inform your invitation code, your e-email and a 8 alphanumerical password.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Register information missing", message: "You must inform your name and a valid phone number.", preferredStyle: .alert)
             let no = UIAlertAction(title: "Ok", style: .cancel)
             alert.addAction(no)
             present(alert, animated: true, completion: nil)
@@ -200,6 +246,19 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("textFieldShouldReturn")
+        if(personalInfoEnable){
+            if textField.tag == 5 {
+                phone.becomeFirstResponder()
+            }else if textField.tag == 6 {
+                scrollView.isScrollEnabled = true
+                facebook.becomeFirstResponder()
+            }else if textField.tag == 7 {
+                instagram.becomeFirstResponder()
+            }else{
+                textField.resignFirstResponder()
+            }
+            return true
+        }
         if textField.tag == 1 {
             email.becomeFirstResponder()
         }else if textField.tag == 2 {
@@ -224,6 +283,19 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
             let cString : NSString = textField.text! as NSString
             let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
             return nString.length <= maxLength
+        }
+        if(textField==facebook || textField==instagram){
+            let maxLength = 99
+            let cString : NSString = textField.text! as NSString
+            let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
+            return nString.length <= maxLength
+        }
+        if(textField==phone){
+            let s = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+            let formatted = phoneFormatter.formattedString(from: s)
+            textField.text = formatted
+            correctPhone = formatted.count == maxPhoneLength ? true : false
+            return formatted.isEmpty
         }
         return true
     }

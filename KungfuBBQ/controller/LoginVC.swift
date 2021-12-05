@@ -16,6 +16,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     var loadedEmail:String = ""
     var spinner = UIActivityIndicatorView(style: .large)
     var registeredUser: Bool = false
+    var textFieldPlaceHolderPass = "8 characters only"
     //ui elements
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
@@ -37,7 +38,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         super.viewDidLoad()
         email.autocapitalizationType = .none
         email.attributedPlaceholder = NSAttributedString(string: "johndoe@mail.com", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        password.attributedPlaceholder = NSAttributedString(string: "8 alphanumerical characters", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        password.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     // MARK: - BUTTONS EVENT LISTENERS
     // MARK: register btn

@@ -62,8 +62,8 @@ class OrderPaymentVC: UIViewController,PaymentProtocol,ShowHttpErrorAlertOnOrder
         let oDishes = order.dishes!.allObjects as! [CDOrderDishes]
         let qtty = Int(oDishes[0].dishQtty!)!
         numberOfMeals.text = "\(qtty)"
-        price.text = "U$ \(amount)"
-        totalPrice.text = "U$ \(amount*Double(qtty))"
+        price.text = decimalPrecision(amount: amount)
+        totalPrice.text = decimalPrecision(amount:amount*Double(qtty))
     }
     private func decimalPrecision(amount:Double)->String{
         return String(format: "U$ %.2f", amount)
