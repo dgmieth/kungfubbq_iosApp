@@ -65,6 +65,10 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     }
     //MARK: - BUTTON ACTION
     @IBAction func cancelClick(_ sender: Any) {
+        name.resignFirstResponder()
+        phone.resignFirstResponder()
+        facebook.resignFirstResponder()
+        instagram.resignFirstResponder()
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
             self.personalInfoEnable = false
             self.personalInfoView.alpha = 0.0
@@ -74,6 +78,10 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         dismissViewController()
     }
     @IBAction func nextClick(_ sender: Any) {
+        invitationCode.resignFirstResponder()
+        email.resignFirstResponder()
+        password.resignFirstResponder()
+        passwordConfirmation.resignFirstResponder()
         let emailC = email.text! as String
         let passC = password.text! as String
         let passwordConfC = passwordConfirmation.text! as String
@@ -82,6 +90,10 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
                 self.personalInfoEnable = true
                 self.personalInfoView.alpha = 1.0
+                guard let nameStr = self.name.text else { return }
+                if(nameStr.isEmpty){
+                    self.name.becomeFirstResponder()
+                }
             })
         }else{
             let alert = UIAlertController(title: "Register information missing", message: "Please inform your invitation code, your e-email and a password.", preferredStyle: .alert)
@@ -221,7 +233,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         if(view.frame.height <= 750){
             DispatchQueue.main.async {
                 if self.password.isFirstResponder || self.passwordConfirmation.isFirstResponder {
-                    self.scrollView.setContentOffset(CGPoint(x: 0, y: self.keyboardHeight), animated: true)
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: self.keyboardHeight/2), animated: true)
                 } else {
                     self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
                 }

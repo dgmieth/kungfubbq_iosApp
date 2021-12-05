@@ -119,11 +119,11 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
     //MARK: - KEYBOARD
     @objc func keyboardWillShow(notification: Notification) {
         scrollView.isScrollEnabled = true
-        let info : NSDictionary = notification.userInfo! as NSDictionary
-        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
-        self.keyboardHeight = keyboardSize!.height
-        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height, right: 0.0)
-        self.scrollView.contentInset = contentInsets
+//        let info : NSDictionary = notification.userInfo! as NSDictionary
+//        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
+//        self.keyboardHeight = keyboardSize!.height
+//        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height, right: 0.0)
+//        self.scrollView.contentInset = contentInsets
     }
     @objc func keyboadFrame(notification: Notification) {
         if(view.frame.height <= 750){
