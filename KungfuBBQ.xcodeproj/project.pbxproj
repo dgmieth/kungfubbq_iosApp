@@ -243,8 +243,8 @@
 		3888C84426671EBC00DA735A /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				384E11C22740426C00E92800 /* AboutAppVC.swift */,
 				385F748A26FD2F5100DA13E9 /* protocolos */,
+				384E11C22740426C00E92800 /* AboutAppVC.swift */,
 				3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */,
 				3853A8522663EEEA00FCBEAA /* HomeVC.swift */,
 				3888C84526671F1C00DA735A /* CalendarViewController.swift */,
@@ -660,7 +660,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -668,7 +668,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -685,7 +685,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -693,7 +693,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

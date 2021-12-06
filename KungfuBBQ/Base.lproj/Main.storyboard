@@ -1444,7 +1444,7 @@
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ol-pL-Mi1" userLabel="obs2">
                                                                 <rect key="frame" x="5" y="338.5" width="310" height="79.5"/>
-                                                                <string key="text">** Not required, but we encourage you to inform your user name(s), because our Specials and Deals are marketed throught Facebook and Instragram. </string>
+                                                                <string key="text">** Not required, but we encourage you to inform your user name(s), because our Specials and Deals are marketed through Facebook and Instragram. </string>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
                                                                 <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>

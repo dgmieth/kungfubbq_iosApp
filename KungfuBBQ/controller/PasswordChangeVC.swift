@@ -44,6 +44,7 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
         let nPass = newPassword.text!
         let nPassConf = newPasswordConfirmation.text!
         if(!cPass.isEmpty && !nPass.isEmpty && !nPassConf.isEmpty){
+            createSpinner()
             HttpRequestCtrl.shared.post(toRoute: "/api/user/changePassword", userEmail: user.email, currentPassword: cPass, newPassword: nPass, confirmPassword: nPassConf, userId: String(user.id), headers: ["Authorization":"Bearer \(user.token!)"]) { jsonObject in
                 guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
@@ -75,6 +76,7 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
                     }
                 }
             } onError: { error in
+                self.removeSpinner()
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Internal error message: \(error)", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel)
