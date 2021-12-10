@@ -227,6 +227,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                         filtered.count > 0 ? o.cookingDate = filtered[0] : nil
                     }
                     self.save()
+                    self.cds = self.readCookingDate()
                     self.dates = []
                     for cd in self.cds! {
                         self.dates.append(String(cd.cookingDate!.split(separator: " ")[0]))
