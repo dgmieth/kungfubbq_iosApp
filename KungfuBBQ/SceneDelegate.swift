@@ -11,6 +11,7 @@ import CoreData
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private var hvc : HomeVC?
     
     let dataController = DataController(modelName: "DataModel")
 
@@ -28,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let rootVC = window?.rootViewController as! UINavigationController
         let homeVC = rootVC.topViewController as! HomeVC
+        hvc = homeVC
         homeVC.dataController = dataController
     }
 
@@ -47,18 +49,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillResignActive(_ scene: UIScene) {
         print("sceneWillResignActive")
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
+       
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         print("sceneWillEnterForeground")
+        if let navigationController = window?.rootViewController as? UINavigationController {
+            print("safely unwrapped")
+            print(navigationController.viewControllers.count)
+            switch navigationController.viewControllers.count {
+            case 3:
+                navigationController.popViewController(animated: false)
+                navigationController.popViewController(animated: true)
+            case 4:
+                navigationController.popViewController(animated: false)
+                navigationController.popViewController(animated: false)
+                navigationController.popViewController(animated: true)
+            default:
+                navigationController.popViewController(animated: true)
+            }
+        }
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        print("sceneWillEnterForeground")
+        print("sceneDidEnterBackground")
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
