@@ -59,10 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print(navigationController.viewControllers.count)
             switch navigationController.viewControllers.count {
             case 3:
-                navigationController.popViewController(animated: false)
-                navigationController.popViewController(animated: true)
-            case 4:
-                navigationController.popViewController(animated: false)
+                window?.rootViewController?.dismiss(animated: true, completion: nil)
                 navigationController.popViewController(animated: false)
                 navigationController.popViewController(animated: true)
             default:
