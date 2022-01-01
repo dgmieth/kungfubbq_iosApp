@@ -85,7 +85,8 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let lable = UILabel()
         lable.text = String(row + 1)
-        lable.textColor = UIColor(named: "i_black")
+        //lable.textColor = UIColor(named: "i_black")
+        lable.textColor = .white
         lable.font = UIFont(name: "palatino", size: CGFloat(
         24))
         lable.sizeToFit()

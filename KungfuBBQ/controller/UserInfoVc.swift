@@ -284,17 +284,21 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         edit.isEnabled = !enabled
         //uitextfields
         name.isEnabled = enabled
-        name.backgroundColor = enabled ? .white : UIColor(named: "i_yellow")
+        name.backgroundColor = enabled ? .white : UIColor(named: "lessDarkBlue")
         name.borderStyle = enabled ? .roundedRect : .none
+        name.textColor = enabled ? .black : .white
         phoneNumber.isEnabled = enabled
-        phoneNumber.backgroundColor = enabled ? .white : UIColor(named: "i_yellow")
+        phoneNumber.backgroundColor = enabled ? .white : UIColor(named: "lessDarkBlue")
         phoneNumber.borderStyle = enabled ? .roundedRect : .none
+        phoneNumber.textColor = enabled ? .black : .white
         facebookName.isEnabled = enabled
-        facebookName.backgroundColor = enabled ? .white : UIColor(named: "i_yellow")
+        facebookName.backgroundColor = enabled ? .white : UIColor(named: "lessDarkBlue")
         facebookName.borderStyle = enabled ? .roundedRect : .none
+        facebookName.textColor = enabled ? .black : .white
         instagramName.isEnabled = enabled
-        instagramName.backgroundColor = enabled ? .white : UIColor(named: "i_yellow")
+        instagramName.backgroundColor = enabled ? .white : UIColor(named: "lessDarkBlue")
         instagramName.borderStyle = enabled ? .roundedRect : .none
+        instagramName.textColor = enabled ? .black : .white
     }
     //MARK: refresh information on screen
     private func refreshUIInformation(){

@@ -18,73 +18,80 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Yk-2V-Xie">
-                                <rect key="frame" x="0.0" y="44" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="479"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1200" translatesAutoresizingMaskIntoConstraints="NO" id="uqw-0r-Vlq">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="479"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                    </imageView>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32E-qC-Nks" userLabel="loginBtn">
-                                        <rect key="frame" x="15" y="210" width="290" height="51"/>
-                                        <color key="backgroundColor" name="backGround"/>
+                                        <rect key="frame" x="15" y="150" width="290" height="51"/>
+                                        <color key="backgroundColor" red="0.019999999552965164" green="0.019999999552965164" blue="0.016000000759959221" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="35"/>
                                         <color key="tintColor" name="fontColor"/>
-                                        <state key="normal" title="Log-in"/>
+                                        <state key="normal" title="Log-in">
+                                            <color key="titleColor" name="white"/>
+                                        </state>
                                         <connections>
                                             <action selector="loginClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bMy-hW-LSq"/>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJB-gM-zVk" userLabel="calendarBtn">
-                                        <rect key="frame" x="15" y="210" width="290" height="51"/>
-                                        <color key="backgroundColor" name="backGround"/>
+                                        <rect key="frame" x="15" y="150" width="290" height="51"/>
+                                        <color key="backgroundColor" red="0.019999999552965164" green="0.019999999552965164" blue="0.016000000759959221" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="35"/>
                                         <color key="tintColor" name="fontColor"/>
-                                        <state key="normal" title="Calendar"/>
+                                        <state key="normal" title="Calendar">
+                                            <color key="titleColor" name="white"/>
+                                        </state>
                                         <connections>
                                             <action selector="calendarClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yCG-rl-ar6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" restorationIdentifier="catoringFromBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-hk-rqP" userLabel="carotingBtn">
-                                        <rect key="frame" x="15" y="316" width="290" height="51"/>
-                                        <color key="backgroundColor" name="backGround"/>
+                                        <rect key="frame" x="15" y="256" width="290" height="51"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="35"/>
                                         <color key="tintColor" name="fontColor"/>
                                         <state key="normal" title="Need Catering?">
-                                            <color key="titleColor" name="fontColor"/>
+                                            <color key="titleColor" name="white"/>
                                         </state>
                                         <connections>
                                             <action selector="catorignClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e6o-Og-Fwk"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon500x500" translatesAutoresizingMaskIntoConstraints="NO" id="uqw-0r-Vlq">
-                                        <rect key="frame" x="35" y="30" width="250" height="150"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="NR7-jb-aeV"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" name="i_yellow"/>
+                                <color key="backgroundColor" name="lessDarkBlue"/>
+                                <color key="tintColor" name="lessDarkBlue"/>
                                 <constraints>
-                                    <constraint firstItem="uqw-0r-Vlq" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" constant="35" id="1a6-N2-4zf"/>
+                                    <constraint firstItem="uqw-0r-Vlq" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" id="1a6-N2-4zf"/>
                                     <constraint firstAttribute="trailing" secondItem="xJB-gM-zVk" secondAttribute="trailing" constant="15" id="8zY-ff-YQS"/>
+                                    <constraint firstItem="32E-qC-Nks" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" constant="150" id="9sW-qK-owz"/>
                                     <constraint firstItem="xJB-gM-zVk" firstAttribute="height" secondItem="32E-qC-Nks" secondAttribute="height" id="H9i-8Y-Uth"/>
                                     <constraint firstItem="uqw-0r-Vlq" firstAttribute="centerX" secondItem="3Yk-2V-Xie" secondAttribute="centerX" id="Kgg-c6-GF6"/>
                                     <constraint firstItem="32E-qC-Nks" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" constant="15" id="L3h-vZ-YBJ"/>
                                     <constraint firstItem="Kqa-hk-rqP" firstAttribute="top" secondItem="32E-qC-Nks" secondAttribute="bottom" constant="55" id="Q9d-SI-CPK"/>
                                     <constraint firstAttribute="trailing" secondItem="Kqa-hk-rqP" secondAttribute="trailing" constant="15" id="QTG-4T-eD2"/>
                                     <constraint firstItem="xJB-gM-zVk" firstAttribute="width" secondItem="32E-qC-Nks" secondAttribute="width" id="T2t-YY-OtS"/>
-                                    <constraint firstItem="xJB-gM-zVk" firstAttribute="top" secondItem="uqw-0r-Vlq" secondAttribute="bottom" constant="30" id="Wpi-9V-T02"/>
-                                    <constraint firstAttribute="trailing" secondItem="uqw-0r-Vlq" secondAttribute="trailing" constant="35" id="YkY-pG-K06"/>
-                                    <constraint firstItem="32E-qC-Nks" firstAttribute="top" secondItem="uqw-0r-Vlq" secondAttribute="bottom" constant="30" id="b2X-Kh-kOw"/>
+                                    <constraint firstItem="uqw-0r-Vlq" firstAttribute="height" secondItem="3Yk-2V-Xie" secondAttribute="height" id="WXP-Si-V99"/>
+                                    <constraint firstAttribute="trailing" secondItem="uqw-0r-Vlq" secondAttribute="trailing" id="YkY-pG-K06"/>
+                                    <constraint firstItem="xJB-gM-zVk" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" constant="150" id="fmk-AQ-A7b"/>
                                     <constraint firstItem="Kqa-hk-rqP" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" constant="15" id="oXa-gW-D2u"/>
-                                    <constraint firstItem="uqw-0r-Vlq" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" constant="30" id="r47-Uc-TNR"/>
+                                    <constraint firstItem="uqw-0r-Vlq" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" id="r47-Uc-TNR"/>
                                     <constraint firstItem="32E-qC-Nks" firstAttribute="height" secondItem="Kqa-hk-rqP" secondAttribute="height" id="tlN-oz-xlR"/>
                                     <constraint firstItem="32E-qC-Nks" firstAttribute="centerX" secondItem="3Yk-2V-Xie" secondAttribute="centerX" id="uj3-jF-VhH"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30L-cS-9ON">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <color key="backgroundColor" name="backGround"/>
+                                <rect key="frame" x="0.0" y="523" width="320" height="45"/>
+                                <color key="backgroundColor" name="darkerBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="15u-op-b1V"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KXb-2m-324"/>
                                     <barButtonItem tag="3" title="Item" image="info.circle" catalog="system" style="plain" id="HNp-4Q-PKX" userLabel="I">
-                                        <color key="tintColor" name="i_yellow"/>
+                                        <color key="tintColor" name="white"/>
                                         <connections>
                                             <action selector="appInfoClick:" destination="BYZ-38-t0r" id="BfA-rZ-Iwj"/>
                                             <segue destination="mnB-xH-1Ac" kind="popoverPresentation" popoverAnchorBarButtonItem="HNp-4Q-PKX" id="wS3-yM-2A2">
@@ -93,13 +100,14 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="tintColor" name="backGround"/>
-                                <color key="barTintColor" red="0.11764816190000001" green="0.11764507740000001" blue="0.11764716359999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" name="darkerBlue"/>
+                                <color key="barTintColor" name="darkerBlue"/>
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.11764816190000001" green="0.11764507740000001" blue="0.11764716359999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" name="darkerBlue"/>
                         <constraints>
+                            <constraint firstItem="30L-cS-9ON" firstAttribute="top" secondItem="uqw-0r-Vlq" secondAttribute="bottom" id="8oM-iP-Szx"/>
                             <constraint firstItem="3Yk-2V-Xie" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DFt-xy-eQT"/>
                             <constraint firstItem="3Yk-2V-Xie" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VOx-4Y-de8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="30L-cS-9ON" secondAttribute="trailing" id="Vew-dk-h43"/>
@@ -111,7 +119,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="KungFu BBQ" id="VhT-zk-Rl5">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Item" image="person.circle" catalog="system" id="xON-yC-1dD">
-                            <color key="tintColor" name="i_yellow"/>
+                            <color key="tintColor" name="white"/>
                             <connections>
                                 <action selector="userInfoClick:" destination="BYZ-38-t0r" id="rts-I0-fi2"/>
                             </connections>
@@ -153,38 +161,38 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kungfu BBQ app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngE-vs-NQO">
                                                 <rect key="frame" x="61" y="35" width="168" height="25"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                <color key="textColor" name="i_black"/>
+                                                <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoM-oP-Eep">
                                                 <rect key="frame" x="92" y="85" width="106" height="25"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                <color key="textColor" name="i_black"/>
+                                                <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="developed by dgmieth.me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlR-4z-fo5">
                                                 <rect key="frame" x="17" y="135" width="256" height="25"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                <color key="textColor" name="i_black"/>
+                                                <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8EY-8Y-vOD">
                                                 <rect key="frame" x="112" y="185" width="66" height="25"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                <color key="textColor" name="i_black"/>
+                                                <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please visit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WJ-7R-9p8">
                                                 <rect key="frame" x="90.5" y="255" width="109" height="25"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                <color key="textColor" name="i_black"/>
+                                                <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAT-jR-Tmj">
                                                 <rect key="frame" x="45" y="290" width="200" height="37"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <state key="normal" title="https://dgmieth.me">
-                                                    <color key="titleColor" name="primary"/>
+                                                    <color key="titleColor" name="white"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="linkClick:" destination="mnB-xH-1Ac" eventType="touchUpInside" id="fnj-E5-x3N"/>
@@ -218,7 +226,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WVI-UI-rvY"/>
-                        <color key="backgroundColor" name="i_yellow"/>
+                        <color key="backgroundColor" name="lessDarkBlue"/>
                         <constraints>
                             <constraint firstItem="42h-Wk-Y57" firstAttribute="top" secondItem="WVI-UI-rvY" secondAttribute="top" id="B7r-Gy-crR"/>
                             <constraint firstItem="WVI-UI-rvY" firstAttribute="bottom" secondItem="42h-Wk-Y57" secondAttribute="bottom" id="CZh-sf-1ab"/>
@@ -242,11 +250,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="8ne-tf-GCg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" name="i_black"/>
+                        <color key="backgroundColor" name="darkerBlue"/>
                         <color key="tintColor" name="fontColor"/>
-                        <color key="barTintColor" name="i_black"/>
+                        <color key="barTintColor" name="darkerBlue"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="i_yellow"/>
+                            <color key="textColor" name="white"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -271,19 +279,19 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Aqa-3p-KZ2"/>
                                     <barButtonItem image="logout" id="Aat-Wy-gff">
-                                        <color key="tintColor" name="i_yellow"/>
+                                        <color key="tintColor" name="white"/>
                                         <connections>
                                             <action selector="logoutClick:" destination="reh-qE-X6d" id="bPV-xC-aTi"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="edit" id="CLn-Nm-MyL">
-                                        <color key="tintColor" name="i_yellow"/>
+                                        <color key="tintColor" name="white"/>
                                         <connections>
                                             <action selector="editClick:" destination="reh-qE-X6d" id="EM4-r1-P9L"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="barTintColor" name="backGround"/>
+                                <color key="barTintColor" name="darkerBlue"/>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UaN-D3-3lB" userLabel="scrollContainer">
                                 <rect key="frame" x="0.0" y="44" width="320" height="504"/>
@@ -303,13 +311,13 @@
                                                                     <constraint firstAttribute="width" constant="80" id="j2g-cD-QJM"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="johndoe@mail.com" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="utZ-p9-e6M" userLabel="email">
                                                                 <rect key="frame" x="85" y="23.5" width="205" height="24.5"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -328,13 +336,13 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Member since:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bZs-gu-3NT" userLabel="memberSinceLbl">
                                                                 <rect key="frame" x="0.0" y="23" width="148" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="May 30 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WSt-gW-rS0" userLabel="memberSince">
                                                                 <rect key="frame" x="158" y="23" width="132" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -355,16 +363,15 @@
                                                                     <constraint firstAttribute="width" constant="75" id="wl7-Mb-TEa"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="John Doe" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b8c-X7-ZpN" userLabel="name">
+                                                            <textField opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="John Doe" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b8c-X7-ZpN" userLabel="name">
                                                                 <rect key="frame" x="85" y="16.5" width="205" height="38"/>
-                                                                <color key="backgroundColor" name="i_yellow"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="27x-OI-Q9p"/>
                                                                 </constraints>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" textContentType="name"/>
                                                                 <connections>
@@ -389,16 +396,15 @@
                                                                     <constraint firstAttribute="width" constant="75" id="Geh-Oa-otc"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(000) 000-0000" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="h44-vz-CsI" userLabel="phone">
                                                                 <rect key="frame" x="85" y="16.5" width="200" height="38"/>
-                                                                <color key="backgroundColor" name="i_yellow"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="Wqd-ky-qIh"/>
                                                                 </constraints>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                                 <connections>
@@ -420,16 +426,15 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook name:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gr-j2-DDf" userLabel="facebookLbl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="161.5" height="24.5"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Facebook user name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ANU-sc-iSt" userLabel="facebook">
                                                                 <rect key="frame" x="0.0" y="29.5" width="290" height="38"/>
-                                                                <color key="backgroundColor" name="i_yellow"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="Nwv-Ju-jvO"/>
                                                                 </constraints>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
@@ -451,16 +456,15 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram name:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsU-vk-nWf" userLabel="instagramLbl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="167.5" height="24.5"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Instagram user name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kDe-UT-OtI" userLabel="instagram">
                                                                 <rect key="frame" x="0.0" y="29.5" width="290" height="38"/>
-                                                                <color key="backgroundColor" name="i_yellow"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="Abd-cY-Z7M"/>
                                                                 </constraints>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
@@ -484,10 +488,10 @@
                                                                 <subviews>
                                                                     <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" restorationIdentifier="deleteBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0M-F6-4Sb">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_gray"/>
+                                                                        <color key="backgroundColor" name="logoRed"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Cancel">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="white"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="cancelClick:" destination="reh-qE-X6d" eventType="touchUpInside" id="rJQ-kv-IOW"/>
@@ -508,10 +512,10 @@
                                                                 <subviews>
                                                                     <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" restorationIdentifier="saveBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msc-wo-z8O">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_red"/>
+                                                                        <color key="backgroundColor" name="logoYellow"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Save">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="i_black"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="saveClick:" destination="reh-qE-X6d" eventType="touchUpInside" id="6ze-e1-HiE"/>
@@ -545,13 +549,13 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipa-Wk-uDT">
                                                                 <rect key="frame" x="25" y="12.5" width="240" height="47"/>
-                                                                <color key="backgroundColor" name="i_red"/>
+                                                                <color key="backgroundColor" name="logoYellow"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="47" id="MUa-nM-5CD"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                 <state key="normal" title="Change password">
-                                                                    <color key="titleColor" name="fontColor"/>
+                                                                    <color key="titleColor" name="i_black"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="changePasswordClick:" destination="reh-qE-X6d" eventType="touchUpInside" id="kj0-vE-Ns0"/>
@@ -623,7 +627,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5re-PP-8RF"/>
-                        <color key="backgroundColor" name="i_yellow"/>
+                        <color key="backgroundColor" name="lessDarkBlue"/>
                         <constraints>
                             <constraint firstItem="F5Y-av-u98" firstAttribute="trailing" secondItem="5re-PP-8RF" secondAttribute="trailing" id="5JW-0L-4fv"/>
                             <constraint firstItem="5re-PP-8RF" firstAttribute="trailing" secondItem="UaN-D3-3lB" secondAttribute="trailing" id="BW2-r1-dGc"/>
@@ -675,7 +679,7 @@
                                                         <rect key="frame" x="15" y="15" width="290" height="94"/>
                                                         <string key="text">You may hire KungfuBBQ for catering. Please, fill out this form with your contact information and tell us briefly about your needs (such as amount of people, date, menu, ...).</string>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcY-jn-jbf" userLabel="buttonsView">
@@ -686,10 +690,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lP3-FB-c7d" userLabel="sendBtn">
                                                                         <rect key="frame" x="10" y="4" width="135" height="47"/>
-                                                                        <color key="backgroundColor" name="i_red"/>
+                                                                        <color key="backgroundColor" name="logoYellow"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Send">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="i_black"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="sendClick:" destination="wLm-YA-3dc" eventType="touchUpInside" id="BTp-fE-df9"/>
@@ -710,10 +714,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcc-3W-Mhl">
                                                                         <rect key="frame" x="10" y="4" width="135" height="47"/>
-                                                                        <color key="backgroundColor" name="i_gray"/>
+                                                                        <color key="backgroundColor" name="logoRed"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Cancel">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="white"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="cancelClick:" destination="wLm-YA-3dc" eventType="touchUpInside" id="8nx-PS-PYG"/>
@@ -749,7 +753,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Dx7-ZN-PKu" userLabel="nameLbl">
                                                                 <rect key="frame" x="0.0" y="16.5" width="66" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jonh Doe" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dQ4-uv-gOc" userLabel="name">
@@ -768,7 +772,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="vC5-Yl-3VD" userLabel="emailLbl">
                                                                 <rect key="frame" x="0.0" y="65" width="71.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name@mail.com" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8dv-ps-3wz" userLabel="email">
@@ -787,7 +791,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-0H-TFE" userLabel="phoneLbl">
                                                                 <rect key="frame" x="0.0" y="112.5" width="69.5" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(000) 000-0000" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RkH-Rh-nrq" userLabel="phone">
@@ -816,7 +820,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe your need:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mr6-Ny-M06" userLabel="descriptionLbl">
                                                                 <rect key="frame" x="0.0" y="154" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -846,7 +850,7 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" name="i_yellow"/>
+                                                <color key="backgroundColor" name="lessDarkBlue"/>
                                                 <constraints>
                                                     <constraint firstItem="stI-dF-Api" firstAttribute="leading" secondItem="V52-Az-cAw" secondAttribute="leading" constant="15" id="3hz-rE-oqe"/>
                                                     <constraint firstAttribute="trailing" secondItem="LcY-jn-jbf" secondAttribute="trailing" id="6fZ-12-Wca"/>
@@ -929,7 +933,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inform your e-mail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEc-4y-oHc" userLabel="emailLbl">
                                                                 <rect key="frame" x="0.0" y="5" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name@mail.com" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NqL-GA-pqN" userLabel="email">
@@ -948,7 +952,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inform your password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okp-1V-CD3" userLabel="passwordLbl">
                                                                 <rect key="frame" x="0.0" y="98" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters only" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pHt-ie-usf" userLabel="password">
@@ -970,14 +974,14 @@
                                                                     <constraint firstAttribute="height" constant="37" id="NCQ-KQ-yEZ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jb-o7-Fzb">
                                                                 <rect key="frame" x="140" y="203" width="160" height="35"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="20"/>
                                                                 <state key="normal" title="Forgot password?">
-                                                                    <color key="titleColor" name="i_black"/>
+                                                                    <color key="titleColor" name="white"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="forgotPasswordClick:" destination="yzV-ju-ySc" eventType="touchUpInside" id="PWr-dk-Fff"/>
@@ -991,10 +995,10 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tON-J1-55s" userLabel="loginBtn">
                                                                                 <rect key="frame" x="10" y="4" width="130" height="47"/>
-                                                                                <color key="backgroundColor" name="i_red"/>
+                                                                                <color key="backgroundColor" name="logoYellow"/>
                                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                                 <state key="normal" title="Log-in">
-                                                                                    <color key="titleColor" name="fontColor"/>
+                                                                                    <color key="titleColor" name="i_black"/>
                                                                                 </state>
                                                                                 <connections>
                                                                                     <action selector="loginClick:" destination="yzV-ju-ySc" eventType="touchUpInside" id="YOY-WK-z64"/>
@@ -1015,10 +1019,10 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxs-7p-JLA" userLabel="cancelBtn">
                                                                                 <rect key="frame" x="10" y="4" width="130" height="47"/>
-                                                                                <color key="backgroundColor" name="i_gray"/>
+                                                                                <color key="backgroundColor" name="logoRed"/>
                                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                                 <state key="normal" title="Cancel">
-                                                                                    <color key="titleColor" name="fontColor"/>
+                                                                                    <color key="titleColor" name="white"/>
                                                                                 </state>
                                                                                 <connections>
                                                                                     <action selector="cancelClick:" destination="yzV-ju-ySc" eventType="touchUpInside" id="cki-mk-kCn"/>
@@ -1076,13 +1080,13 @@
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GtI-na-Cts">
                                                         <rect key="frame" x="50" y="481" width="220" height="47"/>
-                                                        <color key="backgroundColor" name="i_red"/>
+                                                        <color key="backgroundColor" name="logoYellow"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="47" id="PrR-aj-HJr"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                         <state key="normal" title="Register here">
-                                                            <color key="titleColor" name="fontColor"/>
+                                                            <color key="titleColor" name="i_black"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="registerClick:" destination="yzV-ju-ySc" eventType="touchUpInside" id="cSb-uy-1GQ"/>
@@ -1091,11 +1095,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't you an account with us?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Tcc-5g-yZh">
                                                         <rect key="frame" x="5" y="455" width="310" height="25"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" name="i_yellow"/>
+                                                <color key="backgroundColor" name="lessDarkBlue"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="Z9q-6c-CSG" secondAttribute="trailing" constant="10" id="2ri-E6-b25"/>
                                                     <constraint firstItem="Z9q-6c-CSG" firstAttribute="leading" secondItem="azC-tL-HOP" secondAttribute="leading" constant="10" id="4HG-SU-JcC"/>
@@ -1181,10 +1185,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYy-xh-2Th" userLabel="cancel1Btn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_gray"/>
+                                                                        <color key="backgroundColor" name="logoRed"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Cancel">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="white"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="cancelFirstViewClick:" destination="6MI-51-Et2" eventType="touchUpInside" id="KHr-Qh-RXy"/>
@@ -1205,10 +1209,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZX-LO-ghs" userLabel="nextBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_red"/>
+                                                                        <color key="backgroundColor" name="logoYellow"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Next &gt;&gt;">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="i_black"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="nextClick:" destination="6MI-51-Et2" eventType="touchUpInside" id="x4P-2g-6to"/>
@@ -1241,7 +1245,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inform your invitation code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX2-DB-mvq" userLabel="invitationCodeLbl">
                                                                 <rect key="frame" x="0.0" y="5" width="285" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="KgfBBQ@........" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZyJ-2d-s3a" userLabel="invitationCode">
@@ -1260,7 +1264,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wqj-y9-3JL" userLabel="passwordLbl">
                                                                 <rect key="frame" x="0.0" y="189.5" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters only" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hkU-V5-fTa" userLabel="password">
@@ -1281,7 +1285,7 @@
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="Inform the e-mail you sent to KungfuBBQ:">
                                                                         <attributes>
-                                                                            <color key="NSColor" name="i_black"/>
+                                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <font key="NSFont" size="22" name="Palatino-Bold"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
@@ -1305,7 +1309,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm the password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRd-Ep-bh4" userLabel="confirmPasswordLbl">
                                                                 <rect key="frame" x="0.0" y="262.5" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters only" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CLp-i6-LeP" userLabel="confirmPassword">
@@ -1327,7 +1331,7 @@
                                                                     <constraint firstAttribute="height" constant="37" id="EnP-R6-bLw"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -1372,7 +1376,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Inform your name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ty3-LB-ECC" userLabel="nameLbl">
                                                                 <rect key="frame" x="5" y="35" width="310" height="24.5"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John Doe" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KLh-sK-vEp" userLabel="name">
@@ -1391,7 +1395,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Inform your phone number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xM-GS-R39" userLabel="phoneLbl">
                                                                 <rect key="frame" x="5" y="101.5" width="310" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(000) 000-0000" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CJm-Mt-1LU" userLabel="phone">
@@ -1410,7 +1414,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="** Facebook name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DJ-CX-39N" userLabel="facebookLbl">
                                                                 <rect key="frame" x="5" y="168.5" width="310" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facebook user name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iN3-Cn-6EV" userLabel="facebook">
@@ -1429,7 +1433,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="** Instagram name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfi-6C-krN" userLabel="instagramLbl">
                                                                 <rect key="frame" x="5" y="235.5" width="310" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Instagram user name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4Zn-k8-oRe" userLabel="instagram">
@@ -1449,13 +1453,13 @@
                                                                 <rect key="frame" x="5" y="338.5" width="310" height="79.5"/>
                                                                 <string key="text">** Not required, but we encourage you to inform your user name(s), because our Specials and Deals are marketed through Facebook and Instragram. </string>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Required fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3S0-QT-rLY" userLabel="obs1">
                                                                 <rect key="frame" x="5" y="308.5" width="310" height="20"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJe-Hc-2Aq" userLabel="canceRegisterBtnView">
@@ -1466,10 +1470,10 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ji8-Nc-GBc">
                                                                                 <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                                <color key="backgroundColor" name="i_gray"/>
+                                                                                <color key="backgroundColor" name="logoRed"/>
                                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="28"/>
                                                                                 <state key="normal" title="&lt;&lt; Back">
-                                                                                    <color key="titleColor" name="fontColor"/>
+                                                                                    <color key="titleColor" name="white"/>
                                                                                 </state>
                                                                                 <connections>
                                                                                     <action selector="cancelClick:" destination="6MI-51-Et2" eventType="touchUpInside" id="cXj-3A-iZh"/>
@@ -1490,10 +1494,10 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fj0-xe-tP8" userLabel="registerBtn">
                                                                                 <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                                <color key="backgroundColor" name="i_red"/>
+                                                                                <color key="backgroundColor" name="logoYellow"/>
                                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="28"/>
                                                                                 <state key="normal" title="Register">
-                                                                                    <color key="titleColor" name="fontColor"/>
+                                                                                    <color key="titleColor" name="i_black"/>
                                                                                 </state>
                                                                                 <connections>
                                                                                     <action selector="registerClick:" destination="6MI-51-Et2" eventType="touchUpInside" id="9tz-Jy-bAO"/>
@@ -1525,7 +1529,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="i_yellow"/>
+                                                        <color key="backgroundColor" name="lessDarkBlue"/>
                                                         <color key="tintColor" name="i_black"/>
                                                         <constraints>
                                                             <constraint firstItem="5DJ-CX-39N" firstAttribute="top" secondItem="CJm-Mt-1LU" secondAttribute="bottom" constant="4" id="0Hj-EV-BXY"/>
@@ -1598,7 +1602,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gu0-kY-aq2"/>
-                        <color key="backgroundColor" name="i_yellow"/>
+                        <color key="backgroundColor" name="lessDarkBlue"/>
                         <constraints>
                             <constraint firstItem="gu0-kY-aq2" firstAttribute="bottom" secondItem="Cwo-l2-l5W" secondAttribute="bottom" id="BKi-mE-dIX"/>
                             <constraint firstItem="Cwo-l2-l5W" firstAttribute="top" secondItem="gu0-kY-aq2" secondAttribute="top" id="FGZ-SS-SXV"/>
@@ -1650,10 +1654,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eh-Ca-z5F" userLabel="cancelBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_gray"/>
+                                                                        <color key="backgroundColor" name="logoRed"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Cancel">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="white"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="cancelClick:" destination="EcC-50-sxe" eventType="touchUpInside" id="I2X-PW-dnq"/>
@@ -1672,10 +1676,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZzI-cD-Vs9" userLabel="saveBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_red"/>
+                                                                        <color key="backgroundColor" name="logoYellow"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Save">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="i_black"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="saveClick:" destination="EcC-50-sxe" eventType="touchUpInside" id="rDW-xT-cSy"/>
@@ -1708,7 +1712,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcC-8X-HDq" userLabel="currentPasswordLbl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="186" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MSF-jX-dRJ" userLabel="currentPassword">
@@ -1727,7 +1731,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoK-7O-DCX" userLabel="newPasswordLbl">
                                                                 <rect key="frame" x="0.0" y="133" width="155.5" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters only" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DaA-iJ-976" userLabel="newPassword">
@@ -1746,7 +1750,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm new password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzO-38-UpA" userLabel="confirmPasswordLbl">
                                                                 <rect key="frame" x="0.0" y="206" width="239" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8 characters only" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Ek-bS-L25" userLabel="confirmPassword">
@@ -1768,7 +1772,7 @@
                                                                     <constraint firstAttribute="height" constant="37" id="9Ti-pR-Uwr"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -1828,7 +1832,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dT1-nn-9pv"/>
-                        <color key="backgroundColor" name="i_yellow"/>
+                        <color key="backgroundColor" name="lessDarkBlue"/>
                         <constraints>
                             <constraint firstItem="dut-WL-7Uz" firstAttribute="width" secondItem="Iqc-G9-wGo" secondAttribute="width" id="7gu-lM-YmJ"/>
                             <constraint firstItem="dut-WL-7Uz" firstAttribute="top" secondItem="Iqc-G9-wGo" secondAttribute="top" id="EHk-zl-BqM"/>
@@ -1892,7 +1896,7 @@
                                         <rect key="frame" x="10" y="10" width="300" height="276"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                                <color key="value" name="i_red"/>
+                                                <color key="value" name="logoRed"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
                                                 <real key="value" value="20"/>
@@ -1902,7 +1906,7 @@
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                                <color key="value" name="i_yellow"/>
+                                                <color key="value" name="logoYellow"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
                                                 <real key="value" value="25"/>
@@ -1943,7 +1947,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="backGround"/>
+                                <color key="backgroundColor" name="lessDarkBlue"/>
                                 <constraints>
                                     <constraint firstItem="ngg-Dr-0wN" firstAttribute="top" secondItem="vSj-Uw-dJs" secondAttribute="top" constant="10" id="3kF-mq-O7h"/>
                                     <constraint firstAttribute="bottom" secondItem="ngg-Dr-0wN" secondAttribute="bottom" constant="10" id="JWO-NH-Tgo"/>
@@ -2114,7 +2118,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ccE-9s-Tup"/>
-                        <color key="backgroundColor" name="i_black"/>
+                        <color key="backgroundColor" name="darkerBlue"/>
                         <constraints>
                             <constraint firstItem="IhK-f4-wHR" firstAttribute="height" secondItem="vSj-Uw-dJs" secondAttribute="height" multiplier="0.77" id="23r-cN-8ev"/>
                             <constraint firstItem="ccE-9s-Tup" firstAttribute="bottom" secondItem="IhK-f4-wHR" secondAttribute="bottom" id="3oH-z6-QKt"/>
@@ -2180,19 +2184,19 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzJ-LD-HAm" userLabel="dateLbl">
                                                         <rect key="frame" x="10" y="5" width="54" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jun 16th 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHJ-Vs-sci" userLabel="date">
                                                         <rect key="frame" x="74" y="5" width="130.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bp-jH-ftT" userLabel="menuLbl">
                                                         <rect key="frame" x="10" y="59.5" width="65.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7Q-R1-h5A" userLabel="menu">
@@ -2209,13 +2213,13 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yio-gS-9rU" userLabel="locationLbl">
                                                         <rect key="frame" x="10" y="172" width="92.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jll-T2-fMa" userLabel="numberMealsLbl">
                                                         <rect key="frame" x="10" y="286.5" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="qwt-0O-vgQ" userLabel="numberMeals">
@@ -2232,25 +2236,25 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXB-6p-cZw" userLabel="mealPriceLbl">
                                                         <rect key="frame" x="10" y="346" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQF-VO-vyQ" userLabel="mealPrice">
                                                         <rect key="frame" x="132.5" y="346" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-mv-rrI" userLabel="totalPriceLbl">
                                                         <rect key="frame" x="10" y="370.5" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-3z-h9W" userLabel="totalPrice">
                                                         <rect key="frame" x="131.5" y="370.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vq9-Uf-mBI" userLabel="btnsView">
@@ -2261,10 +2265,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZO-qn-ZB8" userLabel="saveBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_red"/>
+                                                                        <color key="backgroundColor" name="logoYellow"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Pre-order">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="i_black"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="placeOrderClick:" destination="NwJ-cL-Mwu" eventType="touchUpInside" id="j1R-9A-opH"/>
@@ -2283,10 +2287,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLZ-p7-q5Y" userLabel="cancelBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_gray"/>
+                                                                        <color key="backgroundColor" name="logoRed"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Cancel">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="white"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="cancelOrderClick:" destination="NwJ-cL-Mwu" eventType="touchUpInside" id="NZV-CZ-cO5"/>
@@ -2321,7 +2325,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="sjn-O7-AOR"/>
                                                                 </constraints>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -2407,7 +2411,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="Tpo-7s-uEb"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" name="i_yellow"/>
+                                <color key="backgroundColor" name="lessDarkBlue"/>
                                 <constraints>
                                     <constraint firstItem="Joc-iu-1OB" firstAttribute="top" secondItem="8OF-fb-PKo" secondAttribute="top" id="8HK-2U-8AR"/>
                                     <constraint firstAttribute="trailing" secondItem="Joc-iu-1OB" secondAttribute="trailing" id="MPP-yZ-ool"/>
@@ -2417,7 +2421,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TCS-CA-Utf"/>
-                        <color key="backgroundColor" name="i_black"/>
+                        <color key="backgroundColor" name="darkerBlue"/>
                         <constraints>
                             <constraint firstItem="8OF-fb-PKo" firstAttribute="leading" secondItem="TCS-CA-Utf" secondAttribute="leading" id="4XY-xM-fKt"/>
                             <constraint firstItem="8OF-fb-PKo" firstAttribute="top" secondItem="TCS-CA-Utf" secondAttribute="top" id="IIR-e3-oZS"/>
@@ -2467,31 +2471,31 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bui-a5-XRh" userLabel="dateLbl">
                                                         <rect key="frame" x="10" y="5" width="54" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jun 16th 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDt-Tv-d6T" userLabel="date">
                                                         <rect key="frame" x="74" y="5" width="130.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inz-cG-aqY" userLabel="statusLbl">
                                                         <rect key="frame" x="10" y="34.5" width="77.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="confirmation pending" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="INf-kz-KdL" userLabel="status">
                                                         <rect key="frame" x="97.5" y="34.5" width="212.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTZ-D2-RJw" userLabel="menuLbl">
                                                         <rect key="frame" x="10" y="104" width="65.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htH-2r-nGD" userLabel="menu">
@@ -2508,13 +2512,13 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7R-M9-Ujg" userLabel="locationLbl">
                                                         <rect key="frame" x="10" y="216.5" width="92.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnO-lj-JFe" userLabel="numberMealsLbl">
                                                         <rect key="frame" x="10" y="331" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="cMS-sK-ESa" userLabel="numberMeals">
@@ -2532,25 +2536,25 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ki-eL-8y6" userLabel="mealPriceLbl">
                                                         <rect key="frame" x="10" y="390.5" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPx-Pg-KNh" userLabel="mealPrice">
                                                         <rect key="frame" x="132.5" y="390.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjN-Fa-HHl" userLabel="totalPriceLbl">
                                                         <rect key="frame" x="10" y="415" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFb-80-mWt" userLabel="totalPrice">
                                                         <rect key="frame" x="131.5" y="415" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVO-AD-oPl" userLabel="btnsView">
@@ -2561,10 +2565,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxH-X0-FQn" userLabel="cancelOrder">
                                                                         <rect key="frame" x="65" y="4" width="190" height="47"/>
-                                                                        <color key="backgroundColor" name="i_gray"/>
+                                                                        <color key="backgroundColor" name="logoRed"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Delete order">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="white"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="cancelOrder:" destination="0iA-ek-gvE" eventType="touchUpInside" id="Xnq-i1-2oo"/>
@@ -2595,10 +2599,10 @@
                                                                 <subviews>
                                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Psx-4U-znS" userLabel="saveBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_red"/>
+                                                                        <color key="backgroundColor" name="logoYellow"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Save">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="i_black"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="saveClick:" destination="0iA-ek-gvE" eventType="touchUpInside" id="bR5-Ei-W9W"/>
@@ -2617,10 +2621,10 @@
                                                                 <subviews>
                                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4B-aR-VHI" userLabel="cancelBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_gray"/>
+                                                                        <color key="backgroundColor" name="logoRed"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Cancel">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="white"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="cancelClick:" destination="0iA-ek-gvE" eventType="touchUpInside" id="SNs-dd-I1X"/>
@@ -2655,7 +2659,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="Xdu-7g-2Wg"/>
                                                                 </constraints>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -2749,7 +2753,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="H23-Ld-8rF"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" name="i_yellow"/>
+                                <color key="backgroundColor" name="lessDarkBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="X2i-Ng-bb9" secondAttribute="bottom" id="XXl-ca-pfu"/>
                                     <constraint firstItem="X2i-Ng-bb9" firstAttribute="top" secondItem="QtB-ie-Iel" secondAttribute="top" id="bWH-fq-Ker"/>
@@ -2759,7 +2763,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0dd-ME-3eH"/>
-                        <color key="backgroundColor" name="i_black"/>
+                        <color key="backgroundColor" name="darkerBlue"/>
                         <constraints>
                             <constraint firstItem="QtB-ie-Iel" firstAttribute="trailing" secondItem="0dd-ME-3eH" secondAttribute="trailing" id="Fks-ZK-zWe"/>
                             <constraint firstItem="QtB-ie-Iel" firstAttribute="top" secondItem="0dd-ME-3eH" secondAttribute="top" id="USQ-qo-sjW"/>
@@ -2769,7 +2773,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Update pre order" id="7l6-73-GWj">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9Uy-7J-6nM">
-                            <color key="tintColor" name="i_yellow"/>
+                            <color key="tintColor" name="white"/>
                             <connections>
                                 <action selector="editClick:" destination="0iA-ek-gvE" id="7nd-rv-DXm"/>
                             </connections>
@@ -2818,13 +2822,13 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dp-vt-1Zf" userLabel="dateLbl">
                                                         <rect key="frame" x="10" y="5" width="54" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jun 16th 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVD-6K-eWk" userLabel="date">
                                                         <rect key="frame" x="74" y="5" width="130.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5t-yf-mOn" userLabel="statusLbl">
@@ -2833,19 +2837,19 @@
                                                             <constraint firstAttribute="width" constant="75" id="QjS-fX-Ja2"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="waiting payment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="uXb-7K-8Gj" userLabel="status">
                                                         <rect key="frame" x="95" y="34.5" width="215" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4B8-hs-ccz" userLabel="menuLbl">
                                                         <rect key="frame" x="10" y="104" width="65.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-8h-kpt" userLabel="menu">
@@ -2862,43 +2866,43 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcG-le-qUo" userLabel="locationLbl">
                                                         <rect key="frame" x="10" y="221.5" width="92.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8V-Rv-JiX" userLabel="numberMealsLbl">
                                                         <rect key="frame" x="10" y="316" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zH3-8O-elJ" userLabel="numberMeals">
                                                         <rect key="frame" x="200.5" y="316" width="11" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1A-Tz-E80" userLabel="mealPriceLbl">
                                                         <rect key="frame" x="10" y="340.5" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-HD-GyJ" userLabel="mealPrice">
                                                         <rect key="frame" x="132.5" y="340.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4O-WW-yfu" userLabel="totalPriceLbl">
                                                         <rect key="frame" x="10" y="365" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DwZ-Jt-8M4" userLabel="totalPrice">
                                                         <rect key="frame" x="131.5" y="365" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvS-vP-vM5" userLabel="btnsView">
@@ -2909,10 +2913,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F70-fX-nbi" userLabel="saveBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_red"/>
+                                                                        <color key="backgroundColor" name="logoYellow"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Pay">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="i_black"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="payOrder:" destination="W88-YY-lba" eventType="touchUpInside" id="iSm-iK-k4L"/>
@@ -2933,10 +2937,10 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="xxv-MU-lPs" userLabel="cancelBtn">
                                                                         <rect key="frame" x="10" y="4" width="140" height="47"/>
-                                                                        <color key="backgroundColor" name="i_gray"/>
+                                                                        <color key="backgroundColor" name="logoRed"/>
                                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                                         <state key="normal" title="Delete">
-                                                                            <color key="titleColor" name="fontColor"/>
+                                                                            <color key="titleColor" name="white"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="cancelOrder:" destination="W88-YY-lba" eventType="touchUpInside" id="7aU-2S-WTV"/>
@@ -2973,7 +2977,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="oml-17-XeP"/>
                                                                 </constraints>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -3064,7 +3068,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="qTc-h2-G6A"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" name="i_yellow"/>
+                                <color key="backgroundColor" name="lessDarkBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="YZA-Eu-nfG" secondAttribute="bottom" id="W0j-mJ-XMJ"/>
                                     <constraint firstAttribute="trailing" secondItem="YZA-Eu-nfG" secondAttribute="trailing" id="ZBO-Fe-n3W"/>
@@ -3074,7 +3078,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="67I-iU-U76"/>
-                        <color key="backgroundColor" name="i_black"/>
+                        <color key="backgroundColor" name="darkerBlue"/>
                         <constraints>
                             <constraint firstItem="BUA-wR-wva" firstAttribute="bottom" secondItem="67I-iU-U76" secondAttribute="bottom" id="1vX-kv-4g2"/>
                             <constraint firstItem="BUA-wR-wva" firstAttribute="trailing" secondItem="67I-iU-U76" secondAttribute="trailing" id="Onb-1Q-fBQ"/>
@@ -3125,7 +3129,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jun 16th 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAi-wi-hD7" userLabel="date">
                                                         <rect key="frame" x="74" y="50" width="130.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffY-qh-Rxy" userLabel="statusLbl">
@@ -3134,19 +3138,19 @@
                                                             <constraint firstAttribute="width" constant="75" id="lKa-jV-P7I"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waiting pick-up alert" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="haH-3y-c6z" userLabel="status">
                                                         <rect key="frame" x="95" y="79.5" width="215" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4c-d1-W0S" userLabel="menuLbl">
                                                         <rect key="frame" x="10" y="149" width="65.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-dL-f28" userLabel="menu">
@@ -3163,43 +3167,43 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knN-cB-hJy" userLabel="locationLbl">
                                                         <rect key="frame" x="10" y="276.5" width="92.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of meals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afL-kL-Lii" userLabel="numberMealsLbl">
                                                         <rect key="frame" x="10" y="371" width="180.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtw-yk-JHY" userLabel="numberMeals">
                                                         <rect key="frame" x="200.5" y="371" width="11" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="018-Fg-xHc" userLabel="mealPriceLbl">
                                                         <rect key="frame" x="10" y="395.5" width="112.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnI-sT-AKb" userLabel="mealPrice">
                                                         <rect key="frame" x="132.5" y="395.5" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyO-OQ-X3g" userLabel="totalPriceLbl">
                                                         <rect key="frame" x="10" y="420" width="111.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsC-mb-kt6" userLabel="totalPrice">
                                                         <rect key="frame" x="131.5" y="420" width="83.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzC-0M-cca" userLabel="orderView">
@@ -3211,17 +3215,17 @@
                                                                     <constraint firstAttribute="width" constant="105" id="m9q-zf-MRG"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="23"/>
-                                                                <color key="textColor" name="white"/>
+                                                                <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="350999059" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5h-tb-3Hi" userLabel="orderNr">
                                                                 <rect key="frame" x="135" y="3.5" width="135" height="33"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="30"/>
-                                                                <color key="textColor" name="white"/>
+                                                                <color key="textColor" name="i_black"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="i_gray"/>
+                                                        <color key="backgroundColor" name="logoRose"/>
                                                         <constraints>
                                                             <constraint firstItem="ZVk-fu-n1g" firstAttribute="centerY" secondItem="XzC-0M-cca" secondAttribute="centerY" id="K3P-KV-vdh"/>
                                                             <constraint firstAttribute="height" constant="40" id="WZE-gE-sND"/>
@@ -3240,7 +3244,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="86v-hH-fWT"/>
                                                                 </constraints>
-                                                                <color key="textColor" name="i_black"/>
+                                                                <color key="textColor" name="white"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -3285,7 +3289,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pu-OW-E9N" userLabel="dateLbl">
                                                         <rect key="frame" x="10" y="50" width="54" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" name="i_black"/>
+                                                        <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -3340,7 +3344,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="9yw-jV-aDG"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" name="i_yellow"/>
+                                <color key="backgroundColor" name="lessDarkBlue"/>
                                 <constraints>
                                     <constraint firstItem="MRQ-ER-gSi" firstAttribute="top" secondItem="8wP-Iy-YzI" secondAttribute="top" id="581-Xg-Vn9"/>
                                     <constraint firstAttribute="bottom" secondItem="MRQ-ER-gSi" secondAttribute="bottom" id="9vN-i0-AhM"/>
@@ -3350,7 +3354,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PNK-0I-5GN"/>
-                        <color key="backgroundColor" name="i_black"/>
+                        <color key="backgroundColor" name="darkerBlue"/>
                         <constraints>
                             <constraint firstItem="8wP-Iy-YzI" firstAttribute="top" secondItem="PNK-0I-5GN" secondAttribute="top" id="Rfl-kz-0RC"/>
                             <constraint firstItem="PNK-0I-5GN" firstAttribute="bottom" secondItem="8wP-Iy-YzI" secondAttribute="bottom" id="dGO-gy-BcM"/>
@@ -3394,7 +3398,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUv-8k-4Sn" userLabel="cardNumberLbl">
                                                 <rect key="frame" x="10" y="0.0" width="208" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                <color key="textColor" name="i_black"/>
+                                                <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1234 4567 8900 0000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdt-vk-uqA" userLabel="cardNumber">
@@ -3413,7 +3417,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-8A-v0o" userLabel="codeLbl">
                                                 <rect key="frame" x="10" y="74.5" width="176" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                <color key="textColor" name="i_black"/>
+                                                <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="123" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i49-35-bnS" userLabel="code">
@@ -3432,18 +3436,18 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid through" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzP-sF-ahF" userLabel="validTrough">
                                                 <rect key="frame" x="10" y="149" width="140" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
-                                                <color key="textColor" name="i_black"/>
+                                                <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcc-pR-dx4">
                                                 <rect key="frame" x="0.0" y="319" width="140" height="47"/>
-                                                <color key="backgroundColor" name="i_gray"/>
+                                                <color key="backgroundColor" name="logoRed"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="47" id="Qth-Mp-fnp"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                 <state key="normal" title="Cancel">
-                                                    <color key="titleColor" name="fontColor"/>
+                                                    <color key="titleColor" name="white"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="cancelClick:" destination="5iZ-CZ-RSW" eventType="touchUpInside" id="veT-jB-6Od"/>
@@ -3451,10 +3455,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWo-3G-mJq">
                                                 <rect key="frame" x="150" y="319" width="140" height="47"/>
-                                                <color key="backgroundColor" name="i_red"/>
+                                                <color key="backgroundColor" name="logoYellow"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                 <state key="normal" title="Pay">
-                                                    <color key="titleColor" name="fontColor"/>
+                                                    <color key="titleColor" name="i_black"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="payClick:" destination="5iZ-CZ-RSW" eventType="touchUpInside" id="7YB-KZ-QsQ"/>
@@ -3507,7 +3511,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B26-oP-vB9"/>
-                        <color key="backgroundColor" name="i_yellow"/>
+                        <color key="backgroundColor" name="lessDarkBlue"/>
                         <constraints>
                             <constraint firstItem="B26-oP-vB9" firstAttribute="bottom" secondItem="Mzp-yf-Qtj" secondAttribute="bottom" id="9Vh-p3-k1T"/>
                             <constraint firstItem="B26-oP-vB9" firstAttribute="trailing" secondItem="Mzp-yf-Qtj" secondAttribute="trailing" id="TQa-Qv-3kD"/>
@@ -3531,8 +3535,8 @@
     </scenes>
     <color key="tintColor" name="i_black"/>
     <resources>
-        <image name="icon500x500" width="295" height="295"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="logo1200" width="600" height="600"/>
         <image name="logout" width="64" height="64"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="sadFace" width="64" height="64"/>
@@ -3541,6 +3545,9 @@
         </namedColor>
         <namedColor name="calendarDayColor">
             <color red="0.0" green="0.97600001096725464" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="darkerBlue">
+            <color red="0.14900000393390656" green="0.18000000715255737" blue="0.25099998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="fontColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3551,17 +3558,20 @@
         <namedColor name="i_black">
             <color red="0.019999999552965164" green="0.019999999552965164" blue="0.016000000759959221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="i_gray">
-            <color red="0.48600000143051147" green="0.51800000667572021" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="i_red">
-            <color red="0.94099998474121094" green="0.035000000149011612" blue="0.024000000208616257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="i_yellow">
             <color red="0.96100002527236938" green="0.875" blue="0.15299999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="primary">
-            <color red="0.24300000071525574" green="0.48600000143051147" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="lessDarkBlue">
+            <color red="0.19200000166893005" green="0.23100000619888306" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="logoRed">
+            <color red="0.81599998474121094" green="0.14900000393390656" blue="0.050999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="logoRose">
+            <color red="0.83899998664855957" green="0.59600001573562622" blue="0.57300001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="logoYellow">
+            <color red="0.9570000171661377" green="0.91399997472763062" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textFieldBackground">
             <color red="0.94499999284744263" green="0.95300000905990601" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
