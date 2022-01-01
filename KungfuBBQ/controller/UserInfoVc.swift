@@ -72,6 +72,18 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
     }
     @IBAction func cancelClick(_ sender: Any) {
         updateInformation(UIenabled: false)
+        if name.text != nameCheck {
+            name.text = nameCheck
+        }
+        if phoneNumber.text != phoneCheck {
+            phoneNumber.text = phoneCheck
+        }
+        if facebookName.text != facebookCheck {
+            facebookName.text = facebookCheck
+        }
+        if instagramName.text != instragramCheck {
+            instagramName.text = instragramCheck
+        }
     }
     private func validatationAlerts(msg:String){
         let alert = UIAlertController(title: "Error!", message: msg, preferredStyle: .alert)
