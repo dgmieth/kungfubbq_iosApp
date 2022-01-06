@@ -83,7 +83,7 @@ class CatoringVC: UIViewController,UITextViewDelegate,UITextFieldDelegate {
             }
 
         }else {
-            let alert = UIAlertController(title: "Catoring contact information missing", message: "Please inform your name, email, phone number and describe your catoring request.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Catering contact information missing", message: "Please inform your name, email, phone number and describe your catering request.", preferredStyle: .alert)
             let no = UIAlertAction(title: "Ok", style: .cancel)
             alert.addAction(no)
             present(alert, animated: true, completion: nil)

@@ -426,7 +426,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         if(dates.contains(CustomDateFormatter.shared.yyyy_MM_dd(withDate: date))){
-            return UIImage(named: "calendarIcon")
+            return UIImage(named: CALENDAR_ICON)
         }
         return nil
     }

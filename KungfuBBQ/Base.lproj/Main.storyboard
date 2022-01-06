@@ -4,6 +4,7 @@
     <dependencies>
         <deployment version="5376" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -60,6 +61,81 @@
                                             <action selector="catorignClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e6o-Og-Fwk"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBQ-bJ-1I5" userLabel="contactInfo">
+                                        <rect key="frame" x="5" y="397.5" width="310" height="76.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9q-cY-Plt">
+                                                <rect key="frame" x="71.5" y="1" width="167" height="20"/>
+                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="18"/>
+                                                <color key="textColor" name="white"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FK3-e3-Yww">
+                                                <rect key="frame" x="0.0" y="30.5" width="310" height="46"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9O-p7-n3T" userLabel="callBtn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="46"/>
+                                                        <color key="tintColor" name="white"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" imagePadding="11">
+                                                            <imageReference key="image" image="phone" catalog="system" symbolScale="large"/>
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="Call">
+                                                                    <attributes>
+                                                                        <color key="NSColor" red="0.97931609450000001" green="1" blue="0.98021287040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <font key="NSFont" size="23" name="Palatino-Bold"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="callBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d4e-sj-4u7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkX-Wq-g8X" userLabel="msgBtn">
+                                                        <rect key="frame" x="155" y="0.0" width="155" height="46"/>
+                                                        <color key="tintColor" name="white"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="facebook" imagePlacement="leading" imagePadding="-1">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="  Facebook">
+                                                                    <attributes>
+                                                                        <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="NSColor" red="0.97931609450000001" green="1" blue="0.98021287040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <font key="NSFont" size="23" name="Palatino-Bold"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="facebookBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0UV-Mq-EmL"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="dkX-Wq-g8X" secondAttribute="trailing" id="F7c-Rj-r6t"/>
+                                                    <constraint firstItem="dkX-Wq-g8X" firstAttribute="leading" secondItem="J9O-p7-n3T" secondAttribute="trailing" id="FAE-D2-JIU"/>
+                                                    <constraint firstItem="J9O-p7-n3T" firstAttribute="top" secondItem="FK3-e3-Yww" secondAttribute="top" id="FPE-7z-Tdg"/>
+                                                    <constraint firstItem="dkX-Wq-g8X" firstAttribute="width" secondItem="J9O-p7-n3T" secondAttribute="width" id="FS9-tO-3KF"/>
+                                                    <constraint firstItem="dkX-Wq-g8X" firstAttribute="top" secondItem="FK3-e3-Yww" secondAttribute="top" id="I6e-F0-cBO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="dkX-Wq-g8X" secondAttribute="bottom" id="LDa-hl-FMA"/>
+                                                    <constraint firstItem="J9O-p7-n3T" firstAttribute="leading" secondItem="FK3-e3-Yww" secondAttribute="leading" id="MzJ-Xv-SYy"/>
+                                                    <constraint firstAttribute="bottom" secondItem="J9O-p7-n3T" secondAttribute="bottom" id="ulp-6y-xJt"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="FK3-e3-Yww" secondAttribute="trailing" id="0LM-hs-WV2"/>
+                                            <constraint firstItem="d9q-cY-Plt" firstAttribute="centerX" secondItem="IBQ-bJ-1I5" secondAttribute="centerX" id="RQx-Ob-Ssi"/>
+                                            <constraint firstItem="FK3-e3-Yww" firstAttribute="leading" secondItem="IBQ-bJ-1I5" secondAttribute="leading" id="S68-Hd-sZE"/>
+                                            <constraint firstAttribute="bottom" secondItem="FK3-e3-Yww" secondAttribute="bottom" id="YqD-wz-o1g"/>
+                                            <constraint firstItem="d9q-cY-Plt" firstAttribute="top" secondItem="IBQ-bJ-1I5" secondAttribute="top" constant="1" id="mg4-1I-fdN"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" name="lessDarkBlue"/>
                                 <color key="tintColor" name="lessDarkBlue"/>
@@ -76,10 +152,13 @@
                                     <constraint firstItem="uqw-0r-Vlq" firstAttribute="height" secondItem="3Yk-2V-Xie" secondAttribute="height" id="WXP-Si-V99"/>
                                     <constraint firstAttribute="trailing" secondItem="uqw-0r-Vlq" secondAttribute="trailing" id="YkY-pG-K06"/>
                                     <constraint firstItem="xJB-gM-zVk" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" constant="150" id="fmk-AQ-A7b"/>
+                                    <constraint firstAttribute="trailing" secondItem="IBQ-bJ-1I5" secondAttribute="trailing" constant="5" id="kLT-FY-hfH"/>
+                                    <constraint firstItem="IBQ-bJ-1I5" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" constant="5" id="oTK-Pk-7ps"/>
                                     <constraint firstItem="Kqa-hk-rqP" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" constant="15" id="oXa-gW-D2u"/>
                                     <constraint firstItem="uqw-0r-Vlq" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" id="r47-Uc-TNR"/>
                                     <constraint firstItem="32E-qC-Nks" firstAttribute="height" secondItem="Kqa-hk-rqP" secondAttribute="height" id="tlN-oz-xlR"/>
                                     <constraint firstItem="32E-qC-Nks" firstAttribute="centerX" secondItem="3Yk-2V-Xie" secondAttribute="centerX" id="uj3-jF-VhH"/>
+                                    <constraint firstAttribute="bottom" secondItem="IBQ-bJ-1I5" secondAttribute="bottom" constant="5" id="v2k-bf-6k6"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30L-cS-9ON">
@@ -107,7 +186,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="darkerBlue"/>
                         <constraints>
+                            <constraint firstItem="IBQ-bJ-1I5" firstAttribute="height" secondItem="30L-cS-9ON" secondAttribute="height" multiplier="1.7" id="5xI-H5-yVa"/>
                             <constraint firstItem="30L-cS-9ON" firstAttribute="top" secondItem="uqw-0r-Vlq" secondAttribute="bottom" id="8oM-iP-Szx"/>
+                            <constraint firstItem="FK3-e3-Yww" firstAttribute="height" secondItem="30L-cS-9ON" secondAttribute="height" constant="1" id="CVG-9l-BIi"/>
                             <constraint firstItem="3Yk-2V-Xie" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DFt-xy-eQT"/>
                             <constraint firstItem="3Yk-2V-Xie" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VOx-4Y-de8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="30L-cS-9ON" secondAttribute="trailing" id="Vew-dk-h43"/>
@@ -132,6 +213,7 @@
                         <outlet property="appInfoBtn" destination="HNp-4Q-PKX" id="buS-mQ-iw7"/>
                         <outlet property="calendarBtn" destination="xJB-gM-zVk" id="4Vo-Cq-cfU"/>
                         <outlet property="catoringBtn" destination="Kqa-hk-rqP" id="phP-AA-ogd"/>
+                        <outlet property="contactInfoView" destination="IBQ-bJ-1I5" id="Uv3-nb-QR7"/>
                         <outlet property="loginBtn" destination="32E-qC-Nks" id="wCn-D7-74r"/>
                         <outlet property="userInfoBtn" destination="xON-yC-1dD" id="UNA-89-OTG"/>
                         <segue destination="yzV-ju-ySc" kind="showDetail" identifier="loginVC" id="bk6-m6-Dn9"/>
@@ -142,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994.39999999999998" y="93.103448275862078"/>
+            <point key="canvasLocation" x="993.75" y="92.957746478873247"/>
         </scene>
         <!--App Information-->
         <scene sceneID="kI6-DL-c9Y">
@@ -930,7 +1012,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9q-6c-CSG" userLabel="textView">
                                                         <rect key="frame" x="10" y="35" width="300" height="366"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inform your e-mail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEc-4y-oHc" userLabel="emailLbl">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in with your e-mail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEc-4y-oHc" userLabel="emailLbl">
                                                                 <rect key="frame" x="0.0" y="5" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="white"/>
@@ -949,7 +1031,7 @@
                                                                     <outlet property="delegate" destination="yzV-ju-ySc" id="RA4-aa-FNF"/>
                                                                 </connections>
                                                             </textField>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inform your password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okp-1V-CD3" userLabel="passwordLbl">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in with your password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okp-1V-CD3" userLabel="passwordLbl">
                                                                 <rect key="frame" x="0.0" y="98" width="300" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="white"/>
@@ -1242,8 +1324,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blN-n6-uJm" userLabel="textView">
                                                         <rect key="frame" x="10" y="35" width="300" height="400"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inform your invitation code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX2-DB-mvq" userLabel="invitationCodeLbl">
-                                                                <rect key="frame" x="0.0" y="5" width="285" height="25"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in with your invitation code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX2-DB-mvq" userLabel="invitationCodeLbl">
+                                                                <rect key="frame" x="0.0" y="5" width="326.5" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
@@ -1283,7 +1365,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch9-pq-kB3" userLabel="emailLbl">
                                                                 <rect key="frame" x="0.0" y="88" width="300" height="48.5"/>
                                                                 <attributedString key="attributedText">
-                                                                    <fragment content="Inform the e-mail you sent to KungfuBBQ:">
+                                                                    <fragment content="Fill in with the e-mail you sent to KungfuBBQ:">
                                                                         <attributes>
                                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <font key="NSFont" size="22" name="Palatino-Bold"/>
@@ -1373,7 +1455,7 @@
                                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMo-Nn-Grl" userLabel="personalInfoView">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Inform your name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ty3-LB-ECC" userLabel="nameLbl">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Fill in with your name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ty3-LB-ECC" userLabel="nameLbl">
                                                                 <rect key="frame" x="5" y="35" width="310" height="24.5"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="white"/>
@@ -1392,14 +1474,14 @@
                                                                     <outlet property="delegate" destination="6MI-51-Et2" id="eEX-5d-YqO"/>
                                                                 </connections>
                                                             </textField>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Inform your phone number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xM-GS-R39" userLabel="phoneLbl">
-                                                                <rect key="frame" x="5" y="101.5" width="310" height="25"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Fill in with your phone number:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xM-GS-R39" userLabel="phoneLbl">
+                                                                <rect key="frame" x="5" y="101.5" width="310" height="48.5"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(000) 000-0000" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CJm-Mt-1LU" userLabel="phone">
-                                                                <rect key="frame" x="5" y="126.5" width="310" height="38"/>
+                                                                <rect key="frame" x="5" y="150" width="310" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="sHP-rp-jA8"/>
@@ -1412,13 +1494,13 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="** Facebook name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DJ-CX-39N" userLabel="facebookLbl">
-                                                                <rect key="frame" x="5" y="168.5" width="310" height="25"/>
+                                                                <rect key="frame" x="5" y="192" width="310" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facebook user name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iN3-Cn-6EV" userLabel="facebook">
-                                                                <rect key="frame" x="5" y="193.5" width="310" height="38"/>
+                                                                <rect key="frame" x="5" y="217" width="310" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="WrA-nu-i1T"/>
@@ -1431,13 +1513,13 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="** Instagram name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfi-6C-krN" userLabel="instagramLbl">
-                                                                <rect key="frame" x="5" y="235.5" width="310" height="25"/>
+                                                                <rect key="frame" x="5" y="259" width="310" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Instagram user name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4Zn-k8-oRe" userLabel="instagram">
-                                                                <rect key="frame" x="5" y="260.5" width="310" height="38"/>
+                                                                <rect key="frame" x="5" y="284" width="310" height="38"/>
                                                                 <color key="backgroundColor" name="textFieldBackground"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="tOF-cp-uII"/>
@@ -1450,14 +1532,14 @@
                                                                 </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ol-pL-Mi1" userLabel="obs2">
-                                                                <rect key="frame" x="5" y="338.5" width="310" height="79.5"/>
+                                                                <rect key="frame" x="5" y="362" width="310" height="79.5"/>
                                                                 <string key="text">** Not required, but we encourage you to inform your user name(s), because our Specials and Deals are marketed through Facebook and Instragram. </string>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Required fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3S0-QT-rLY" userLabel="obs1">
-                                                                <rect key="frame" x="5" y="308.5" width="310" height="20"/>
+                                                                <rect key="frame" x="5" y="332" width="310" height="20"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
@@ -3535,10 +3617,12 @@
     </scenes>
     <color key="tintColor" name="i_black"/>
     <resources>
+        <image name="facebook" width="19" height="19"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="logo1200" width="600" height="600"/>
         <image name="logout" width="64" height="64"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="phone" catalog="system" width="128" height="115"/>
         <image name="sadFace" width="64" height="64"/>
         <namedColor name="backGround">
             <color red="0.11800000071525574" green="0.11800000071525574" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

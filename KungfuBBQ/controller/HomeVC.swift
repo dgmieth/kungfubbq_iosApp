@@ -19,12 +19,14 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
     @IBOutlet weak var catoringBtn: UIButton!
     @IBOutlet weak var userInfoBtn: UIBarButtonItem!
     @IBOutlet weak var appInfoBtn: UIBarButtonItem!
-        
+    @IBOutlet var contactInfoView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        contactInfoView.layer.cornerRadius = 10
     }
-// MARK: - BUTTONS EVENT LISTENERS
+    // MARK: - BUTTONS EVENT LISTENERS
     @IBAction func loginClick(_ sender: Any) {
         loginBtn.isEnabled = false
         performSegue(withIdentifier: "loginVC", sender: self)
@@ -45,7 +47,26 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
         performSegue(withIdentifier: "userInfoVC", sender: self)
         userInfoBtn.isEnabled = true
     }
-// MARK: - SEGUEWAYS
+    @IBAction func callBtnClick(_ sender: Any) {
+        if let url = URL(string: KUNGFUBBQ_PHONE),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    @IBAction func facebookBtnClick(_ sender: Any) {
+        if(UIApplication.shared.canOpenURL(URL(string: "fb://")!)){
+            if let url = URL(string: FACEBOOK_PROFILE){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }else{
+            if let url = URL(string : FACEBOOK_LINK){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            
+        }
+    }
+    
+    // MARK: - SEGUEWAYS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loginVC" {
             let dest = segue.destination as! LoginVC
@@ -64,8 +85,8 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
             dest.delegate = self
         }
     }
-// MARK: - DATA MODEL
-// LOAD DATA
+    // MARK: - DATA MODEL
+    // LOAD DATA
     func loadData(){
         let fetchRequest = NSFetchRequest<AppUser>(entityName: "AppUser")
         if let results = try? dataController.viewContext.fetch(fetchRequest){
@@ -85,8 +106,8 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
             present(alert, animated: true, completion: nil)
         }
     }
-//MARK: - USER INTERFACE
-//MARK: - PROTOCOLO FUNCTIONS
+    //MARK: - USER INTERFACE
+    //MARK: - PROTOCOLO FUNCTIONS
     func updateHomeViewControllerUIElements() {
         print("uiRefreshed")
         loginBtn.isHidden = isUserLogged
