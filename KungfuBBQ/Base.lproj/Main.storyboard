@@ -3455,6 +3455,7 @@
                         <outlet property="menu" destination="aEM-dL-f28" id="y2R-Lv-Kqc"/>
                         <outlet property="numberOfMeals" destination="mtw-yk-JHY" id="n6f-N2-shp"/>
                         <outlet property="orderNr" destination="z5h-tb-3Hi" id="mOV-FH-H6x"/>
+                        <outlet property="orderView" destination="XzC-0M-cca" id="T5Y-VL-2yw"/>
                         <outlet property="price" destination="PnI-sT-AKb" id="FEf-br-nqU"/>
                         <outlet property="totalPrice" destination="OsC-mb-kt6" id="zD3-BB-UFE"/>
                     </connections>

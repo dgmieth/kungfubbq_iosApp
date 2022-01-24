@@ -236,16 +236,17 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                         self.calendar.reloadData()
                         self.updateSelectedDate(selectedDate: self.calendar.selectedDate!)
                     }
-                }else{
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .default){action in
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
-                    }
                 }
+//                else{
+//                    DispatchQueue.main.async {
+//                        let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .default){action in
+//                            self.navigationController?.popViewController(animated: true)
+//                        }
+//                        alert.addAction(ok)
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
+//                }
             }else{
                 guard let errorCode = jsonObject["errorCode"] as? Int else { return }
                 if(errorCode == -1){

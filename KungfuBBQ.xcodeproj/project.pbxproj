@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04B3B6EBF9D7315843B69A66 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 888FD2FB3341F49E8C375A9D /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		3802FC7E26C33A2B008D594F /* HttpRequestCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */; };
+		381C84BF279B140E0014A5B0 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C84BE279B140E0014A5B0 /* CryptLib.m */; };
 		381E3F1A266953E000003E19 /* PreOrderCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E3F19266953E000003E19 /* PreOrderCreationVC.swift */; };
 		381E3F1D2669597600003E19 /* MyAwesomePreOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E3F1C2669597600003E19 /* MyAwesomePreOrderVC.swift */; };
 		381E3F2626695A1400003E19 /* MapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E3F2526695A1400003E19 /* MapViewExtensions.swift */; };
@@ -42,6 +43,7 @@
 		3870A8B226C200FC00F7C4D2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A8B126C200FC00F7C4D2 /* LoginVC.swift */; };
 		3870A8B626C2185700F7C4D2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A8B526C2185700F7C4D2 /* UserModel.swift */; };
 		3870A8B926C218A800F7C4D2 /* SocialMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A8B826C218A800F7C4D2 /* SocialMedia.swift */; };
+		3887AB76279B8FF900A06210 /* encryptionComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3887AB75279B8FF900A06210 /* encryptionComments.swift */; };
 		3888C84626671F1C00DA735A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888C84526671F1C00DA735A /* CalendarViewController.swift */; };
 		38978EB926CB1F6E009572E6 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38978EB826CB1F6E009572E6 /* RegisterVC.swift */; };
 		389E8DBA274AEF0200862D83 /* PublicVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E8DB9274AEF0200862D83 /* PublicVariables.swift */; };
@@ -77,6 +79,9 @@
 
 /* Begin PBXFileReference section */
 		3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestCtrl.swift; sourceTree = "<group>"; };
+		381C84BC279B140D0014A5B0 /* KungfuBBQ-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KungfuBBQ-Bridging-Header.h"; sourceTree = "<group>"; };
+		381C84BD279B140E0014A5B0 /* CryptLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
+		381C84BE279B140E0014A5B0 /* CryptLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
 		381E3F19266953E000003E19 /* PreOrderCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOrderCreationVC.swift; sourceTree = "<group>"; };
 		381E3F1C2669597600003E19 /* MyAwesomePreOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAwesomePreOrderVC.swift; sourceTree = "<group>"; };
 		381E3F2526695A1400003E19 /* MapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.swift; sourceTree = "<group>"; };
@@ -89,7 +94,7 @@
 		3840944D27473971003757A9 /* BackToHomeViewControllerFromGrandsonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToHomeViewControllerFromGrandsonViewController.swift; sourceTree = "<group>"; };
 		384677E226D1480000B3AF0E /* PasswordChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeVC.swift; sourceTree = "<group>"; };
 		384C2F9526CF2E9500C60B29 /* UserInfoVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVc.swift; sourceTree = "<group>"; };
-		384E11C22740426C00E92800 /* AboutAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutAppVC.swift; path = protocolos/AboutAppVC.swift; sourceTree = "<group>"; };
+		384E11C22740426C00E92800 /* AboutAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppVC.swift; sourceTree = "<group>"; };
 		3853A84B2663EEEA00FCBEAA /* KungfuBBQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KungfuBBQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3853A84E2663EEEA00FCBEAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3853A8502663EEEA00FCBEAA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 		3870A8B126C200FC00F7C4D2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		3870A8B526C2185700F7C4D2 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		3870A8B826C218A800F7C4D2 /* SocialMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMedia.swift; sourceTree = "<group>"; };
+		3887AB75279B8FF900A06210 /* encryptionComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = encryptionComments.swift; sourceTree = "<group>"; };
 		3888C84526671F1C00DA735A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		38978EB826CB1F6E009572E6 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		389E8DB9274AEF0200862D83 /* PublicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicVariables.swift; sourceTree = "<group>"; };
@@ -148,6 +154,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		381C84BB279B13B90014A5B0 /* encryption */ = {
+			isa = PBXGroup;
+			children = (
+				381C84BD279B140E0014A5B0 /* CryptLib.h */,
+				381C84BE279B140E0014A5B0 /* CryptLib.m */,
+				381C84BC279B140D0014A5B0 /* KungfuBBQ-Bridging-Header.h */,
+				3887AB75279B8FF900A06210 /* encryptionComments.swift */,
+			);
+			path = encryption;
+			sourceTree = "<group>";
+		};
 		381E3F1F266959DB00003E19 /* publicExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,18 +197,18 @@
 		3853A84D2663EEEA00FCBEAA /* KungfuBBQ */ = {
 			isa = PBXGroup;
 			children = (
-				389E8DBB274AEFE800862D83 /* KungfuBBQ.entitlements */,
-				386718A226CDF67D002AAB81 /* formatters */,
-				38A84CC4266C07C800D1F328 /* model */,
-				381E3F1F266959DB00003E19 /* publicExtensions */,
-				3888C84426671EBC00DA735A /* controller */,
-				3853A84E2663EEEA00FCBEAA /* AppDelegate.swift */,
-				3853A8502663EEEA00FCBEAA /* SceneDelegate.swift */,
-				3853A8542663EEEA00FCBEAA /* Main.storyboard */,
 				3853A8572663EEF200FCBEAA /* Assets.xcassets */,
 				3853A8592663EEF200FCBEAA /* LaunchScreen.storyboard */,
+				3853A8542663EEEA00FCBEAA /* Main.storyboard */,
+				3888C84426671EBC00DA735A /* controller */,
+				38A84CC4266C07C800D1F328 /* model */,
+				388CB35B279376020035DCC3 /* supportClassesFunction */,
+				386718A226CDF67D002AAB81 /* formatters */,
+				381E3F1F266959DB00003E19 /* publicExtensions */,
+				3853A84E2663EEEA00FCBEAA /* AppDelegate.swift */,
+				3853A8502663EEEA00FCBEAA /* SceneDelegate.swift */,
 				3853A85C2663EEF200FCBEAA /* Info.plist */,
-				389E8DB9274AEF0200862D83 /* PublicVariables.swift */,
+				389E8DBB274AEFE800862D83 /* KungfuBBQ.entitlements */,
 			);
 			path = KungfuBBQ;
 			sourceTree = "<group>";
@@ -243,23 +260,64 @@
 		3888C84426671EBC00DA735A /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				385F748A26FD2F5100DA13E9 /* protocolos */,
+				388CB35A279375E70035DCC3 /* catering */,
+				388CB359279375DA0035DCC3 /* userInfo */,
+				388CB358279375CB0035DCC3 /* loginRegistration */,
+				388CB3572793757A0035DCC3 /* foodTruck */,
 				384E11C22740426C00E92800 /* AboutAppVC.swift */,
-				3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */,
 				3853A8522663EEEA00FCBEAA /* HomeVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		388CB3572793757A0035DCC3 /* foodTruck */ = {
+			isa = PBXGroup;
+			children = (
 				3888C84526671F1C00DA735A /* CalendarViewController.swift */,
 				381E3F19266953E000003E19 /* PreOrderCreationVC.swift */,
 				381E3F1C2669597600003E19 /* MyAwesomePreOrderVC.swift */,
 				381E3F282669620A00003E19 /* OrderPaymentVC.swift */,
 				381E3F2B2669842B00003E19 /* MyAwesomeOrderVC.swift */,
 				381E3F2E2669850A00003E19 /* PaymentOptionsVC.swift */,
+			);
+			path = foodTruck;
+			sourceTree = "<group>";
+		};
+		388CB358279375CB0035DCC3 /* loginRegistration */ = {
+			isa = PBXGroup;
+			children = (
 				3870A8B126C200FC00F7C4D2 /* LoginVC.swift */,
 				38978EB826CB1F6E009572E6 /* RegisterVC.swift */,
-				38560AAD26CC6BEA00EFAF1F /* CatoringVC.swift */,
+			);
+			path = loginRegistration;
+			sourceTree = "<group>";
+		};
+		388CB359279375DA0035DCC3 /* userInfo */ = {
+			isa = PBXGroup;
+			children = (
 				384C2F9526CF2E9500C60B29 /* UserInfoVc.swift */,
 				384677E226D1480000B3AF0E /* PasswordChangeVC.swift */,
 			);
-			path = controller;
+			path = userInfo;
+			sourceTree = "<group>";
+		};
+		388CB35A279375E70035DCC3 /* catering */ = {
+			isa = PBXGroup;
+			children = (
+				38560AAD26CC6BEA00EFAF1F /* CatoringVC.swift */,
+			);
+			path = catering;
+			sourceTree = "<group>";
+		};
+		388CB35B279376020035DCC3 /* supportClassesFunction */ = {
+			isa = PBXGroup;
+			children = (
+				381C84BB279B13B90014A5B0 /* encryption */,
+				385F748A26FD2F5100DA13E9 /* protocolos */,
+				389E8DB9274AEF0200862D83 /* PublicVariables.swift */,
+				3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */,
+			);
+			path = supportClassesFunction;
 			sourceTree = "<group>";
 		};
 		38A84CC4266C07C800D1F328 /* model */ = {
@@ -345,6 +403,7 @@
 				TargetAttributes = {
 					3853A84A2663EEEA00FCBEAA = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1310;
 					};
 					3867BEA52749DC7B00107A84 = {
 						CreatedOnToolsVersion = 13.1;
@@ -465,9 +524,11 @@
 				385F748C26FD2F6D00DA13E9 /* BackToHomeViewController.swift in Sources */,
 				381E3F2F2669850A00003E19 /* PaymentOptionsVC.swift in Sources */,
 				38316C2E26E52BC20091F270 /* OrderExtras.swift in Sources */,
+				381C84BF279B140E0014A5B0 /* CryptLib.m in Sources */,
 				384C2F9626CF2E9500C60B29 /* UserInfoVc.swift in Sources */,
 				3888C84626671F1C00DA735A /* CalendarViewController.swift in Sources */,
 				38978EB926CB1F6E009572E6 /* RegisterVC.swift in Sources */,
+				3887AB76279B8FF900A06210 /* encryptionComments.swift in Sources */,
 				38C6B6D626E03EA3000C0B65 /* CookingDate.swift in Sources */,
 				381E3F1D2669597600003E19 /* MyAwesomePreOrderVC.swift in Sources */,
 				3867BE732749C98000107A84 /* ShowHttpErrorAlertOnOrderPaymentVC.swift in Sources */,
@@ -658,9 +719,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -668,9 +730,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KungfuBBQ/supportClassesFunction/encryption/KungfuBBQ-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -683,9 +747,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -693,9 +758,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KungfuBBQ/supportClassesFunction/encryption/KungfuBBQ-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

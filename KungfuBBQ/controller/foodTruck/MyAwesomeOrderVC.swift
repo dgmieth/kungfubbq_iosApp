@@ -28,6 +28,7 @@ class MyAwesomeOrderVC: UIViewController {
     @IBOutlet var price: UILabel!
     @IBOutlet var totalPrice: UILabel!
     @IBOutlet var orderNr: UILabel!
+    @IBOutlet var orderView: UIView!
     
     
     override func viewDidLoad() {
@@ -35,6 +36,7 @@ class MyAwesomeOrderVC: UIViewController {
         if #available(iOS 13.0, *){
             self.overrideUserInterfaceStyle = .light
         }
+        orderView.layer.cornerRadius = 10
         let lat = cookingDate.lat == -9999999999 ? 39.758949 : cookingDate.lat
         let lng = cookingDate.lng == -9999999999 ? -84.19167 : cookingDate.lng
         let initialRegion2D = CLLocationCoordinate2D(latitude: lat, longitude: lng)
