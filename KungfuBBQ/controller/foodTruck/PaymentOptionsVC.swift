@@ -66,8 +66,8 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             pkView.layer.add(returnAnimation(xPoint: pkView.center.x, yPoint: pkView.center.y), forKey: "position")
         }
         if cardNumber.text!.count == 19 && !cardCode.text!.isEmpty && pkView.selectedRow(inComponent: 0) != 0 && pkView.selectedRow(inComponent: 1) != 0 {
-            let month = pkView.selectedRow(inComponent: 1) <= 9 ? "0\(pkView.selectedRow(inComponent: 1))" : "\(pkView.selectedRow(inComponent: 1))"
-            let eDate = "\(Calendar.current.component(.year, from: Date()) as Int + (pkView.selectedRow(inComponent: 0) - 1))-\(month)"
+            let month = pkView.selectedRow(inComponent: 0) <= 9 ? "0\(pkView.selectedRow(inComponent: 0))" : "\(pkView.selectedRow(inComponent: 0))"
+            let eDate = "\(Calendar.current.component(.year, from: Date()) as Int + (pkView.selectedRow(inComponent: 1) - 1))-\(month)"
             let cNumber = cardNumber.text!.replacingOccurrences(of: " ", with: "")
             createSpinner()
             HttpRequestCtrl.shared.post(toRoute: "/api/order/payOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), orderID: Int(order.orderId), cardNumber: cNumber, expirantionDate: eDate, cardCode: cardCode.text!, headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
