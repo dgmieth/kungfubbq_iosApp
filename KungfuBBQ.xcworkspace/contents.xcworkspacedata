@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/diegomieth/Documents/999- developmentProjects/kungFuBBQ/kungfuBBQ/KungfuBBQ/KungfuBBQ/model/firstMigration.xcmappingmodel">
+   </FileRef>
+   <FileRef
       location = "group:KungfuBBQ.xcodeproj">
    </FileRef>
    <FileRef

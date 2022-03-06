@@ -25,7 +25,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     //vars and lets
     var cookingDate:CDCookingDate!
     var user:AppUser!
-    var amount:Double=0
+    var amount:Double = FormatObject.shared.returnMealBoxTotalAmount()
     var spinner = UIActivityIndicatorView(style: .large)
     //delegates
     var delegate:BackToCalendarViewController?
@@ -34,6 +34,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var numberMealsPV: UIPickerView!
     @IBOutlet var date: UILabel!
+    @IBOutlet var status: UILabel!
     @IBOutlet var menu: UITextView!
     @IBOutlet var price: UILabel!
     @IBOutlet var totalPrice: UILabel!
@@ -55,17 +56,20 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         mapView.setRegion(region, animated: true)
         let pin = customPin(pinTitle: "KungfuBBQ", pinSubtitle: "teste", location: initialRegion2D)
         cookingDate.lat == -9999999999 || cookingDate.lng == -9999999999 ? nil : mapView.addAnnotation(pin)
-        date.text = CustomDateFormatter.shared.mmDDAtHHMM_forDateUIView(usingStringDate: cookingDate.cookingDate!)
-        var text = ""
-        var counter = 1
+        date.text = FormatObject.shared.returnEventTime()
+        status.text = cookingDate.cookingStatus!
         let dishes = cookingDate.dishes!.allObjects as! [CDCookingDateDishes]
-        for dish in dishes {
-            text = "\(text)\(counter)- \(dish.dishName!) - U$ \(dish.dishPrice!)\n"
-            counter += 1
-            amount = amount + Double(dish.dishPrice!)!
-        }
-        menu.text = text
-        address.text = "\(cookingDate.street!), \(cookingDate.city!) \(cookingDate.state!)"
+        //        var text = ""
+        //        var counter = 1
+        //        for dish in dishes {
+        //            text = "\(text)\(counter)- \(dish.dishName!) - U$ \(dish.dishPrice!)\n"
+        //            counter += 1
+        //            amount = amount + Double(dish.dishPrice!)!
+        //        }
+        //        address.text = "\(cookingDate.street!), \(cookingDate.city!) \(cookingDate.state!)"
+        menu.attributedText = FormatObject.shared.formatDishesListForMenuScrollViews(ary: dishes)
+        address.attributedText = FormatObject.shared.returnAddress()
+        address.sizeToFit()
         price.text = decimalPrecision(amount: amount)
         totalPrice.text = decimalPrecision(amount: amount)
     }
@@ -88,7 +92,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         //lable.textColor = UIColor(named: "i_black")
         lable.textColor = .white
         lable.font = UIFont(name: "palatino", size: CGFloat(
-        24))
+            24))
         lable.sizeToFit()
         return lable
     }
@@ -99,112 +103,117 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
     func callNavigationMapsAlert(){
         addressBtn.isEnabled = false
         mapBtn.isEnabled = false
-        let alert = UIAlertController(title: "Navigate to KungfuBBQ location", message: "Choose your favorite application", preferredStyle: .actionSheet)
-        let gMaps = UIAlertAction(title: "Google Maps", style: .default) { action in
-            print("Google Maps")
-            UIApplication.shared.open(URL(string:"https://www.google.com/maps?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
-            self.addressBtn.isEnabled = true
-            self.mapBtn.isEnabled = true
-        }
-        alert.addAction(gMaps)
-        if (UIApplication.shared.canOpenURL(URL(string:"maps:")!)) {  //First check Google Mpas installed on User's phone or not.
-            let maps = UIAlertAction(title: "Maps", style: .default) { action in
-                print("Apple Maps")
-                UIApplication.shared.open(URL(string: "maps://?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
-                self.addressBtn.isEnabled = true
-                self.mapBtn.isEnabled = true
-            }
-            alert.addAction(maps)
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _IOFBF in
-            self.addressBtn.isEnabled = true
-            self.mapBtn.isEnabled = true
-        }
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
+        showAlert(title:  NAVIGATE_TO_LOCATION, msg: FAVORITE_MAP)
+        //        let alert = UIAlertController(title: "Navigate to KungfuBBQ location", message: "Choose your favorite application", preferredStyle: .actionSheet)
+        //        let gMaps = UIAlertAction(title: "Google Maps", style: .default) { action in
+        //            print("Google Maps")
+        //            UIApplication.shared.open(URL(string:"https://www.google.com/maps?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+        //            self.addressBtn.isEnabled = true
+        //            self.mapBtn.isEnabled = true
+        //        }
+        //        alert.addAction(gMaps)
+        //        if (UIApplication.shared.canOpenURL(URL(string:"maps:")!)) {  //First check Google Mpas installed on User's phone or not.
+        //            let maps = UIAlertAction(title: "Maps", style: .default) { action in
+        //                print("Apple Maps")
+        //                UIApplication.shared.open(URL(string: "maps://?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+        //                self.addressBtn.isEnabled = true
+        //                self.mapBtn.isEnabled = true
+        //            }
+        //            alert.addAction(maps)
+        //        }
+        //        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _IOFBF in
+        //            self.addressBtn.isEnabled = true
+        //            self.mapBtn.isEnabled = true
+        //        }
+        //        alert.addAction(cancel)
+        //        present(alert, animated: true, completion: nil)
     }
-    //MARK: login expired
-    func loginAgain(){
-            let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default) { _ in
-                self.delegateLogin?.isUserLogged = false
-                self.delegateLogin?.updateHomeViewControllerUIElements()
-                self.navigationController?.popToRootViewController(animated: true)
-            }
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
-        }
-    //MARK: error alert
-    private func showErrorAlertHTTPRequestResponseError(msg:String){
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error", message: "Kungfu BBQ server message: \(msg)", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Ok", style: .default) { _ in
-                self.delegate?.updateCalendarViewControllerUIElements(error: true)
-                self.navigationController?.popViewController(animated: true)
-            }
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
+//    //MARK: login expired
+//    func loginAgain(){
+//        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+//        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+//            self.delegateLogin?.isUserLogged = false
+//            self.delegateLogin?.updateHomeViewControllerUIElements()
+//            self.navigationController?.popToRootViewController(animated: true)
+//        }
+//        alert.addAction(ok)
+//        present(alert, animated: true, completion: nil)
+//    }
+//    //MARK: error alert
+//    private func showErrorAlertHTTPRequestResponseError(msg:String){
+//        DispatchQueue.main.async {
+//            let alert = UIAlertController(title: "Error", message: "Kungfu BBQ server message: \(msg)", preferredStyle: .alert)
+//            let ok = UIAlertAction(title: "Ok", style: .default) { _ in
+//                self.delegate?.updateCalendarViewControllerUIElements(error: true)
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//            alert.addAction(ok)
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//    }
     //MARK: - BUTTON LISTENERS
     @IBAction func placeOrderClick(_ sender: Any) {
         preOrder.isEnabled = false
         cancel.isEnabled = false
-        var dishes = [Int]()
-        for dish in cookingDate.dishes!.allObjects as! [CDCookingDateDishes] {
-            dishes.append(Int(dish.dishId))
-        }
+//        var dishes = [Int]()
+//        for dish in cookingDate.dishes!.allObjects as! [CDCookingDateDishes] {
+//            dishes.append(Int(dish.dishId))
+//        }
         var dishQtty = [Int]()
-        for _ in 0 ..< dishes.count{
+        for _ in 0 ..< FormatObject.shared.getDishesForOrders().count{
             dishQtty.append(numberMealsPV.selectedRow(inComponent: 0)+1)
         }
         createSpinner()
-        HttpRequestCtrl.shared.post(toRoute: "/api/order/newOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), dishID: dishes, dishQtty: dishQtty, extrasID: [Int](), extrasQtty: [Int](), headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
+        HttpRequestCtrl.shared.post(toRoute: "/api/order/newOrder", userEmail: user.email, userId: "\(user.id)", cookingDateID: Int(cookingDate.cookingDateId), dishID: FormatObject.shared.getDishesForOrders(), dishQtty: dishQtty, extrasID: [Int](), extrasQtty: [Int](), headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
             guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
             guard let msg = jsonObject["msg"] as? String else { return }
             self.removeSpinner()
             if(errorCheck==0){
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Success!", message: "\(msg)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .cancel){ action in
-                        self.delegate?.updateCalendarViewControllerUIElements(error: false)
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                }
+                self.showAlert(title: SUCCESS, msg: "\(msg)")
+//                DispatchQueue.main.async {
+//                    let alert = UIAlertController(title: "Success!", message: "\(msg)", preferredStyle: .alert)
+//                    let ok = UIAlertAction(title: "Ok", style: .cancel){ action in
+//                        self.delegate?.updateCalendarViewControllerUIElements(error: false)
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+//                    alert.addAction(ok)
+//                    self.present(alert, animated: true, completion: nil)
+//                }
             }else{
                 guard let errorCode = jsonObject["errorCode"] as? Int else { return }
                 if(errorCode == -1){
-                    DispatchQueue.main.async {
-                        self.loginAgain()
-                   }
-                }else if(errorCode == -2){
-                    self.showErrorAlertHTTPRequestResponseError(msg: msg)
-                }else if(errorCode == -3){
-                    self.showErrorAlertHTTPRequestResponseError(msg: msg)
+                    self.showAlert(title: NOT_LOGGED_IN, msg: NOT_LOGGED_IN_TEXT)
+//                    DispatchQueue.main.async {
+//                        self.loginAgain()
+//                    }
+//                }else if(errorCode == -2){
+//                    self.showErrorAlertHTTPRequestResponseError(msg: msg)
+//                }else if(errorCode == -3){
+//                    self.showErrorAlertHTTPRequestResponseError(msg: msg)
                 }else{
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Server message: \(msg)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel){ action in
-                            self.delegate?.updateCalendarViewControllerUIElements(error: true)
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
-                    }
+                    self.showAlert(title: ERROR, msg: "The attempt to save your order to KungfuBBQ server failed with server message: \(msg)")
+//                    DispatchQueue.main.async {
+//                        let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Server message: \(msg)", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .cancel){ action in
+//                            self.delegate?.updateCalendarViewControllerUIElements(error: true)
+//                            self.navigationController?.popViewController(animated: true)
+//                        }
+//                        alert.addAction(ok)
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
                 }
             }
         } onError: { error in
             self.removeSpinner()
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Generalized error message: \(error)", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "Ok", style: .cancel)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-                self.preOrder.isEnabled = true
-                self.cancel.isEnabled = true
-            }
+            self.showAlert(title: ERROR, msg: "The attempt to save your order to KungfuBBQ server failed with server message: \(error)")
+//            DispatchQueue.main.async {
+//                let alert = UIAlertController(title: "Error!", message: "Not possible to place order at this time. Generalized error message: \(error)", preferredStyle: .alert)
+//                let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                alert.addAction(ok)
+//                self.present(alert, animated: true, completion: nil)
+//                self.preOrder.isEnabled = true
+//                self.cancel.isEnabled = true
+//            }
         }
         
     }
@@ -223,7 +232,7 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         view.addSubview(spinner)
-
+        
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
@@ -237,6 +246,48 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
             }
         }
     }
-    
+    // MARK: - ALERTS
+    private func showAlert(title:String,msg:String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            if(title==NAVIGATE_TO_LOCATION){
+                let gMaps = UIAlertAction(title: "Google Maps", style: .default) { action in
+                    print("Google Maps")
+                    UIApplication.shared.open(URL(string:"https://www.google.com/maps?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+                    self.addressBtn.isEnabled = true
+                    self.mapBtn.isEnabled = true
+                }
+                alert.addAction(gMaps)
+                if (UIApplication.shared.canOpenURL(URL(string:"maps:")!)) {  //First check Google Mpas installed on User's phone or not.
+                    let maps = UIAlertAction(title: "Maps", style: .default) { action in
+                        print("Apple Maps")
+                        UIApplication.shared.open(URL(string: "maps://?q=\(self.cookingDate.lat),\(self.cookingDate.lng)")!)
+                        self.addressBtn.isEnabled = true
+                        self.mapBtn.isEnabled = true
+                    }
+                    alert.addAction(maps)
+                }
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _IOFBF in
+                    self.addressBtn.isEnabled = true
+                    self.mapBtn.isEnabled = true
+                }
+                alert.addAction(cancel)
+            }else{
+                let ok = UIAlertAction(title: "Ok", style: .cancel){ _ in
+                    if(title==SUCCESS){
+                        self.delegate?.updateCalendarViewControllerUIElements(error: false)
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    if(title==NOT_LOGGED_IN){
+                        self.delegateLogin?.isUserLogged = false
+                        self.delegateLogin?.updateHomeViewControllerUIElements()
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                }
+                alert.addAction(ok)
+            }
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }
 

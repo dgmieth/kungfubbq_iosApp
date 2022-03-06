@@ -48,6 +48,7 @@
 		38978EB926CB1F6E009572E6 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38978EB826CB1F6E009572E6 /* RegisterVC.swift */; };
 		389E8DBA274AEF0200862D83 /* PublicVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E8DB9274AEF0200862D83 /* PublicVariables.swift */; };
 		38A84CC7266C07DA00D1F328 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38A84CC5266C07DA00D1F328 /* DataModel.xcdatamodeld */; };
+		38B4C78E27D1A6CA00F942F4 /* FormatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B4C78D27D1A6CA00F942F4 /* FormatObject.swift */; };
 		38C6B6D626E03EA3000C0B65 /* CookingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6B6D526E03EA3000C0B65 /* CookingDate.swift */; };
 		38C6B6D826E050CA000C0B65 /* CookingDateDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6B6D726E050CA000C0B65 /* CookingDateDishes.swift */; };
 		5C6E46B94D7DD15CC1CCA619 /* Pods_KungfuBBQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2263EAA047A8BA513187F0B /* Pods_KungfuBBQ.framework */; };
@@ -118,12 +119,15 @@
 		3870A8B126C200FC00F7C4D2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		3870A8B526C2185700F7C4D2 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		3870A8B826C218A800F7C4D2 /* SocialMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMedia.swift; sourceTree = "<group>"; };
+		388033B527D1A29B0035A0F4 /* DataModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel2.xcdatamodel; sourceTree = "<group>"; };
+		388033B627D1A2FC0035A0F4 /* firstMigration.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; name = firstMigration.xcmappingmodel; path = "/Users/diegomieth/Documents/999- developmentProjects/kungFuBBQ/kungfuBBQ/KungfuBBQ/KungfuBBQ/model/firstMigration.xcmappingmodel"; sourceTree = "<absolute>"; };
 		3887AB75279B8FF900A06210 /* encryptionComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = encryptionComments.swift; sourceTree = "<group>"; };
 		3888C84526671F1C00DA735A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		38978EB826CB1F6E009572E6 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		389E8DB9274AEF0200862D83 /* PublicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicVariables.swift; sourceTree = "<group>"; };
 		389E8DBB274AEFE800862D83 /* KungfuBBQ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KungfuBBQ.entitlements; sourceTree = "<group>"; };
 		38A84CC6266C07DA00D1F328 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		38B4C78D27D1A6CA00F942F4 /* FormatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatObject.swift; sourceTree = "<group>"; };
 		38C6B6D526E03EA3000C0B65 /* CookingDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingDate.swift; sourceTree = "<group>"; };
 		38C6B6D726E050CA000C0B65 /* CookingDateDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingDateDishes.swift; sourceTree = "<group>"; };
 		43C700D0E2084076A02153B3 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 			children = (
 				386718A326CDF68E002AAB81 /* PhoneFormatter.swift */,
 				3868B97F26E9505C00BBEA4F /* CustomDateFormatter.swift */,
+				38B4C78D27D1A6CA00F942F4 /* FormatObject.swift */,
 			);
 			path = formatters;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 		38A84CC4266C07C800D1F328 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				388033B627D1A2FC0035A0F4 /* firstMigration.xcmappingmodel */,
 				3870A8B426C2183300F7C4D2 /* jsonModels */,
 				38A84CC5266C07DA00D1F328 /* DataModel.xcdatamodeld */,
 				3870A8AC26C1CD6B00F7C4D2 /* DataController.swift */,
@@ -521,6 +527,7 @@
 				384E11C32740426C00E92800 /* AboutAppVC.swift in Sources */,
 				38A84CC7266C07DA00D1F328 /* DataModel.xcdatamodeld in Sources */,
 				3870A8AD26C1CD6B00F7C4D2 /* DataController.swift in Sources */,
+				38B4C78E27D1A6CA00F942F4 /* FormatObject.swift in Sources */,
 				385F748C26FD2F6D00DA13E9 /* BackToHomeViewController.swift in Sources */,
 				381E3F2F2669850A00003E19 /* PaymentOptionsVC.swift in Sources */,
 				38316C2E26E52BC20091F270 /* OrderExtras.swift in Sources */,
@@ -857,9 +864,10 @@
 		38A84CC5266C07DA00D1F328 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				388033B527D1A29B0035A0F4 /* DataModel2.xcdatamodel */,
 				38A84CC6266C07DA00D1F328 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 38A84CC6266C07DA00D1F328 /* DataModel.xcdatamodel */;
+			currentVersion = 388033B527D1A29B0035A0F4 /* DataModel2.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

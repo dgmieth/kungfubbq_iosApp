@@ -1,3 +1,4 @@
 pods/
 Podfile.lock
-/KungfuBBQ/PublicVariables.swift
+/KungfuBBQ/supportClassesFunction/PublicVariables.swift
+KungfuBBQ/supportClassesFunction/PublicVariables.swift

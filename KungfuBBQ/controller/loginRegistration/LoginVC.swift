@@ -16,7 +16,6 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     var loadedEmail:String = ""
     var spinner = UIActivityIndicatorView(style: .large)
     var registeredUser: Bool = false
-    var textFieldPlaceHolderPass = "8 characters only"
     //ui elements
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
@@ -36,9 +35,8 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        email.autocapitalizationType = .none
-        email.attributedPlaceholder = NSAttributedString(string: "johndoe@mail.com", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        password.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        email.attributedPlaceholder = NSAttributedString(string: EMAIL_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        password.attributedPlaceholder = NSAttributedString(string: PASSWORD_LEGNTH, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     // MARK: - BUTTONS EVENT LISTENERS
     // MARK: register btn
@@ -51,38 +49,45 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     @IBAction func forgotPasswordClick(_ sender: Any) {
         let alert = UIAlertController(title: "Password recovery", message: "Please inform you user acount e-mail address and click on Send.", preferredStyle: .alert)
         alert.addTextField { textfield in
-            textfield.placeholder = "User account e-mail..."
+            textfield.placeholder = EMAIL_HINT
         }
         let sendMeEmail = UIAlertAction(title: "Send", style: .default) { action in
+            if(alert.textFields![0].text!.isEmpty){
+                alert.dismiss(animated: true, completion: nil)
+                self.showAlert(title: ERROR, msg: "You must inform the e-mail.")
+            }
             self.createSpinner()
             HttpRequestCtrl.shared.post(toRoute: "/api/user/forgotPassword", userEmail: alert.textFields![0].text) { jsonObject in
                 guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
                 if(errorCheck==0){
                     guard let msg = jsonObject["msg"] as? String else { return }
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Success!", message: "\(msg)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel)
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
-                    }
+                    self.showAlert(title: SUCCESS, msg: "\(msg)")
+//                    DispatchQueue.main.async {
+//                        let alert = UIAlertController(title: "Success!", message: "\(msg)", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                        alert.addAction(ok)
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
                 }else{
                     guard let msg = jsonObject["msg"] as? String else { return }
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error!", message: "Not possible to send password recovery email this time. Server message: \(msg)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel)
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
-                    }
+                    self.showAlert(title: ERROR, msg: "The attempt to recover your password failed with server message: \(msg)")
+//                    DispatchQueue.main.async {
+//                        let alert = UIAlertController(title: "Error!", message: "Not possible to send password recovery email at this time. Server message: \(msg)", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                        alert.addAction(ok)
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
                 }
             } onError: { error in
                 self.removeSpinner()
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error!", message: "Not possible to send password recovery email this time. Server message: \(error)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .cancel)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                }
+                self.showAlert(title: ERROR, msg: "The attempt to recover your password failed with message: \(error)")
+//                DispatchQueue.main.async {
+//                    let alert = UIAlertController(title: "Error!", message: "The attempt to recover your password failed with message: \(error)", preferredStyle: .alert)
+//                    let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                    alert.addAction(ok)
+//                    self.present(alert, animated: true, completion: nil)
+//                }
             }
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -98,7 +103,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         if !username.isEmpty && !pass.isEmpty {
             createSpinner()
             var user1 = User()
-            HttpRequestCtrl.shared.post(toRoute: "/login/login", mobileOS: "apple", userEmail: username, userPassword: pass, onCompletion: { (jsonObject) in
+            HttpRequestCtrl.shared.post(toRoute: "/login/login", mobileOS: "apple", userEmail: username, userPassword: pass, versionCode: BUNDLE_VERSION, onCompletion: { (jsonObject) in
                 guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
                 if(errorCheck==0){
@@ -141,31 +146,35 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                     }
                 }else{
                     guard let msg = jsonObject["msg"] as? String else { return }
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error!", message: "Not possible to log in this user. Server message: \(msg)", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel)
-                        alert.addAction(ok)
-                        self.loginBtn.isEnabled = true
-                        self.present(alert, animated: true, completion: nil)
-                    }
+                    self.showAlert(title: ERROR, msg: "Log in attempt failed with server message: \(msg)")
+//                    DispatchQueue.main.async {
+//
+//                        let alert = UIAlertController(title: "Error!", message: "Not possible to log in this user. Server message: \(msg)", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                        alert.addAction(ok)
+//                        self.loginBtn.isEnabled = true
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
                 }
                 
             }, onError: { (error) in
                 self.removeSpinner()
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error!", message: "Not possible to log in this user. Internal error message: \(error)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .cancel)
-                    alert.addAction(ok)
-                    self.loginBtn.isEnabled = true
-                    self.present(alert, animated: true, completion: nil)
-                }
+                self.showAlert(title: ERROR, msg: "Log in attempt failed with message: \(error)")
+//                DispatchQueue.main.async {
+//                    let alert = UIAlertController(title: "Error!", message: "Not possible to log in this user. Internal error message: \(error)", preferredStyle: .alert)
+//                    let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                    alert.addAction(ok)
+//                    self.loginBtn.isEnabled = true
+//                    self.present(alert, animated: true, completion: nil)
+//                }
             })
         }else{
-            let alert = UIAlertController(title: "Log in credentials missing", message: "Please inform a complete valid e-mail address and your 8 alphanumerical password.", preferredStyle: .alert)
-            let no = UIAlertAction(title: "Ok", style: .cancel)
-            alert.addAction(no)
-            loginBtn.isEnabled = true
-            present(alert, animated: true, completion: nil)
+            showAlert(title: ERROR, msg: "Please inform a complete valid e-mail address and your 8 alphanumerical password.")
+//            let alert = UIAlertController(title: "Log in credentials missing", message: "Please inform a complete valid e-mail address and your 8 alphanumerical password.", preferredStyle: .alert)
+//            let no = UIAlertAction(title: "Ok", style: .cancel)
+//            alert.addAction(no)
+//            loginBtn.isEnabled = true
+//            present(alert, animated: true, completion: nil)
         }
         
     }
@@ -204,10 +213,11 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
             try dataController.viewContext.execute(delRequestSocial)
         }catch{
             print(error)
-            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
-            let no = UIAlertAction(title: "Ok", style: .cancel)
-            alert.addAction(no)
-            present(alert, animated: true, completion: nil)
+            showAlert(title: ERROR, msg: "There was a problem while trying to save the user information. Please try again later")
+//            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
+//            let no = UIAlertAction(title: "Ok", style: .cancel)
+//            alert.addAction(no)
+//            present(alert, animated: true, completion: nil)
         }
     }
     // MARK: - SPINNER
@@ -230,6 +240,17 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
             }
         }
     }
+    // MARK: - ALERTS
+    private func showAlert(title:String,msg:String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .cancel)
+            alert.addAction(ok)
+            self.loginBtn.isEnabled = true
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - SEGUEWAYS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "registerVC" {
@@ -242,7 +263,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("textFieldDidBeginEditing")
         textField.autocorrectionType = .no
-        textField.autocapitalizationType = .sentences
+        textField.autocapitalizationType = textField.tag==1 ? .none : .sentences
         textField.selectedTextRange = textField.textRange(from: textField.endOfDocument, to: textField.endOfDocument)
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -260,13 +281,13 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if(textField==email){
-            let maxLength = 200
+            let maxLength = EMAIL_MAX_LENGTH
             let cString : NSString = textField.text! as NSString
             let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
             return nString.length <= maxLength
         }
         if(textField==password){
-            let maxLength = 8
+            let maxLength = PASSWORD_MAX_LENTH
             let cString : NSString = textField.text! as NSString
             let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
             return nString.length <= maxLength

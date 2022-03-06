@@ -20,11 +20,14 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
     @IBOutlet weak var userInfoBtn: UIBarButtonItem!
     @IBOutlet weak var appInfoBtn: UIBarButtonItem!
     @IBOutlet var contactInfoView: UIView!
+    @IBOutlet var devLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        checkBundleVersion()
         contactInfoView.layer.cornerRadius = 10
+        devLbl.isHidden = !DEVELOPMENT
     }
     // MARK: - BUTTONS EVENT LISTENERS
     @IBAction func loginClick(_ sender: Any) {
@@ -100,10 +103,23 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
             try dataController.viewContext.execute(delRequest)
         }catch{
             print(error)
-            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
-            let no = UIAlertAction(title: "Ok", style: .cancel)
-            alert.addAction(no)
-            present(alert, animated: true, completion: nil)
+            showAlert(title: ERROR, msg: "There was a problem while trying to save the user information. Please try again later")
+//            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
+//            let no = UIAlertAction(title: "Ok", style: .cancel)
+//            alert.addAction(no)
+//            present(alert, animated: true, completion: nil)
+        }
+    }
+    //MARK: - CHECK BUNDLE VERSION
+    private func checkBundleVersion(){
+        HttpRequestCtrl.shared.get(toRoute: "/api/osVersion/checkVersion", mobileOS: MOBILE_VERSION, versionCode: BUNDLE_VERSION) { jsonObject in
+            guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
+            if(errorCheck==1){
+                guard let msg = jsonObject["msg"] as? String else { return }
+                self.showAlert(title: "App update required!", msg: "\(msg)")
+            }
+        } onError: { error in
+            self.showAlert(title: "App update required!", msg: "\(error)")
         }
     }
     //MARK: - USER INTERFACE
@@ -113,6 +129,19 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
         loginBtn.isHidden = isUserLogged
         calendarBtn.isHidden = !isUserLogged
         userInfoBtn.isEnabled = isUserLogged
+    }
+    // MARK: - ALERTS
+    private func showAlert(title:String,msg:String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .cancel){ _ in
+                if(title=="App update required!"){
+                    self.loginBtn.isHidden = true
+                }
+            }
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 

@@ -28,14 +28,14 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet var status: UILabel!
     @IBOutlet var menuLbl: UILabel!
     @IBOutlet var menu: UITextView!
-    @IBOutlet var locationLbl: UILabel!
-    @IBOutlet var location: UILabel!
     @IBOutlet var placeOrder: UIButton!
     @IBOutlet var checkOutOrder: UIButton!
     @IBOutlet var payBtn: UIButton!
     @IBOutlet var paidOrderCheckOut: UIButton!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var viewTest: UIView!
+    @IBOutlet var scrollImage: UIImageView!
+    
     //delegates
     var delegate:BackToHomeViewControllerFromGrandsonViewController!
     
@@ -73,6 +73,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         do {
             try dataController.viewContext.save()
         } catch {
+            print(error)
+            print(error.localizedDescription)
             print("notSaved (e)") }
     }
     func readUser() -> [AppUser]?{
@@ -106,12 +108,13 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             try dataController.viewContext.execute(delRequest)
             try dataController.viewContext.execute(delRequestDishes)
         }catch{
-            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Ok", style: .default){action in
-                self.navigationController?.popViewController(animated: true)
-            }
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
+            showAlert(title: ERROR, msg: "There was a problem while trying to retrieve the cooking calendar information. Please try again later")
+//            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
+//            let ok = UIAlertAction(title: "Ok", style: .default){action in
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//            alert.addAction(ok)
+//            present(alert, animated: true, completion: nil)
         }
     }
     //MARK: - UPDATE UI
@@ -126,17 +129,24 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         if let dt = selectedDate {
             for cd in cds! {
                 if(cd.cookingDate!.split(separator: " ")[0]) == dt {
-                    date.text = CustomDateFormatter.shared.mmDDAtHHMM_forDateUIView(usingStringDate: cd.cookingDate!)
+//                    date.text = CustomDateFormatter.shared.mmDDAtHHMM_forDateUIView(usingStringDate: cd.cookingDate!)
+                    date.attributedText = FormatObject.shared.formatEventAddress(monthValue: Int(cd.cookingDateAmPm!.split(separator: " ")[0].split(separator: "-")[1])!-1, dayMonth: Int(cd.cookingDateAmPm!.split(separator: " ")[0].split(separator: "-")[2])!, time: String(cd.cookingDateAmPm!.split(separator: " ")[1]), street: cd.street, complement: cd.complement, city: cd.city, state: cd.state, zipCode: cd.zipcode)
+                    date.numberOfLines = Int(ceil(date.attributedText!.size().width/date.bounds.width))
+//                    let size = date.attributedText?.size().height
+//                    date.bounds = CGRect(x: 0, y: 0, width: date.bounds.width, height: size!)
                     status.text = cd.cookingStatus!
                     let cdDishes = cd.dishes?.allObjects as! [CDCookingDateDishes]
-                    var text = ""
-                    var index = 1
-                    for dish in cdDishes {
-                        text = "\(text)\(index) - \(dish.dishName!)\n"
-                        index += 1
-                    }
-                    menu.text = text
-                    location.text = "\(cd.street!), \(cd.city!) \(cd.state!)"
+//                    var text = ""
+//                    var index = 1
+//                    for dish in cdDishes {
+//                        text = "\(text)\(index) - \(dish.dishName!)\n"
+//                        index += 1
+//                    }
+                    let originalViewHeight = menu.bounds.height
+                    menu.attributedText = FormatObject.shared.formatDishesListForMenuScrollViews(ary: cdDishes)
+                    menu.sizeToFit()
+                    scrollImage.isHidden = menu.contentSize.height<=originalViewHeight
+                   // location.text = "\(cd.street!), \(cd.city!) \(cd.state!)"
                 }
             }
         }
@@ -152,7 +162,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         if let userArray = readUser() {
             user = userArray[0]
         }
-        HttpRequestCtrl.shared.get(toRoute: "/api/cookingCalendar/activeCookingDatesWithinSixtyDays", userId: String(user!.id), userEmail: user!.email ,headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
+        HttpRequestCtrl.shared.get(toRoute: "/api/cookingCalendar/activeCookingDateWithinNextTwelveMonths", userId: String(user!.id), userEmail: user!.email, mobileOS: MOBILE_VERSION, versionCode: BUNDLE_VERSION, headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
             guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
             if(errorCheck==0){
                 guard let data = jsonObject["msg"] as? [[[String:Any]]] else { return }
@@ -167,6 +177,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                         c.city = cd.city
                         c.complement = cd.complement
                         c.cookingDate = cd.cookingDate
+                        c.cookingDateAmPm = cd.cookingDateAmPm
                         c.cookingDateId = cd.cookingDateId
                         c.cookingStatus = cd.cookingStatus
                         c.cookingStatusId = cd.cookingStatusId
@@ -185,6 +196,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                             d.dishPrice = dish.dishPrice
                             d.dishDescription = dish.dishDescription
                             d.dishIngredients = dish.dishIngredients
+                            d.dishFifo = dish.dishFifo
                             d.cookingDate = c
                         }
                     }
@@ -205,13 +217,15 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                         o.userId = order.userId
                         o.userName = order.userName
                         o.userPhoneNumber = order.userPhoneNumber
+                        o.tipAmount = order.tipAmount
                         for dish in order.dishes {
                             let d = CDOrderDishes(context: self.dataController.viewContext)
                             d.dishId = dish.dishId
                             d.dishName = dish.dishName
                             d.dishPrice = dish.dishPrice
                             d.dishQtty = dish.dishQtty
-                            d.observation = d.observation
+                            d.observation = dish.observation
+                            d.fifo = dish.fifo
                             d.orderDishes = o
                         }
                         for extra in order.extras {
@@ -250,30 +264,31 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             }else{
                 guard let errorCode = jsonObject["errorCode"] as? Int else { return }
                 if(errorCode == -1){
-                    DispatchQueue.main.async {
-                        self.loginAgain()
-                    }
+                    self.showAlert(title: NOT_LOGGED_IN, msg: NOT_LOGGED_IN_TEXT)
                 }else{
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .default){action in
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
-                    }
+                    guard let msg = jsonObject["msg"] as? String else { return }
+                    self.showAlert(title: ERROR, msg: "The attempt to retrieve data from KungfuBBQ server failed with server message: \(msg)")
+//                    DispatchQueue.main.async {
+//                        let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. Please try again later", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .default){action in
+//                            self.navigationController?.popViewController(animated: true)
+//                        }
+//                        alert.addAction(ok)
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
                 }
             }
         } onError: { error in
 //            print(error)
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. General error message: \(error).Please try again later", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "Ok", style: .default){action in
-                    self.navigationController?.popViewController(animated: true)
-                }
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-            }
+            self.showAlert(title: ERROR, msg: "The attempt to retrieve data from KungfuBBQ server failed with message: \(error)")
+//            DispatchQueue.main.async {
+//                let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to retrieve the cooking calendar information. General error message: \(error).Please try again later", preferredStyle: .alert)
+//                let ok = UIAlertAction(title: "Ok", style: .default){action in
+//                    self.navigationController?.popViewController(animated: true)
+//                }
+//                alert.addAction(ok)
+//                self.present(alert, animated: true, completion: nil)
+//            }
         }
     }
     //MARK: - SEGUE
@@ -310,17 +325,17 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             dest.order = (cookingDate!.orders!.allObjects as! [CDOrder])[0]
         }
     }
-    //MARK: - UI
-    func loginAgain(){
-        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default) { _ in
-            self.delegate?.isUserLogged = false
-            self.delegate?.updateHomeViewControllerUIElements()
-            self.navigationController?.popViewController(animated: true)
-        }
-        alert.addAction(ok)
-        present(alert, animated: true, completion: nil)
-    }
+//    //MARK: - UI
+//    func loginAgain(){
+//        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+//        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+//            self.delegate?.isUserLogged = false
+//            self.delegate?.updateHomeViewControllerUIElements()
+//            self.navigationController?.popViewController(animated: true)
+//        }
+//        alert.addAction(ok)
+//        present(alert, animated: true, completion: nil)
+//    }
     func updateSelectedDate(selectedDate date:Date){
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let sDate = dateFormatter.string(from: date)
@@ -336,6 +351,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                 }else{
                     updateActionButtonsAreHidden(update: false)
                 }
+            }else if (cd[0].cookingStatusId < Int64(4)){
+                updateActionButtonsAreHidden()
             }else{
                 let orders = cd[0].orders!.allObjects as! [CDOrder]
                 if orders.count > 0 {
@@ -350,39 +367,43 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     //user didn't make to the list but is waiting for dropouts
                     if orders[0].orderStatusId == 4 {
                         updateActionButtonsAreHidden()
-                        let alert = UIAlertController(title: "Order status", message: "Your order did not make it to this list, but you are on the waiting list for drop out orders. You'll receive a notification if your order gets onto this list", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .default)
-                        alert.addAction(ok)
-                        present(alert, animated: true, completion: nil)
+                        showAlert(title: "Order Status", msg: "Your order did not make it to this list, but you are on the waiting list for drop out orders. You'll receive a notification if your order gets onto this list. You may also DM KungfuBBQ to find out if there will be first come first served meals.")
+//                        let alert = UIAlertController(title: "Order status", message: "Your order did not make it to this list, but you are on the waiting list for drop out orders. You'll receive a notification if your order gets onto this list", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .default)
+//                        alert.addAction(ok)
+//                        present(alert, animated: true, completion: nil)
                     }
                     //order has been paid OR waiting for pickup alert OR waiting pickup OR delivered OR closed
-                    if orders[0].orderStatusId == 5 || orders[0].orderStatusId == 8 || orders[0].orderStatusId == 9 || orders[0].orderStatusId == 10 || orders[0].orderStatusId == 11 {
+                    if [5,8,9,10,11,14].contains(orders[0].orderStatusId){
                         cookingDate = cd[0]
                         updateActionButtonsAreHidden(paid: false)
                     }
                     //user cancelled the order before paying it
                     if orders[0].orderStatusId == 6 {
                         updateActionButtonsAreHidden()
-                        let alert = UIAlertController(title: "Order status", message: "You cancelled this order if you wish to order food from us, please choose another available cooking date", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .default)
-                        alert.addAction(ok)
-                        present(alert, animated: true, completion: nil)
+                        showAlert(title: "Order Status", msg: "You cancelled this order if you wish to order food from us, please choose another available event. You may also DM KungfuBBQ to find out if there will be first come first served meals.")
+//                        let alert = UIAlertController(title: "Order status", message: "You cancelled this order if you wish to order food from us, please choose another available event", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .default)
+//                        alert.addAction(ok)
+//                        present(alert, animated: true, completion: nil)
                     }
                     //user did not make it to this cooking calendar date list
                     if orders[0].orderStatusId == 7 {
                         updateActionButtonsAreHidden()
-                        let alert = UIAlertController(title: "Order status", message: "We are sorry! Unfortunately your order did not make to this final list of this cooking date. Please, order from us again on another available cooking date", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .default)
-                        alert.addAction(ok)
-                        present(alert, animated: true, completion: nil)
+                        showAlert(title: "Order Status", msg: "We are sorry! Unfortunately your order did not make to the final list on this event. Please, order from us again on another available event. You may also DM KungfuBBQ to find out if there will be first come first served meals.")
+//                        let alert = UIAlertController(title: "Order status", message: "We are sorry! Unfortunately your order did not make to this final list of this event. Please, order from us again on another available event", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .default)
+//                        alert.addAction(ok)
+//                        present(alert, animated: true, completion: nil)
                     }
                     //missed confirmation time
                     if orders[0].orderStatusId == 12 {
                         updateActionButtonsAreHidden()
-                        let alert = UIAlertController(title: "Order status", message: "You missed the time you had to confirm the order. Please choose another available cooking date.", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .default)
-                        alert.addAction(ok)
-                        present(alert, animated: true, completion: nil)
+                        showAlert(title: "Order Stattus", msg: "You missed the time you had to confirm the order. Please order again from another available event. You may also DM KungfuBBQ to find out if there will be first come first served meals.")
+//                        let alert = UIAlertController(title: "Order status", message: "You missed the time you had to confirm the order. Please choose another available event.", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .default)
+//                        alert.addAction(ok)
+//                        present(alert, animated: true, completion: nil)
                     }
                 }else {
                     updateActionButtonsAreHidden()
@@ -442,5 +463,20 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         let userCalendar = Calendar(identifier: .gregorian)
         let date = userCalendar.date(from: dateComponents)
         return date!
+    }
+    // MARK: - ALERTS
+    private func showAlert(title:String,msg:String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .cancel){ _ in
+                if(title==NOT_LOGGED_IN){
+                    self.delegate?.isUserLogged = false
+                    self.delegate?.updateHomeViewControllerUIElements()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

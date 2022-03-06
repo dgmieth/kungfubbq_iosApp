@@ -19,9 +19,11 @@ struct Order{
     let userId:Int64
     let userName:String
     let userPhoneNumber:String
+    let tipAmount:Double
     
     init?(json: [String:Any]){
         guard let cookingDateId = json["cookingDateId"] as? Int64,
+              let tipAmount = json["tipAmount"] as? String,
               let orderDate = json["orderDate"] as? String,
               let orderId = json["orderId"] as? Int64,
               let orderStatusId = json["orderStatusId"] as? Int64,
@@ -30,6 +32,7 @@ struct Order{
               let userId = json["userId"] as? Int64,
               let userName = json["userName"] as? String,
               let userPhoneNumber = json["userPhoneNumber"] as? String
+            
          else {
             return nil
         }
@@ -43,6 +46,7 @@ struct Order{
         self.userId = userId
         self.userName = userName
         self.userPhoneNumber = userPhoneNumber
+        self.tipAmount = Double(tipAmount)!
 
         
         guard let dishes = json["dishes"] as? [[String:Any]]
@@ -51,7 +55,6 @@ struct Order{
         }
         var dishesArr = [OrderDishes]()
         for dish in dishes {
-            print(dish)
             dishesArr.append(OrderDishes(json: dish)!)
         }
         self.dishes = dishesArr

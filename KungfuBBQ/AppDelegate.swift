@@ -29,6 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(ONE_SIGNAL_APP_ID)
         OneSignal.initWithLaunchOptions(launchOptions)
         OneSignal.setAppId(String(ONE_SIGNAL_APP_ID))
+        let nsObject: AnyObject? = Bundle.main.infoDictionary!["CFBundleVersion"] as AnyObject
+        if let version = nsObject {
+            BUNDLE_VERSION = "\(version)"
+        }else{
+            BUNDLE_VERSION = "1.0"
+        }
+
         
         
         // promptForPushNotifications will show the native iOS notification permission prompt.

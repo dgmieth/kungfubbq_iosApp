@@ -67,11 +67,11 @@ class CustomDateFormatter {
             dateComponents.day = 1
             dateComponents.month = month
         }else if(minimumMaximum=="maximum"){
-            if(month==12){
-                dateComponents.year = year! + 1
-                dateComponents.month = 1
+            if(month==1){
+                dateComponents.month = 12
             }else{
-                dateComponents.month = month! + 1
+                //dateComponents.year = year! + 1
+                dateComponents.month = month! + 11
             }
             let cal = Calendar(identifier: .gregorian)
             let stDt = cal.date(from: dateComponents)

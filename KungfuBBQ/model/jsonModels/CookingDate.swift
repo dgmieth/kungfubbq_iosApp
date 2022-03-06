@@ -12,6 +12,7 @@ struct CookingDate{
     let city:String
     let complement:String
     let cookingDate:String
+    let cookingDateAmPm:String
     let cookingDateId:Int64;
     let cookingStatus:String
     let cookingStatusId:Int64
@@ -29,6 +30,7 @@ struct CookingDate{
         guard let addressId = json["addressId"] as? Int64,
               let city = json["city"] as? String,
               let complement = json["complement"] as? String,
+              let cookingDateAmPm = json["cookingDateAmPm"] as? String,
               let cookingDate = json["cookingDate"] as? String,
               let cookingDateId = json["cookingDateId"] as? Int64,
               let cookingStatus = json["cookingStatus"] as? String,
@@ -49,6 +51,7 @@ struct CookingDate{
         self.city = city
         self.complement = complement
         self.cookingDate = cookingDate
+        self.cookingDateAmPm = cookingDateAmPm
         self.cookingDateId = cookingDateId
         self.cookingStatus = cookingStatus
         self.cookingStatusId = cookingStatusId

@@ -14,7 +14,7 @@ class MyAwesomeOrderVC: UIViewController {
     var user:AppUser!
     var order:CDOrder!
     var dataController:DataController!
-    var amount:Double=0
+    var amount:Double = FormatObject.shared.returnMealBoxTotalAmount()
     var spinner = UIActivityIndicatorView(style: .large)
     //ui elements
     @IBOutlet weak var mapView: MKMapView!
@@ -26,6 +26,7 @@ class MyAwesomeOrderVC: UIViewController {
     @IBOutlet var mapBtn: UIButton!
     @IBOutlet var numberOfMeals: UILabel!
     @IBOutlet var price: UILabel!
+    @IBOutlet var tip: UILabel!
     @IBOutlet var totalPrice: UILabel!
     @IBOutlet var orderNr: UILabel!
     @IBOutlet var orderView: UIView!
@@ -44,25 +45,29 @@ class MyAwesomeOrderVC: UIViewController {
         mapView.setRegion(region, animated: true)
         let pin = customPin(pinTitle: "KungfuBBQ", pinSubtitle: "teste", location: initialRegion2D)
         cookingDate.lat == -9999999999 || cookingDate.lng == -9999999999 ? nil : mapView.addAnnotation(pin)
-        date.text = CustomDateFormatter.shared.mmDDAtHHMM_forDateUIView(usingStringDate: cookingDate.cookingDate!)
-        var text = ""
-        var counter = 1
-        let dishes = cookingDate.dishes!.allObjects as! [CDCookingDateDishes]
-        for dish in dishes {
-            text = "\(text)\(counter)- \(dish.dishName!) - U$ \(dish.dishPrice!)\n"
-            counter += 1
-            amount = amount + Double(dish.dishPrice!)!
-        }
-        orderNr.text = "\(order.orderId)"
+        date.text = FormatObject.shared.returnEventTime()
         cdStatus.text = cookingDate.cookingStatus!
-        menu.text = text
-        address.text = "\(cookingDate.street!), \(cookingDate.city!) \(cookingDate.state!)"
+        let dishes = cookingDate.dishes!.allObjects as! [CDCookingDateDishes]
+//        var text = ""
+//        var counter = 1
+//        for dish in dishes {
+//            text = "\(text)\(counter)- \(dish.dishName!) - U$ \(dish.dishPrice!)\n"
+//            counter += 1
+//            amount = amount + Double(dish.dishPrice!)!
+//        }
+//        menu.text = text
         let oDishes = order.dishes!.allObjects as! [CDOrderDishes]
         let qtty = Int(oDishes[0].dishQtty!)!
-        print(qtty)
+        orderNr.text = "\(order.orderId)"
+        menu.attributedText = FormatObject.shared.formatDishesListForMenuScrollViews(ary: dishes)
+        address.attributedText = FormatObject.shared.returnAddress()
+        address.sizeToFit()
+        
         numberOfMeals.text = "\(qtty)"
         price.text = decimalPrecision(amount: amount)
-        totalPrice.text = decimalPrecision(amount: amount*Double(qtty))
+        tip.text = decimalPrecision(amount: order.tipAmount)
+        print(order.tipAmount)
+        totalPrice.text = decimalPrecision(amount: amount*Double(qtty)+order.tipAmount)
     }
     private func decimalPrecision(amount:Double)->String{
         return String(format: "U$ %.2f", amount)

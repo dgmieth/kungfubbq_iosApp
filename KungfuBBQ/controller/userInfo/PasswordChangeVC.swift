@@ -13,7 +13,6 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
     var keyboardHeight:CGFloat = 0
     var dataController:DataController!
     var user:AppUser!
-    var textFieldPlaceHolderPass = "8 characters only"
     //ui elements
     @IBOutlet var saveBtn: UIButton!
     @IBOutlet var currentPass: UITextField!
@@ -26,8 +25,8 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentPass.attributedPlaceholder = NSAttributedString(string: "Current password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        newPassword.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        newPasswordConfirmation.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        newPassword.attributedPlaceholder = NSAttributedString(string: PASSWORD_LEGNTH, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        newPasswordConfirmation.attributedPlaceholder = NSAttributedString(string: PASSWORD_LEGNTH, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -49,41 +48,45 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
                 guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
                 if(errorCheck==0){
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Success!", message: "Updated successfull!", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
-                            self.presentingViewController?.dismiss(animated: true, completion: nil)
-                        })
-                        alert.addAction(ok)
-                        self.saveBtn.isEnabled = true
-                        self.present(alert, animated: true, completion: nil)
-                    }
+                    self.showAlert(title: SUCCESS, msg: "Updated successfull!")
+//                    DispatchQueue.main.async {
+//                        let alert = UIAlertController(title: "Success!", message: "Updated successfull!", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
+//                            self.presentingViewController?.dismiss(animated: true, completion: nil)
+//                        })
+//                        alert.addAction(ok)
+//                        self.saveBtn.isEnabled = true
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
                 }else{
                     guard let errorCode = jsonObject["errorCode"] as? Int else { return }
                     if(errorCode == -1){
-                        DispatchQueue.main.async {
-                            self.loginAgain()
-                       }
+                        self.showAlert(title: NOT_LOGGED_IN, msg: NOT_LOGGED_IN_TEXT)
+//                        DispatchQueue.main.async {
+//                            self.loginAgain()
+//                       }
                     }else{
                         guard let msg = jsonObject["msg"] as? String else { return }
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Server message: \(msg)", preferredStyle: .alert)
-                            let ok = UIAlertAction(title: "Ok", style: .cancel)
-                            alert.addAction(ok)
-                            self.saveBtn.isEnabled = true
-                            self.present(alert, animated: true, completion: nil)
-                        }
+                        self.showAlert(title: ERROR, msg: "The attempt to update your password failed with server message: \(msg)")
+//                        DispatchQueue.main.async {
+//                            let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Server message: \(msg)", preferredStyle: .alert)
+//                            let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                            alert.addAction(ok)
+//                            self.saveBtn.isEnabled = true
+//                            self.present(alert, animated: true, completion: nil)
+//                        }
                     }
                 }
             } onError: { error in
                 self.removeSpinner()
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Internal error message: \(error)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .cancel)
-                    alert.addAction(ok)
-                    self.saveBtn.isEnabled = true
-                    self.present(alert, animated: true, completion: nil)
-                }
+                self.showAlert(title: ERROR, msg: "The attempt to update your password failed with server message: \(error)")
+//                DispatchQueue.main.async {
+//                    let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Internal error message: \(error)", preferredStyle: .alert)
+//                    let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                    alert.addAction(ok)
+//                    self.saveBtn.isEnabled = true
+//                    self.present(alert, animated: true, completion: nil)
+//                }
             }
 
         }
@@ -92,13 +95,6 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     //MARK: - TEXTFIELDS
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        //activeField = textField
-    }
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("textFieldShouldBeginEditing")
-        return true
-    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("textFieldShouldReturn")
         textField.tag > 1 ? scrollView.isScrollEnabled = true : nil
@@ -113,7 +109,7 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let maxLength = 8
+        let maxLength = PASSWORD_MAX_LENTH
         let cString : NSString = textField.text! as NSString
         let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
         return nString.length <= maxLength
@@ -146,17 +142,36 @@ class PasswordChangeVC: UIViewController,UITextFieldDelegate {
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         scrollView.isScrollEnabled = false
     }
-    //MARK: - TOKEN EXPIRED
-    func loginAgain(){
-            let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default) { _ in
-                self.delegate?.isUserLogged = false
-                self.delegate?.updateHomeViewControllerUIElements()
-                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    // MARK: - ALERTS
+    private func showAlert(title:String,msg:String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .cancel){ _ in
+                if(title==SUCCESS){
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
+                }
+                if(title==NOT_LOGGED_IN){
+                    self.delegate?.isUserLogged = false
+                    self.delegate?.updateHomeViewControllerUIElements()
+                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                }
             }
+            self.saveBtn.isEnabled = true
             alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
+    }
+//    //MARK: - TOKEN EXPIRED
+//    func loginAgain(){
+//            let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+//            let ok = UIAlertAction(title: "OK", style: .default) { _ in
+//                self.delegate?.isUserLogged = false
+//                self.delegate?.updateHomeViewControllerUIElements()
+//                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+//            }
+//            alert.addAction(ok)
+//            present(alert, animated: true, completion: nil)
+//        }
     // MARK: - SPINNER
     func createSpinner(){
         spinner.color = .black

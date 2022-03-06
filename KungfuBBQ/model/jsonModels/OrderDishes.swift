@@ -12,6 +12,7 @@ struct OrderDishes{
     let dishName:String
     let dishPrice:String
     let dishQtty:String
+    let fifo:Int16
     let observation:String
     
     init?(json: [String:Any]){
@@ -19,6 +20,7 @@ struct OrderDishes{
               let dishName = json["dishName"] as? String,
               let dishPrice = json["dishPrice"] as? String,
               let dishQtty = json["dishQtty"] as? Int,
+              let fifo = json["dishFifo"] as? Int16,
               let observation = json["observation"] as? String
          else {
             print("returned")
@@ -29,5 +31,6 @@ struct OrderDishes{
         self.dishPrice = dishPrice
         self.dishQtty = String(dishQtty)
         self.observation = observation
+        self.fifo = fifo
     }
 }

@@ -13,12 +13,14 @@ struct CookingDateDishes{
     let dishIngredients:String
     let dishName:String
     let dishPrice:String
+    let dishFifo:Int16
     
     init?(json: [String:Any]){
         guard let dishDescription = json["dishDescription"] as? String,
               let dishId = json["dishId"] as? Int64,
               let dishIngredients = json["dishIngredients"] as? String,
               let dishName = json["dishName"] as? String,
+              let dishFifo = json["dishFifo"] as? Int16,
               let dishPrice = json["dishPrice"] as? String
          else {
             return nil
@@ -28,5 +30,6 @@ struct CookingDateDishes{
         self.dishIngredients = dishIngredients
         self.dishName = dishName
         self.dishPrice = dishPrice
+        self.dishFifo = dishFifo
     }
 }

@@ -14,7 +14,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     var dataController:DataController!
     var spinner = UIActivityIndicatorView(style: .large)
     var keyboardHeight:CGFloat = 0
-    var textFieldPlaceHolderPass = "8 characters only"
+    var textFieldPlaceHolderPass = "3-20 characters"
     private var personalInfoEnable = false
     private let phoneFormatter = PhoneFormatter()
     private let maxPhoneLength = 14
@@ -22,7 +22,6 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     
     //ui elements
     @IBOutlet var registerBrn: UIButton!
-    @IBOutlet weak var invitationCode: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordConfirmation: UITextField!
@@ -36,20 +35,19 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     var delegate:RegistersAndLogsUserAndGoesToHomeVC?
     
     override func viewWillAppear(_ animated: Bool) {
-        let alert = UIAlertController(title: "Invitation code needed", message: "In order to register with Kungfu BBQ you need to have an INVITATION CODE. If you don't have one, please message Kungfu BBQ requesting one. IMPORTANT: on the message, you MUST send the e-mail you want to create the account with.", preferredStyle: .alert)
-        let no = UIAlertAction(title: "Ok", style: .cancel)
-        alert.addAction(no)
-        present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "Invitation code needed", message: "In order to register with Kungfu BBQ you need to have an INVITATION CODE. If you don't have one, please message Kungfu BBQ requesting one. IMPORTANT: on the message, you MUST send the e-mail you want to create the account with.", preferredStyle: .alert)
+//        let no = UIAlertAction(title: "Ok", style: .cancel)
+//        alert.addAction(no)
+//        present(alert, animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        invitationCode.attributedPlaceholder = NSAttributedString(string: "KgfBBQ@........", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        email.attributedPlaceholder = NSAttributedString(string: "johndoe@mail.com", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        email.attributedPlaceholder = NSAttributedString(string: EMAIL_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         password.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        name.attributedPlaceholder = NSAttributedString(string: "John Doe", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        phone.attributedPlaceholder = NSAttributedString(string: "(000) 000-0000", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        facebook.attributedPlaceholder = NSAttributedString(string: "Facebook user name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        instagram.attributedPlaceholder = NSAttributedString(string: "Instagram user name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        name.attributedPlaceholder = NSAttributedString(string: NAME_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        phone.attributedPlaceholder = NSAttributedString(string: PHONE_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        facebook.attributedPlaceholder = NSAttributedString(string: FACEBOOK_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        instagram.attributedPlaceholder = NSAttributedString(string: INSTAGRAM_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         passwordConfirmation.attributedPlaceholder = NSAttributedString(string: textFieldPlaceHolderPass, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
@@ -78,15 +76,13 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         dismissViewController()
     }
     @IBAction func nextClick(_ sender: Any) {
-        invitationCode.resignFirstResponder()
         email.resignFirstResponder()
         password.resignFirstResponder()
         passwordConfirmation.resignFirstResponder()
         let emailC = email.text! as String
         let passC = password.text! as String
         let passwordConfC = passwordConfirmation.text! as String
-        let codeC = invitationCode.text! as String
-        if !emailC.isEmpty && !passC.isEmpty && !passwordConfC.isEmpty && !codeC.isEmpty {
+        if !emailC.isEmpty && !passC.isEmpty && !passwordConfC.isEmpty  {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
                 self.personalInfoEnable = true
                 self.personalInfoView.alpha = 1.0
@@ -96,11 +92,12 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
                 }
             })
         }else{
-            let alert = UIAlertController(title: "Register information missing", message: "Please inform your invitation code, your e-email and a password.", preferredStyle: .alert)
-            let no = UIAlertAction(title: "Ok", style: .cancel)
-            alert.addAction(no)
-            present(alert, animated: true, completion: nil)
-            registerBrn.isEnabled = true
+            showAlert(title: "Register attempt failed!", msg: "You must inform your email, your password and confirm your password.")
+//            let alert = UIAlertController(title: "Register attempt failed!", message: "You must inform your email, your password and confirm your password.", preferredStyle: .alert)
+//            let no = UIAlertAction(title: "Ok", style: .cancel)
+//            alert.addAction(no)
+//            present(alert, animated: true, completion: nil)
+//            registerBrn.isEnabled = true
         }
     }
     @IBAction func registerClick(_ sender: Any) {
@@ -108,7 +105,6 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         let emailC = email.text! as String
         let passC = password.text! as String
         let passwordConfC = passwordConfirmation.text! as String
-        let codeC = invitationCode.text! as String
         let name = name.text! as String
         let phone = phone.text! as String
         let face = facebook.text!.isEmpty ? "none" : facebook.text! as String
@@ -116,13 +112,14 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         if !name.isEmpty && !phone.isEmpty && correctPhone{
             createSpinner()
             var user1 = User()
-            HttpRequestCtrl.shared.post(toRoute: "/login/register", mobileOS: "apple",userEmail: emailC, userName: name,  userPassword: passC,  confirmPassword: passwordConfC, invitationCode: codeC, phoneNumber: phoneFormatter.returnPlainString(withPhoneFormatString: phone) , facebookName: face, instagramName: inst) { jsonObject in
+            HttpRequestCtrl.shared.post(toRoute: "/login/register", mobileOS: "apple",userEmail: emailC, userName: name,  userPassword: passC,  confirmPassword: passwordConfC, invitationCode: "none", phoneNumber: phoneFormatter.returnPlainString(withPhoneFormatString: phone) , facebookName: face, instagramName: inst, versionCode: BUNDLE_VERSION) { jsonObject in
                 print("registerSuccess")
                 guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
                 self.removeSpinner()
                 if(errorCheck==0){
                     guard let data = jsonObject["data"] as? [String:Any] else { return }
                     user1 = User(json: data)!
+                    print(user1)
                     self.delete()
                     let cdUser = AppUser(context: self.dataController.viewContext)
                     cdUser.id = user1!.id
@@ -145,44 +142,46 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
                         self.presentingViewController?.dismiss(animated: true, completion: nil)
                     }
                 }else{
-                    guard let errorCode = jsonObject["errorCode"] as? Int else {return }
                     guard let msg = jsonObject["msg"] as? String else { return }
-                    if(errorCode == -3){
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "Error!", message: "Registration attempt failed with server message: \(msg)", preferredStyle: .alert)
-                            let ok = UIAlertAction(title: "Ok", style: .cancel) { _ in
-                                self.presentingViewController?.dismiss(animated: true, completion: nil)
-                            }
-                            alert.addAction(ok)
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                    }else{
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "Error!", message: "Not possible to register this user now. Server message: \(msg)", preferredStyle: .alert)
-                            let ok = UIAlertAction(title: "Ok", style: .cancel)
-                            alert.addAction(ok)
-                            self.registerBrn.isEnabled = true
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                    }
+                    self.showAlert(title: "Register attempt failed!", msg: "The attempt to register this user failed with server message: \(msg)")
+//                    if(errorCode == -3){
+//                        DispatchQueue.main.async {
+//                            let alert = UIAlertController(title: "Error!", message: "Registration attempt failed with server message: \(msg)", preferredStyle: .alert)
+//                            let ok = UIAlertAction(title: "Ok", style: .cancel) { _ in
+//                                self.presentingViewController?.dismiss(animated: true, completion: nil)
+//                            }
+//                            alert.addAction(ok)
+//                            self.present(alert, animated: true, completion: nil)
+//                        }
+//                    }else{
+//                        DispatchQueue.main.async {
+//                            let alert = UIAlertController(title: "Error!", message: "Not possible to register this user now. Server message: \(msg)", preferredStyle: .alert)
+//                            let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                            alert.addAction(ok)
+//                            self.registerBrn.isEnabled = true
+//                            self.present(alert, animated: true, completion: nil)
+//                        }
+//                    }
                 }
             } onError: { error in
                 self.removeSpinner()
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error!", message: "Not possible to register this user now. Internal error message: \(error)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .cancel)
-                    alert.addAction(ok)
-                    self.registerBrn.isEnabled = true
-                    self.present(alert, animated: true, completion: nil)
-                }
+                self.showAlert(title: "Register attempt failed!", msg: "The attempt to register this user failed with message: \(error)")
+//                DispatchQueue.main.async {
+//                    let alert = UIAlertController(title: "Error!", message: "Not possible to register this user now. Internal error message: \(error)", preferredStyle: .alert)
+//                    let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                    alert.addAction(ok)
+//                    self.registerBrn.isEnabled = true
+//                    self.present(alert, animated: true, completion: nil)
+//                }
             }
             
         }else{
-            let alert = UIAlertController(title: "Register information missing", message: "You must inform your name and a valid phone number.", preferredStyle: .alert)
-            let no = UIAlertAction(title: "Ok", style: .cancel)
-            alert.addAction(no)
-            present(alert, animated: true, completion: nil)
-            registerBrn.isEnabled = true
+            showAlert(title: "Register attempt failed!", msg: "You must inform your name and a valid phone number.")
+//            let alert = UIAlertController(title: "Register information missing", message: "You must inform your name and a valid phone number.", preferredStyle: .alert)
+//            let no = UIAlertAction(title: "Ok", style: .cancel)
+//            alert.addAction(no)
+//            present(alert, animated: true, completion: nil)
+//            registerBrn.isEnabled = true
         }
     }
     // MARK: - CORE DATA
@@ -214,10 +213,11 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
             try dataController.viewContext.execute(delRequest)
         }catch{
             print(error)
-            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
-            let no = UIAlertAction(title: "Ok", style: .cancel)
-            alert.addAction(no)
-            present(alert, animated: true, completion: nil)
+            showAlert(title:ERROR, msg: "There was a problem while trying to save the user information. Please try again later")
+//            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
+//            let no = UIAlertAction(title: "Ok", style: .cancel)
+//            alert.addAction(no)
+//            present(alert, animated: true, completion: nil)
         }
     }
     //MARK:- KEYBOARD
@@ -248,14 +248,20 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("textFieldDidBeginEditing")
         textField.autocorrectionType = .no
-        textField.autocapitalizationType = .sentences
+        textField.autocapitalizationType = textField.tag == 2 ? .none : .sentences
         textField.selectedTextRange = textField.textRange(from: textField.endOfDocument, to: textField.endOfDocument)
     }
-    //MARK: - TEXTFIELD
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("textFieldShouldBeginEditing")
-        return true
+    // MARK: - ALERTS
+    private func showAlert(title:String,msg:String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .cancel)
+            alert.addAction(ok)
+            self.registerBrn.isEnabled = true
+            self.present(alert, animated: true, completion: nil)
+        }
     }
+    //MARK: - TEXTFIELD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("textFieldShouldReturn")
         if(personalInfoEnable){
@@ -285,19 +291,19 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if(textField==email){
-            let maxLength = 199
+            let maxLength = EMAIL_MAX_LENGTH
             let cString : NSString = textField.text! as NSString
             let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
             return nString.length <= maxLength
         }
         if(textField==password || textField==passwordConfirmation){
-            let maxLength = 8
+            let maxLength = PASSWORD_MAX_LENTH
             let cString : NSString = textField.text! as NSString
             let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
             return nString.length <= maxLength
         }
         if(textField==facebook || textField==instagram){
-            let maxLength = 99
+            let maxLength = NAME_MAX_LENGTH
             let cString : NSString = textField.text! as NSString
             let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
             return nString.length <= maxLength

@@ -43,10 +43,10 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        name.attributedPlaceholder = NSAttributedString(string: "John Doe", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        phoneNumber.attributedPlaceholder = NSAttributedString(string: "(001) 123-4567", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        facebookName.attributedPlaceholder = NSAttributedString(string: "Facebook user name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        instagramName.attributedPlaceholder = NSAttributedString(string: "Instagram user name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        name.attributedPlaceholder = NSAttributedString(string: NAME_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        phoneNumber.attributedPlaceholder = NSAttributedString(string: PHONE_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        facebookName.attributedPlaceholder = NSAttributedString(string: FACEBOOK_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        instagramName.attributedPlaceholder = NSAttributedString(string: INSTAGRAM_HINT, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboadFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -99,9 +99,11 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         let facebookName = facebookName.text!
         let instagramName = instagramName.text!
         if(name.isEmpty){
+//            return showAlert(title: ERROR, msg: "You must inform your name")
             return validatationAlerts(msg: "You must inform your name")
         }
         if(!correctPhone){
+//            return showAlert(title: ERROR, msg: "You must inform a valid phone number")
             return validatationAlerts(msg: "You must inform a valid phone number")
         }
         if name != nameCheck || phoneNumber != phoneCheck || facebookName != facebookCheck || instagramName != instragramCheck {
@@ -128,50 +130,52 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
                         cdMedia.appUser = cdUser
                     }
                     self.save()
-                    DispatchQueue.main.async {
-                        self.updateInformation(UIenabled: false)
-                        self.refreshUIInformation()
-                        self.saveBtn.isEnabled = true
-                        let alert = UIAlertController(title: "Success!", message: "Updated successfull!", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Ok", style: .cancel)
-                        alert.addAction(ok)
-                        self.present(alert, animated: true, completion: nil)
-                    }
+                    self.showAlert(title: SUCCESS, msg: "Updated successfull!")
+//                    DispatchQueue.main.async {
+//                        let alert = UIAlertController(title: "Success!", message: "Updated successfull!", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                        alert.addAction(ok)
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
                 }else{
                     guard let errorCode = jsonObject["errorCode"] as? Int else { return }
                     if(errorCode == -1){
-                        print("errorCode called")
-                        DispatchQueue.main.async {
-                            self.loginAgain()
-                        }
+                        self.showAlert(title: NOT_LOGGED_IN, msg: NOT_LOGGED_IN_TEXT)
+//                        print("errorCode called")
+//                        DispatchQueue.main.async {
+//                            self.loginAgain()
+//                        }
                     }else{
                         guard let msg = jsonObject["msg"] as? String else { return }
                         print("registerError")
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Server message: \(msg)", preferredStyle: .alert)
-                            let ok = UIAlertAction(title: "Ok", style: .cancel)
-                            alert.addAction(ok)
-                            self.saveBtn.isEnabled = true
-                            self.present(alert, animated: true, completion: nil)
-                        }
+                        self.showAlert(title: ERROR, msg: "The attempt to update your user information failed with server message: \(msg)")
+//                        DispatchQueue.main.async {
+//                            let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Server message: \(msg)", preferredStyle: .alert)
+//                            let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                            alert.addAction(ok)
+//                            self.saveBtn.isEnabled = true
+//                            self.present(alert, animated: true, completion: nil)
+//                        }
                     }
                 }
             } onError: { error in
                 print(error)
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Internal error message: \(error)", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Ok", style: .cancel)
-                    alert.addAction(ok)
-                    self.saveBtn.isEnabled = true
-                    self.present(alert, animated: true, completion: nil)
-                }
+                self.showAlert(title: ERROR, msg: "The attempt to update your user information failed with message: \(error)")
+//                DispatchQueue.main.async {
+//                    let alert = UIAlertController(title: "Error!", message: "Not possible to update information now. Internal error message: \(error)", preferredStyle: .alert)
+//                    let ok = UIAlertAction(title: "Ok", style: .cancel)
+//                    alert.addAction(ok)
+//                    self.saveBtn.isEnabled = true
+//                    self.present(alert, animated: true, completion: nil)
+//                }
             }
         }else{
-            let alert = UIAlertController(title: "Error!", message: "No user information was changed. No update needed.", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Ok", style: .cancel)
-            alert.addAction(ok)
-            saveBtn.isEnabled = true
-            self.present(alert, animated: true, completion: nil)
+            showAlert(title: "Update cancelled!", msg: "No user information was changed.")
+//            let alert = UIAlertController(title: "Update cancelled!", message: "No user information was changed.", preferredStyle: .alert)
+//            let ok = UIAlertAction(title: "Ok", style: .cancel)
+//            alert.addAction(ok)
+//            saveBtn.isEnabled = true
+//            self.present(alert, animated: true, completion: nil)
         }
     }
     // MARK: - CORE DATA
@@ -206,20 +210,14 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
             try dataController.viewContext.execute(delRequestSocial)
         }catch{
             print(error)
-            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
-            let no = UIAlertAction(title: "Ok", style: .cancel)
-            alert.addAction(no)
-            present(alert, animated: true, completion: nil)
+            showAlert(title: ERROR, msg: "There was a problem while trying to save the user information. Please try again later")
+//            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
+//            let no = UIAlertAction(title: "Ok", style: .cancel)
+//            alert.addAction(no)
+//            present(alert, animated: true, completion: nil)
         }
     }
     //MARK: - TEXTFIELDS
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        //activeField = textField
-    }
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("textFieldShouldBeginEditing")
-        return true
-    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("textFieldShouldReturn")
         textField.tag > 1 ? scrollView.isScrollEnabled = true : nil
@@ -236,14 +234,8 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if(textField==email){
-            let maxLength = 199
-            let cString : NSString = textField.text! as NSString
-            let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
-            return nString.length <= maxLength
-        }
         if(textField==facebookName || textField==instagramName){
-            let maxLength = 99
+            let maxLength = NAME_MAX_LENGTH
             let cString : NSString = textField.text! as NSString
             let nString : NSString = cString.replacingCharacters(in: range, with: string) as NSString
             return nString.length <= maxLength
@@ -312,6 +304,32 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         instagramName.borderStyle = enabled ? .roundedRect : .none
         instagramName.textColor = enabled ? .black : .white
     }
+    // MARK: - ALERTS
+    private func showAlert(title:String,msg:String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .cancel){ _ in
+                if(title==SUCCESS){
+                    self.updateInformation(UIenabled: false)
+                    self.refreshUIInformation()
+                    self.saveBtn.isEnabled = true
+                }
+                if(title==NOT_LOGGED_IN){
+                    self.delegate?.isUserLogged = false
+                    self.delegate?.updateHomeViewControllerUIElements()
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
+                }
+                if(title=="Update cancelled!"){
+                    self.updateInformation(UIenabled: false)
+                    self.refreshUIInformation()
+                    self.saveBtn.isEnabled = true
+                }
+            }
+            self.saveBtn.isEnabled = true
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
     //MARK: refresh information on screen
     private func refreshUIInformation(){
         if let userArray = read() {
@@ -356,16 +374,16 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         }
     }
     //MARK: - token expired
-    func loginAgain(){
-        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default) { _ in
-            self.delegate?.isUserLogged = false
-            self.delegate?.updateHomeViewControllerUIElements()
-            self.presentingViewController?.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(ok)
-        present(alert, animated: true, completion: nil)
-    }
+//    func loginAgain(){
+//        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
+//        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+//            self.delegate?.isUserLogged = false
+//            self.delegate?.updateHomeViewControllerUIElements()
+//            self.presentingViewController?.dismiss(animated: true, completion: nil)
+//        }
+//        alert.addAction(ok)
+//        present(alert, animated: true, completion: nil)
+//    }
     // MARK: - SEGUEWAYS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "changePassword"{
