@@ -20,6 +20,8 @@
 		38316C2C26E52B560091F270 /* OrderDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38316C2B26E52B560091F270 /* OrderDishes.swift */; };
 		38316C2E26E52BC20091F270 /* OrderExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38316C2D26E52BC20091F270 /* OrderExtras.swift */; };
 		3840944E27473971003757A9 /* BackToHomeViewControllerFromGrandsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3840944D27473971003757A9 /* BackToHomeViewControllerFromGrandsonViewController.swift */; };
+		38450B1F27D5523C00F4FB44 /* PublicVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38450B1E27D5523C00F4FB44 /* PublicVariables.swift */; };
+		38450B2127D589AF00F4FB44 /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38450B2027D589AF00F4FB44 /* PrivateKeys.swift */; };
 		384677E326D1480000B3AF0E /* PasswordChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384677E226D1480000B3AF0E /* PasswordChangeVC.swift */; };
 		384C2F9626CF2E9500C60B29 /* UserInfoVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384C2F9526CF2E9500C60B29 /* UserInfoVc.swift */; };
 		384E11C32740426C00E92800 /* AboutAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E11C22740426C00E92800 /* AboutAppVC.swift */; };
@@ -46,7 +48,6 @@
 		3887AB76279B8FF900A06210 /* encryptionComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3887AB75279B8FF900A06210 /* encryptionComments.swift */; };
 		3888C84626671F1C00DA735A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888C84526671F1C00DA735A /* CalendarViewController.swift */; };
 		38978EB926CB1F6E009572E6 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38978EB826CB1F6E009572E6 /* RegisterVC.swift */; };
-		389E8DBA274AEF0200862D83 /* PublicVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E8DB9274AEF0200862D83 /* PublicVariables.swift */; };
 		38A84CC7266C07DA00D1F328 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38A84CC5266C07DA00D1F328 /* DataModel.xcdatamodeld */; };
 		38B4C78E27D1A6CA00F942F4 /* FormatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B4C78D27D1A6CA00F942F4 /* FormatObject.swift */; };
 		38C6B6D626E03EA3000C0B65 /* CookingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6B6D526E03EA3000C0B65 /* CookingDate.swift */; };
@@ -93,6 +94,8 @@
 		38316C2B26E52B560091F270 /* OrderDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDishes.swift; sourceTree = "<group>"; };
 		38316C2D26E52BC20091F270 /* OrderExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExtras.swift; sourceTree = "<group>"; };
 		3840944D27473971003757A9 /* BackToHomeViewControllerFromGrandsonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToHomeViewControllerFromGrandsonViewController.swift; sourceTree = "<group>"; };
+		38450B1E27D5523C00F4FB44 /* PublicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicVariables.swift; sourceTree = "<group>"; };
+		38450B2027D589AF00F4FB44 /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
 		384677E226D1480000B3AF0E /* PasswordChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeVC.swift; sourceTree = "<group>"; };
 		384C2F9526CF2E9500C60B29 /* UserInfoVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVc.swift; sourceTree = "<group>"; };
 		384E11C22740426C00E92800 /* AboutAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppVC.swift; sourceTree = "<group>"; };
@@ -124,7 +127,6 @@
 		3887AB75279B8FF900A06210 /* encryptionComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = encryptionComments.swift; sourceTree = "<group>"; };
 		3888C84526671F1C00DA735A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		38978EB826CB1F6E009572E6 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
-		389E8DB9274AEF0200862D83 /* PublicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicVariables.swift; sourceTree = "<group>"; };
 		389E8DBB274AEFE800862D83 /* KungfuBBQ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KungfuBBQ.entitlements; sourceTree = "<group>"; };
 		38A84CC6266C07DA00D1F328 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		38B4C78D27D1A6CA00F942F4 /* FormatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatObject.swift; sourceTree = "<group>"; };
@@ -319,8 +321,9 @@
 			children = (
 				381C84BB279B13B90014A5B0 /* encryption */,
 				385F748A26FD2F5100DA13E9 /* protocolos */,
-				389E8DB9274AEF0200862D83 /* PublicVariables.swift */,
 				3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */,
+				38450B1E27D5523C00F4FB44 /* PublicVariables.swift */,
+				38450B2027D589AF00F4FB44 /* PrivateKeys.swift */,
 			);
 			path = supportClassesFunction;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				381C84BF279B140E0014A5B0 /* CryptLib.m in Sources */,
 				384C2F9626CF2E9500C60B29 /* UserInfoVc.swift in Sources */,
 				3888C84626671F1C00DA735A /* CalendarViewController.swift in Sources */,
+				38450B1F27D5523C00F4FB44 /* PublicVariables.swift in Sources */,
 				38978EB926CB1F6E009572E6 /* RegisterVC.swift in Sources */,
 				3887AB76279B8FF900A06210 /* encryptionComments.swift in Sources */,
 				38C6B6D626E03EA3000C0B65 /* CookingDate.swift in Sources */,
@@ -548,8 +552,8 @@
 				38C6B6D826E050CA000C0B65 /* CookingDateDishes.swift in Sources */,
 				386718A426CDF68E002AAB81 /* PhoneFormatter.swift in Sources */,
 				3870A8B926C218A800F7C4D2 /* SocialMedia.swift in Sources */,
-				389E8DBA274AEF0200862D83 /* PublicVariables.swift in Sources */,
 				381E3F1A266953E000003E19 /* PreOrderCreationVC.swift in Sources */,
+				38450B2127D589AF00F4FB44 /* PrivateKeys.swift in Sources */,
 				3870A8B226C200FC00F7C4D2 /* LoginVC.swift in Sources */,
 				3868B98026E9505C00BBEA4F /* CustomDateFormatter.swift in Sources */,
 				38316C2A26E52B4B0091F270 /* Order.swift in Sources */,

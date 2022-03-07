@@ -119,7 +119,6 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
                 if(errorCheck==0){
                     guard let data = jsonObject["data"] as? [String:Any] else { return }
                     user1 = User(json: data)!
-                    print(user1)
                     self.delete()
                     let cdUser = AppUser(context: self.dataController.viewContext)
                     cdUser.id = user1!.id

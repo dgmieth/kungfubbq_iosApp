@@ -25,6 +25,8 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        let dictionary = Bundle.main.infoDictionary!
+        BUNDLE_VERSION = dictionary["CFBundleVersion"] as! String
         checkBundleVersion()
         contactInfoView.layer.cornerRadius = 10
         devLbl.isHidden = !DEVELOPMENT
