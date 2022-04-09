@@ -91,9 +91,9 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
         lable.text = String(row + 1)
         //lable.textColor = UIColor(named: "i_black")
         lable.textColor = .white
-        lable.font = UIFont(name: "palatino", size: CGFloat(
-            24))
-        lable.sizeToFit()
+        lable.textAlignment = .center
+        lable.font = UIFont(name: "palatino", size: CGFloat(24))
+//        lable.sizeToFit()
         return lable
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -283,6 +283,8 @@ class PreOrderCreationVC: UIViewController, UIPickerViewDelegate,UIPickerViewDat
                         self.delegateLogin?.updateHomeViewControllerUIElements()
                         self.navigationController?.popToRootViewController(animated: true)
                     }
+                    self.preOrder.isEnabled = true
+                    self.cancel.isEnabled = true
                 }
                 alert.addAction(ok)
             }

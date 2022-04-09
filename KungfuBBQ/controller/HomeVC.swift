@@ -121,7 +121,7 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
                 self.showAlert(title: "App update required!", msg: "\(msg)")
             }
         } onError: { error in
-            self.showAlert(title: "App update required!", msg: "\(error)")
+            self.showAlert(title: "Error!", msg: "KungfuBBQ server cannot be reached. Try again in some minutes. If the problem persists, please contact KungfuBBQ.")
         }
     }
     //MARK: - USER INTERFACE
@@ -135,11 +135,14 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
     // MARK: - ALERTS
     private func showAlert(title:String,msg:String){
         DispatchQueue.main.async {
+            if(title=="App update required!"){
+                self.loginBtn.isHidden = true
+            }else{
+                self.loginBtn.isHidden = true
+                self.catoringBtn.isHidden = true
+            }
             let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .cancel){ _ in
-                if(title=="App update required!"){
-                    self.loginBtn.isHidden = true
-                }
             }
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)

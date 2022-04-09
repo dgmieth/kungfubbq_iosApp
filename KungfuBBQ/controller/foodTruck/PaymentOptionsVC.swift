@@ -126,12 +126,12 @@ class PaymentOptionsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             let tAmount = amount*Double(qtty)
             tipAmount.text = decimalPrecision(amount:tAmount*tipState.rawValue)
             totalAmount.text = decimalPrecision(amount:amount*Double(qtty)+tAmount*tipState.rawValue)
-            tipAmoutGiven = amount*tipState.rawValue
+            tipAmoutGiven = (amount*Double(qtty))*tipState.rawValue
         case TipState.TWENTY:
             let tAmount = amount*Double(qtty)
             tipAmount.text = decimalPrecision(amount:tAmount*tipState.rawValue)
             totalAmount.text = decimalPrecision(amount:amount*Double(qtty)+tAmount*tipState.rawValue)
-            tipAmoutGiven = amount*tipState.rawValue
+            tipAmoutGiven = (amount*Double(qtty))*tipState.rawValue
         default:
             let alert = UIAlertController(title: "Custom tip amount", message: "How much do you want to tip?", preferredStyle: .alert)
             let tip = UIAlertAction(title: "Ok", style: .default) { _ in

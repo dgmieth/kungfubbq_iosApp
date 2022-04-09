@@ -288,19 +288,19 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         edit.isEnabled = !enabled
         //uitextfields
         name.isEnabled = enabled
-        name.backgroundColor = enabled ? .white : UIColor(named: "lessDarkBlue")
+        name.backgroundColor = enabled ? .white : .none
         name.borderStyle = enabled ? .roundedRect : .none
         name.textColor = enabled ? .black : .white
         phoneNumber.isEnabled = enabled
-        phoneNumber.backgroundColor = enabled ? .white : UIColor(named: "lessDarkBlue")
+        phoneNumber.backgroundColor = enabled ? .white : .none
         phoneNumber.borderStyle = enabled ? .roundedRect : .none
         phoneNumber.textColor = enabled ? .black : .white
         facebookName.isEnabled = enabled
-        facebookName.backgroundColor = enabled ? .white : UIColor(named: "lessDarkBlue")
+        facebookName.backgroundColor = enabled ? .white : .none
         facebookName.borderStyle = enabled ? .roundedRect : .none
         facebookName.textColor = enabled ? .black : .white
         instagramName.isEnabled = enabled
-        instagramName.backgroundColor = enabled ? .white : UIColor(named: "lessDarkBlue")
+        instagramName.backgroundColor = enabled ? .white : .none
         instagramName.borderStyle = enabled ? .roundedRect : .none
         instagramName.textColor = enabled ? .black : .white
     }

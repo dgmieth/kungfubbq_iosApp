@@ -12,10 +12,13 @@ struct CookingDate{
     let city:String
     let complement:String
     let cookingDate:String
+    let endTime:String
     let cookingDateAmPm:String
+    let cookingDateEndAmPm:String
     let cookingDateId:Int64;
     let cookingStatus:String
     let cookingStatusId:Int64
+    let venue:String
     let country:String
     let dishes:[CookingDateDishes]
     let lat:Double
@@ -31,10 +34,13 @@ struct CookingDate{
               let city = json["city"] as? String,
               let complement = json["complement"] as? String,
               let cookingDateAmPm = json["cookingDateAmPm"] as? String,
+              let cookingDateEndAmPm = json["cookingDateEndAmPm"] as? String,
               let cookingDate = json["cookingDate"] as? String,
+              let endTime = json["endTime"] as? String,
               let cookingDateId = json["cookingDateId"] as? Int64,
               let cookingStatus = json["cookingStatus"] as? String,
               let cookingStatusId = json["cookingStatusId"] as? Int64,
+              let venue = json["venue"] as? String,
               let country = json["country"] as? String,
               let lat = json["lat"] as? Double,
               let lng = json["lng"] as? Double,
@@ -51,10 +57,13 @@ struct CookingDate{
         self.city = city
         self.complement = complement
         self.cookingDate = cookingDate
+        self.endTime = endTime
         self.cookingDateAmPm = cookingDateAmPm
+        self.cookingDateEndAmPm = cookingDateEndAmPm
         self.cookingDateId = cookingDateId
         self.cookingStatus = cookingStatus
         self.cookingStatusId = cookingStatusId
+        self.venue = venue
         self.country = country
         self.lat = lat
         self.lng = lng

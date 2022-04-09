@@ -14,6 +14,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     var user:AppUser!
     var order:CDOrder!
     var amount:Double = FormatObject.shared.returnMealBoxTotalAmount()
+    var qtty = 0
     var spinner = UIActivityIndicatorView(style: .large)
     //ui elements
     @IBOutlet weak var mapView: MKMapView!
@@ -62,7 +63,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         //        menu.text = text
         //        address.text = "\(cookingDate.street!), \(cookingDate.city!) \(cookingDate.state!)"
         let oDishes = order.dishes!.allObjects as! [CDOrderDishes]
-        let qtty = Int(oDishes[0].dishQtty!)!
+        qtty = Int(oDishes[0].dishQtty!)!
         
         menu.attributedText = FormatObject.shared.formatDishesListForMenuScrollViews(ary: dishes)
         address.attributedText = FormatObject.shared.returnAddress()
@@ -330,9 +331,7 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     }
     //MARK: cancel action
     @IBAction func cancelClick(_ sender: Any) {
-        cancelBtn.isEnabled = false
-        buttonsAreHidden(deleteOrder:false)
-        cancelBtn.isEnabled = true
+        resetValues()
     }
     // MARK: - ALERTS
     private func showAlert(title:String,msg:String){
@@ -374,11 +373,21 @@ class MyAwesomePreOrderVC: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                     if(title=="No changes"){
                         self.buttonsAreHidden(deleteOrder:false)
                     }
+                    if(title==ERROR){
+                        self.resetValues()
+                    }
+                    self.saveBtn.isEnabled = true
+                    self.cancelBtn.isEnabled = true
                 }
                 alert.addAction(ok)
             }
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
+    private func resetValues(){
+        buttonsAreHidden(deleteOrder:false)
+        cancelOrder.isEnabled = true
+        self.totalPrice.text = self.decimalPrecision(amount: self.amount*Double(qtty))
+        self.numberMealsPV.selectRow(self.qtty-1, inComponent: 0, animated: true)
+    }
 }

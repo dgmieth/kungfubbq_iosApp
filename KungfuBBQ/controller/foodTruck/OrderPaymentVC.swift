@@ -378,8 +378,8 @@ class OrderPaymentVC: UIViewController,PaymentProtocol,ShowHttpErrorAlertOnOrder
                 let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
                     print(14)
                 }
-                alert.addAction(payAtPickUP)
                 alert.addAction(payNow)
+                alert.addAction(payAtPickUP)
                 alert.addAction(cancel)
             }else{
                 let ok = UIAlertAction(title: "Ok", style: .cancel){ _ in
@@ -393,6 +393,7 @@ class OrderPaymentVC: UIViewController,PaymentProtocol,ShowHttpErrorAlertOnOrder
                         self.delegateLogin?.updateHomeViewControllerUIElements()
                         self.navigationController?.popToRootViewController(animated: true)
                     }
+                    self.enableButtons(value: true)
                 }
                 alert.addAction(ok)
             }

@@ -37,5 +37,5 @@ public var NAVIGATE_TO_LOCATION="Navigate to KungfuBBQ location"
 public let FAVORITE_MAP="Choose your favorite application:"
 public let PAYMENT_OPTIONS="Payment options"
 public let PAYMENT_OPTIONS_TEXT="How would you like to pay your order?"
-
+public let LABEL_FIELD_HEIGH=22.0
 

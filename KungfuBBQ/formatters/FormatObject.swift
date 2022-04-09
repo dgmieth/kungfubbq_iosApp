@@ -15,7 +15,9 @@ public class FormatObject {
     private var mealBoxTotalAmount = 0.0
     private var dishesArray = [Int]()
     private var address = ""
+    private var venue = ""
     private var timeVal = ""
+    private var fieldHeight : CGFloat? = nil
     
     private init(){ }
     
@@ -43,12 +45,12 @@ public class FormatObject {
             var fifo = "\(fifoIntro)"
             for m in ary {
                 if(m.dishFifo==Int16(0)){
-                    menu = "\(menu)<p>\(menuIndex)- \(m.dishName!)\(m.dishDescription! != "" ? " (\(m.dishDescription!))" : "")</p>"
+                    menu = "\(menu)<p>\(menuIndex)-  $\(m.dishPrice!)  \(m.dishName!)\(m.dishDescription! != "" ? " (\(m.dishDescription!))" : "")\(m.dishIngredients! != "" ? " (\(m.dishIngredients!))" : "")</p>"
                     menuIndex += 1
                     mealBoxTotalAmount += Double(m.dishPrice!)!
                     dishesArray.append(Int(m.dishId))
                 }else{
-                    fifo = "\(fifo)<p>\(fifoIndex)- \(m.dishName!)\(m.dishDescription! != "" ? " (\(m.dishDescription!))" : "")</p>"
+                    fifo = "\(fifo)<p>\(fifoIndex)- $\(m.dishPrice!)  \(m.dishName!)\(m.dishDescription! != "" ? " (\(m.dishDescription!))" : "")\(m.dishIngredients! != "" ? " (\(m.dishIngredients!))" : "")</p>"
                     fifoIndex += 1
                 }
             }
@@ -57,10 +59,14 @@ public class FormatObject {
         
         return returnAttributedTextFrom(html: menu)
     }
-    func formatEventAddress(monthValue:Int,dayMonth:Int,time:String,street:String?,complement:String?,city:String?,state:String?,zipCode:String?)-> NSAttributedString {
+    func formatEventAddress(monthValue:Int,dayMonth:Int,time:String,street:String?,complement:String?,city:String?,state:String?,venue:String?,endTime:String)-> NSAttributedString {
         let month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
         address = ""
-        timeVal = "\(month[monthValue]) \(dayMonth) at \(time)"
+        self.venue = ""
+        timeVal = "\(month[monthValue]) \(dayMonth), \(time) - \(endTime)"
+        if let ve = venue {
+            self.venue = "\(self.venue)\(ve == "Not informed" ? "" : "<p>***<strong> \(ve)</strong> ***</p>")"
+        }
         if let st = street {
             address = "\(address)\(st == "Not informed" ? "" : " \(st),")"
         }
@@ -73,10 +79,7 @@ public class FormatObject {
         if let st = state {
             address = "\(address)\(st == "Not informed" ? "" : " - \(st)")"
         }
-        if let zc = zipCode {
-            address = "\(address)\(zc == "Not informed" ? "" : " - \(zc)")"
-        }
-        return returnAttributedTextFrom(html: "<strong>\(month[monthValue]) \(dayMonth)</strong> at <strong>\(time)</strong> at <strong>\(address)</strong>")
+        return returnAttributedTextFrom(html: "<p><strong>\(month[monthValue]) \(dayMonth)</strong> from <strong>\(time)</strong> to <strong>\(endTime)</strong></p>\(self.venue)<p><strong>\(address)</strong></p>")
     }
     func returnAddress()->NSAttributedString{
         let attributedText = returnAttributedTextFrom(html: address)
@@ -101,7 +104,8 @@ public class FormatObject {
         return self.mealBoxTotalAmount*Double(mealsQtty)
     }
     private func returnAttributedTextFrom(html:String)->NSMutableAttributedString{
-        let tx = "<div style='font-family:palatino;font-size:20px;padding:0;line-height:1'>\(html)</div>"
+        let tx = "<div style='font-family:palatino;font-size:19px;padding:0;line-height:1'>\(html)</div>"
+//        print(tx)
         let encodedData = tx.data(using: String.Encoding.utf8)!
         var attributedString: NSMutableAttributedString
         do {
@@ -117,12 +121,32 @@ public class FormatObject {
         let paragraphStyle = NSMutableParagraphStyle()
         
         // *** set LineSpacing property in points ***
-        paragraphStyle.lineSpacing = 2 // Whatever line spacing you want in points
+        paragraphStyle.lineSpacing = 1 // Whatever line spacing you want in points
         
         // *** Apply attribute to string ***
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-        
+//        print(attributedString)
         return attributedString
     }
-    
+    func setFieldHeight(viewFieldHeight:CGFloat){
+        if (fieldHeight != nil) {
+            print("heigh already set")
+        }else{
+            fieldHeight = viewFieldHeight
+        }
+    }
+    func adjustFieldHeight(informationHeight h:CGFloat)->Int{
+        var objHeight = 0.0
+        if let value = fieldHeight {
+            objHeight = value
+        }else{
+            objHeight = LABEL_FIELD_HEIGH
+        }
+        let v1 = h/objHeight
+        if(v1-CGFloat(Int(v1))>0.05){
+            return Int(ceil(v1))
+        }else{
+            return Int(floor(v1))
+        }
+    }
 }

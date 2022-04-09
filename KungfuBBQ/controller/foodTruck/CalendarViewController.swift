@@ -130,8 +130,10 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             for cd in cds! {
                 if(cd.cookingDate!.split(separator: " ")[0]) == dt {
 //                    date.text = CustomDateFormatter.shared.mmDDAtHHMM_forDateUIView(usingStringDate: cd.cookingDate!)
-                    date.attributedText = FormatObject.shared.formatEventAddress(monthValue: Int(cd.cookingDateAmPm!.split(separator: " ")[0].split(separator: "-")[1])!-1, dayMonth: Int(cd.cookingDateAmPm!.split(separator: " ")[0].split(separator: "-")[2])!, time: String(cd.cookingDateAmPm!.split(separator: " ")[1]), street: cd.street, complement: cd.complement, city: cd.city, state: cd.state, zipCode: cd.zipcode)
-                    date.numberOfLines = Int(ceil(date.attributedText!.size().width/date.bounds.width))
+                    date.attributedText = FormatObject.shared.formatEventAddress(monthValue: Int(cd.cookingDateAmPm!.split(separator: " ")[0].split(separator: "-")[1])!-1, dayMonth: Int(cd.cookingDateAmPm!.split(separator: " ")[0].split(separator: "-")[2])!, time: String(cd.cookingDateAmPm!.split(separator: " ")[1]), street: cd.street, complement: cd.complement, city: cd.city, state: cd.state, venue: cd.venue,endTime: String(cd.cookingDateEndAmPm!.split(separator: " ")[1]))
+                    FormatObject.shared.setFieldHeight(viewFieldHeight: date.bounds.height)
+                    date.numberOfLines = FormatObject.shared.adjustFieldHeight(informationHeight: date.attributedText!.size().height)
+//                    Int(ceil(/FormatObject.shared.returnFieldHeight()))
 //                    let size = date.attributedText?.size().height
 //                    date.bounds = CGRect(x: 0, y: 0, width: date.bounds.width, height: size!)
                     status.text = cd.cookingStatus!
@@ -177,11 +179,14 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                         c.city = cd.city
                         c.complement = cd.complement
                         c.cookingDate = cd.cookingDate
+                        c.endTime = cd.endTime
                         c.cookingDateAmPm = cd.cookingDateAmPm
+                        c.cookingDateEndAmPm = cd.cookingDateEndAmPm
                         c.cookingDateId = cd.cookingDateId
                         c.cookingStatus = cd.cookingStatus
                         c.cookingStatusId = cd.cookingStatusId
                         c.country = cd.country
+                        c.venue = cd.venue
                         c.lat = cd.lat
                         c.lng = cd.lng
                         c.mealsForThis = cd.mealsForThis

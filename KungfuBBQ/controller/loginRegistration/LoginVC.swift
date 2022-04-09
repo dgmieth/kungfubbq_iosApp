@@ -19,7 +19,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     //ui elements
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
-    @IBOutlet weak var cancelBtn: UIButton!
+//    @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     //delegates
@@ -169,7 +169,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
 //                }
             })
         }else{
-            showAlert(title: ERROR, msg: "Please inform a complete valid e-mail address and your 8 alphanumerical password.")
+            showAlert(title: ERROR, msg: "Please inform a complete valid e-mail address and your password.")
 //            let alert = UIAlertController(title: "Log in credentials missing", message: "Please inform a complete valid e-mail address and your 8 alphanumerical password.", preferredStyle: .alert)
 //            let no = UIAlertAction(title: "Ok", style: .cancel)
 //            alert.addAction(no)
@@ -178,10 +178,10 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         }
         
     }
-    //MARK: cancel btn
-    @IBAction func cancelClick(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
+//    //MARK: cancel btn
+//    @IBAction func cancelClick(_ sender: Any) {
+//        self.presentingViewController?.dismiss(animated: true, completion: nil)
+//    }
     // MARK: - CORE DATA
     func save(){
         do {
