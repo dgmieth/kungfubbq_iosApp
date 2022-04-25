@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //            print("dataModel loaded")
         //        }
         print("didFinishLaunchingWithOptions")
-//        print("Application directory: \(NSHomeDirectory())")
-        // Remove this method to stop OneSignal Debugging
-        //OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+        print("Application directory: \(NSHomeDirectory())")
+//         Remove this method to stop OneSignal Debugging
+//        OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
         
         // OneSignal initialization
         print(ONE_SIGNAL_APP_ID)

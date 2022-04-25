@@ -15,7 +15,6 @@ public class FormatObject {
     private var mealBoxTotalAmount = 0.0
     private var dishesArray = [Int]()
     private var address = ""
-    private var venue = ""
     private var timeVal = ""
     private var fieldHeight : CGFloat? = nil
     
@@ -62,10 +61,10 @@ public class FormatObject {
     func formatEventAddress(monthValue:Int,dayMonth:Int,time:String,street:String?,complement:String?,city:String?,state:String?,venue:String?,endTime:String)-> NSAttributedString {
         let month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
         address = ""
-        self.venue = ""
+        var inV = ""
         timeVal = "\(month[monthValue]) \(dayMonth), \(time) - \(endTime)"
         if let ve = venue {
-            self.venue = "\(self.venue)\(ve == "Not informed" ? "" : "<p>***<strong> \(ve)</strong> ***</p>")"
+            inV = "\(ve == "Not informed" ? "" : "<p>***<strong> \(ve)</strong> ***</p>")"
         }
         if let st = street {
             address = "\(address)\(st == "Not informed" ? "" : " \(st),")"
@@ -79,7 +78,7 @@ public class FormatObject {
         if let st = state {
             address = "\(address)\(st == "Not informed" ? "" : " - \(st)")"
         }
-        return returnAttributedTextFrom(html: "<p><strong>\(month[monthValue]) \(dayMonth)</strong> from <strong>\(time)</strong> to <strong>\(endTime)</strong></p>\(self.venue)<p><strong>\(address)</strong></p>")
+        return returnAttributedTextFrom(html: "<p><strong>\(month[monthValue]) \(dayMonth)</strong> from <strong>\(time)</strong> to <strong>\(endTime)</strong></p>\(inV)<p><strong>\(address)</strong></p>")
     }
     func returnAddress()->NSAttributedString{
         let attributedText = returnAttributedTextFrom(html: address)

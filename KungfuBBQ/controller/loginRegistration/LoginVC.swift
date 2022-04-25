@@ -22,6 +22,7 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
 //    @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet var rememberMe: UISwitch!
     //delegates
     var delegate:BackToHomeViewControllerFromGrandsonViewController?
     
@@ -31,7 +32,16 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                 email.text = userArray[0].email!
                 loadedEmail = userArray[0].email!
             }
+            if let settings = rememberMeInfo() {
+                if (settings.count > 0) {
+                    if(settings[0].remember){
+                        rememberMe.isOn = settings[0].remember
+                        password.text = settings[0].password!.isEmpty ? "" : settings[0].password!
+                    }                    
+                }
+            }
         }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +50,9 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     }
     // MARK: - BUTTONS EVENT LISTENERS
     // MARK: register btn
+    @IBAction func rememberMeSwitched(_ sender: Any) {
+        deleteRememberMeInfo()
+    }
     @IBAction func registerClick(_ sender: Any) {
         registerBtn.isEnabled = false
         performSegue(withIdentifier: "registerVC", sender: self)
@@ -102,6 +115,12 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         let pass = password.text! as String
         if !username.isEmpty && !pass.isEmpty {
             createSpinner()
+            if(rememberMe.isOn){
+                deleteRememberMeInfo()
+                let remember = RememberMe(context: self.dataController.viewContext)
+                remember.remember = rememberMe.isOn
+                remember.password = password.text! as String
+            }
             var user1 = User()
             HttpRequestCtrl.shared.post(toRoute: "/login/login", mobileOS: "apple", userEmail: username, userPassword: pass, versionCode: BUNDLE_VERSION, onCompletion: { (jsonObject) in
                 guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
@@ -195,6 +214,13 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         }
         return nil
     }
+    func rememberMeInfo() -> [RememberMe]?{
+        let fetchRequest = NSFetchRequest<RememberMe>(entityName: "RememberMe")
+        if let results = try? dataController.viewContext.fetch(fetchRequest){
+            return results
+        }
+        return nil
+    }
     func update(byEmail email: String)->AppUser?{
         let fetchRequest = NSFetchRequest<AppUser>(entityName: "AppUser")
         fetchRequest.predicate = NSPredicate(format: "email = %@", email)
@@ -202,6 +228,15 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
             return results[0]
         }
         return nil
+    }
+    func deleteRememberMeInfo(){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "RememberMe")
+        let delRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try dataController.viewContext.execute(delRequest)
+        }catch{
+            print(error)
+            showAlert(title: ERROR, msg: "There was a problem updating your user preferences in the database.")        }
     }
     func delete(){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AppUser")

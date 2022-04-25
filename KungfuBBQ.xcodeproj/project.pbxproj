@@ -82,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		3802FC7D26C33A2B008D594F /* HttpRequestCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestCtrl.swift; sourceTree = "<group>"; };
+		3817C31628147EBD00C4D29A /* DataModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		381C84BC279B140D0014A5B0 /* KungfuBBQ-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KungfuBBQ-Bridging-Header.h"; sourceTree = "<group>"; };
 		381C84BD279B140E0014A5B0 /* CryptLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
 		381C84BE279B140E0014A5B0 /* CryptLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
@@ -738,7 +739,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -746,7 +747,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -766,7 +767,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -774,7 +775,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -873,11 +874,12 @@
 		38A84CC5266C07DA00D1F328 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				3817C31628147EBD00C4D29A /* DataModel 4.xcdatamodel */,
 				38C68A6227FF932800B0937E /* DataModel 3.xcdatamodel */,
 				388033B527D1A29B0035A0F4 /* DataModel2.xcdatamodel */,
 				38A84CC6266C07DA00D1F328 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 38C68A6227FF932800B0937E /* DataModel 3.xcdatamodel */;
+			currentVersion = 3817C31628147EBD00C4D29A /* DataModel 4.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

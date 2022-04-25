@@ -1092,8 +1092,16 @@
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Rember me" preferredStyle="sliding" translatesAutoresizingMaskIntoConstraints="NO" id="t6N-nF-X6m" userLabel="rememberMe">
+                                                                <rect key="frame" x="0.0" y="208" width="51" height="31"/>
+                                                                <color key="onTintColor" name="i_red"/>
+                                                                <color key="thumbTintColor" name="i_yellow"/>
+                                                                <connections>
+                                                                    <action selector="rememberMeSwitched:" destination="yzV-ju-ySc" eventType="valueChanged" id="ghf-9m-lIg"/>
+                                                                </connections>
+                                                            </switch>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jb-o7-Fzb">
-                                                                <rect key="frame" x="140" y="203" width="160" height="35"/>
+                                                                <rect key="frame" x="140" y="254" width="160" height="35"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="20"/>
                                                                 <state key="normal" title="Forgot password?">
                                                                     <color key="titleColor" name="white"/>
@@ -1103,7 +1111,7 @@
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5D-BM-q8c" userLabel="buttonsView">
-                                                                <rect key="frame" x="0.0" y="258" width="300" height="55"/>
+                                                                <rect key="frame" x="0.0" y="309" width="300" height="55"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8c-Ys-ZjL" userLabel="loginView">
                                                                         <rect key="frame" x="150" y="0.0" width="150" height="55"/>
@@ -1168,6 +1176,12 @@
                                                                     <constraint firstAttribute="trailing" secondItem="e8c-Ys-ZjL" secondAttribute="trailing" id="r6v-YE-OYd"/>
                                                                 </constraints>
                                                             </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember my password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFM-mR-7bb">
+                                                                <rect key="frame" x="59" y="213.5" width="199.5" height="20"/>
+                                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
+                                                                <color key="textColor" name="white"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="Okp-1V-CD3" firstAttribute="leading" secondItem="Z9q-6c-CSG" secondAttribute="leading" id="76N-ho-Esh"/>
@@ -1177,20 +1191,24 @@
                                                             <constraint firstAttribute="height" constant="366" id="BP9-04-Vns"/>
                                                             <constraint firstAttribute="trailing" secondItem="8Jb-o7-Fzb" secondAttribute="trailing" id="C62-qf-cp8"/>
                                                             <constraint firstAttribute="trailing" secondItem="NqL-GA-pqN" secondAttribute="trailing" id="Cvh-9v-Ywi"/>
-                                                            <constraint firstItem="8Jb-o7-Fzb" firstAttribute="top" secondItem="DzV-BL-nbe" secondAttribute="bottom" id="IUL-dz-l5x"/>
                                                             <constraint firstAttribute="trailing" secondItem="k5D-BM-q8c" secondAttribute="trailing" id="LAE-PQ-lbB"/>
                                                             <constraint firstItem="k5D-BM-q8c" firstAttribute="top" secondItem="8Jb-o7-Fzb" secondAttribute="bottom" constant="20" id="On0-bd-WDn"/>
                                                             <constraint firstItem="NqL-GA-pqN" firstAttribute="top" secondItem="uEc-4y-oHc" secondAttribute="bottom" constant="5" id="RHE-0t-brS"/>
+                                                            <constraint firstItem="t6N-nF-X6m" firstAttribute="leading" secondItem="Z9q-6c-CSG" secondAttribute="leading" id="Rb3-ZB-mca"/>
+                                                            <constraint firstItem="t6N-nF-X6m" firstAttribute="top" secondItem="DzV-BL-nbe" secondAttribute="bottom" constant="5" id="TUF-1c-Jyo"/>
                                                             <constraint firstAttribute="trailing" secondItem="Okp-1V-CD3" secondAttribute="trailing" id="U2Y-ou-pFI"/>
                                                             <constraint firstAttribute="trailing" secondItem="pHt-ie-usf" secondAttribute="trailing" id="Ubw-kQ-8xa"/>
                                                             <constraint firstItem="DzV-BL-nbe" firstAttribute="leading" secondItem="pHt-ie-usf" secondAttribute="leading" id="aCf-fC-IPX"/>
                                                             <constraint firstAttribute="trailing" secondItem="uEc-4y-oHc" secondAttribute="trailing" id="aUV-IP-nUI"/>
+                                                            <constraint firstItem="IFM-mR-7bb" firstAttribute="leading" secondItem="t6N-nF-X6m" secondAttribute="trailing" constant="10" id="blL-6D-Yvt"/>
+                                                            <constraint firstItem="IFM-mR-7bb" firstAttribute="centerY" secondItem="t6N-nF-X6m" secondAttribute="centerY" id="cK2-jQ-GT9"/>
                                                             <constraint firstItem="pHt-ie-usf" firstAttribute="leading" secondItem="Z9q-6c-CSG" secondAttribute="leading" id="cnH-R8-4X4"/>
                                                             <constraint firstItem="DzV-BL-nbe" firstAttribute="width" secondItem="pHt-ie-usf" secondAttribute="width" id="ddv-VV-fdM"/>
                                                             <constraint firstItem="uEc-4y-oHc" firstAttribute="leading" secondItem="Z9q-6c-CSG" secondAttribute="leading" id="eGW-fz-YbA"/>
                                                             <constraint firstItem="DzV-BL-nbe" firstAttribute="trailing" secondItem="pHt-ie-usf" secondAttribute="trailing" id="faf-oT-KBw"/>
                                                             <constraint firstItem="uEc-4y-oHc" firstAttribute="top" secondItem="Z9q-6c-CSG" secondAttribute="top" constant="5" id="i0o-Hd-RUd"/>
                                                             <constraint firstItem="DzV-BL-nbe" firstAttribute="centerX" secondItem="pHt-ie-usf" secondAttribute="centerX" id="jFh-Ch-Bkz"/>
+                                                            <constraint firstItem="8Jb-o7-Fzb" firstAttribute="top" secondItem="t6N-nF-X6m" secondAttribute="bottom" constant="15" id="vp3-d0-6XA"/>
                                                             <constraint firstItem="k5D-BM-q8c" firstAttribute="leading" secondItem="Z9q-6c-CSG" secondAttribute="leading" id="wBG-vr-FOp"/>
                                                             <constraint firstItem="NqL-GA-pqN" firstAttribute="leading" secondItem="Z9q-6c-CSG" secondAttribute="leading" id="wT3-Ad-VC1"/>
                                                         </constraints>
@@ -1246,6 +1264,7 @@
                         <outlet property="loginBtn" destination="tON-J1-55s" id="TvQ-H3-aL6"/>
                         <outlet property="password" destination="pHt-ie-usf" id="pmI-yL-cRV"/>
                         <outlet property="registerBtn" destination="GtI-na-Cts" id="UIb-b6-dAA"/>
+                        <outlet property="rememberMe" destination="t6N-nF-X6m" id="g7E-2C-1wo"/>
                         <segue destination="6MI-51-Et2" kind="presentation" identifier="registerVC" id="Ka1-s0-z5J"/>
                     </connections>
                 </viewController>
@@ -3907,6 +3926,9 @@
         </namedColor>
         <namedColor name="i_black">
             <color red="0.019999999552965164" green="0.019999999552965164" blue="0.016000000759959221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="i_red">
+            <color red="0.94099998474121094" green="0.035000000149011612" blue="0.024000000208616257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="i_yellow">
             <color red="0.96100002527236938" green="0.875" blue="0.15299999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
