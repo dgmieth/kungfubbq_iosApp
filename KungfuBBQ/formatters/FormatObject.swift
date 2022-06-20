@@ -38,7 +38,8 @@ public class FormatObject {
             menu = "\(menu)"
         }else{
             //if more than one dish in array -> system follows new business rule
-            menu = "<p><strong>BOX MEAL</strong></p>"
+            let menuIntro = "<p><strong>BOX MEAL</strong></p>"
+            menu = "\(menuIntro)"
             var fifoIndex = 1
             let fifoIntro = "<p><strong>FIRST COME, FIRST SERVED</strong></p>"
             var fifo = "\(fifoIntro)"
@@ -53,7 +54,7 @@ public class FormatObject {
                     fifoIndex += 1
                 }
             }
-            menu = "\(menu)\(fifo==fifoIntro ? "" : fifo)"
+            menu = "\(menu==menuIntro ? "" : menu)\(fifo==fifoIntro ? "" : fifo)"
         }
         
         return returnAttributedTextFrom(html: menu)

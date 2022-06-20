@@ -22,8 +22,10 @@
         <attribute name="cookingStatusId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="endTime" optional="YES" attributeType="String"/>
+        <attribute name="eventOnly" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="lng" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="maybeGo" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mealsForThis" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="menuID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="state" attributeType="String"/>
@@ -85,7 +87,7 @@
     </entity>
     <elements>
         <element name="AppUser" positionX="-63" positionY="-18" width="128" height="149"/>
-        <element name="CDCookingDate" positionX="-54" positionY="54" width="128" height="344"/>
+        <element name="CDCookingDate" positionX="-54" positionY="54" width="128" height="374"/>
         <element name="CDCookingDateDishes" positionX="-45" positionY="144" width="128" height="134"/>
         <element name="CDOrder" positionX="-45" positionY="144" width="128" height="224"/>
         <element name="CDOrderDishes" positionX="-36" positionY="153" width="128" height="134"/>

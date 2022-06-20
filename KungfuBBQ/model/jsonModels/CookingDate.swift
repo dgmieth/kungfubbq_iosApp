@@ -28,6 +28,8 @@ struct CookingDate{
     let state:String
     let street:String
     let zipcode:String
+    let eventOnly:Int64
+    let maybeGo:Int64
     
     init?(json: [String:Any]){
         guard let addressId = json["addressId"] as? Int64,
@@ -51,6 +53,16 @@ struct CookingDate{
               let zipcode = json["zipcode"] as? String
          else {
             return nil
+        }
+        if let i = json["eventOnly"] as? Int64 {
+            self.eventOnly = i
+        }else{
+            self.eventOnly = 0
+        }
+        if let i = json["maybeGo"] as? Int64 {
+            self.maybeGo = i
+        }else{
+            self.maybeGo = 0
         }
         
         self.addressId = addressId

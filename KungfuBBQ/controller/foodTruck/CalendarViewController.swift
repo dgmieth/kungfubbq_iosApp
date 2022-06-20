@@ -19,6 +19,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     var user:AppUser?
     var cds:[CDCookingDate]?
     var cookingDate:CDCookingDate?
+    let CONFIRMED_PRESENCE = "Presence confirmed!"
     //ui elements
     @IBOutlet var noCookingView: UIView!
     @IBOutlet var cookingView: UIView!
@@ -35,6 +36,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var viewTest: UIView!
     @IBOutlet var scrollImage: UIImageView!
+    @IBOutlet var confirmMsg: UILabel!
+    @IBOutlet var confirmBtn: UIButton!
     
     //delegates
     var delegate:BackToHomeViewControllerFromGrandsonViewController!
@@ -67,6 +70,9 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         paidOrderCheckOut.isEnabled = false
         performSegue(withIdentifier: "paidOrder", sender: self)
         paidOrderCheckOut.isEnabled = true
+    }
+    @IBAction func confirmBtmClick(_ sender: Any) {
+        confirmPresence()
     }
     // MARK: - CORE DATA
     func save(){
@@ -153,11 +159,13 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             }
         }
     }
-    func updateActionButtonsAreHidden(place:Bool = true, update:Bool = true, pay:Bool = true, paid:Bool = true){
+    func updateActionButtonsAreHidden(place:Bool = true, update:Bool = true, pay:Bool = true, paid:Bool = true,btnConfirm:Bool=true,msgConfirm:Bool=true){
         placeOrder.isHidden = place
         checkOutOrder.isHidden = update
         payBtn.isHidden = pay
         paidOrderCheckOut.isHidden = paid
+        confirmBtn.isHidden = btnConfirm
+        confirmMsg.isHidden = msgConfirm
     }
     func updateUIInformation(){
         delete()
@@ -194,6 +202,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                         c.state = cd.state
                         c.street = cd.street
                         c.zipcode = cd.zipcode
+                        c.maybeGo = cd.maybeGo
+                        c.eventOnly = cd.eventOnly
                         for dish in cd.dishes {
                             let d = CDCookingDateDishes(context: self.dataController.viewContext)
                             d.dishId = dish.dishId
@@ -296,6 +306,25 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
 //            }
         }
     }
+    private func confirmPresence(){
+        HttpRequestCtrl.shared.post(toRoute: "/api/cookingCalendar/confirmPresence", userEmail: user!.email, userId: String(user!.id),cookingDateID: Int(cookingDate!.cookingDateId), headers: ["Authorization":"Bearer \(user!.token!)"]) { jsonObject in
+                guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
+                guard let msg = jsonObject["msg"] as? String else { return }
+                if(errorCheck==0){
+                    self.showAlert(title:self.CONFIRMED_PRESENCE, msg: msg)
+                }else{
+                    guard let errorCode = jsonObject["errorCode"] as? Int else { return }
+                    if(errorCode == -1){
+                        self.showAlert(title: NOT_LOGGED_IN, msg: NOT_LOGGED_IN_TEXT)
+                    }else{
+                        self.showAlert(title: "Confirmation failed!", msg: msg)
+                    }
+                }
+            } onError: { error in
+                print(error)
+                self.showAlert(title: "Confirmation failed!", msg: "The attempt to confirm your presence failed with message: \(error)")
+            }
+    }
     //MARK: - SEGUE
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "placeOrder" {
@@ -330,6 +359,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             dest.order = (cookingDate!.orders!.allObjects as! [CDOrder])[0]
         }
     }
+
 //    //MARK: - UI
 //    func loginAgain(){
 //        let alert = UIAlertController(title: "Login time out", message: "Your are not logged in to KungfuBBQ server anyloger. Please login again.", preferredStyle: .alert)
@@ -358,6 +388,12 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                 }
             }else if (cd[0].cookingStatusId < Int64(4)){
                 updateActionButtonsAreHidden()
+            }else if (cd[0].cookingStatusId == Int64(20)){
+                if(cd[0].maybeGo == 1){
+                    updateActionButtonsAreHidden(msgConfirm: false)
+                }else{
+                    updateActionButtonsAreHidden(btnConfirm: false)
+                }
             }else{
                 let orders = cd[0].orders!.allObjects as! [CDOrder]
                 if orders.count > 0 {
@@ -478,6 +514,9 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     self.delegate?.isUserLogged = false
                     self.delegate?.updateHomeViewControllerUIElements()
                     self.navigationController?.popViewController(animated: true)
+                }
+                if(title == self.CONFIRMED_PRESENCE){
+                    self.updateActionButtonsAreHidden(btnConfirm:true,msgConfirm: false)
                 }
             }
             alert.addAction(ok)

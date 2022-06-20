@@ -95,6 +95,7 @@
 		38316C2926E52B4B0091F270 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		38316C2B26E52B560091F270 /* OrderDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDishes.swift; sourceTree = "<group>"; };
 		38316C2D26E52BC20091F270 /* OrderExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExtras.swift; sourceTree = "<group>"; };
+		3837FF6128601573002C821D /* DataModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 5.xcdatamodel"; sourceTree = "<group>"; };
 		3840944D27473971003757A9 /* BackToHomeViewControllerFromGrandsonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToHomeViewControllerFromGrandsonViewController.swift; sourceTree = "<group>"; };
 		38450B1E27D5523C00F4FB44 /* PublicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicVariables.swift; sourceTree = "<group>"; };
 		38450B2027D589AF00F4FB44 /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
@@ -739,7 +740,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -747,7 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2;
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -767,7 +768,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = KungfuBBQ/KungfuBBQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = Q2UDAMQ287;
 				INFOPLIST_FILE = KungfuBBQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -775,7 +776,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2;
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dgmieth.KungfuBBQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -874,12 +875,13 @@
 		38A84CC5266C07DA00D1F328 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				3837FF6128601573002C821D /* DataModel 5.xcdatamodel */,
 				3817C31628147EBD00C4D29A /* DataModel 4.xcdatamodel */,
 				38C68A6227FF932800B0937E /* DataModel 3.xcdatamodel */,
 				388033B527D1A29B0035A0F4 /* DataModel2.xcdatamodel */,
 				38A84CC6266C07DA00D1F328 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 3817C31628147EBD00C4D29A /* DataModel 4.xcdatamodel */;
+			currentVersion = 3837FF6128601573002C821D /* DataModel 5.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

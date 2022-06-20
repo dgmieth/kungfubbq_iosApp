@@ -51,7 +51,13 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
     // MARK: - BUTTONS EVENT LISTENERS
     // MARK: register btn
     @IBAction func rememberMeSwitched(_ sender: Any) {
+        print("before deleteRememberMeInfo")
+        print(rememberMe.isOn)
+        print(printRememberMeResults())
         deleteRememberMeInfo()
+        print(printRememberMeResults())
+        print("after deleteRememberMeInfo")
+        print(rememberMe.isOn)
     }
     @IBAction func registerClick(_ sender: Any) {
         registerBtn.isEnabled = false
@@ -109,6 +115,16 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         self.present(alert, animated: true, completion: nil)
     }
     // MARK: login btn
+    func printRememberMeResults(){
+        if let r = rememberMeInfo() {
+            if(r.count>0){
+                for i in 0 ..< r.count{
+                    print(r[i].password)
+                    print(r[i].remember)
+                }
+            }
+        }
+    }
     @IBAction func loginClick(_ sender: Any) {
         loginBtn.isEnabled = false
         let username = email.text! as String
@@ -116,10 +132,11 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         if !username.isEmpty && !pass.isEmpty {
             createSpinner()
             if(rememberMe.isOn){
+                print("before printRememberMeResults in loginClick")
+                print(printRememberMeResults())
                 deleteRememberMeInfo()
-                let remember = RememberMe(context: self.dataController.viewContext)
-                remember.remember = rememberMe.isOn
-                remember.password = password.text! as String
+                print("after printRememberMeResults in loginClick")
+                print(printRememberMeResults())
             }
             var user1 = User()
             HttpRequestCtrl.shared.post(toRoute: "/login/login", mobileOS: "apple", userEmail: username, userPassword: pass, versionCode: BUNDLE_VERSION, onCompletion: { (jsonObject) in
@@ -128,8 +145,14 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                 if(errorCheck==0){
                     guard let data = jsonObject["data"] as? [String:Any] else { return }
                     user1 = User(json: data)!
+                    if(self.rememberMe.isOn){
+                        let remember = RememberMe(context: self.dataController.viewContext)
+                        remember.remember = self.rememberMe.isOn
+                        remember.password = self.password.text! as String
+                    }
                     if self.loadedEmail == username {
                         if let cdUser = self.update(byEmail: username){
+                            cdUser.id = user1!.id
                             cdUser.token = user1!.token
                             cdUser.name = user1!.name
                             cdUser.phoneNumber = user1!.phoneNumber
@@ -230,13 +253,15 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
         return nil
     }
     func deleteRememberMeInfo(){
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "RememberMe")
-        let delRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        do {
-            try dataController.viewContext.execute(delRequest)
-        }catch{
-            print(error)
-            showAlert(title: ERROR, msg: "There was a problem updating your user preferences in the database.")        }
+        DispatchQueue.main.async {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "RememberMe")
+            let delRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            do {
+                try self.dataController.viewContext.execute(delRequest)
+            }catch{
+                print(error)
+                self.showAlert(title: ERROR, msg: "There was a problem updating your user preferences in the database.")        }
+        }
     }
     func delete(){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AppUser")

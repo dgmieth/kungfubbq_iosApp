@@ -2185,10 +2185,34 @@
                                             <action selector="paidOrderCheckOutClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="ERI-kb-W20"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcB-2P-y27" userLabel="confirmBtn">
+                                        <rect key="frame" x="10" y="150.5" width="300" height="55"/>
+                                        <color key="backgroundColor" name="i_yellow"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="dYm-TE-0Tt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
+                                        <state key="normal" title="Maybe I'll swing by!">
+                                            <color key="titleColor" name="i_black"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirmBtmClick:" destination="jFF-oC-eW2" eventType="touchUpInside" id="ABK-9o-qHG"/>
+                                        </connections>
+                                    </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We already know you may swing by 😉" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTA-8l-DsI" userLabel="confirmMsg">
+                                        <rect key="frame" x="10" y="150.5" width="300" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="m3O-8x-u1Z"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="GVW-Az-fAm" secondAttribute="trailing" constant="10" id="1hX-Kg-zPM"/>
                                     <constraint firstItem="EIX-Ie-LCH" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="8bU-0H-1tO"/>
+                                    <constraint firstItem="vcB-2P-y27" firstAttribute="width" secondItem="afU-c2-MVI" secondAttribute="width" id="9kX-Vw-lRb"/>
                                     <constraint firstAttribute="trailing" secondItem="P45-wT-aRT" secondAttribute="trailing" constant="10" id="Bcv-lt-1NA"/>
                                     <constraint firstAttribute="bottom" secondItem="GVW-Az-fAm" secondAttribute="bottom" constant="5" id="Bfv-p1-pM6"/>
                                     <constraint firstItem="afU-c2-MVI" firstAttribute="width" secondItem="WAN-Oj-xLw" secondAttribute="width" id="CPX-2n-9N6"/>
@@ -2199,6 +2223,7 @@
                                     <constraint firstAttribute="trailing" secondItem="WAN-Oj-xLw" secondAttribute="trailing" constant="10" id="Kty-3j-3MT"/>
                                     <constraint firstItem="nTy-jO-4Yt" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="LAs-Bg-XNY"/>
                                     <constraint firstAttribute="trailing" secondItem="nTy-jO-4Yt" secondAttribute="trailing" constant="10" id="LUc-18-VOa"/>
+                                    <constraint firstAttribute="bottom" secondItem="vcB-2P-y27" secondAttribute="bottom" constant="5" id="LbM-i0-az2"/>
                                     <constraint firstItem="P45-wT-aRT" firstAttribute="top" secondItem="IhK-f4-wHR" secondAttribute="top" constant="5" id="MMi-D5-1Oo"/>
                                     <constraint firstItem="j87-xC-soc" firstAttribute="top" secondItem="P45-wT-aRT" secondAttribute="bottom" constant="4" id="NaL-qZ-k0s"/>
                                     <constraint firstAttribute="bottom" secondItem="nTy-jO-4Yt" secondAttribute="bottom" constant="5" id="Nlh-Ps-NgT"/>
@@ -2210,12 +2235,17 @@
                                     <constraint firstItem="fsx-Eu-BHs" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="WkI-Bk-q0Z"/>
                                     <constraint firstAttribute="trailing" secondItem="Th9-Fm-qn2" secondAttribute="trailing" constant="45" id="XxR-sa-CCn"/>
                                     <constraint firstItem="X1K-Sr-p9E" firstAttribute="top" secondItem="Th9-Fm-qn2" secondAttribute="top" id="Y7L-qJ-l7D"/>
+                                    <constraint firstAttribute="trailing" secondItem="KTA-8l-DsI" secondAttribute="trailing" constant="10" id="Zbm-8d-vOA"/>
                                     <constraint firstItem="EIX-Ie-LCH" firstAttribute="top" secondItem="IhK-f4-wHR" secondAttribute="top" constant="5" id="cZ0-qz-Vi5"/>
+                                    <constraint firstAttribute="bottom" secondItem="KTA-8l-DsI" secondAttribute="bottom" constant="5" id="fLX-Nb-X1M"/>
+                                    <constraint firstAttribute="trailing" secondItem="vcB-2P-y27" secondAttribute="trailing" constant="10" id="fT8-T2-87G"/>
                                     <constraint firstItem="P45-wT-aRT" firstAttribute="leading" secondItem="EIX-Ie-LCH" secondAttribute="trailing" constant="5" id="hCd-Ke-PwM"/>
                                     <constraint firstAttribute="trailing" secondItem="X1K-Sr-p9E" secondAttribute="trailing" constant="5" id="ikX-cv-lVe"/>
+                                    <constraint firstItem="KTA-8l-DsI" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="lz0-4n-oSP"/>
                                     <constraint firstItem="GVW-Az-fAm" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="nsH-lu-PCh"/>
                                     <constraint firstAttribute="bottom" secondItem="Th9-Fm-qn2" secondAttribute="bottom" constant="64" id="rYX-6V-9pT"/>
                                     <constraint firstItem="WAN-Oj-xLw" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="tRh-6O-OkV"/>
+                                    <constraint firstItem="vcB-2P-y27" firstAttribute="leading" secondItem="IhK-f4-wHR" secondAttribute="leading" constant="10" id="u3Q-vw-2wd"/>
                                     <constraint firstAttribute="bottom" secondItem="WAN-Oj-xLw" secondAttribute="bottom" constant="5" id="uqc-Sd-euN"/>
                                     <constraint firstAttribute="bottom" secondItem="nTy-jO-4Yt" secondAttribute="bottom" constant="5" id="usY-9O-EwP"/>
                                     <constraint firstAttribute="bottom" secondItem="afU-c2-MVI" secondAttribute="bottom" constant="5" id="xKo-2f-9Um"/>
@@ -2289,6 +2319,8 @@
                     <connections>
                         <outlet property="calendar" destination="ngg-Dr-0wN" id="586-yD-Q5Z"/>
                         <outlet property="checkOutOrder" destination="nTy-jO-4Yt" id="yB6-tm-Q7v"/>
+                        <outlet property="confirmBtn" destination="vcB-2P-y27" id="BBe-3p-ESM"/>
+                        <outlet property="confirmMsg" destination="KTA-8l-DsI" id="BZG-15-7Bi"/>
                         <outlet property="cookingView" destination="IhK-f4-wHR" id="vyA-z0-pYE"/>
                         <outlet property="date" destination="P45-wT-aRT" id="B3u-dl-Uzl"/>
                         <outlet property="dateLbl" destination="EIX-Ie-LCH" id="oWP-Tc-Aqi"/>
