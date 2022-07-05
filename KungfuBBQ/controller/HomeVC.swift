@@ -8,7 +8,8 @@
 import UIKit
 import CoreData
 
-class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewController {
+class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewController,GoToHomeVC {
+    
     //vars and lets
     var dataController:DataController!
     var userArray = [AppUser]()
@@ -21,6 +22,12 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
     @IBOutlet weak var appInfoBtn: UIBarButtonItem!
     @IBOutlet var contactInfoView: UIView!
     @IBOutlet var devLbl: UILabel!
+    @IBOutlet var catoringTop: NSLayoutConstraint!
+    
+    @IBOutlet var founderBtn: UIButton!
+    override func viewWillAppear(_ animated: Bool) {
+        checkSauceFundingCampaignStatus()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,10 +74,14 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
             if let url = URL(string : FACEBOOK_LINK){
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
-            
         }
     }
-    
+    @IBAction func founderBtnClick(_ sender: Any) {
+        performSegue(withIdentifier: "goToSauceFundingVC", sender: self)
+    }
+    @IBAction func aboutAppClick(_ sender: Any) {
+        performSegue(withIdentifier: "callAboutApp", sender: self)
+    }
     // MARK: - SEGUEWAYS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loginVC" {
@@ -82,11 +93,20 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
         if segue.identifier == "userInfoVC" {
             let dest = segue.destination as! UserInfoVc
             dest.dataController = dataController
+            dest.delegate2 = self
             dest.delegate = self
         }
         if segue.identifier == "calendarVC" {
             let dest = segue.destination as! CalendarViewController
             dest.dataController = dataController
+            dest.delegate = self
+        }
+        if segue.identifier == "goToSauceFundingVC"{
+            let dest = segue.destination as! SauceFundingVC
+            dest.dataController = dataController
+        }
+        if segue.identifier == "callAboutApp" {
+            let dest = segue.destination as! AboutAppVC
             dest.delegate = self
         }
     }
@@ -106,10 +126,6 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
         }catch{
             print(error)
             showAlert(title: ERROR, msg: "There was a problem while trying to save the user information. Please try again later")
-//            let alert = UIAlertController(title: "Error!", message: "There was a problem while trying to save the user information. Please try again later", preferredStyle: .alert)
-//            let no = UIAlertAction(title: "Ok", style: .cancel)
-//            alert.addAction(no)
-//            present(alert, animated: true, completion: nil)
         }
     }
     //MARK: - CHECK BUNDLE VERSION
@@ -124,13 +140,48 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
             self.showAlert(title: "Error!", msg: "KungfuBBQ server cannot be reached. Try again in some minutes. If the problem persists, please contact KungfuBBQ.")
         }
     }
+    private func checkSauceFundingCampaignStatus(){
+        print("checkSauceFundingCampaignStatus CALLED")
+        if(!isUserLogged){
+            self.sauseFundingButton(isHidden: true)
+            return
+        }
+        HttpRequestCtrl.shared.get(toRoute: "/api/sause/checkstatus") { jsonObject in
+            guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
+            guard let msg = jsonObject["msg"] as? [String:Any] else { return }
+            guard let status = msg["status"] as? String else { return }
+            print(status)
+            if errorCheck == -1 {
+                self.showAlert(title: NOT_LOGGED_IN, msg: NOT_LOGGED_IN_TEXT)
+            }
+            if(status=="off"){
+                self.sauseFundingButton(isHidden: true)
+            }else{
+                self.sauseFundingButton(isHidden: false)
+            }
+        } onError: { error in
+            self.sauseFundingButton(isHidden: true)
+        }
+    }
     //MARK: - USER INTERFACE
+    private func sauseFundingButton(isHidden:Bool){
+        print("sauseFundingButton called \(isHidden)")
+        DispatchQueue.main.async {
+            self.founderBtn.isHidden = isHidden
+            self.catoringTop.constant = isHidden ? CATORING_NOT_LOGGED : CATORING_LOGGED
+        }
+    }
     //MARK: - PROTOCOLO FUNCTIONS
     func updateHomeViewControllerUIElements() {
         print("uiRefreshed")
         loginBtn.isHidden = isUserLogged
         calendarBtn.isHidden = !isUserLogged
         userInfoBtn.isEnabled = isUserLogged
+        //sauseFundingButton(isHidden: !isUserLogged)
+        checkSauceFundingCampaignStatus()
+    }
+    func refreshHomeUI() {
+        checkSauceFundingCampaignStatus()
     }
     // MARK: - ALERTS
     private func showAlert(title:String,msg:String){

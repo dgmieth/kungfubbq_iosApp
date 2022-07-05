@@ -19,6 +19,7 @@
 		38316C2A26E52B4B0091F270 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38316C2926E52B4B0091F270 /* Order.swift */; };
 		38316C2C26E52B560091F270 /* OrderDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38316C2B26E52B560091F270 /* OrderDishes.swift */; };
 		38316C2E26E52BC20091F270 /* OrderExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38316C2D26E52BC20091F270 /* OrderExtras.swift */; };
+		38330C442867E51200D31C76 /* SauceFundingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38330C432867E51200D31C76 /* SauceFundingVC.swift */; };
 		3840944E27473971003757A9 /* BackToHomeViewControllerFromGrandsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3840944D27473971003757A9 /* BackToHomeViewControllerFromGrandsonViewController.swift */; };
 		38450B1F27D5523C00F4FB44 /* PublicVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38450B1E27D5523C00F4FB44 /* PublicVariables.swift */; };
 		38450B2127D589AF00F4FB44 /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38450B2027D589AF00F4FB44 /* PrivateKeys.swift */; };
@@ -53,6 +54,7 @@
 		38C68A6427FF935A00B0937E /* secondMigration.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 38C68A6327FF935A00B0937E /* secondMigration.xcmappingmodel */; };
 		38C6B6D626E03EA3000C0B65 /* CookingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6B6D526E03EA3000C0B65 /* CookingDate.swift */; };
 		38C6B6D826E050CA000C0B65 /* CookingDateDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6B6D726E050CA000C0B65 /* CookingDateDishes.swift */; };
+		38F93F1828682FA000EE5126 /* SauceFundingPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F93F1728682FA000EE5126 /* SauceFundingPaymentVC.swift */; };
 		5C6E46B94D7DD15CC1CCA619 /* Pods_KungfuBBQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2263EAA047A8BA513187F0B /* Pods_KungfuBBQ.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,7 @@
 		38316C2926E52B4B0091F270 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		38316C2B26E52B560091F270 /* OrderDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDishes.swift; sourceTree = "<group>"; };
 		38316C2D26E52BC20091F270 /* OrderExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExtras.swift; sourceTree = "<group>"; };
+		38330C432867E51200D31C76 /* SauceFundingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SauceFundingVC.swift; sourceTree = "<group>"; };
 		3837FF6128601573002C821D /* DataModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 5.xcdatamodel"; sourceTree = "<group>"; };
 		3840944D27473971003757A9 /* BackToHomeViewControllerFromGrandsonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToHomeViewControllerFromGrandsonViewController.swift; sourceTree = "<group>"; };
 		38450B1E27D5523C00F4FB44 /* PublicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicVariables.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 		38C68A6327FF935A00B0937E /* secondMigration.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = secondMigration.xcmappingmodel; sourceTree = "<group>"; };
 		38C6B6D526E03EA3000C0B65 /* CookingDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingDate.swift; sourceTree = "<group>"; };
 		38C6B6D726E050CA000C0B65 /* CookingDateDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingDateDishes.swift; sourceTree = "<group>"; };
+		38F93F1728682FA000EE5126 /* SauceFundingPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SauceFundingPaymentVC.swift; sourceTree = "<group>"; };
 		43C700D0E2084076A02153B3 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		510C46F592F6EF696284EA10 /* Pods-KungfuBBQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KungfuBBQ.release.xcconfig"; path = "Target Support Files/Pods-KungfuBBQ/Pods-KungfuBBQ.release.xcconfig"; sourceTree = "<group>"; };
 		888FD2FB3341F49E8C375A9D /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +187,15 @@
 				3868B98126E995E200BBEA4F /* UIButtonExtension.swift */,
 			);
 			path = publicExtensions;
+			sourceTree = "<group>";
+		};
+		38330C422867E4F000D31C76 /* sauceFunding */ = {
+			isa = PBXGroup;
+			children = (
+				38330C432867E51200D31C76 /* SauceFundingVC.swift */,
+				38F93F1728682FA000EE5126 /* SauceFundingPaymentVC.swift */,
+			);
+			path = sauceFunding;
 			sourceTree = "<group>";
 		};
 		3853A8422663EEEA00FCBEAA = {
@@ -272,6 +285,7 @@
 		3888C84426671EBC00DA735A /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				38330C422867E4F000D31C76 /* sauceFunding */,
 				388CB35A279375E70035DCC3 /* catering */,
 				388CB359279375DA0035DCC3 /* userInfo */,
 				388CB358279375CB0035DCC3 /* loginRegistration */,
@@ -552,11 +566,13 @@
 				3867BE732749C98000107A84 /* ShowHttpErrorAlertOnOrderPaymentVC.swift in Sources */,
 				381E3F2C2669842B00003E19 /* MyAwesomeOrderVC.swift in Sources */,
 				381E3F292669620A00003E19 /* OrderPaymentVC.swift in Sources */,
+				38330C442867E51200D31C76 /* SauceFundingVC.swift in Sources */,
 				38316C2C26E52B560091F270 /* OrderDishes.swift in Sources */,
 				381E3F2626695A1400003E19 /* MapViewExtensions.swift in Sources */,
 				384677E326D1480000B3AF0E /* PasswordChangeVC.swift in Sources */,
 				3870A8B626C2185700F7C4D2 /* UserModel.swift in Sources */,
 				38C6B6D826E050CA000C0B65 /* CookingDateDishes.swift in Sources */,
+				38F93F1828682FA000EE5126 /* SauceFundingPaymentVC.swift in Sources */,
 				386718A426CDF68E002AAB81 /* PhoneFormatter.swift in Sources */,
 				3870A8B926C218A800F7C4D2 /* SocialMedia.swift in Sources */,
 				381E3F1A266953E000003E19 /* PreOrderCreationVC.swift in Sources */,

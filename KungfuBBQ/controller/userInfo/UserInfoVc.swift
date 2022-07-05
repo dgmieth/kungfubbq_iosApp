@@ -8,6 +8,10 @@
 import UIKit
 import CoreData
 
+protocol GoToHomeVC {
+    func refreshHomeUI()
+}
+
 class UserInfoVc: UIViewController,UITextFieldDelegate {
     //vars and lets
     var spinner = UIActivityIndicatorView(style: .large)
@@ -37,6 +41,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
     @IBOutlet var changePassBtnView: UIView!
     //delegates
     var delegate:BackToHomeViewControllerFromGrandsonViewController?
+    var delegate2:GoToHomeVC?
     
     override func viewWillAppear(_ animated: Bool) {
         refreshUIInformation()
@@ -55,6 +60,7 @@ class UserInfoVc: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
         NotificationCenter.default.removeObserver(UIResponder.keyboardDidChangeFrameNotification)
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+        delegate2?.refreshHomeUI()
     }
     // MARK: - BUTTONS EVENT LISTENERS
     @IBAction func editClick(_ sender: Any) {

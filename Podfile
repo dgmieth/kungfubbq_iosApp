@@ -11,6 +11,8 @@ target 'KungfuBBQ' do
   #onesignal notification
   pod 'OneSignalXCFramework', '>= 3.0.0', '< 4.0'
   
+  #progress bar
+  pod "AMProgressBar"
 end
 
 target 'OneSignalNotificationServiceExtension' do

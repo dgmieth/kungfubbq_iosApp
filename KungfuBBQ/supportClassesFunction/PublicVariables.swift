@@ -5,7 +5,7 @@
 //  Created by Diego Mieth on 06/03/22.
 //
 
-import Foundation
+import UIKit
 
 //MARK: - PUBLIC VARIABLES
 //PRODUCTION
@@ -38,4 +38,13 @@ public let FAVORITE_MAP="Choose your favorite application:"
 public let PAYMENT_OPTIONS="Payment options"
 public let PAYMENT_OPTIONS_TEXT="How would you like to pay your order?"
 public let LABEL_FIELD_HEIGH=22.0
+
+//MARK: - APPLICATION VALUES
+public let BTN_HEIGHT = 43.0
+public let CATORING_NOT_LOGGED = CGFloat(15)
+public let CATORING_LOGGED = CGFloat(73)
+
+//MARK: - SAUCE FUNDING CAMPAIGN VALUES
+public let SHIRT_SIZE_ALERT_TITLE = "Inform T-Shirt size"
+public let EXTRA_TEXT_FOR_TSHIRT_SIZE = "Please select your t-shirt size: "
 

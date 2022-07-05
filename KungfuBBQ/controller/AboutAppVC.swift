@@ -10,7 +10,7 @@ import UIKit
 class AboutAppVC: UIViewController {
     
     @IBOutlet var versionLbl: UILabel!
-    
+    var delegate:GoToHomeVC?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,9 @@ class AboutAppVC: UIViewController {
             versionLbl.text = "version 1.0"
         }
         
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.refreshHomeUI()
     }
     @IBAction func linkClick(_ sender: Any) {
         print("linkClikced")

@@ -29,7 +29,7 @@ class HttpRequestCtrl{
             if let pEmail = email {
                 queryItems.append(URLQueryItem(name: "email", value: pEmail))
             }
-            if queryItems.count > 0 {
+//            if queryItems.count > 0 {
                 url.queryItems = queryItems
                 var request = URLRequest(url: url.url!)
                 if headers.count > 0 {
@@ -53,11 +53,11 @@ class HttpRequestCtrl{
                         }
                     }
                 }.resume()
-            }
+//            }
         }
     }
     
-    func post(toRoute route: String, mobileOS os: String? = nil, userEmail email: String? = nil, userName name: String? = nil, userPassword pass:String? = nil, currentPassword cPass:String? = nil, newPassword nPass:String? = nil, confirmPassword confPass:String? = nil, invitationCode invitation:String? = nil, phoneNumber phone:String? = nil, facebookName facebook:String? = nil, instagramName instagram:String? = nil, userId id:String? = nil, catoringDescription description:String? = nil, cookingDateID cdID:Int? = nil, dishID dishes:[Int]? = nil, dishQtty dQtty:[Int]? = nil, extrasID extras:[Int]? = nil, extrasQtty eQtty:[Int]? = nil, orderID oID:Int? = nil, newQuantity newQtty:Int? = nil, cardNumber cNumber: String? = nil, expirantionDate eDate: String? = nil, cardCode cCode: String? = nil, versionCode vCode : String? = nil, tip eTip: String? = nil, headers: [String:String] = [String:String](),  onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
+    func post(toRoute route: String, mobileOS os: String? = nil, userEmail email: String? = nil, userName name: String? = nil, userPassword pass:String? = nil, currentPassword cPass:String? = nil, newPassword nPass:String? = nil, confirmPassword confPass:String? = nil, invitationCode invitation:String? = nil, phoneNumber phone:String? = nil, facebookName facebook:String? = nil, instagramName instagram:String? = nil, userId id:String? = nil, catoringDescription description:String? = nil, cookingDateID cdID:Int? = nil, dishID dishes:[Int]? = nil, dishQtty dQtty:[Int]? = nil, extrasID extras:[Int]? = nil, extrasQtty eQtty:[Int]? = nil, orderID oID:Int? = nil, newQuantity newQtty:Int? = nil, cardNumber cNumber: String? = nil, expirantionDate eDate: String? = nil, cardCode cCode: String? = nil, versionCode vCode : String? = nil, tip eTip: String? = nil, sauseQtty sause:Int? = nil, shirtSize size:String?=nil, headers: [String:String] = [String:String](),  onCompletion: @escaping (_ json:[String:Any])->Void, onError: @escaping (_ error:Any)-> Void){
         print("httpRequestCtrl -> POST")
         var params=[String:Any]()
         if let url = URL(string: "\(KUNGFUBBQ_DNS)\(route)") {
@@ -144,6 +144,12 @@ class HttpRequestCtrl{
             }
             if let vTtip = eTip {
                 params["tip"] = vTtip
+            }
+            if let vSauce = sause{
+                params["qtty"] = vSauce
+            }
+            if let vSize = size{
+                params["size"] = vSize
             }
             var request = URLRequest(url: url)
             request.httpMethod = "POST"

@@ -149,4 +149,7 @@ public class FormatObject {
             return Int(floor(v1))
         }
     }
+    func decimalPrecision(amount:Double)->String{
+        return String(format: "U$ %.2f", amount)
+    }
 }
