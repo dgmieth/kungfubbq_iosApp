@@ -145,10 +145,12 @@ class LoginVC: UIViewController, UITextFieldDelegate,RegistersAndLogsUserAndGoes
                 if(errorCheck==0){
                     guard let data = jsonObject["data"] as? [String:Any] else { return }
                     user1 = User(json: data)!
-                    if(self.rememberMe.isOn){
-                        let remember = RememberMe(context: self.dataController.viewContext)
-                        remember.remember = self.rememberMe.isOn
-                        remember.password = self.password.text! as String
+                    DispatchQueue.main.async {
+                        if(self.rememberMe.isOn){
+                            let remember = RememberMe(context: self.dataController.viewContext)
+                            remember.remember = self.rememberMe.isOn
+                            remember.password = self.password.text! as String
+                        }
                     }
                     if self.loadedEmail == username {
                         if let cdUser = self.update(byEmail: username){

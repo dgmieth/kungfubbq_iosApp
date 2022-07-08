@@ -26,8 +26,11 @@
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32E-qC-Nks" userLabel="loginBtn">
-                                        <rect key="frame" x="15" y="150" width="290" height="43"/>
+                                        <rect key="frame" x="15" y="150" width="290" height="53"/>
                                         <color key="backgroundColor" red="0.019999999552965164" green="0.019999999552965164" blue="0.016000000759959221" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="53" id="Gzq-a5-9V3"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="28"/>
                                         <color key="tintColor" name="fontColor"/>
                                         <state key="normal" title="Log-in">
@@ -38,7 +41,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJB-gM-zVk" userLabel="calendarBtn">
-                                        <rect key="frame" x="15" y="150" width="290" height="43"/>
+                                        <rect key="frame" x="15" y="150" width="290" height="53"/>
                                         <color key="backgroundColor" red="0.019999999552965164" green="0.019999999552965164" blue="0.016000000759959221" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="28"/>
                                         <color key="tintColor" name="fontColor"/>
@@ -50,7 +53,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" restorationIdentifier="founderFromBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Q2-sR-scj" userLabel="founderBtn">
-                                        <rect key="frame" x="15" y="208" width="290" height="43"/>
+                                        <rect key="frame" x="15" y="218" width="290" height="53"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="28"/>
                                         <color key="tintColor" name="fontColor"/>
@@ -143,7 +146,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" restorationIdentifier="catoringFromBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-hk-rqP" userLabel="carotingBtn">
-                                        <rect key="frame" x="15" y="208" width="290" height="43"/>
+                                        <rect key="frame" x="15" y="218" width="290" height="53"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="28"/>
                                         <color key="tintColor" name="fontColor"/>
@@ -164,23 +167,23 @@
                                     <constraint firstItem="32E-qC-Nks" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" constant="150" id="9sW-qK-owz"/>
                                     <constraint firstItem="Kqa-hk-rqP" firstAttribute="top" secondItem="32E-qC-Nks" secondAttribute="bottom" constant="15" id="AP9-nc-RrU"/>
                                     <constraint firstAttribute="trailing" secondItem="1Q2-sR-scj" secondAttribute="trailing" constant="15" id="GIB-sb-DQ0"/>
-                                    <constraint firstItem="xJB-gM-zVk" firstAttribute="height" secondItem="32E-qC-Nks" secondAttribute="height" id="H9i-8Y-Uth"/>
                                     <constraint firstItem="uqw-0r-Vlq" firstAttribute="centerX" secondItem="3Yk-2V-Xie" secondAttribute="centerX" id="Kgg-c6-GF6"/>
                                     <constraint firstItem="32E-qC-Nks" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" constant="15" id="L3h-vZ-YBJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Kqa-hk-rqP" secondAttribute="trailing" constant="15" id="QTG-4T-eD2"/>
                                     <constraint firstItem="xJB-gM-zVk" firstAttribute="width" secondItem="32E-qC-Nks" secondAttribute="width" id="T2t-YY-OtS"/>
+                                    <constraint firstItem="1Q2-sR-scj" firstAttribute="height" secondItem="32E-qC-Nks" secondAttribute="height" id="Uv9-hj-KwU"/>
+                                    <constraint firstItem="xJB-gM-zVk" firstAttribute="height" secondItem="32E-qC-Nks" secondAttribute="height" id="W1h-Gy-Kv5"/>
                                     <constraint firstItem="uqw-0r-Vlq" firstAttribute="height" secondItem="3Yk-2V-Xie" secondAttribute="height" id="WXP-Si-V99"/>
                                     <constraint firstAttribute="trailing" secondItem="uqw-0r-Vlq" secondAttribute="trailing" id="YkY-pG-K06"/>
                                     <constraint firstItem="Pk1-yY-kwz" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" id="e9a-UD-afF"/>
                                     <constraint firstItem="xJB-gM-zVk" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" constant="150" id="fmk-AQ-A7b"/>
-                                    <constraint firstItem="1Q2-sR-scj" firstAttribute="height" secondItem="xJB-gM-zVk" secondAttribute="height" id="izU-Dw-v5A"/>
                                     <constraint firstAttribute="trailing" secondItem="IBQ-bJ-1I5" secondAttribute="trailing" constant="5" id="kLT-FY-hfH"/>
                                     <constraint firstAttribute="trailing" secondItem="Pk1-yY-kwz" secondAttribute="trailing" id="lFI-5e-Uut"/>
                                     <constraint firstItem="1Q2-sR-scj" firstAttribute="top" secondItem="32E-qC-Nks" secondAttribute="bottom" constant="15" id="nEn-KU-Bmm"/>
                                     <constraint firstItem="IBQ-bJ-1I5" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" constant="5" id="oTK-Pk-7ps"/>
                                     <constraint firstItem="Kqa-hk-rqP" firstAttribute="leading" secondItem="3Yk-2V-Xie" secondAttribute="leading" constant="15" id="oXa-gW-D2u"/>
                                     <constraint firstItem="uqw-0r-Vlq" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" id="r47-Uc-TNR"/>
-                                    <constraint firstItem="32E-qC-Nks" firstAttribute="height" secondItem="Kqa-hk-rqP" secondAttribute="height" id="tlN-oz-xlR"/>
+                                    <constraint firstItem="Kqa-hk-rqP" firstAttribute="height" secondItem="32E-qC-Nks" secondAttribute="height" id="t9Y-qT-xqa"/>
                                     <constraint firstItem="32E-qC-Nks" firstAttribute="centerX" secondItem="3Yk-2V-Xie" secondAttribute="centerX" id="uj3-jF-VhH"/>
                                     <constraint firstAttribute="bottom" secondItem="IBQ-bJ-1I5" secondAttribute="bottom" constant="5" id="v2k-bf-6k6"/>
                                     <constraint firstItem="Pk1-yY-kwz" firstAttribute="top" secondItem="3Yk-2V-Xie" secondAttribute="top" id="vbv-iN-c9s"/>
@@ -3368,7 +3371,7 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vwu-Zh-Xvu">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="921"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="997.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEO-ma-PaZ" userLabel="WhatBeginning">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
@@ -3405,14 +3408,14 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nx-Ey-c8X">
-                                                <rect key="frame" x="0.0" y="60" width="320" height="192.5"/>
+                                                <rect key="frame" x="0.0" y="60" width="320" height="240.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">Yes! You can help us Release Kungfu BBQ's first Sauce for retail!
 </string>
                                                         <attributes>
                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="16" name="Palatino-Roman"/>
+                                                            <font key="NSFont" size="17" name="Palatino-Roman"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>
                                                     </fragment>
@@ -3421,13 +3424,13 @@
 </string>
                                                         <attributes>
                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="16" name="Palatino-Roman"/>
+                                                            <font key="NSFont" size="17" name="Palatino-Roman"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="Anyone who preorders any number of these first bottles will be a 'Sauce Pioneer', helping us found our first bottling contract.">
                                                         <attributes>
                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="16" name="Palatino-Roman"/>
+                                                            <font key="NSFont" size="17" name="Palatino-Roman"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>
                                                     </fragment>
@@ -3435,7 +3438,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sms-VC-7pQ" userLabel="logoDivider">
-                                                <rect key="frame" x="0.0" y="252.5" width="320" height="13"/>
+                                                <rect key="frame" x="0.0" y="300.5" width="320" height="13"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_divider" translatesAutoresizingMaskIntoConstraints="NO" id="SgN-H9-BGj">
                                                         <rect key="frame" x="0.0" y="0.0" width="64" height="13"/>
@@ -3478,7 +3481,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axk-8X-zjp" userLabel="BenefitsBeginning">
-                                                <rect key="frame" x="0.0" y="265.5" width="320" height="60"/>
+                                                <rect key="frame" x="0.0" y="313.5" width="320" height="60"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="benefits" translatesAutoresizingMaskIntoConstraints="NO" id="aba-9y-WLK">
                                                         <rect key="frame" x="0.0" y="0.0" width="106.5" height="60"/>
@@ -3512,15 +3515,15 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iK-OC-5Eq">
-                                                <rect key="frame" x="0.0" y="325.5" width="320" height="227.5"/>
+                                                <rect key="frame" x="0.0" y="373.5" width="320" height="240.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <string key="content">1. Single print only, collectable Pioneer Token: this Token will display your order number, and will be redeemable for one free side of any sauce upon presenting it to us, any visit, any location. (Limit: one Token per guest, only awarded to each guest's first preorder during this campaign);
+                                                        <string key="content">1. Single print only, collectable Pioneer Token: this Token will display your order number, and will be redeemable for one free side of any sauce upon presenting it to us, any visit, any location. (Limit: one Token per guest, only awarded upon each guest's first preorder during this campaign);
 2. A KungfuBBQ Ltd customized T-shirt;
 </string>
                                                         <attributes>
-                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <font key="NSFont" size="16" name="Palatino-Roman"/>
+                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Palatino-Roman"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                 <tabStops/>
                                                             </paragraphStyle>
@@ -3528,8 +3531,8 @@
                                                     </fragment>
                                                     <fragment content="3. Your name will be on the first bottle you order with a custom message from our family. A true collectable.">
                                                         <attributes>
-                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <font key="NSFont" size="16" name="Palatino-Roman"/>
+                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Palatino-Roman"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                 <tabStops/>
                                                             </paragraphStyle>
@@ -3539,7 +3542,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxk-w0-Lwo" userLabel="logoDivider">
-                                                <rect key="frame" x="0.0" y="553" width="320" height="13"/>
+                                                <rect key="frame" x="0.0" y="614" width="320" height="13"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_divider" translatesAutoresizingMaskIntoConstraints="NO" id="9BJ-ow-cIb">
                                                         <rect key="frame" x="0.0" y="0.0" width="64" height="13"/>
@@ -3582,9 +3585,9 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNd-Ph-r9P" userLabel="KeeptrackBeginning">
-                                                <rect key="frame" x="0.0" y="566" width="320" height="60"/>
+                                                <rect key="frame" x="0.0" y="627" width="320" height="60"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="benefits" translatesAutoresizingMaskIntoConstraints="NO" id="tqJ-5A-hgA">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keeptrack" translatesAutoresizingMaskIntoConstraints="NO" id="tqJ-5A-hgA">
                                                         <rect key="frame" x="0.0" y="0.0" width="106.5" height="60"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsh-XW-WPC">
@@ -3616,14 +3619,14 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv9-AY-9vY">
-                                                <rect key="frame" x="0.0" y="626" width="320" height="175"/>
+                                                <rect key="frame" x="0.0" y="687" width="320" height="190.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">Upon purchasing, you will receive a receipt in your e-mail. When we receive the first batch we will contact you through mobile app notification, e-mail, phone and/or SMS to arrange the pick-up/delivery of your order.
 </string>
                                                         <attributes>
                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <font key="NSFont" metaFont="system" size="16"/>
+                                                            <font key="NSFont" size="17" name="Palatino-Roman"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                 <tabStops/>
                                                             </paragraphStyle>
@@ -3632,7 +3635,7 @@
                                                     <fragment content="In order to stay up to date on the progress of the campaign, check out the info below!">
                                                         <attributes>
                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <font key="NSFont" metaFont="system" size="16"/>
+                                                            <font key="NSFont" size="17" name="Palatino-Roman"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>
                                                     </fragment>
@@ -3640,7 +3643,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QMw-h3-yrZ" userLabel="progressBarView">
-                                                <rect key="frame" x="0.0" y="801" width="320" height="35"/>
+                                                <rect key="frame" x="0.0" y="877.5" width="320" height="35"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKh-sa-SNF" userLabel="progressBar" customClass="AMProgressBar" customModule="AMProgressBar">
                                                         <rect key="frame" x="30" y="0.0" width="260" height="35"/>
@@ -3686,20 +3689,20 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-jb-T1Y" userLabel="moneyDetails">
-                                                <rect key="frame" x="0.0" y="836" width="320" height="30"/>
+                                                <rect key="frame" x="0.0" y="912.5" width="320" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mT6-dg-V0U">
                                                         <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pre-orders:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89T-zM-ER7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
-                                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="13"/>
+                                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="15"/>
                                                                 <color key="textColor" name="fontColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 1,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1P-a6-FEB">
                                                                 <rect key="frame" x="80" y="0.0" width="80" height="30"/>
-                                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="13"/>
+                                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="15"/>
                                                                 <color key="textColor" name="fontColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3720,13 +3723,13 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQU-jE-6fV">
                                                                 <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
-                                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="13"/>
+                                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="15"/>
                                                                 <color key="textColor" name="fontColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 1,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ger-qr-4dr">
                                                                 <rect key="frame" x="81" y="0.0" width="79" height="30"/>
-                                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="13"/>
+                                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="15"/>
                                                                 <color key="textColor" name="fontColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3756,7 +3759,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwd-ec-dju" userLabel="btnsView">
-                                                <rect key="frame" x="0.0" y="866" width="320" height="55"/>
+                                                <rect key="frame" x="0.0" y="942.5" width="320" height="55"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCU-dM-smH" userLabel="placeView">
                                                         <rect key="frame" x="160" y="0.0" width="160" height="55"/>
@@ -3896,13 +3899,13 @@
                                         <rect key="frame" x="15" y="0.0" width="290" height="548"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTU-gJ-p0X" userLabel="cardNumberLbl">
-                                                <rect key="frame" x="0.0" y="5" width="208" height="24.5"/>
+                                                <rect key="frame" x="0.0" y="10" width="208" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1234 4567 8900 0000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1c-js-lmc" userLabel="cardNumber">
-                                                <rect key="frame" x="25" y="31.5" width="240" height="38"/>
+                                                <rect key="frame" x="25" y="36.5" width="240" height="38"/>
                                                 <color key="backgroundColor" name="textFieldBackground"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="8Sp-7I-uJm"/>
@@ -3914,14 +3917,14 @@
                                                     <outlet property="delegate" destination="e0k-ss-5dr" id="PhC-sK-mFF"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlp-5m-D5f" userLabel="codeLbl">
-                                                <rect key="frame" x="0.0" y="74.5" width="176" height="24.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlp-5m-D5f" userLabel="codeLbl">
+                                                <rect key="frame" x="0.0" y="79.5" width="135.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="123" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zrd-2b-ihj" userLabel="code">
-                                                <rect key="frame" x="75" y="99" width="140" height="38"/>
+                                                <rect key="frame" x="75" y="104" width="140" height="38"/>
                                                 <color key="backgroundColor" name="textFieldBackground"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="whm-bl-HE1"/>
@@ -3933,14 +3936,14 @@
                                                     <outlet property="delegate" destination="e0k-ss-5dr" id="g8L-VK-udK"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid through" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3we-XT-0v0" userLabel="validTrough">
-                                                <rect key="frame" x="0.0" y="142" width="140" height="24.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3we-XT-0v0" userLabel="validTrough">
+                                                <rect key="frame" x="0.0" y="147" width="105.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPD-Q2-jbH">
-                                                <rect key="frame" x="0.0" y="435" width="140" height="47"/>
+                                                <rect key="frame" x="0.0" y="440" width="140" height="47"/>
                                                 <color key="backgroundColor" name="logoRed"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="47" id="I4u-Fa-Uxz"/>
@@ -3954,7 +3957,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lld-LQ-Nt9">
-                                                <rect key="frame" x="150" y="435" width="140" height="47"/>
+                                                <rect key="frame" x="150" y="440" width="140" height="47"/>
                                                 <color key="backgroundColor" name="logoYellow"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                 <state key="normal" title="Pay">
@@ -3965,7 +3968,7 @@
                                                 </connections>
                                             </button>
                                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DB5-AC-qQE" userLabel="pkView">
-                                                <rect key="frame" x="15" y="166.5" width="260" height="75"/>
+                                                <rect key="frame" x="15" y="171.5" width="260" height="75"/>
                                                 <color key="tintColor" name="i_black"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="BTw-ms-fzF"/>
@@ -3975,14 +3978,14 @@
                                                     <outlet property="delegate" destination="e0k-ss-5dr" id="SE0-nh-f5i"/>
                                                 </connections>
                                             </pickerView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like our food? Give us a tip..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck0-OQ-yhX" userLabel="tipPhraseLbl">
-                                                <rect key="frame" x="0.0" y="256.5" width="296.5" height="24.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave a tip if you like!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck0-OQ-yhX" userLabel="tipPhraseLbl">
+                                                <rect key="frame" x="0.0" y="261.5" width="224.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joR-3g-bvT">
-                                                <rect key="frame" x="0.0" y="285" width="290" height="35"/>
+                                                <rect key="frame" x="0.0" y="290" width="290" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bEo-WW-2vU" userLabel="btnTip15">
                                                         <rect key="frame" x="-1.5" y="1.5" width="81" height="32"/>
@@ -4068,49 +4071,49 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottle(s):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wp-L9-wIF" userLabel="bottleLbl">
-                                                <rect key="frame" x="0.0" y="322" width="165" height="24.5"/>
+                                                <rect key="frame" x="0.0" y="327" width="178.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6F-Vo-GrF" userLabel="bottle">
-                                                <rect key="frame" x="175" y="301.5" width="83.5" height="65.5"/>
+                                                <rect key="frame" x="188.5" y="306.5" width="83.5" height="65.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottle(s) amout:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97G-3h-gfi" userLabel="bottleAmountLbl">
-                                                <rect key="frame" x="0.0" y="346.5" width="159" height="24.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottle(s) amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97G-3h-gfi" userLabel="bottleAmountLbl">
+                                                <rect key="frame" x="0.0" y="351.5" width="172.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlM-Zh-pcH" userLabel="bottleAmount">
-                                                <rect key="frame" x="175" y="346.5" width="83.5" height="24.5"/>
+                                                <rect key="frame" x="188.5" y="351.5" width="83.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip amout:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDd-gK-Nmf" userLabel="tipAmountLbl">
-                                                <rect key="frame" x="0.0" y="371" width="109" height="24.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDd-gK-Nmf" userLabel="tipAmountLbl">
+                                                <rect key="frame" x="0.0" y="376" width="122.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xr0-uK-npG" userLabel="tipAmount">
-                                                <rect key="frame" x="175" y="371" width="83.5" height="24.5"/>
+                                                <rect key="frame" x="188.5" y="376" width="83.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total amout:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-0X-6w3" userLabel="totalAmountLbl">
-                                                <rect key="frame" x="0.0" y="400.5" width="125" height="34.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-0X-6w3" userLabel="totalAmountLbl">
+                                                <rect key="frame" x="0.0" y="405.5" width="138.5" height="34.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVc-2Z-Aow" userLabel="totalAmount">
-                                                <rect key="frame" x="175" y="405.5" width="83.5" height="24.5"/>
+                                                <rect key="frame" x="188.5" y="410.5" width="83.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
@@ -4125,7 +4128,7 @@
                                             <constraint firstAttribute="trailing" secondItem="DB5-AC-qQE" secondAttribute="trailing" constant="15" id="6Ay-OK-c5m"/>
                                             <constraint firstItem="A1c-js-lmc" firstAttribute="leading" secondItem="hl7-Gb-9wb" secondAttribute="leading" constant="25" id="6Or-fQ-SdN"/>
                                             <constraint firstItem="nDd-gK-Nmf" firstAttribute="top" secondItem="97G-3h-gfi" secondAttribute="bottom" id="6rj-Aa-hFg"/>
-                                            <constraint firstItem="wTU-gJ-p0X" firstAttribute="top" secondItem="hl7-Gb-9wb" secondAttribute="top" constant="5" id="7VS-J8-aiG"/>
+                                            <constraint firstItem="wTU-gJ-p0X" firstAttribute="top" secondItem="hl7-Gb-9wb" secondAttribute="top" constant="10" id="7VS-J8-aiG"/>
                                             <constraint firstItem="joR-3g-bvT" firstAttribute="leading" secondItem="hl7-Gb-9wb" secondAttribute="leading" id="8nn-WX-7Co"/>
                                             <constraint firstItem="oVc-2Z-Aow" firstAttribute="leading" secondItem="JyG-0X-6w3" secondAttribute="trailing" constant="50" id="9HZ-br-Gm7"/>
                                             <constraint firstItem="JyG-0X-6w3" firstAttribute="top" secondItem="nDd-gK-Nmf" secondAttribute="bottom" constant="5" id="9lG-nD-ctD"/>
@@ -4517,13 +4520,13 @@
                                         <rect key="frame" x="15" y="0.0" width="290" height="548"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUv-8k-4Sn" userLabel="cardNumberLbl">
-                                                <rect key="frame" x="0.0" y="5" width="208" height="24.5"/>
+                                                <rect key="frame" x="0.0" y="10" width="208" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1234 4567 8900 0000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdt-vk-uqA" userLabel="cardNumber">
-                                                <rect key="frame" x="25" y="31.5" width="240" height="38"/>
+                                                <rect key="frame" x="25" y="36.5" width="240" height="38"/>
                                                 <color key="backgroundColor" name="textFieldBackground"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="q5h-sf-ry0"/>
@@ -4535,14 +4538,14 @@
                                                     <outlet property="delegate" destination="5iZ-CZ-RSW" id="Ath-D1-3JB"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-8A-v0o" userLabel="codeLbl">
-                                                <rect key="frame" x="0.0" y="74.5" width="176" height="24.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-8A-v0o" userLabel="codeLbl">
+                                                <rect key="frame" x="0.0" y="79.5" width="135.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="123" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i49-35-bnS" userLabel="code">
-                                                <rect key="frame" x="75" y="99" width="140" height="38"/>
+                                                <rect key="frame" x="75" y="104" width="140" height="38"/>
                                                 <color key="backgroundColor" name="textFieldBackground"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="iWQ-wP-njF"/>
@@ -4554,14 +4557,14 @@
                                                     <outlet property="delegate" destination="5iZ-CZ-RSW" id="rHD-kE-M2U"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid through" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzP-sF-ahF" userLabel="validTrough">
-                                                <rect key="frame" x="0.0" y="142" width="140" height="24.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzP-sF-ahF" userLabel="validTrough">
+                                                <rect key="frame" x="0.0" y="147" width="105.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcc-pR-dx4">
-                                                <rect key="frame" x="0.0" y="414.5" width="140" height="47"/>
+                                                <rect key="frame" x="0.0" y="419.5" width="140" height="47"/>
                                                 <color key="backgroundColor" name="logoRed"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="47" id="Qth-Mp-fnp"/>
@@ -4575,7 +4578,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWo-3G-mJq">
-                                                <rect key="frame" x="150" y="414.5" width="140" height="47"/>
+                                                <rect key="frame" x="150" y="419.5" width="140" height="47"/>
                                                 <color key="backgroundColor" name="logoYellow"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="28"/>
                                                 <state key="normal" title="Pay">
@@ -4586,7 +4589,7 @@
                                                 </connections>
                                             </button>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-5t-RPP" userLabel="pkView">
-                                                <rect key="frame" x="15" y="166.5" width="260" height="75"/>
+                                                <rect key="frame" x="15" y="171.5" width="260" height="75"/>
                                                 <color key="tintColor" name="i_black"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="Ccf-wF-Z1h"/>
@@ -4597,13 +4600,13 @@
                                                 </connections>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like our food? Give us a tip..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJf-9s-ocW" userLabel="tipPhraseLbl">
-                                                <rect key="frame" x="0.0" y="256.5" width="296.5" height="24.5"/>
+                                                <rect key="frame" x="0.0" y="261.5" width="296.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4I-ne-HBl">
-                                                <rect key="frame" x="0.0" y="285" width="290" height="35"/>
+                                                <rect key="frame" x="0.0" y="290" width="290" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tnq-0U-T38" userLabel="btnTip15">
                                                         <rect key="frame" x="-1.5" y="1.5" width="81" height="32"/>
@@ -4688,38 +4691,38 @@
                                                     <constraint firstItem="Vwc-s3-Qbg" firstAttribute="leading" secondItem="Kb2-5P-R7v" secondAttribute="trailing" constant="25" id="sYd-xE-4JG"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meals amout:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ag-Oo-mmr" userLabel="mealPriceLbl">
-                                                <rect key="frame" x="0.0" y="322" width="140" height="24.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meals amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ag-Oo-mmr" userLabel="mealPriceLbl">
+                                                <rect key="frame" x="0.0" y="327" width="153.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-RC-Ig9" userLabel="mealPrice">
-                                                <rect key="frame" x="150" y="322" width="83.5" height="24.5"/>
+                                                <rect key="frame" x="163.5" y="327" width="83.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip amout:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cV-tZ-qe5" userLabel="tipAmountLbl">
-                                                <rect key="frame" x="0.0" y="346.5" width="109" height="32.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cV-tZ-qe5" userLabel="tipAmountLbl">
+                                                <rect key="frame" x="0.0" y="351.5" width="122.5" height="32.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cC-l2-Hlx" userLabel="tipAmount">
-                                                <rect key="frame" x="150" y="350.5" width="83.5" height="24.5"/>
+                                                <rect key="frame" x="163.5" y="355.5" width="83.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total amout:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1e-hi-3p8" userLabel="totalAmountLbl">
-                                                <rect key="frame" x="0.0" y="384" width="125" height="26.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1e-hi-3p8" userLabel="totalAmountLbl">
+                                                <rect key="frame" x="0.0" y="389" width="138.5" height="26.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U$ 13.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPv-bW-9HJ" userLabel="totalAmount">
-                                                <rect key="frame" x="150" y="385" width="83.5" height="24.5"/>
+                                                <rect key="frame" x="163.5" y="390" width="83.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
@@ -4765,7 +4768,7 @@
                                             <constraint firstItem="oWo-3G-mJq" firstAttribute="top" secondItem="fPv-bW-9HJ" secondAttribute="bottom" constant="5" id="sOF-Wf-KGR"/>
                                             <constraint firstItem="1cV-tZ-qe5" firstAttribute="top" secondItem="9ag-Oo-mmr" secondAttribute="bottom" id="sfx-Lo-Pp4"/>
                                             <constraint firstItem="i5M-5t-RPP" firstAttribute="top" secondItem="FzP-sF-ahF" secondAttribute="bottom" id="u0d-ly-FU5"/>
-                                            <constraint firstItem="mUv-8k-4Sn" firstAttribute="top" secondItem="7En-Pu-vZu" secondAttribute="top" constant="5" id="vlm-Iq-CGp"/>
+                                            <constraint firstItem="mUv-8k-4Sn" firstAttribute="top" secondItem="7En-Pu-vZu" secondAttribute="top" constant="10" id="vlm-Iq-CGp"/>
                                             <constraint firstItem="w4I-ne-HBl" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" id="wcC-2X-rB9"/>
                                             <constraint firstItem="i5M-5t-RPP" firstAttribute="leading" secondItem="7En-Pu-vZu" secondAttribute="leading" constant="15" id="xbv-3g-Rwe"/>
                                         </constraints>
@@ -4819,6 +4822,7 @@
         <image name="benefits" width="256" height="256"/>
         <image name="facebook" width="19" height="19"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="keeptrack" width="256" height="256"/>
         <image name="logo1200" width="1200" height="1071"/>
         <image name="logo_divider" width="1497" height="272.5"/>
         <image name="logout" width="64" height="64"/>

@@ -150,6 +150,7 @@ class HomeVC: UIViewController, BackToHomeViewControllerFromGrandsonViewControll
             guard let errorCheck = jsonObject["hasErrors"] as? Int else { return }
             guard let msg = jsonObject["msg"] as? [String:Any] else { return }
             guard let status = msg["status"] as? String else { return }
+            print("checkstatus")
             print(status)
             if errorCheck == -1 {
                 self.showAlert(title: NOT_LOGGED_IN, msg: NOT_LOGGED_IN_TEXT)

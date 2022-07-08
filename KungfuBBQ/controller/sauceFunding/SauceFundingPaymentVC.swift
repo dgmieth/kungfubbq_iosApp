@@ -44,7 +44,7 @@ class SauceFundingPaymentVC: UIViewController,UIPickerViewDataSource, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         if checkParameters() {
-            showAlert(title: "Tip information", msg: "Every single penny we receive as tip on this payment will be added to the amount we need to purchased the first batch of our sauce 😉!")
+            showAlert(title: "Tip information", msg: "Every single penny we receive as a tip on this payment will be added to the amount we need to purchase the first batch of our sauce 😉!")
         }else{
             showAlert(title: ERROR, msg: "Internal system error. Not possible to process your payment at this moment.")
         }
@@ -301,6 +301,7 @@ class SauceFundingPaymentVC: UIViewController,UIPickerViewDataSource, UIPickerVi
     }
     //MARK: enabling buttons
     func enableButtons(value:Bool){
+        print("enable buttons with value \(value)")
         payBtn.isEnabled = value
         cancelBtn.isEnabled = value
     }
@@ -423,6 +424,7 @@ class SauceFundingPaymentVC: UIViewController,UIPickerViewDataSource, UIPickerVi
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
                 }
                 if(title==SHIRT_SIZE_ALERT_TITLE){
+                    self.createSpinner()
                     self.informTShirtSize()
                 }
                 if(title==ERROR){

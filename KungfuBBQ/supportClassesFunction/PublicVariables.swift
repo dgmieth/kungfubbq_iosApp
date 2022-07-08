@@ -40,9 +40,10 @@ public let PAYMENT_OPTIONS_TEXT="How would you like to pay your order?"
 public let LABEL_FIELD_HEIGH=22.0
 
 //MARK: - APPLICATION VALUES
-public let BTN_HEIGHT = 43.0
-public let CATORING_NOT_LOGGED = CGFloat(15)
-public let CATORING_LOGGED = CGFloat(73)
+public let BTN_HEIGHT = 53.0
+public let HOME_BTN_TOP_SPACE = 15.0
+public let CATORING_NOT_LOGGED = CGFloat(HOME_BTN_TOP_SPACE)
+public let CATORING_LOGGED = CGFloat(2*(HOME_BTN_TOP_SPACE)+BTN_HEIGHT)
 
 //MARK: - SAUCE FUNDING CAMPAIGN VALUES
 public let SHIRT_SIZE_ALERT_TITLE = "Inform T-Shirt size"

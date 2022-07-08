@@ -57,6 +57,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let navigationController = window?.rootViewController as? UINavigationController {
             print("safely unwrapped")
             print(navigationController.viewControllers.count)
+            if let vc = navigationController.topViewController {
+                if vc.isKind(of: SauceFundingVC.self){
+                    print("seflCalled")
+                    return }
+                if vc.isKind(of: SauceFundingPaymentVC.self){
+                    print("seflCalled")
+                    return }
+            }
+//            if navigationController.topViewController?.isKind(of: SauceFundingPaymentVC){ return }
             switch navigationController.viewControllers.count {
             case 3:
                 window?.rootViewController?.dismiss(animated: true, completion: nil)

@@ -20,7 +20,7 @@ class SauceFundingVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     
     private var price = 0.0
     private var qtty = 1
-    private var SAUCE_BATCH_COST = 1.00
+    private var SAUCE_BATCH_COST = 5709.0
     
     @IBOutlet var whatTextView: UITextView!
     private let QTTY = "Quantity"
@@ -28,12 +28,13 @@ class SauceFundingVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         createSpinner()
+        updateWhatTextView()
         getSauceFundingInfo()
         // Do any additional setup after loading the view.
     }
     //MARK: - BUTTONS
     @IBAction func purchasedClicked(_ sender: Any) {
-        showAlert(title: QTTY, msg: "Select how many bottles you would like to purchase. Each bottle costs U$ \(FormatObject.shared.decimalPrecision(amount: price))")
+        showAlert(title: QTTY, msg: "Select how many bottles you would like to purchase. Each bottle costs $\(FormatObject.shared.decimalPrecisionNoMonetarySymbol(amount: price))")
     }
     @IBAction func cancelClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -80,9 +81,7 @@ class SauceFundingVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
                         guard let batchPrice = msg["batchPrice"] as? String else {return }
                         self.SAUCE_BATCH_COST = Double(batchPrice)!
                         DispatchQueue.main.async {
-                            self.whatTextView.text = String(format: self.whatTextView.text!, self.SAUCE_BATCH_COST)
-                            print(String(format: self.whatTextView.text!, self.SAUCE_BATCH_COST))
-                            print(self.SAUCE_BATCH_COST)
+                            self.updateWhatTextView()
                             self.preOrders.text = FormatObject.shared.decimalPrecision(amount: Double(preOrders)!)
                             self.tips.text = FormatObject.shared.decimalPrecision(amount: Double(tips)!)
                             self.progressBar.setProgress(progress: CGFloat(Double(totalAmount)!/self.SAUCE_BATCH_COST), animated: true)
@@ -133,6 +132,13 @@ class SauceFundingVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             }
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    //MARK: - UI
+    private func updateWhatTextView(){
+        DispatchQueue.main.async  {
+            print("updateWhatTextView called \(self.SAUCE_BATCH_COST)")
+            self.whatTextView.text = String(format: self.whatTextView.text!, self.SAUCE_BATCH_COST)
         }
     }
     // MARK: - SPINNER
